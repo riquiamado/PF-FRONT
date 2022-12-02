@@ -36,7 +36,7 @@ function Home() {
                 }
             </div>
             <div>
-                <h1>hola mundo</h1>
+                <h1>Tuki tuki tuki</h1>
             </div>
         </div>
     )
