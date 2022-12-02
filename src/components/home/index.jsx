@@ -2,7 +2,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import getProviders from '../../redux/actions/actions'
+import {getProviders} from '../../redux/actions/actions'
 import Cards from '../cards'
 
 function Home() {
@@ -20,9 +20,9 @@ function Home() {
     return (
         <div>
             <div>
-                {allProviders?.map(el => {
+                {allProviders?.map((el,index) => {
                     return (
-                        <div key={el}>
+                        <div key={index}>
                             <Cards
                                id={el._id}
                                 name={el.name}
