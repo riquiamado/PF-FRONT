@@ -37,6 +37,7 @@ function Home() {
             </div>
             <div>
                 <h1>Tuki tuki tuki</h1>
+                <h2>Hola Vania</h2>
             </div>
         </div>
     )
