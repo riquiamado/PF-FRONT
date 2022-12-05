@@ -1,8 +1,16 @@
 import React from 'react'
+import SearchBar from '../searchBar'
+
+
 
 function NavBar() {
+ 
+ 
   return (
-    <div>NavBar</div>
+    <div>
+   
+    <SearchBar/>
+    </div>
   )
 }
 
