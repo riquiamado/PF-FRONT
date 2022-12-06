@@ -15,7 +15,6 @@ export   function getProviders (){
 export  function getProviderByName(name){
     return async function(dispatch){
         const info = await axios.get(`http://localhost:3001/provider?name=${name}`)
-        console.log(info.data)
         dispatch({type:GET_PROVIDER_BYNAME ,payload:info.data})
     }
 }
