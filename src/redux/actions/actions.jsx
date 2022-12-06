@@ -6,7 +6,7 @@ import { CLEAN, GET_PROVIDER, GET_PROVIDER_BYNAME, GET_PROVIDER_DETAILS } from "
 
 export   function getProviders (){
     return async function(dispatch){
-        const info = await axios.get(`http://localhost:3001/provider`)
+        const info = await axios.get(`http://localhost:3001/providers`)
         
         dispatch({type:GET_PROVIDER ,payload: info.data})
     }
