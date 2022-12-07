@@ -13,7 +13,7 @@ function App() {
       
       <Route exact path="/users" component={CreateUser}/>
       <Route exact path={'/home'} component={Home}/>
-      <Route path="/provider/:id" component={CardDetails} />
+      <Route path="/services/:id" component={CardDetails} />
      
     </div>
   )
