@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getProviderByName } from "../../redux/actions/actions";
+import { getServicesByName } from "../../redux/actions/actions";
 
 
 const SearchBar = () => {
@@ -17,7 +17,7 @@ const SearchBar = () => {
     if(!name){
       return alert("Ingresa un nombre")
     } else{
-      dispatch(getProviderByName(name))
+      dispatch(getServicesByName(name))
       setName("")
     }
    
@@ -35,10 +35,7 @@ const SearchBar = () => {
         
         <button type='submit' className='boton' onClick={((el) => handleSubmit(el))} >Buscar provider</button>
       </div>
-    {/* <form onSubmit={(e) => handleSubmit(e)}>
-      <input type="text" name="" id="" placeholder="nombre" value={name} onChange={(el)=>handleChange(el)}/>
-      <input type="submit" />
-    </form> */}
+    
   </div>
   );
 };

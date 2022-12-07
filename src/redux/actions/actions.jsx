@@ -1,35 +1,52 @@
 import axios from "axios"
-import { CLEAN, GET_PROVIDER, GET_PROVIDER_BYNAME, GET_PROVIDER_DETAILS } from "./components"
+import { ADD_USERS, CLEAN, GET_USERS, GET_USERS_BY_NAME, GET_SERVICES_DETAILS, GET_SERVICES, GET_SERVICES_BY_NAME, ORDER_BY_NAME, ORDER_BY_RATINGS, ORDER_BY_SERVICES } from "./components"
 
 
 
 
-export   function getProviders (){
+export   function getServices (){
     return async function(dispatch){
-        const info = await axios.get(`http://localhost:3001/providers`)
+        const info = await axios.get(`http://localhost:3001/services`)
         
-        dispatch({type:GET_PROVIDER ,payload: info.data})
+        dispatch({type:GET_SERVICES ,payload: info.data})
     }
 }
 
-export  function getProviderByName(name){
+export  function getServicesByName(name){
     return async function(dispatch){
-        const info = await axios.get(`http://localhost:3001/provider?name=${name}`)
-        dispatch({type:GET_PROVIDER_BYNAME ,payload:info.data})
+
+        const info = await axios.get(`http://localhost:3001/services?name=${name}`)
+        
+        dispatch({type:GET_SERVICES_BY_NAME ,payload:info.data})
+
     }
 }
 
-export function getProvidersDetails(_id) {
+export function getServicesDetails(id) {
     return async function (dispatch) {
       try {
-        const json = await axios.get(`http://localhost:3001/provider/${_id}`);
-        console.log(json)
-       dispatch({ type: GET_PROVIDER_DETAILS, payload: json.data });
+        const json = await axios.get(`http://localhost:3001/users/${id}`);
+        
+       dispatch({ type: GET_SERVICES_DETAILS, payload: json.data });
       } catch (error) {
         console.error(error);
       }
       
     };
+  }
+  
+export function orderByRatings(payload){
+    return {
+      type:ORDER_BY_RATINGS,
+      payload: payload
+    }
+  }
+
+  export function orderByServices(payload){
+    return {
+      type:ORDER_BY_SERVICES,
+      payload: payload
+    }
   }
 
 export function clean(){
@@ -37,5 +54,12 @@ export function clean(){
         dispatch({
             type:CLEAN
         })
+    }
+}
+
+export function addUsers(payload){
+    return async function(dispatch){
+     let info = await axios.post("http://localhost:3001/users",payload)
+     dispatch({type:ADD_USERS,payload: info.data})
     }
 }

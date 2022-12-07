@@ -1,19 +1,18 @@
 import React from 'react'
  import { Link } from 'react-router-dom'
 
-function Cards({_id,name,email,service}) {
+function Cards({id,name,description}) {
   return (
     <div>
        <div className='cards'>
         
-        <Link to={`provider/${_id}`}>
+        <Link to={`provider/${id}`}>
         <label htmlFor="">name</label>
             <h3>{name}</h3>
         </Link>
-        <label htmlFor="">email</label>
-        <h3>{email}</h3>
-        <label htmlFor="">service</label>
-        <h3>{service}</h3>
+        <label htmlFor="">description</label>
+        <h3>{description}</h3>
+       
         
        </div>
     </div>
