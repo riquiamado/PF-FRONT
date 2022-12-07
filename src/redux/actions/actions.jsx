@@ -14,9 +14,11 @@ export   function getServices (){
 
 export  function getServicesByName(name){
     return async function(dispatch){
+
         const info = await axios.get(`http://localhost:3001/services?name=${name}`)
         
         dispatch({type:GET_SERVICES_BY_NAME ,payload:info.data})
+
     }
 }
 
