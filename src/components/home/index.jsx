@@ -2,22 +2,25 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {getProviders,clean} from '../../redux/actions/actions'
+import { Link } from 'react-router-dom'
+import {getServices,clean} from '../../redux/actions/actions'
 import Cards from '../cards'
-import SearchBar from '../searchBar'
+import NavBar from '../navBar'
+
+
 
 
 function Home() {
 
-    const allProviders = useSelector((state) => state.provider)
-    const providers = useSelector((state)=> state.allProviders)
-     console.log(allProviders)
+    const allServices = useSelector((state) => state.services)
+    const services = useSelector((state)=> state.allServices)
+     console.log(allServices)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if(allProviders.length===providers.length){
+        if(allServices.length===services.length){
 
-            dispatch(getProviders())
+            dispatch(getServices())
         }
         return dispatch(clean())
 
@@ -26,26 +29,25 @@ function Home() {
 
     return (
         <div>
-           {/* <SearchBar/> */}
+           <NavBar/>
+           <Link to={"/users"} ><button>Create user</button></Link>
             <div>
                 {
-                   allProviders?.map((el,index)=>  {
+                   allServices?.map((el,index)=>  {
                         return(
                             <div key={index}>
                              <Cards
-                             _id={el._id}
+                             id={el.id}
                              name={el.name}
-                             email={el.email}
-                             service={el.service}
+                             email={el.description}
+                            
                              />
                             </div>
                         )
                     })
                 }
             </div>
-            <div>
-                <h6>Tuki tuki tuki</h6>
-            </div>
+            
         </div>
     )
 }

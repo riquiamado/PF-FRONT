@@ -1,30 +1,42 @@
-import { CLEAN, GET_PROVIDER,GET_PROVIDER_BYNAME, GET_PROVIDER_DETAILS} from "../actions/components"
+import { ADD_USERS, CLEAN, GET_PROVIDER,GET_PROVIDER_BYNAME, GET_PROVIDER_DETAILS, GET_SERVICES, GET_SERVICES_DETAILS, GET_SERVICES_BY_NAME, ORDER_BY_NAME} from "../actions/components"
 
 const initialState ={
-    provider:[],
-     allProviders:[],
+     allServices:[],
+     services:[],
      details:{}
 }
 
   function rootReducer(state=initialState,action){
     switch(action.type){
-        case GET_PROVIDER:
+        case GET_SERVICES:
             return {
                 ...state,
-                provider: action.payload,
-                 allProviders:action.payload
+                services: action.payload,
+                allServices:action.payload
             }
-            case GET_PROVIDER_BYNAME:
+            case GET_SERVICES_BY_NAME:
                 return{
                     ...state,
-                    provider: [action.payload]
+                    provider: action.payload
                 }
 
-                case GET_PROVIDER_DETAILS:
+                case GET_SERVICES_DETAILS:
                     return {
                         ...state,
                        details:action.payload
                     }
+
+                case ADD_USERS:
+                    return{
+                        ...state,
+                        provider:[...state.provider,action.payload]
+                    }  
+
+                case ORDER_BY_NAME:
+                    return{
+                        ...state,
+                        provider
+                    }    
 
                 case CLEAN:
                     return {

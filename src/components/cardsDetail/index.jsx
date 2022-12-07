@@ -3,22 +3,22 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { clean, getProvidersDetails } from '../../redux/actions/actions'
+import { clean, getServicesDetails } from '../../redux/actions/actions'
 
 
 const CardDetails = () => {
  const dispatch= useDispatch()
   const details= useSelector((state)=> state.details)
   console.log(details)
-  const {_id}=useParams()
-  console.log(_id)
+  const {id}=useParams()
+  console.log(id)
   
   useEffect(() => {
-    dispatch(getProvidersDetails(_id))
+    dispatch(getServicesDetails(id))
       return dispatch(clean())
-  }, [dispatch,_id])
+  }, [dispatch,id])
   
-  return   details && details._id?(
+  return   details && details.id?(
     <div>
         <Link to={"/home"}>
         <button>Volver</button>
@@ -29,9 +29,13 @@ const CardDetails = () => {
                
                 <h1>{details.name}</h1>
                 <label htmlFor="">Email</label>
-                <h3>{details.email}</h3>
-                <label htmlFor="">service</label>
-                <h3>{details.service}</h3>
+                <h3>{details.description}</h3>
+                {/* <label htmlFor="">city</label> */}
+                {/* <h3>{details.city}</h3>
+                <label htmlFor=""></label> */}
+
+                
+                
             </div>
         </div>
     </div>
