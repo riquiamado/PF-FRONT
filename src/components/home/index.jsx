@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import getProviders from '../../redux/actions/actions'
 import Cards from '../cards'
+import Footer from '../footer/Footer.jsx'
+
 
 function Home() {
 
@@ -20,6 +22,7 @@ function Home() {
     return (
         <div>
             <div>
+            <Footer/>
                 {allProviders?.map(el => {
                     return (
                         <div key={el}>
