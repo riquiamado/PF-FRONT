@@ -6,9 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getServices, clean } from '../../redux/actions/actions'
 import Cards from '../cards'
 import NavBar from '../navBar'
-
-
-
+import Footer from '../footer'
 
 function Home() {
 
@@ -16,7 +14,6 @@ function Home() {
     const services = useSelector((state) => state.allServices)
     console.log(allServices)
     const dispatch = useDispatch()
-    const [orden, setOrden] = useState("")
 
     useEffect(() => {
         if (allServices.length === services.length) {
@@ -49,8 +46,7 @@ function Home() {
                     })
                 }
             </div>
-
-
+            <Footer/>
         </div>
     )
 }
