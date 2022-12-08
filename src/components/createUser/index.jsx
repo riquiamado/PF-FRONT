@@ -63,7 +63,7 @@ const CreateUser = () => {
         dispatch(addUsers(input))
         alert("User create")
         setInput({
-            name:"",
+        name:"",
         email:"",
         password:"",
         })

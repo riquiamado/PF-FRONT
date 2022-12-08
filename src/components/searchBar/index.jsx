@@ -33,7 +33,7 @@ const SearchBar = () => {
         className='inputSearch'
         />
         
-        <button type='submit' className='boton' onClick={((el) => handleSubmit(el))} >Buscar provider</button>
+        <button type='submit' className='boton' onClick={((el) => handleSubmit(el))} >Buscar Servicio</button>
       </div>
     
   </div>
