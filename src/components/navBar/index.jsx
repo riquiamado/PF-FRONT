@@ -1,6 +1,5 @@
 import React from "react";
 import SearchBar from "../searchBar";
-<<<<<<< HEAD
 
 import { Link } from "react-router-dom";
 import { orderByServices } from "../../redux/actions/actions";
@@ -37,25 +36,7 @@ function NavBar() {
           </select>
         </div>
       </div>
-=======
-// import Footer from '../footer'
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
-function NavBar() {
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(allServices());
-  };
-
-  return (
-    <div>
-      <Link to="/home" onClick={handleClick}>
-        Home
-      </Link>
-
-      <SearchBar />
->>>>>>> 3d67bfeed419c04606d5b190bd3295e1492df087
     </div>
   );
 }
