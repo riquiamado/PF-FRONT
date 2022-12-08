@@ -21,7 +21,7 @@ function Validate(input) {
         errors.online = "te falta seleccionar esta opcion"
     }
 
-   
+
 
     // if (!input.users.length === 0) {
     //     errors.users = "deves elegir un usuario"
@@ -37,7 +37,7 @@ const CreateServices = () => {
     const [input, setInput] = useState({
         name: "",
         image: "",
-        description: "",      
+        description: "",
         online: "",
         users: []
     })
@@ -49,7 +49,7 @@ const CreateServices = () => {
         setInput({
             ...input,
             [el.target.name]: el.target.value,
-            
+
         });
         setErrors(
             Validate({
@@ -115,26 +115,26 @@ const CreateServices = () => {
                         <br />
                         {errors.description ? <label>{errors.description}</label> : null}
                     </div>
-                    
+
                     <div>
                         <label htmlFor="">Online</label>
                         <br />
                         <label htmlFor="">true <input type="radio" value={true} name="online" onChange={(el) => handleChange(el)} /></label>
-                        <label htmlFor="">false <input type="radio" value={false} name="online" onChange={(el) => handleChange(el)}/></label>
+                        <label htmlFor="">false <input type="radio" value={false} name="online" onChange={(el) => handleChange(el)} /></label>
                         <br />
                         {errors.online ? <label>{errors.online}</label> : null}
                     </div>
-               
-                     <div>
-                      <label htmlFor="">image(url)</label>
-                     <input type="url"   />
-                     </div>
-                     <div>
-                        <label htmlFor="">id <input type="text" value={input.id} name="id" 
-                        min={"1"} max={"30"} onChange={(el) => handleChange(el)} /></label>
 
-                     </div>
-                     <input type="submit" value={"crear services"} />
+                    <div>
+                        <label htmlFor="">image(url)</label>
+                        <input type="url" />
+                    </div>
+                    <div>
+                        <label htmlFor="">id <input type="text" value={input.id} name="id"
+                            min={"1"} max={"30"} onChange={(el) => handleChange(el)} /></label>
+
+                    </div>
+                    <input type="submit" value={"crear services"} />
                 </form>
             </div>
         </div>

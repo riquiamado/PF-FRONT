@@ -9,9 +9,9 @@ import { clean, getServicesDetails } from '../../redux/actions/actions'
 const CardDetails = () => {
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
-    console.log(details)
+
     const { _id } = useParams()
-    console.log(_id)
+
 
     useEffect(() => {
         dispatch(getServicesDetails(_id))
@@ -36,9 +36,8 @@ const CardDetails = () => {
                     <h3>{details.rating}</h3>
                 </div>
                 <div>
+
                     <h1>User Provider</h1>
-
-
                     <div >
                         <label htmlFor="">name</label>
                         <h3>{details.user.name}</h3>
@@ -46,8 +45,6 @@ const CardDetails = () => {
                         <h3>{details.user.email}</h3>
 
                     </div>
-
-
                 </div>
             </div>
         </div>
