@@ -4,6 +4,7 @@ import CardDetails from './components/cardsDetail'
 import CreateServices from './components/createServices'
 import CreateUser from './components/createUser'
 import Home from './components/home'
+import LandingPage from './components/landingPage'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       
+      <Route exact path={'/'} component={LandingPage}/>
       <Route exact path={'/home'} component={Home}/>
       <Route exact path="/users" component={CreateUser}/>
       <Route exact path="/services" component={CreateServices}/>
