@@ -23,7 +23,7 @@ const SearchBar = (props) => {
   return (
     <div>
       <div className="field has-addons">
-        <p className="control has-icons-left is-expanded">
+        {/* <p className="control has-icons-left is-expanded"> */}
           <input
             className="input"
             type="text"
@@ -33,7 +33,7 @@ const SearchBar = (props) => {
           <span className="icon is-left">
             <i className="fas fa-search" aria-hidden="true"></i>
           </span>
-        </p>
+        {/* </p> */}
 
         <p className="control">
           <button onClick={(el) => handleSubmit(el)} className="button">
