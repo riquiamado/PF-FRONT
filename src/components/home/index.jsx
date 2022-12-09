@@ -60,7 +60,7 @@ function Home() {
                     _id={el._id}
                     name={el.name}
                     description={el.description}
-                    image={el.image}
+                    image={el.image?el.image.secure_url:""}
                   />
                 </div>
               );

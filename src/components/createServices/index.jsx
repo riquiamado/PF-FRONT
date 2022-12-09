@@ -39,7 +39,7 @@ const CreateServices = () => {
         image: "",
         description: "",
         online: "",
-        users: []
+        user: ""
     })
 
     const [errors, setErrors] = useState({})
@@ -58,7 +58,7 @@ const CreateServices = () => {
             }),
         );
     }
-
+   
     function handleSubmit(el) {
         el.preventDefault();
         setErrors(
@@ -67,6 +67,7 @@ const CreateServices = () => {
                 [el.target.name]: el.target.value,
             }),
         );
+        
         if (Object.values(errors).length === 0) {
             dispacth(addServices(input))
             alert("servivio creado!");
@@ -75,14 +76,23 @@ const CreateServices = () => {
                 image: "",
                 description: "",
                 online: "",
-                users: []
+                user: ""
             })
             history.push("/home")
         } else {
             alert("deve completar todos los datos...")
         }
     }
-
+     
+    //  const uploadImage =(e)=>{
+    //  const data = new FormData()
+    //  const image = e.target.files[0]
+    //  data.append("image", image)
+    //  data.append("name",input.name)
+    //  data.append("description",input.description)
+    //  data.append("online",input.online)
+    //  data.append("user",input.user)
+    //  }
 
     return (
         <div>
@@ -127,7 +137,7 @@ const CreateServices = () => {
 
                     <div>
                         <label htmlFor="">image(url)</label>
-                        <input type="url" />
+                        <input type="file"  onChange={(el) => handleChange(el)}/>
                     </div>
                     <div>
                         <label htmlFor="">id <input type="text" value={input.id} name="id"
