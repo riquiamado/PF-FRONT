@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
+
 function NavBar() {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
