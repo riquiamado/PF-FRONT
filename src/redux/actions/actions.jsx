@@ -17,7 +17,6 @@ import {
 export function getServices() {
   return async function (dispatch) {
     const info = await axios.get(`http://localhost:3001/services`);
-    console.log(info.data);
     dispatch({ type: GET_SERVICES, payload: info.data });
   };
 }
@@ -75,7 +74,6 @@ export function clean() {
 export function addUsers(payload) {
   return async function (dispatch) {
     let info = await axios.post("http://localhost:3001/users", payload);
-    console.log(info.data);
     dispatch({ type: ADD_USERS, payload: info.data });
   };
 }
@@ -91,7 +89,6 @@ export const addServices = (formData) => {
       },
       data: formData,
     }) 
-    console.log(info.data)
     dispatch({ type: ADD_SERVICES, payload: info.data })
   };
 }

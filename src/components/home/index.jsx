@@ -10,8 +10,7 @@ import SearchBar from "../searchBar";
 import { orderByServices } from "../../redux/actions/actions";
 
 function Home() {
-  const allServices = useSelector((state) => state.services);
-  const services = useSelector((state) => state.allServices);
+  const services = useSelector((state) => state.services);
 
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
@@ -22,11 +21,11 @@ function Home() {
   }
 
   useEffect(() => {
-    if (allServices.length === services.length) {
+    if(allServices.length === services.length){
       dispatch(getServices());
     }
     return dispatch(clean());
-  }, [allServices.length, services.length, dispatch]);
+  }, [dispatch]);
 
   return (
     <div>
@@ -53,7 +52,7 @@ function Home() {
         </div>
         <div className="column is-two-thirds">
           <div>
-            {allServices?.map((el, index) => {
+            {services?.map((el, index) => {
               return (
                 <div key={index}>
                   <Cards
