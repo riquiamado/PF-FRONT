@@ -13,13 +13,11 @@ function Home() {
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
 
-
   function handleSortName(e) {
-    
     dispatch(orderByServices(e.target.value));
-    
+
     setOrden(`orden ${e.target.value}`);
-    console.log(e.target.value)
+    console.log(e.target.value);
   }
 
   useEffect(() => {
@@ -34,8 +32,8 @@ function Home() {
           <nav className="panel">
             <p className="panel-heading">Repositories</p>
             <div className="panel-block">
-              <p className="control has-icons-left">
-                <SearchBar theText={"Search"} />
+              <p className="control has-icons-left" />
+              <SearchBar theText={"Search"} />
             </div>
 
             <div className="panel-block">
@@ -58,7 +56,7 @@ function Home() {
                     _id={el._id}
                     name={el.name}
                     description={el.description}
-                    image={el.image?el.image.secure_url:""}
+                    image={el.image ? el.image.secure_url : ""}
                   />
                 </div>
               );
