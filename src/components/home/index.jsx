@@ -30,7 +30,7 @@ function Home() {
       <div className="columns">
         <div className="column is-one-third">
           <nav className="panel">
-            <p className="panel-heading">Repositories</p>
+            <p className="panel-heading">Search and Sort</p>
             <div className="panel-block">
               <p className="control has-icons-left" />
               <SearchBar theText={"Search"} />
