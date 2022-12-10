@@ -17,10 +17,10 @@ function NavBar() {
           <Link to="/home" className="navbar-item">
             <img src="/images/logo.png" width="auto" height="28" />
           </Link>
-          {/* <SearchBar theText={"Search"} /> */}
+          <SearchBar theText={"Search"} />
 
 
-              <div className="buttons">
+              {/* <div className="buttons"> */}
                 <Link to={"/services"}>
                   <button className="button">Create services</button>
                 </Link>
@@ -28,7 +28,7 @@ function NavBar() {
                   <strong>Sign up</strong>
                 </Link>
                 <a className="button is-light">Log in</a>
-              </div>
+              {/* </div> */}
 
     </div>
   );

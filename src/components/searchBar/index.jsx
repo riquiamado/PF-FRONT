@@ -31,16 +31,16 @@ const SearchBar = (props) => {
           onChange={(el) => handleChange(el)}
           placeholder={props.theText}
         />
-        <span className="icon is-left">
+        {/* <span className="icon is-left">
           <i className="fas fa-search" aria-hidden="true"></i>
-        </span>
+        </span> */}
         {/* </p> */}
 
-        <p className="control">
+        {/* <p className="control"> */}
           <button onClick={(el) => handleSubmit(el)} className="button">
             🔍
           </button>
-        </p>
+        {/* </p> */}
       </div>
     </div>
   );

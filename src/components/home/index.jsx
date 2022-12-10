@@ -47,7 +47,7 @@ function Home() {
             <p className="panel-heading">Search and Sort</p>
             <div className="panel-block">
               <p className="control has-icons-left" />
-              <SearchBar theText={"Search"} />
+              {/* <SearchBar theText={"Search"} /> */}
             </div>
 
             <div className="panel-block">
