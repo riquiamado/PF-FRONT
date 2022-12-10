@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -21,9 +19,7 @@ function Home() {
   }
 
   useEffect(() => {
-    if(allServices.length === services.length){
-      dispatch(getServices());
-    }
+    dispatch(getServices());
     return dispatch(clean());
   }, [dispatch]);
 
@@ -34,9 +30,7 @@ function Home() {
           <nav className="panel">
             <p className="panel-heading">Repositories</p>
             <div className="panel-block">
-              <p className="control has-icons-left">
                 <SearchBar theText={"Search"} />
-              </p>
             </div>
 
             <div className="panel-block">
