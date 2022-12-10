@@ -10,10 +10,13 @@ import {
   ORDER_BY_SERVICES,
   ADD_SERVICES,
   FILTER_BY_SERVICES,
+  DELETE_USER,
+  DELETE_SERVICE,
 } from "../actions/components";
 
 const initialState = {
   services: [],
+  allServices: [],
   users: [],
   details: {},
 };
@@ -29,6 +32,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         services: action.payload,
+        allServices: action.payload
       };
 
     case GET_USERS:
@@ -94,7 +98,13 @@ function rootReducer(state = initialState, action) {
           services: state.allServices,
         };
       }
+    
+    case DELETE_USER:
+      return { ...state };
 
+    case DELETE_SERVICE:
+      return { ...state };
+      
     case CLEAN:
       return {
         ...state,

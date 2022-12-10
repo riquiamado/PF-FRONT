@@ -6,13 +6,26 @@ import { getServices, clean } from "../../redux/actions/actions";
 import Cards from "../cards";
 import SearchBar from "../searchBar";
 import { orderByServices } from "../../redux/actions/actions";
+import Paginate from "../paginado";
+import "./home.css";
 
 function Home() {
-  const services = useSelector((state) => state.services);
+  const allServices = useSelector((state) => state.services);
 
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [servicesPerPage, setServicesPerPage] = useState(8);
+  const indexLastServices = currentPage * servicesPerPage;
+  const indexFirstServices = indexLastServices - servicesPerPage;
+  const currentServices = allServices.slice(
+    indexFirstServices,
+    indexLastServices,
+  );
 
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  }
   function handleSortName(e) {
     dispatch(orderByServices(e.target.value));
 
@@ -26,14 +39,15 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="container">
+      <div className="home">
       <div className="columns">
         <div className="column is-one-third">
           <nav className="panel">
             <p className="panel-heading">Search and Sort</p>
             <div className="panel-block">
               <p className="control has-icons-left" />
-              <SearchBar theText={"Search"} />
+              {/* <SearchBar theText={"Search"} /> */}
             </div>
 
             <div className="panel-block">
@@ -47,9 +61,16 @@ function Home() {
             </div>
           </nav>
         </div>
-        <div className="column is-two-thirds">
-          <div>
-            {services?.map((el, index) => {
+        <div>
+          <Paginate
+            servicesPerPage={servicesPerPage}
+            allServices={allServices.length}
+            paginado={paginado}
+          />
+        </div>
+        <div className="">
+          <div className="cards-home">
+            {currentServices?.map((el, index) => {
               return (
                 <div key={index}>
                   <Cards
@@ -65,6 +86,8 @@ function Home() {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
 

@@ -1,0 +1,11 @@
+.navbar {
+    display: flex;
+    background-color: #57cc99;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+}
+
+.buttons {
+    margin: 0;
+}
