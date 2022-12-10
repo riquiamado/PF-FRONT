@@ -7,6 +7,7 @@ import Cards from "../cards";
 import SearchBar from "../searchBar";
 import { orderByServices } from "../../redux/actions/actions";
 import Paginate from "../paginado";
+import "./home.css";
 
 function Home() {
   const allServices = useSelector((state) => state.services);
@@ -38,7 +39,8 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="container">
+      <div className="home">
       <div className="columns">
         <div className="column is-one-third">
           <nav className="panel">
@@ -66,8 +68,8 @@ function Home() {
             paginado={paginado}
           />
         </div>
-        <div className="column is-two-thirds">
-          <div>
+        <div className="">
+          <div className="cards-home">
             {currentServices?.map((el, index) => {
               return (
                 <div key={index}>
@@ -84,6 +86,8 @@ function Home() {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
 

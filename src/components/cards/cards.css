@@ -1,0 +1,23 @@
+.card {
+    margin: 20px 10px;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 300px;
+    background-color: lightgray;
+    opacity: 0.9;
+}
+
+
+.card h3 {
+    margin: 20px auto ;
+    padding: 0;
+}
+
+.card img {
+    width: 100%;
+    height: 120px;
+    padding: 0;
+    margin: 0 auto;
+    border-radius: 10px 10px;
+}
