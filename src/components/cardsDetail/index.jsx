@@ -43,10 +43,7 @@ const CardDetails = () => {
                 <div>
 
                     <h1>User Provider</h1>
-                    <div className="delete-container">
-                        <button className='delete-btn' 
-                                onClick={() => handleDelete()} >Delete User</button>
-                    </div>
+                   
                     <div >
                         <label htmlFor="">name</label>
                         <h3>{details.user.name}</h3>
@@ -54,10 +51,14 @@ const CardDetails = () => {
                         <h3>{details.user.email}</h3>
 
                     </div>
+                    <div className="delete-container">
+                        <button className='delete-btn' 
+                                onClick={() => handleDelete()} >Delete User</button>
+                    </div>
                 </div>
             </div>
 
-        <div>
+        {/* <div>
           <h1>User Provider</h1>
           <div>
             <label htmlFor="">name</label>
@@ -65,7 +66,7 @@ const CardDetails = () => {
             <label htmlFor="">email</label>
             <h3>{details.user.email}</h3>
           </div>
-        </div>
+        </div> */}
       </div>
     
   ) : (

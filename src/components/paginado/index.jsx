@@ -13,9 +13,10 @@ function Paginate({servicesPerPage,allServices,paginado}) {
    <div className='paginas' >
      {pageNumber&&pageNumber.map(number => {
        return(
-         <p key={number}>
+        
+         <div className='paginas' key={number}>
         <button onClick={()=> paginado(number)} >{number}</button>
-         </p>
+         </div>
        )
       
      })}
