@@ -16,9 +16,13 @@ function Home() {
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
 
+
   function handleSortName(e) {
+    
     dispatch(orderByServices(e.target.value));
+    
     setOrden(`orden ${e.target.value}`);
+    console.log(e.target.value)
   }
 
   useEffect(() => {
