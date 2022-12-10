@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getServicesByName } from "../../redux/actions/actions";
+import "./search.css";
 
 const SearchBar = (props) => {
   const [name, setName] = useState("");
@@ -21,7 +22,7 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div>
+    <div className="search">
       <div className="field has-addons">
         {/* <p className="control has-icons-left is-expanded"> */}
         <input

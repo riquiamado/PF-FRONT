@@ -1,4 +1,5 @@
 import React from 'react'
+import "./paginado.css";
 
 function Paginate({servicesPerPage,allServices,paginado}) {
     const pageNumber=[]
