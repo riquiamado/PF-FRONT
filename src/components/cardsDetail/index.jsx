@@ -14,7 +14,7 @@ const CardDetails = () => {
 
     const handleDelete = () => {
         dispatch(deleteUser(_id))
-        alert("Pokemon Deleted");
+        alert("User Deleted");
     }
 
     useEffect(() => {
