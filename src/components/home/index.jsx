@@ -26,7 +26,7 @@ function Home() {
       dispatch(getServices());
     }
     return dispatch(clean());
-  }, [dispatch]);
+  }, [allServices.length, services.length, dispatch]);
 
   return (
     <div>
