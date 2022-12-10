@@ -36,8 +36,8 @@ function Home() {
             <p className="panel-heading">Repositories</p>
             <div className="panel-block">
               <p className="control has-icons-left">
-                <SearchBar theText={"Search"} />
               </p>
+                <SearchBar theText={"Search"} />
             </div>
 
             <div className="panel-block">

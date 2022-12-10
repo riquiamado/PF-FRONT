@@ -9,7 +9,7 @@ import { clean, getServicesDetails } from '../../redux/actions/actions'
 const CardDetails = () => {
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
-
+     console.log(details)
     const { _id } = useParams()
 
 
@@ -25,7 +25,7 @@ const CardDetails = () => {
             </Link>
             <div>
                 <div>
-                    {/* <img src={details.image} alt={details.image} /> */}
+                    <img src={details.image.secure_url} alt={details.image.secure_url} />
 
                     <h1>{details.name}</h1>
                     <label htmlFor="">Description</label>
@@ -34,6 +34,7 @@ const CardDetails = () => {
                     <h3>{details.reviews}</h3>
                     <label htmlFor="">rating</label>
                     <h3>{details.rating}</h3>
+                    
                 </div>
                 <div>
 
