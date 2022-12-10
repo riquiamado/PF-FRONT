@@ -57,7 +57,6 @@ const CardDetails = () => {
                 </div>
             </div>
 
-        
         <div>
           <h1>User Provider</h1>
           <div>
