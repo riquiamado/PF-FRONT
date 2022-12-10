@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { addServices } from "../../redux/actions/actions";
-import axios from "axios";
 
 function Validate(input) {
   let errors = [];
@@ -27,8 +26,7 @@ function Validate(input) {
 }
 
 const CreateServices = () => {
-  // const dispacth = useDispatch()
-  // const services = useSelector((state) => state.services)
+  const dispacth = useDispatch();
   const history = useHistory();
 
   const [input, setInput] = useState({
@@ -60,27 +58,14 @@ const CreateServices = () => {
   }
 
   function handleSubmit(el, image) {
-    // setErrors(
-    //     Validate({
-    //         ...input,
-    //         [el.target.name]: el.target.value,
-    //     }),
-    // );
-
-    // if (Object.values(errors).length === 0) {
-    //     dispacth(addServices(input))
-    //     alert("servicio creado!");
-    //     setInput({
-    //         name: "",
-    //         description: "",
-    //         online: "",
-    //         user: ""
-    //     })
-    // } else {
-    //     alert("deve completar todos los datos...")
-    // }
     el.preventDefault();
-    // const data = newFormData(image);
+
+    setErrors(
+      Validate({
+        ...input,
+        [el.target.name]: el.target.value,
+      })
+    );
 
     const formData = new FormData();
     formData.append("image", image);
@@ -89,33 +74,20 @@ const CreateServices = () => {
     formData.append("online", input.online);
     formData.append("id", input.id);
 
-    console.log(image);
-    console.log(input);
-
-    axios({
-      url: "http://localhost:3001/services",
-      method: "POST",
-      body: formData,
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      data: formData,
-    })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
+    if (Object.values(errors).length === 0) {
+      dispacth(addServices(formData));
+      alert("servicio creado!");
+      setInput({
+        name: "",
+        description: "",
+        online: "",
+        id: "",
       });
-
-    setInput({
-      name: "",
-      description: "",
-      online: "",
-      id: "",
-    });
-    setImage(null);
-    history.push("/home");
+      setImage(null);
+      history.push("/home");
+    } else {
+      alert("deve completar todos los datos...");
+    }
   }
 
   return (
@@ -180,17 +152,15 @@ const CreateServices = () => {
           </div>
 
           <div>
-            <label htmlFor="">
-              id
-            </label>
-              <input
-                type="text"
-                value={input.id}
-                name="id"
-                min={"1"}
-                max={"30"}
-                onChange={(el) => handleChange(el)}
-              />
+            <label htmlFor="">id</label>
+            <input
+              type="text"
+              value={input.id}
+              name="id"
+              min={"1"}
+              max={"30"}
+              onChange={(el) => handleChange(el)}
+            />
           </div>
           <div>
             <label htmlFor="">image(url)</label>

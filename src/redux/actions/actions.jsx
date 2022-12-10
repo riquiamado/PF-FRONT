@@ -80,9 +80,18 @@ export function addUsers(payload) {
   };
 }
 
-export function addServices(payload) {
+export const addServices = (formData) => {
   return async function (dispatch) {
-    let info = await axios.post("http://localhost:3001/services", payload);
-    dispatch({ type: ADD_SERVICES, payload: info.data });
+    let info = await axios({
+      url: "http://localhost:3001/services",
+      method: "POST",
+      body: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    }) 
+    console.log(info.data)
+    dispatch({ type: ADD_SERVICES, payload: info.data })
   };
 }
