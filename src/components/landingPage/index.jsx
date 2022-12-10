@@ -13,9 +13,9 @@ const LandingPage = () => {
       <section className="hero is-link is-fullheight">
         <div className="hero-body">
           <div className="">
-            <p className="title">Fullheight hero</p>
+            <p className="title">FREELANCE WORKERS</p>
             <p className="subtitle">
-              <Link to={"/home"}>Ir al home</Link>
+              <Link to={"/home"}>Go home</Link>
             </p>
           </div>
         </div>

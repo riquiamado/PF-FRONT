@@ -19,7 +19,6 @@ import {
 export function getServices() {
   return async function (dispatch) {
     const info = await axios.get(`http://localhost:3001/services`);
-    console.log(info.data);
     dispatch({ type: GET_SERVICES, payload: info.data });
   };
 }
@@ -77,15 +76,22 @@ export function clean() {
 export function addUsers(payload) {
   return async function (dispatch) {
     let info = await axios.post("http://localhost:3001/users", payload);
-    console.log(info.data);
     dispatch({ type: ADD_USERS, payload: info.data });
   };
 }
 
-export function addServices(payload) {
+export const addServices = (formData) => {
   return async function (dispatch) {
-    let info = await axios.post("http://localhost:3001/services", payload);
-    dispatch({ type: ADD_SERVICES, payload: info.data });
+    let info = await axios({
+      url: "http://localhost:3001/services",
+      method: "POST",
+      body: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    }) 
+    dispatch({ type: ADD_SERVICES, payload: info.data })
   };
 }
 

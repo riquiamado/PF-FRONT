@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -55,9 +56,22 @@ const CardDetails = () => {
                     </div>
                 </div>
             </div>
-        </div>
-    ) :
-        (<h1>Loading...</h1>)
-}
 
-export default CardDetails
+        </div>
+        <div>
+          <h1>User Provider</h1>
+          <div>
+            <label htmlFor="">name</label>
+            <h3>{details.user.name}</h3>
+            <label htmlFor="">email</label>
+            <h3>{details.user.email}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <h1>Loading...</h1>
+  );
+};
+
+export default CardDetails;

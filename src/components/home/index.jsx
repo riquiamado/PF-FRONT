@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -8,23 +6,34 @@ import { getServices, clean } from "../../redux/actions/actions";
 import Cards from "../cards";
 import SearchBar from "../searchBar";
 import { orderByServices } from "../../redux/actions/actions";
+import Paginate from "../paginado";
 
 function Home() {
   const allServices = useSelector((state) => state.services);
-  const services = useSelector((state) => state.allServices);
 
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [servicesPerPage, setServicesPerPage] = useState(6);
+  const indexLastServices = currentPage * servicesPerPage;
+  const indexFirstServices = indexLastServices - servicesPerPage;
+  const currentServices = allServices.slice(
+    indexFirstServices,
+    indexLastServices,
+  );
 
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  }
   function handleSortName(e) {
     dispatch(orderByServices(e.target.value));
+
     setOrden(`orden ${e.target.value}`);
+    console.log(e.target.value);
   }
 
   useEffect(() => {
-    if (allServices.length === services.length) {
-      dispatch(getServices());
-    }
+    dispatch(getServices());
     return dispatch(clean());
   }, [dispatch]);
 
@@ -33,11 +42,10 @@ function Home() {
       <div className="columns">
         <div className="column is-one-third">
           <nav className="panel">
-            <p className="panel-heading">Repositories</p>
+            <p className="panel-heading">Search and Sort</p>
             <div className="panel-block">
-              <p className="control has-icons-left">
-                <SearchBar theText={"Search"} />
-              </p>
+              <p className="control has-icons-left" />
+              <SearchBar theText={"Search"} />
             </div>
 
             <div className="panel-block">
@@ -51,16 +59,23 @@ function Home() {
             </div>
           </nav>
         </div>
+        <div>
+          <Paginate
+            servicesPerPage={servicesPerPage}
+            allServices={allServices.length}
+            paginado={paginado}
+          />
+        </div>
         <div className="column is-two-thirds">
           <div>
-            {allServices?.map((el, index) => {
+            {currentServices?.map((el, index) => {
               return (
                 <div key={index}>
                   <Cards
                     _id={el._id}
                     name={el.name}
                     description={el.description}
-                    image={el.image?el.image.secure_url:""}
+                    image={el.image ? el.image.secure_url : ""}
                   />
                 </div>
               );

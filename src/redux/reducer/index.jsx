@@ -15,8 +15,8 @@ import {
 } from "../actions/components";
 
 const initialState = {
-  allServices: [],
   services: [],
+  allServices: [],
   users: [],
   details: {},
 };
@@ -27,12 +27,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         services: action.payload,
-        allServices: action.payload,
       };
     case GET_SERVICES_BY_NAME:
       return {
         ...state,
         services: action.payload,
+        allServices: action.payload
       };
 
     case GET_USERS:
@@ -56,7 +56,6 @@ function rootReducer(state = initialState, action) {
     case ADD_SERVICES:
       return {
         ...state,
-        services: [...state.services, action.payload],
       };
 
     case ORDER_BY_SERVICES:
