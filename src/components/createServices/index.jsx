@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { addServices } from "../../redux/actions/actions";
+import styles from "./createServices.module.css";
 
 function Validate(input) {
   let errors = [];
@@ -91,7 +92,7 @@ const CreateServices = () => {
   }
 
   return (
-    <div>
+    <div className={styles.page}>
       <Link to={"/home"}>
         <button>Volver</button>
       </Link>
@@ -112,7 +113,7 @@ const CreateServices = () => {
           </div>
           <div className="">
             <label htmlFor="">
-              description:<br></br>
+              Description:<br></br>
             </label>
             <input
               type="text"
@@ -127,7 +128,7 @@ const CreateServices = () => {
           <div>
             <label htmlFor="">Online</label>
             <br />
-            <div>
+            <div className={styles.wrapper}>
               <div>
                 <label htmlFor="">true</label>
                 <input
@@ -163,10 +164,14 @@ const CreateServices = () => {
             />
           </div>
           <div>
-            <label htmlFor="">image(url)</label>
+            <label htmlFor="">Image(url)</label>
             <input type="file" onChange={(el) => handleImage(el)} />
           </div>
-          <input type="submit" value={"crear services"} />
+          <input
+            className={styles.create}
+            type="submit"
+            value={"create services"}
+          />
         </form>
       </div>
     </div>
