@@ -12,6 +12,8 @@ import {
   ORDER_BY_SERVICES,
   ADD_SERVICES,
   FILTER_BY_SERVICES,
+  DELETE_USER,
+  DELETE_SERVICE
 } from "./components";
 
 export function getServices() {
@@ -84,5 +86,19 @@ export function addServices(payload) {
   return async function (dispatch) {
     let info = await axios.post("http://localhost:3001/services", payload);
     dispatch({ type: ADD_SERVICES, payload: info.data });
+  };
+}
+
+export function deleteUser(id) {
+  return async function(dispatch) {
+    let res = await axios.delete("http://localhost:3001/users/" + id);
+    dispatch({ type: DELETE_USER, payload: res.data });
+  };
+}
+
+export function deleteService(id) {
+  return async function(dispatch) {
+    let res = await axios.delete("http://localhost:3001/services/" + id);
+    dispatch({ type: DELETE_SERVICE, payload: res.data });
   };
 }

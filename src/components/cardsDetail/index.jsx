@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { clean, getServicesDetails } from '../../redux/actions/actions'
+import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actions'
 
 
 const CardDetails = () => {
@@ -12,6 +12,10 @@ const CardDetails = () => {
 
     const { _id } = useParams()
 
+    const handleDelete = () => {
+        dispatch(deleteUser(_id))
+        alert("Pokemon Deleted");
+    }
 
     useEffect(() => {
         dispatch(getServicesDetails(_id))
@@ -26,7 +30,7 @@ const CardDetails = () => {
             <div>
                 <div>
                     {/* <img src={details.image} alt={details.image} /> */}
-
+                    
                     <h1>{details.name}</h1>
                     <label htmlFor="">Description</label>
                     <h3>{details.description}</h3>
@@ -38,6 +42,10 @@ const CardDetails = () => {
                 <div>
 
                     <h1>User Provider</h1>
+                    <div className="delete-container">
+                        <button className='delete-btn' 
+                                onClick={() => handleDelete()} >Delete User</button>
+                    </div>
                     <div >
                         <label htmlFor="">name</label>
                         <h3>{details.user.name}</h3>
