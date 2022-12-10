@@ -6,13 +6,25 @@ import { getServices, clean } from "../../redux/actions/actions";
 import Cards from "../cards";
 import SearchBar from "../searchBar";
 import { orderByServices } from "../../redux/actions/actions";
+import Paginate from "../paginado";
 
 function Home() {
-  const services = useSelector((state) => state.services);
+  const allServices = useSelector((state) => state.services);
 
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [servicesPerPage, setServicesPerPage] = useState(6);
+  const indexLastServices = currentPage * servicesPerPage;
+  const indexFirstServices = indexLastServices - servicesPerPage;
+  const currentServices = allServices.slice(
+    indexFirstServices,
+    indexLastServices,
+  );
 
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  }
   function handleSortName(e) {
     dispatch(orderByServices(e.target.value));
 
@@ -47,9 +59,16 @@ function Home() {
             </div>
           </nav>
         </div>
+        <div>
+          <Paginate
+            servicesPerPage={servicesPerPage}
+            allServices={allServices.length}
+            paginado={paginado}
+          />
+        </div>
         <div className="column is-two-thirds">
           <div>
-            {services?.map((el, index) => {
+            {currentServices?.map((el, index) => {
               return (
                 <div key={index}>
                   <Cards

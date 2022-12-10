@@ -14,6 +14,7 @@ import {
 
 const initialState = {
   services: [],
+  allServices: [],
   users: [],
   details: {},
 };
@@ -29,6 +30,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         services: action.payload,
+        allServices: action.payload
       };
 
     case GET_USERS:
