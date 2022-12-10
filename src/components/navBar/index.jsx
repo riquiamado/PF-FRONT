@@ -18,7 +18,7 @@ function NavBar() {
           <Link to="/home" className="navbar-item">
             <img src="/images/logo.png" width="auto" height="28" />
           </Link>
-          <SearchBar theText={"Search"} />
+          {/* <SearchBar theText={"Search"} /> */}
           <a
             role="button"
             className={"navbar-burger " + classIsActive}
