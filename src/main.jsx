@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import store from "./redux/store";
 import { Auth0Provider } from "@auth0/auth0-react";
-import "./index.scss";
+// import "./index.scss";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>

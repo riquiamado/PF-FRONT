@@ -1,22 +1,25 @@
 .paginas {
-    display: flex;
-    margin-top: 50px;
-    justify-content: center;
-    gap: 10px;
-    margin:10px
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px;
 }
 
-.btnPag{
-    padding: 7px 11px;
-    margin: 0px 20px;
-    border: 2px solid #52AD9C;
-    border-radius: 10px;
-    background-color: #57cc99;
-    color: black;
-    font-size: 15px;
-    font-family: serif;
-    text-transform: uppercase;
-    transition: 0.15s;
-    cursor: pointer;
-    
+.btnPag {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  font-family: "Times New Roman";
+  font-weight: bolder;
+  font-size: 20px;
+  color: #472183;
+  background: white;
+  border: solid 1px #472183;
+}
+
+.btnPag:hover{
+  background: #E5BA73;
+  cursor:pointer;
+  border:solid 2px #472183;
 }

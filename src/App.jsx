@@ -4,9 +4,9 @@ import CardDetails from "./components/cardsDetail";
 import CreateServices from "./components/createServices";
 import CreateUser from "./components/createUser";
 import Home from "./components/home";
-// import LandingPage from "./components/landingPage";
 import NavBar from "./components/navBar";
-import Profile from "./components/Profile";
+import "./App.css";
+
 
 function App() {
   return (

@@ -23,25 +23,15 @@ const SearchBar = (props) => {
 
   return (
     <div className="search">
-      <div className="field has-addons">
-        {/* <p className="control has-icons-left is-expanded"> */}
-        <input
-          className="input"
-          type="text"
-          onChange={(el) => handleChange(el)}
-          placeholder={props.theText}
-        />
-        {/* <span className="icon is-left">
-          <i className="fas fa-search" aria-hidden="true"></i>
-        </span> */}
-        {/* </p> */}
-
-        {/* <p className="control"> */}
-          <button onClick={(el) => handleSubmit(el)} className="button">
-            🔍
-          </button>
-        {/* </p> */}
-      </div>
+      <input
+        className="input"
+        type="text"
+        onChange={(el) => handleChange(el)}
+        placeholder={props.theText}
+      />
+      <button onClick={(el) => handleSubmit(el)} className="btn">
+        🔍
+      </button>
     </div>
   );
 };
