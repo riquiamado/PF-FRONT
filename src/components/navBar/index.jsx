@@ -3,17 +3,11 @@ import SearchBar from "../searchBar";
 import LoginButton from "../LoginButton";
 import LogoutButton from "../LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
-
-
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
 import "./navBar.css";
 
 function NavBar() {
   const { isAuthenticated } = useAuth0();
-  const dispatch = useDispatch();
-
   return (
     <div className="navbar">
           <Link to="/home" className="navbar-item">

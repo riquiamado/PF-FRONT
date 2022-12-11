@@ -1,11 +1,46 @@
 .navbar {
-    display: flex;
-    background-color: #57cc99;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #57cc99;
+  height: 80px;
 }
 
-.buttons {
-    margin: 0;
+.img {
+  height: 80px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  font-size: 20px;
+  font-family: "Times New Roman";
+
+}
+
+.logo:hover {
+  background: #6debb4;
+  cursor: pointer;
+  height: 83px;
+}
+
+.Btn {
+  width: 80px;
+  height: 80px;
+  background: #57cc99;
+  border: 0px;
+  font-family: "Times New Roman";
+  font-weight: bolder;
+  font-size: 20px;
+  color: #472183;
+}
+
+.Btn:hover {
+  background: #6debb4;
+  cursor: pointer;
+}
+
+.Btns {
+  margin-right: 20px;
 }

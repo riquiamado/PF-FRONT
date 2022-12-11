@@ -25,7 +25,7 @@ const CardDetails = () => {
 
     return details && details._id ? (
         <div>
-            <Link to={"/home"}>
+            <Link to={"/"}>
                 <button>Volver</button>
             </Link>
             <div>
