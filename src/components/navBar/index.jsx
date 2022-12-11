@@ -8,17 +8,26 @@ import "./navBar.css";
 
 function NavBar() {
   const { isAuthenticated } = useAuth0();
+  console.log(isAuthenticated);
   return (
-    <div className="navbar">
-          <Link to="/home" className="navbar-item">
-            <img src="/images/logo.png" width="auto" height="" />
-          </Link>
-            <SearchBar theText={"Search"} />  
-              <Link to={"/services"}>
-                <button className="button">Create services</button>
-              </Link>          
-        {isAuthenticated? <LogoutButton /> : <LoginButton />}
-    </div>
+    <nav className="navbar">
+      <div className="logo">
+        <Link to="/">
+          <img className="img" src="/images/logo.png" />
+        </Link>
+        <Link to="/" style={{ textDecoration: "none", color: "#472183" }}>
+          <h2>Freelance Workers</h2>
+        </Link>
+      </div>
+      <SearchBar theText={"Search"} />
+      <div className="btns">
+        <Link to={"/checkLogin"}>
+          <button className="Btn">Create services</button>
+        </Link>
+     
+      {isAuthenticated ? <LogoutButton /> : <LoginButton />} 
+      </div>
+    </nav>
   );
 }
 
