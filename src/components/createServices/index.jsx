@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { addServices } from "../../redux/actions/actions";
 import styles from "./createServices.module.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Validate(input) {
   let errors = [];
@@ -14,31 +15,24 @@ function Validate(input) {
   } else if (input.name.length < 3) {
     errors.name = "invalid name";
   }
-
   if (!input.description) {
     errors.description = "invalid description";
   }
-
-  if (!input.online) {
-    errors.online = "te falta seleccionar esta opcion";
-  }
-
   return errors;
 }
 
 const CreateServices = () => {
+  const { user } = useAuth0();
+
   const dispacth = useDispatch();
   const history = useHistory();
 
   const [input, setInput] = useState({
     name: "",
     description: "",
-    online: "",
-    id: "",
   });
 
   const [image, setImage] = useState(null);
-
   const handleImage = (el) => {
     setImage(el.target.files[0]);
   };
@@ -69,11 +63,12 @@ const CreateServices = () => {
     );
 
     const formData = new FormData();
+    formData.append("userName", user.name);
+    formData.append("userImage", user.picture);
+    formData.append("userEmail", user.email);
     formData.append("image", image);
     formData.append("name", input.name);
     formData.append("description", input.description);
-    formData.append("online", input.online);
-    formData.append("id", input.id);
 
     if (Object.values(errors).length === 0) {
       dispacth(addServices(formData));
@@ -81,11 +76,9 @@ const CreateServices = () => {
       setInput({
         name: "",
         description: "",
-        online: "",
-        id: "",
       });
       setImage(null);
-      history.push("/home");
+      history.push("/");
     } else {
       alert("deve completar todos los datos...");
     }
@@ -93,14 +86,14 @@ const CreateServices = () => {
 
   return (
     <div className={styles.page}>
-      <Link to={"/home"}>
-        <button>Volver</button>
+      <Link to={"/"}>
+        <button>Cancel</button>
       </Link>
       <div>
         <form onSubmit={(el) => handleSubmit(el, image, input)}>
           <div className="formu">
             <label htmlFor="">
-              Name:<br></br>
+              Service name:<br></br>
             </label>
             <input
               type="text"
@@ -124,47 +117,8 @@ const CreateServices = () => {
             <br />
             {errors.description ? <label>{errors.description}</label> : null}
           </div>
-
           <div>
-            <label htmlFor="">Online</label>
-            <br />
-            <div className={styles.wrapper}>
-              <div>
-                <label htmlFor="">true</label>
-                <input
-                  type="radio"
-                  value={true}
-                  name="online"
-                  onChange={(el) => handleChange(el)}
-                />
-              </div>
-              <div>
-                <label htmlFor="">false</label>
-                <input
-                  type="radio"
-                  value={false}
-                  name="online"
-                  onChange={(el) => handleChange(el)}
-                />
-              </div>
-              <br />
-              {errors.online ? <label>{errors.online}</label> : null}
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="">id</label>
-            <input
-              type="text"
-              value={input.id}
-              name="id"
-              min={"1"}
-              max={"30"}
-              onChange={(el) => handleChange(el)}
-            />
-          </div>
-          <div>
-            <label htmlFor="">Image(url)</label>
+            <label htmlFor="">Image</label>
             <input type="file" onChange={(el) => handleImage(el)} />
           </div>
           <input
