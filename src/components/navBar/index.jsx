@@ -24,7 +24,6 @@ function NavBar() {
         <Link to={"/checkLogin"}>
           <button className="Btn">Create services</button>
         </Link>
-     
       {isAuthenticated ? <LogoutButton /> : <LoginButton />} 
       </div>
     </nav>
