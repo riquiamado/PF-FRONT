@@ -25,8 +25,13 @@ const CardDetails = () => {
     }, [dispatch, _id])
 
     return details && details._id ? (
+<<<<<<< HEAD
         <div className={styles.color}>
             <Link to={"/home"}>
+=======
+        <div>
+            <Link to={"/"}>
+>>>>>>> 724c5d13863f16cd0ba5173bc1f9a237348844dc
                 <button>Volver</button>
             </Link>
             <div>
@@ -46,10 +51,7 @@ const CardDetails = () => {
                 <div>
 
                     <h1>User Provider</h1>
-                    <div className="delete-container">
-                        <button className='delete-btn' 
-                                onClick={() => handleDelete()} >Delete User</button>
-                    </div>
+                   
                     <div >
                         <label htmlFor="">Name </label>
                         <h3>{details.user.name}</h3>
@@ -57,10 +59,18 @@ const CardDetails = () => {
                         <h3>{details.user.email}</h3>
 
                     </div>
+                    <div className="delete-container">
+                        <button className='delete-btn' 
+                                onClick={() => handleDelete()} >Delete User</button>
+                    </div>
                 </div>
             </div>
 
+<<<<<<< HEAD
        { /*<div>
+=======
+        {/* <div>
+>>>>>>> 724c5d13863f16cd0ba5173bc1f9a237348844dc
           <h1>User Provider</h1>
           <div>
             <label htmlFor="">Name </label>
@@ -68,7 +78,11 @@ const CardDetails = () => {
             <label htmlFor="">Email </label>
             <h3>{details.user.email}</h3>
           </div>
+<<<<<<< HEAD
     </div>*/}
+=======
+        </div> */}
+>>>>>>> 724c5d13863f16cd0ba5173bc1f9a237348844dc
       </div>
     
   ) : (
