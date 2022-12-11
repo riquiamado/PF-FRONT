@@ -13,10 +13,10 @@ const CardDetails = () => {
 
     const { _id } = useParams()
 
-    const handleDelete = () => {
-        dispatch(deleteUser(_id))
-        alert("User Deleted");
-    }
+    // const handleDelete = () => {
+    //     dispatch(deleteUser(_id))
+    //     alert("User Deleted");
+    // }
 
     useEffect(() => {
         dispatch(getServicesDetails(_id))
@@ -51,10 +51,10 @@ const CardDetails = () => {
                         <h3>{details.user.email}</h3>
 
                     </div>
-                    <div className="delete-container">
+                    {/* <div className="delete-container">
                         <button className='delete-btn' 
                                 onClick={() => handleDelete()} >Delete User</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
