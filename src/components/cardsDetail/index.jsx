@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actions'
+import styles from "./cardsDetail.module.css"
 
 
 const CardDetails = () => {
@@ -24,20 +25,22 @@ const CardDetails = () => {
     }, [dispatch, _id])
 
     return details && details._id ? (
-        <div>
+        <div className={styles.color}>
             <Link to={"/home"}>
                 <button>Volver</button>
             </Link>
             <div>
                 <div>
-                    <img src={details.image.secure_url} alt={details.image.secure_url} />
-                    
-                    <h1>{details.name}</h1>
+                    <img src={details.image.secure_url} alt={details.image.secure_url} />                    
+                    <h1>{details.name}</h1>                    
+                    <div>
                     <label htmlFor="">Description</label>
                     <h3>{details.description}</h3>
-                    <label htmlFor="">reviews</label>
+                    </div>
+
+                    <label htmlFor="">Reviews </label>
                     <h3>{details.reviews}</h3>
-                    <label htmlFor="">rating</label>
+                    <label htmlFor="">Rating </label>
                     <h3>{details.rating}</h3>
                 </div>
                 <div>
@@ -48,24 +51,24 @@ const CardDetails = () => {
                                 onClick={() => handleDelete()} >Delete User</button>
                     </div>
                     <div >
-                        <label htmlFor="">name</label>
+                        <label htmlFor="">Name </label>
                         <h3>{details.user.name}</h3>
-                        <label htmlFor="">email</label>
+                        <label htmlFor="">Email </label>
                         <h3>{details.user.email}</h3>
 
                     </div>
                 </div>
             </div>
 
-        <div>
+       { /*<div>
           <h1>User Provider</h1>
           <div>
-            <label htmlFor="">name</label>
+            <label htmlFor="">Name </label>
             <h3>{details.user.name}</h3>
-            <label htmlFor="">email</label>
+            <label htmlFor="">Email </label>
             <h3>{details.user.email}</h3>
           </div>
-        </div>
+    </div>*/}
       </div>
     
   ) : (
