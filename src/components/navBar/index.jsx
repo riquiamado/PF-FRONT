@@ -23,7 +23,7 @@ function NavBar() {
               <Link to={"/services"}>
                 <button className="button">Create services</button>
               </Link>          
-        {isAuthenticated? <LogoutButton /> : <LoginButton />
+        {isAuthenticated? <LogoutButton /> : <LoginButton />}
     </div>
   );
 }
