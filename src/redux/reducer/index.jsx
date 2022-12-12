@@ -8,6 +8,7 @@ import {
   GET_SERVICES_BY_NAME,
   ORDER_BY_NAME,
   ORDER_BY_SERVICES,
+  ORDER_BY_RATINGS,
   ADD_SERVICES,
   FILTER_BY_SERVICES,
   DELETE_USER,
@@ -98,6 +99,20 @@ function rootReducer(state = initialState, action) {
           services: state.allServices,
         };
       }
+
+    case ORDER_BY_RATINGS:
+      if(action.payload === "highest") {
+        return {
+          ...state,
+          services: [...state.services].sort((a, b) => b - a)
+        }
+      }
+      if (action.payload === "lowest") {
+        return {
+          ...state,
+          services: [...state.services].sort((a, b) => a - b)
+        }
+      }
     
     case DELETE_USER:
       return { ...state };
@@ -110,6 +125,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         details: {},
       };
+      
     default:
       return { ...state };
   }
