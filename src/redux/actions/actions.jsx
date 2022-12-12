@@ -99,7 +99,6 @@ export function deleteUser(email) {
   return async function(dispatch) {
     let res = await axios.delete("http://localhost:3001/users/" + email);
     dispatch({ type: DELETE_USER, payload: res.data });
-    console.log(email)
   };
 }
 

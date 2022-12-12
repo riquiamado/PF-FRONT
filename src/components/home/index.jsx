@@ -37,7 +37,7 @@ function Home() {
 
   const handleSortRating = e => {
     dispatch(orderByRatings(e.target.value))
-    serOrder(`orden ${e.target.value}`)
+    setOrden(`orden ${e.target.value}`)
   }
 
   useEffect(() => {
