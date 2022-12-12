@@ -104,13 +104,21 @@ function rootReducer(state = initialState, action) {
       if(action.payload === "highest") {
         return {
           ...state,
-          services: [...state.services].sort((a, b) => b.rating - a.rating)
+          services: [...state.services].sort((a, b) => {
+            if(a.rating > b.rating) return -1;
+            if(a.rating > b.rating) return 1;
+            return 0;
+          })
         }
       }
       if (action.payload === "lowest") {
         return {
           ...state,
-          services: [...state.services].sort((a, b) => a.rating - b.rating)
+          services: [...state.services].sort((a, b) => {
+            if(a.rating > b.rating) return 1;
+            if(a.rating > b.rating) return -1;
+            return 0;
+          })
         }
       }
     
