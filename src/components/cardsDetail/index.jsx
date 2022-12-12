@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actions'
-
+import styles from './cardsDetail.module.css'
 
 const CardDetails = () => {
     const dispatch = useDispatch()
@@ -25,39 +25,40 @@ const CardDetails = () => {
 
     return details && details._id ? (
         <div>
-            <Link to={"/home"}>
-                <button>Volver</button>
+            <Link to={"/"}>
+                <button className={styles.boton}>Volver</button>
             </Link>
             <div>
                 <div>
-                    <img src={details.image.secure_url} alt={details.image.secure_url} />
+                    <img className={styles.img} src={details.image.secure_url} alt={details.image.secure_url} />
                     
-                    <h1>{details.name}</h1>
-                    <label htmlFor="">Description</label>
-                    <h3>{details.description}</h3>
-                    <label htmlFor="">reviews</label>
-                    <h3>{details.reviews}</h3>
-                    <label htmlFor="">rating</label>
-                    <h3>{details.rating}</h3>
+                    <h1 className={styles.servicio}>{details.name}</h1>
+                    <label className={styles.nombre} htmlFor="">Description</label>
+                    <h3 className={styles.texto}>{details.description}</h3>
+                    <label className={styles.nombre} htmlFor="">Reviews</label>
+                    <h3 className={styles.texto}>{details.reviews}</h3>
+                    <label className={styles.nombre} htmlFor="">Rating</label>
+                    <h3 className={styles.texto}>{details.rating}</h3>
                 </div>
                 <div>
 
-                    <h1>User Provider</h1>
-                    <div className="delete-container">
-                        <button className='delete-btn' 
-                                onClick={() => handleDelete()} >Delete User</button>
-                    </div>
+                    <h1 className={styles.nombre}>User Provider</h1>
+                   
                     <div >
-                        <label htmlFor="">name</label>
-                        <h3>{details.user.name}</h3>
-                        <label htmlFor="">email</label>
-                        <h3>{details.user.email}</h3>
+                        <label className={styles.nombre} htmlFor="">Name</label>
+                        <h3 className={styles.texto}>{details.user.name}</h3>
+                        <label className={styles.nombre} htmlFor="">Mail</label>
+                        <h3 className={styles.texto}>{details.user.email}</h3>
 
+                    </div>
+                    <div className="delete-container">
+                        <button className={styles.botonUno} 
+                                onClick={() => handleDelete()} >Delete User</button>
                     </div>
                 </div>
             </div>
 
-        <div>
+        {/* <div>
           <h1>User Provider</h1>
           <div>
             <label htmlFor="">name</label>
@@ -65,7 +66,7 @@ const CardDetails = () => {
             <label htmlFor="">email</label>
             <h3>{details.user.email}</h3>
           </div>
-        </div>
+        </div> */}
       </div>
     
   ) : (

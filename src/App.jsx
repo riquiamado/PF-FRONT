@@ -4,17 +4,19 @@ import CardDetails from "./components/cardsDetail";
 import CreateServices from "./components/createServices";
 import CreateUser from "./components/createUser";
 import Home from "./components/home";
-import LandingPage from "./components/landingPage";
 import NavBar from "./components/navBar";
+import "./App.css";
+import { checkLogin } from "./components/checkLogin";
+
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <Route exact path={"/"} component={LandingPage} />
-      <Route exact path={"/home"} component={Home} />
+      <Route exact path={"/"} component={Home} />
       <Route exact path="/users" component={CreateUser} />
       <Route exact path="/services" component={CreateServices} />
+      <Route exact path="/checkLogin" component={checkLogin} />
       <Route path="/services/:_id" component={CardDetails} />
     </div>
   );
