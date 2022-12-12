@@ -1,0 +1,65 @@
+.img {
+    display:block;
+    margin:auto;
+    width: 50%;
+    height: 50%;
+    border-radius: 10%;
+}
+
+.nombre {
+    font-family: cursive;
+    font-size: 32px;
+    text-shadow: 2px 2px 2px rgba(30, 149, 160, 0.8);
+    color: black;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 20px;
+    margin-left: 43%;
+}
+
+.servicio {
+    font-family: cursive;
+    text-align:center;
+    font-size: 40px;
+    color:rgb(42, 42, 131);
+}
+
+.texto {
+    font-family: cursive;
+    margin-left: 43%;
+}
+
+.boton {
+    background-color: white;
+    padding: 10px;
+    color: rgb(42, 42, 131);
+    font-family: cursive;
+    border: none;
+    border-radius: 20%;
+    opacity: 0.7;
+    margin: 25px;  
+}
+
+.boton:hover {
+    background-color: rgb(111, 214, 221);
+	border-radius: 25% 1px;
+	transition: all 0.8s;
+}
+
+.botonUno {
+    background-color: white;
+    padding: 10px;
+    color: rgb(42, 42, 131);
+    font-family: cursive;
+    border: none;
+    border-radius: 20%;
+    opacity: 0.7;
+    margin : 25px;
+    margin-left: 90%; 
+}
+
+.botonUno:hover {
+    background-color: rgb(111, 214, 221);
+	border-radius: 25% 1px;
+	transition: all 0.8s;
+}
