@@ -1,49 +1,90 @@
-
-import React from 'react'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import getProviders from '../../redux/actions/actions'
-import Cards from '../cards'
-import Footer from '../footer/Footer.jsx'
-
+import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getServices, clean } from "../../redux/actions/actions";
+import Cards from "../cards";
+import SearchBar from "../searchBar";
+import { orderByServices } from "../../redux/actions/actions";
+import Paginate from "../paginado";
 
 function Home() {
+  const allServices = useSelector((state) => state.services);
 
-    const allProviders = useSelector((state) => state.provider)
+  const dispatch = useDispatch();
+  const [orden, setOrden] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [servicesPerPage, setServicesPerPage] = useState(6);
+  const indexLastServices = currentPage * servicesPerPage;
+  const indexFirstServices = indexLastServices - servicesPerPage;
+  const currentServices = allServices.slice(
+    indexFirstServices,
+    indexLastServices,
+  );
 
-    const dispatch = useDispatch()
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  }
+  function handleSortName(e) {
+    dispatch(orderByServices(e.target.value));
 
-    useEffect(() => {
-        dispatch(getProviders())
+    setOrden(`orden ${e.target.value}`);
+    console.log(e.target.value);
+  }
 
-    }, [dispatch])
+  useEffect(() => {
+    dispatch(getServices());
+    return dispatch(clean());
+  }, [dispatch]);
 
-
-    return (
-        <div>
-            <div>
-            <Footer/>
-                {allProviders?.map(el => {
-                    return (
-                        <div key={el}>
-                            <Cards
-                               id={el._id}
-                                name={el.name}
-                                email={el.email}
-                                service={el.service}
-                            />
-                        </div>
-                    )
-                })
-
-                }
+  return (
+    <div>
+      <div className="columns">
+        <div className="column is-one-third">
+          <nav className="panel">
+            <p className="panel-heading">Search and Sort</p>
+            <div className="panel-block">
+              <p className="control has-icons-left" />
+              <SearchBar theText={"Search"} />
             </div>
-            <div>
-                <h1>Tuki tuki tuki</h1>
-                <h2>Hola Vania</h2>
+
+            <div className="panel-block">
+              <div className="select is-fullwidth">
+                <select onChange={(e) => handleSortName(e)}>
+                  <option value={"All"}>All</option>
+                  <option value="asc">Ascendente</option>
+                  <option value="desc">Descendente</option>
+                </select>
+              </div>
             </div>
+          </nav>
         </div>
-    )
+        <div>
+          <Paginate
+            servicesPerPage={servicesPerPage}
+            allServices={allServices.length}
+            paginado={paginado}
+          />
+        </div>
+        <div className="column is-two-thirds">
+          <div>
+            {currentServices?.map((el, index) => {
+              return (
+                <div key={index}>
+                  <Cards
+                    _id={el._id}
+                    name={el.name}
+                    description={el.description}
+                    image={el.image ? el.image.secure_url : ""}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Home
+export default Home;
