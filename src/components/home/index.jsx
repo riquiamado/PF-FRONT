@@ -15,7 +15,7 @@ function Home() {
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [servicesPerPage, setServicesPerPage] = useState(8);
+  const [servicesPerPage, setServicesPerPage] = useState(5);
   const indexLastServices = currentPage * servicesPerPage;
   const indexFirstServices = indexLastServices - servicesPerPage;
   const currentServices = allServices.slice(
