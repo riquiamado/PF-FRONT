@@ -14,22 +14,22 @@ const CardDetails = () => {
     const details = useSelector((state) => state.details)
 
     const history = useHistory()
-   
+
 
 
     const { _id } = useParams()
-    
-   
+
+
 
 
     const handleAddToCart = () => {
-        const data = {id: _id,email:user.email}
-       dispatch(addToCart(data))
-    // console.log(data)
-      history.push("/cart")
-   
+        const data = { id: _id, email: user.email }
+        dispatch(addToCart(data))
+        // console.log(data)
+        history.push("/cart")
+
     }
-     
+
     useEffect(() => {
         dispatch(getServicesDetails(_id))
         return dispatch(clean())
@@ -40,11 +40,11 @@ const CardDetails = () => {
             <Link to={"/"}>
                 <button>Volver</button>
             </Link>
-            
+
             <div>
                 <div>
                     <img src={details.image.secure_url} alt={details.image.secure_url} />
-                    
+
                     <h1>{details.name}</h1>
                     <label htmlFor="">Description</label>
                     <h3>{details.description}</h3>
@@ -56,7 +56,7 @@ const CardDetails = () => {
                 <div>
 
                     <h1>User Provider</h1>
-                   
+
                     <div >
                         <label htmlFor="">Name</label>
                         <h3>{details.user.name}</h3>
@@ -66,28 +66,24 @@ const CardDetails = () => {
                     </div>
 
                     <div className="delete-container">
-                       
 
-                    {isAuthenticated && <button  onClick={()=> handleAddToCart()}>cart</button> }
-                    
-                    {/* <div className="delete-container">
+
+                        {isAuthenticated && <button onClick={() => handleAddToCart()}>cart</button>}
+
+                        {/* <div className="delete-container">
                         <button className='delete-btn' 
 
                                 onClick={() => handleDelete()} >Delete User</button>
                     </div> */}
+                    </div>
                 </div>
-            </div>
 
-      </div>
-    
-  ) : (
-    <h1>Loading...</h1>
-  );
+            </div>
+        </div>
+            ) : (
+            <h1>Loading...</h1>
+            );
 };
 
-export default CardDetails;
+            export default CardDetails;
 
- // const handleDelete = () => {
-    //     dispatch(deleteUser(_id))
-    //     alert("User Deleted");
-    // }
