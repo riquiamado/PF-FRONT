@@ -8,6 +8,7 @@ import SearchBar from "../searchBar";
 import { orderByServices } from "../../redux/actions/actions";
 import Paginate from "../paginado";
 import "./home.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   const allServices = useSelector((state) => state.services);
@@ -50,6 +51,7 @@ function Home() {
   }, [dispatch]);
 
   return (
+
     <div className="home">
       <div className="filters">
         <select className="select" onChange={(e) => handleSortRating(e)}>
@@ -86,7 +88,25 @@ function Home() {
               </div>
             );
           })}
+
         </div>
+        <div className="">
+          <div className="cards-home">
+            {currentServices?.map((el, index) => {
+              return (
+                <div key={index}>
+                  <Cards
+                    _id={el._id}
+                    name={el.name}
+                    description={el.description}
+                    image={el.image ? el.image.secure_url : ""}
+                  />
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
       </div>
     </div>
   );
