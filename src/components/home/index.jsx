@@ -46,42 +46,19 @@ function Home() {
   }, [dispatch]);
 
   return (
-
-    <div className="home">
-      <div className="filters">
-        <select className="select" onChange={(e) => handleSortRating(e)}>
-        <option value="all">By Rating</option>
-          <option value="highest">Highest</option>
-          <option value="lowest">Lowest</option>
-        </select>
-        <select className="select" onChange={(e) => handleSortName(e)}>
-          <option value={"All"}>Search and Sort</option>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
-        </select>
-        <Paginate
-          servicesPerPage={servicesPerPage}
-          allServices={allServices.length}
-          paginado={paginado}
-        />
-      </div>
-      <div className="">
-        <div className="cards-home">
-          {currentServices?.map((el, index) => {
-            return (
-              <div key={index}>
-                <Cards
-                  _id={el._id}
-                  name={el.name}
-                  description={el.description}
-                  image={el.image ? el.image.secure_url : ""}
-                />
-
-              </div>
-            </div>
-          </nav>
-        </div>
-        <div>
+    <div>
+      <div className="home">
+        <div className="filters">
+          <select className="select" onChange={(e) => handleSortRating(e)}>
+            <option value="all">By Rating</option>
+            <option value="highest">Highest</option>
+            <option value="lowest">Lowest</option>
+          </select>
+          <select className="select" onChange={(e) => handleSortName(e)}>
+            <option value={"All"}>Search and Sort</option>
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
           <Paginate
             servicesPerPage={servicesPerPage}
             allServices={allServices.length}
@@ -100,14 +77,13 @@ function Home() {
                     image={el.image ? el.image.secure_url : ""}
                   />
                 </div>
-              );
+              )
             })}
           </div>
         </div>
+
       </div>
     </div>
-    </div>
-    
   );
 }
 
