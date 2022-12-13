@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom'
 import { useParams, useHistory } from 'react-router-dom'
 import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actions'
 import { addToCart } from '../../redux/actions/actions';
-impoort {}
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const CardDetails = () => {
+    const { user, isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
     const history = useHistory()
@@ -18,7 +20,9 @@ const CardDetails = () => {
    
 
     const handleAddToCart = () => {
-      dispatch(addToCart(_id))
+        const data = {id: _id,email:user.email}
+       dispatch(addToCart(data))
+    // console.log(data)
       history.push("/cart")
     }
      
@@ -56,7 +60,8 @@ const CardDetails = () => {
                         <h3>{details.user.email}</h3>
 
                     </div>
-                    <button  onClick={()=> handleAddToCart()}>cart</button>
+                    {isAuthenticated && <button  onClick={()=> handleAddToCart()}>cart</button> }
+                    
                     {/* <div className="delete-container">
                         <button className='delete-btn' 
                                 onClick={() => handleDelete()} >Delete User</button>

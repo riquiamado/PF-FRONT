@@ -110,9 +110,10 @@ export function deleteService(id) {
   };
 }
 
-export function addToCart(productId){
+export function addToCart(payload){
+  console.log(payload);
   return async function(dispatch){
-    const info = await axios.post(`http://localhost:3001/cart/${productId}`)
+    const info = await axios.post(`http://localhost:3001/cart`,payload)
     dispatch({
       type:ADD_TO_CART,
       payload: info.data
