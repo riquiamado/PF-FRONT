@@ -13,7 +13,8 @@ import {
   ADD_SERVICES,
   FILTER_BY_SERVICES,
   DELETE_USER,
-  DELETE_SERVICE
+  DELETE_SERVICE,
+  ADD_TO_CART
 } from "./components";
 
 export function getServices() {
@@ -95,9 +96,9 @@ export const addServices = (formData) => {
   };
 }
 
-export function deleteUser(id) {
+export function deleteUser(email) {
   return async function(dispatch) {
-    let res = await axios.delete("http://localhost:3001/users/" + id);
+    let res = await axios.delete("http://localhost:3001/users/" + email);
     dispatch({ type: DELETE_USER, payload: res.data });
   };
 }
@@ -107,4 +108,15 @@ export function deleteService(id) {
     let res = await axios.delete("http://localhost:3001/services/" + id);
     dispatch({ type: DELETE_SERVICE, payload: res.data });
   };
+}
+
+export function addToCart(payload){
+  console.log(payload);
+  return async function(dispatch){
+    const info = await axios.post(`http://localhost:3001/cart`,payload)
+    dispatch({
+      type:ADD_TO_CART,
+      payload: info.data
+    });
+  }
 }
