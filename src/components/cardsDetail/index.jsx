@@ -8,7 +8,6 @@ import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actio
 import { addToCart } from '../../redux/actions/actions';
 import { useAuth0 } from "@auth0/auth0-react";
 
-
 const CardDetails = () => {
     const { user, isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
@@ -49,9 +48,9 @@ const CardDetails = () => {
                     <h1>{details.name}</h1>
                     <label htmlFor="">Description</label>
                     <h3>{details.description}</h3>
-                    <label htmlFor="">reviews</label>
+                    <label htmlFor="">Reviews</label>
                     <h3>{details.reviews}</h3>
-                    <label htmlFor="">rating</label>
+                    <label htmlFor="">Rating</label>
                     <h3>{details.rating}</h3>
                 </div>
                 <div>
@@ -59,20 +58,26 @@ const CardDetails = () => {
                     <h1>User Provider</h1>
                    
                     <div >
-                        <label htmlFor="">name</label>
+                        <label htmlFor="">Name</label>
                         <h3>{details.user.name}</h3>
-                        <label htmlFor="">email</label>
+                        <label htmlFor="">Mail</label>
                         <h3>{details.user.email}</h3>
 
                     </div>
+
+                    <div className="delete-container">
+                       
+
                     {isAuthenticated && <button  onClick={()=> handleAddToCart()}>cart</button> }
                     
                     {/* <div className="delete-container">
                         <button className='delete-btn' 
+
                                 onClick={() => handleDelete()} >Delete User</button>
                     </div> */}
                 </div>
             </div>
+
       </div>
     
   ) : (

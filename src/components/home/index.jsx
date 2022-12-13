@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getServices, clean, orderByRatings } from "../../redux/actions/actions";
+import { getServices, clean, orderByRatings, orderByCategory, resetAllServices } from "../../redux/actions/actions";
 import Cards from "../cards";
 import SearchBar from "../searchBar";
 import { orderByServices } from "../../redux/actions/actions";
@@ -41,32 +41,54 @@ function Home() {
     setOrden(`orden ${e.target.value}`)
   }
 
+  const handleSortCategory = e => {
+    dispatch(orderByCategory(e.target.value))
+  }
+
   useEffect(() => {
     dispatch(getServices());
     return dispatch(clean());
   }, [dispatch]);
 
   return (
-    <div>
-      <div className="home">
-        <div className="filters">
-          <select className="select" onChange={(e) => handleSortRating(e)}>
-            <option value="all">By Rating</option>
-            <option value="highest">Highest</option>
-            <option value="lowest">Lowest</option>
-          </select>
-          <select className="select" onChange={(e) => handleSortName(e)}>
-            <option value={"All"}>Search and Sort</option>
-            <option value="asc">Ascendente</option>
-            <option value="desc">Descendente</option>
-          </select>
-          <Paginate
-            servicesPerPage={servicesPerPage}
-            allServices={allServices.length}
-            paginado={paginado}
-          />
 
-          <Link to={"/dashboard"}><button>dashboard</button></Link>
+    <div className="home">
+      <div className="filters">
+        <select className="select" onChange={(e) => handleSortRating(e)}>
+        <option value="all">By Rating</option>
+          <option value="highest">Highest</option>
+          <option value="lowest">Lowest</option>
+        </select>
+        <select className="select" onChange={(e) => handleSortName(e)}>
+          <option value={"All"}>Search and Sort</option>
+          <option value="asc">Ascendente</option>
+          <option value="desc">Descendente</option>
+        </select>
+        <select className="select" onChange={(e) => handleSortCategory(e)}>
+          <option value={"All"}>Category</option>
+          {allServices.map((idx) => (<option key={idx.id} value={idx.id}>{idx.name}</option>))}
+        </select>
+        <Paginate
+          servicesPerPage={servicesPerPage}
+          allServices={allServices.length}
+          paginado={paginado}
+        />
+      </div>
+      <div className="">
+        <div className="cards-home">
+          {currentServices?.map((el, index) => {
+            return (
+              <div key={index}>
+                <Cards
+                  _id={el._id}
+                  name={el.name}
+                  description={el.description}
+                  image={el.image ? el.image.secure_url : ""}
+                />
+              </div>
+            );
+          })}
+
         </div>
         <div className="">
           <div className="cards-home">
