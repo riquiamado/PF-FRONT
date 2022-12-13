@@ -46,6 +46,7 @@ function Home() {
   }, [dispatch]);
 
   return (
+
     <div className="home">
       <div className="filters">
         <select className="select" onChange={(e) => handleSortRating(e)}>
@@ -75,12 +76,38 @@ function Home() {
                   description={el.description}
                   image={el.image ? el.image.secure_url : ""}
                 />
+
               </div>
-            );
-          })}
+            </div>
+          </nav>
+        </div>
+        <div>
+          <Paginate
+            servicesPerPage={servicesPerPage}
+            allServices={allServices.length}
+            paginado={paginado}
+          />
+        </div>
+        <div className="">
+          <div className="cards-home">
+            {currentServices?.map((el, index) => {
+              return (
+                <div key={index}>
+                  <Cards
+                    _id={el._id}
+                    name={el.name}
+                    description={el.description}
+                    image={el.image ? el.image.secure_url : ""}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
 
