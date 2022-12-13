@@ -8,6 +8,7 @@ import SearchBar from "../searchBar";
 import { orderByServices } from "../../redux/actions/actions";
 import Paginate from "../paginado";
 import "./home.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   const allServices = useSelector((state) => state.services);
@@ -64,6 +65,8 @@ function Home() {
             allServices={allServices.length}
             paginado={paginado}
           />
+
+          <Link to={"/dashboard"}><button>dashboard</button></Link>
         </div>
         <div className="">
           <div className="cards-home">
