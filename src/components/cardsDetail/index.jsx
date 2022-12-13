@@ -3,21 +3,25 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actions'
-
+import { addToCart } from '../../redux/actions/actions';
+impoort {}
 
 const CardDetails = () => {
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
-
+    const history = useHistory()
+   
     const { _id } = useParams()
+    
+   
 
-    const handleDelete = () => {
-        dispatch(deleteUser(_id))
-        alert("User Deleted");
+    const handleAddToCart = () => {
+      dispatch(addToCart(_id))
+      history.push("/cart")
     }
-
+     
     useEffect(() => {
         dispatch(getServicesDetails(_id))
         return dispatch(clean())
@@ -28,6 +32,7 @@ const CardDetails = () => {
             <Link to={"/home"}>
                 <button>Volver</button>
             </Link>
+            
             <div>
                 <div>
                     <img src={details.image.secure_url} alt={details.image.secure_url} />
@@ -51,22 +56,13 @@ const CardDetails = () => {
                         <h3>{details.user.email}</h3>
 
                     </div>
-                    <div className="delete-container">
+                    <button  onClick={()=> handleAddToCart()}>cart</button>
+                    {/* <div className="delete-container">
                         <button className='delete-btn' 
                                 onClick={() => handleDelete()} >Delete User</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
-
-        {/* <div>
-          <h1>User Provider</h1>
-          <div>
-            <label htmlFor="">name</label>
-            <h3>{details.user.name}</h3>
-            <label htmlFor="">email</label>
-            <h3>{details.user.email}</h3>
-          </div>
-        </div> */}
       </div>
     
   ) : (
@@ -75,3 +71,8 @@ const CardDetails = () => {
 };
 
 export default CardDetails;
+
+ // const handleDelete = () => {
+    //     dispatch(deleteUser(_id))
+    //     alert("User Deleted");
+    // }

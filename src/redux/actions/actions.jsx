@@ -13,7 +13,8 @@ import {
   ADD_SERVICES,
   FILTER_BY_SERVICES,
   DELETE_USER,
-  DELETE_SERVICE
+  DELETE_SERVICE,
+  ADD_TO_CART
 } from "./components";
 
 export function getServices() {
@@ -107,4 +108,14 @@ export function deleteService(id) {
     let res = await axios.delete("http://localhost:3001/services/" + id);
     dispatch({ type: DELETE_SERVICE, payload: res.data });
   };
+}
+
+export function addToCart(productId){
+  return async function(dispatch){
+    const info = await axios.post(`http://localhost:3001/cart/${productId}`)
+    dispatch({
+      type:ADD_TO_CART,
+      payload: info.data
+    });
+  }
 }

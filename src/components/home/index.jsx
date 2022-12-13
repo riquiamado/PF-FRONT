@@ -60,6 +60,7 @@ function Home() {
               </div>
             </div>
           </nav>
+          
         </div>
         <div>
           <Paginate

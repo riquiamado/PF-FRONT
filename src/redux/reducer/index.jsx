@@ -12,12 +12,14 @@ import {
   FILTER_BY_SERVICES,
   DELETE_USER,
   DELETE_SERVICE,
+  ADD_TO_CART,
 } from "../actions/components";
 
 const initialState = {
   services: [],
   allServices: [],
   users: [],
+  cart: [],
   details: {},
 };
 
@@ -27,12 +29,13 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         services: action.payload,
+        allServices: action.payload
       };
     case GET_SERVICES_BY_NAME:
       return {
         ...state,
         services: action.payload,
-        allServices: action.payload
+       
       };
 
     case GET_USERS:
@@ -57,7 +60,13 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-
+      
+      case ADD_TO_CART:
+        return {
+          ...state,
+          cart: action.payload,
+        }
+       
     case ORDER_BY_SERVICES:
       if (action.payload === "asc") {
         return {
