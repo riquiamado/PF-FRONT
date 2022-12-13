@@ -11,11 +11,11 @@ import styles from "./cardsDetail.module.css"
 const CardDetails = () => {
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
-
+    console.log(details)
     const { _id } = useParams()
 
     const handleDelete = () => {
-        dispatch(deleteUser(_id))
+        dispatch(deleteUser(details.user.email))
         alert("User Deleted");
     }
 
