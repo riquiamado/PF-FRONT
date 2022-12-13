@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBar from '../sidebar/Sidebar';
+import SideBar from '../sidebar';
 
 import "./dashboard.css"
 
@@ -11,7 +11,7 @@ const Dashboard = () => {
                 <div></div>
                 <div></div>
                 <div></div>
-
+    
             </div>
         </div>
     )

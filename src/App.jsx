@@ -8,7 +8,7 @@ import Home from "./components/home";
 import NavBar from "./components/navBar";
 import "./App.css";
 import { checkLogin } from "./components/checkLogin";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./components/dashboard";
 
 
 function App() {
