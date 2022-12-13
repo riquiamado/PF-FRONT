@@ -13,17 +13,22 @@ const CardDetails = () => {
     const { user, isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
+
     const history = useHistory()
    
+
+
     const { _id } = useParams()
     
    
+
 
     const handleAddToCart = () => {
         const data = {id: _id,email:user.email}
        dispatch(addToCart(data))
     // console.log(data)
       history.push("/cart")
+   
     }
      
     useEffect(() => {
