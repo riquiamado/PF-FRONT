@@ -9,10 +9,12 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_SERVICES,
   ORDER_BY_RATINGS,
+  ORDER_BY_CATEGORY,
   ADD_SERVICES,
   FILTER_BY_SERVICES,
   DELETE_USER,
   DELETE_SERVICE,
+  RESET_ESTADO,
 } from "../actions/components";
 
 const initialState = {
@@ -20,6 +22,10 @@ const initialState = {
   allServices: [],
   users: [],
   details: {},
+  categoriasFiltradas: [],
+  limpiador: [],
+  conCategorias: {},
+  empleosConCategorias: '',
 };
 
 function rootReducer(state = initialState, action) {
@@ -121,6 +127,24 @@ function rootReducer(state = initialState, action) {
           })
         }
       }
+
+      case ORDER_BY_CATEGORY:
+        state.allServices = state.services
+        state.categoriasFiltradas = state.limpiador
+        state.conCategorias = {}
+        state.empleosConCategorias = ""
+        state.empleosConCategorias = state.services.filter(idx => idx.name.includes(action.payload))
+        
+      return{
+          ...state,
+          services: state.empleosConCategorias
+      }
+
+      case "RESET_ESTADO":
+                    return {
+                    ...state,
+                    services: state.services
+                }
     
     case DELETE_USER:
       return { ...state };

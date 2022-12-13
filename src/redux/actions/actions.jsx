@@ -9,11 +9,13 @@ import {
   GET_SERVICES_BY_NAME,
   ORDER_BY_NAME,
   ORDER_BY_RATINGS,
+  ORDER_BY_CATEGORY,
   ORDER_BY_SERVICES,
   ADD_SERVICES,
   FILTER_BY_SERVICES,
   DELETE_USER,
-  DELETE_SERVICE
+  DELETE_SERVICE,
+  RESET_ESTADO,
 } from "./components";
 
 export function getServices() {
@@ -56,6 +58,19 @@ export function orderByRatings(payload) {
     type: ORDER_BY_RATINGS,
     payload: payload,
   };
+}
+
+export function orderByCategory(payload) {
+  return {
+    type: ORDER_BY_CATEGORY,
+    payload: payload,
+  };
+}
+
+export function resetAllServices() {
+	return {
+	type: "RESET_ESTADO"
+	}
 }
 
 export function orderByServices(payload) {
