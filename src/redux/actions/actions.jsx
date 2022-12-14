@@ -9,11 +9,17 @@ import {
   GET_SERVICES_BY_NAME,
   ORDER_BY_NAME,
   ORDER_BY_RATINGS,
+  ORDER_BY_CATEGORY,
   ORDER_BY_SERVICES,
   ADD_SERVICES,
   FILTER_BY_SERVICES,
   DELETE_USER,
-  DELETE_SERVICE
+  DELETE_SERVICE,
+
+  RESET_ESTADO,
+
+  ADD_TO_CART
+
 } from "./components";
 
 export function getServices() {
@@ -56,6 +62,19 @@ export function orderByRatings(payload) {
     type: ORDER_BY_RATINGS,
     payload: payload,
   };
+}
+
+export function orderByCategory(payload) {
+  return {
+    type: ORDER_BY_CATEGORY,
+    payload: payload,
+  };
+}
+
+export function resetAllServices() {
+	return {
+	type: "RESET_ESTADO"
+	}
 }
 
 export function orderByServices(payload) {
@@ -107,4 +126,15 @@ export function deleteService(id) {
     let res = await axios.delete("http://localhost:3001/services/" + id);
     dispatch({ type: DELETE_SERVICE, payload: res.data });
   };
+}
+
+export function addToCart(payload){
+  console.log(payload);
+  return async function(dispatch){
+    const info = await axios.post(`http://localhost:3001/cart`,payload)
+    dispatch({
+      type:ADD_TO_CART,
+      payload: info.data
+    });
+  }
 }
