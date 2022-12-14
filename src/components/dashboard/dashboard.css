@@ -14,5 +14,5 @@
     background-color: rgba(99, 185, 197, 0.54);
     overflow: hidden;
 
-    grid-template-columns: 11rem, auto 20rem;
+    grid-template-columns: 11rem auto 20rem;
 }
