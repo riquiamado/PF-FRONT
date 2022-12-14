@@ -2,7 +2,7 @@ import {
   ADD_USERS,
   CLEAN,
   GET_USERS,
-  GET_USERS_BY_NAME,
+  GET_USER_BY_ID,
   GET_SERVICES,
   GET_SERVICES_DETAILS,
   GET_SERVICES_BY_NAME,
@@ -53,6 +53,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         users: action.payload,
       };
+
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        users: action.payload
+      }
 
     case GET_SERVICES_DETAILS:
       return {
