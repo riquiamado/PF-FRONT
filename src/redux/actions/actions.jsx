@@ -3,7 +3,7 @@ import {
   ADD_USERS,
   CLEAN,
   GET_USERS,
-  GET_USERS_BY_NAME,
+  GET_USER_BY_ID,
   GET_SERVICES_DETAILS,
   GET_SERVICES,
   GET_SERVICES_BY_NAME,
@@ -15,6 +15,7 @@ import {
   FILTER_BY_SERVICES,
   DELETE_USER,
   DELETE_SERVICE,
+  UPDATE_USER,
 
   RESET_ESTADO,
 
@@ -35,6 +36,13 @@ export function getUsers() {
     console.log(info.data);
     dispatch({ type: GET_USERS, payload: info.data });
   };
+}
+
+export const getUserById = id => {
+  return async function(dispatch) {
+    const res = await axios.get(`http://localhost:3001/users/${id}`);
+    dispatch({ type: GET_USER_BY_ID, payload: res.data })
+  }
 }
 
 export function getServicesByName(name) {
@@ -126,6 +134,13 @@ export function deleteService(id) {
     let res = await axios.delete("http://localhost:3001/services/" + id);
     dispatch({ type: DELETE_SERVICE, payload: res.data });
   };
+}
+
+export const updateUser = (id) => {
+  return async function(dispatch) {
+    let res = await axios.put("http://localhost:3001/users/" + id);
+    dispatch({ type: UPDATE_USER, payload: res.data });
+  }
 }
 
 export function addToCart(payload){
