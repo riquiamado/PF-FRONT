@@ -90,22 +90,7 @@ function Home() {
           })}
 
         </div>
-        <div className="">
-          <div className="cards-home">
-            {currentServices?.map((el, index) => {
-              return (
-                <div key={index}>
-                  <Cards
-                    _id={el._id}
-                    name={el.name}
-                    description={el.description}
-                    image={el.image ? el.image.secure_url : ""}
-                  />
-                </div>
-              )
-            })}
-          </div>
-        </div>
+       
 
       </div>
     </div>
