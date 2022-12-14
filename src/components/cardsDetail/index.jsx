@@ -7,11 +7,8 @@ import { useParams, useHistory } from 'react-router-dom'
 import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actions'
 import { addToCart } from '../../redux/actions/actions';
 import { useAuth0 } from "@auth0/auth0-react";
-import carrito from '../carrito'
-import Offcanvas from 'react-bootstrap/Offcanvas';
 
 const CardDetails = () => {
-    
     const { user, isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
@@ -30,6 +27,7 @@ const CardDetails = () => {
         dispatch(addToCart(data))
         // console.log(data)
         history.push("/cart")
+
     }
 
     useEffect(() => {
@@ -70,17 +68,7 @@ const CardDetails = () => {
                     <div className="delete-container">
 
 
-                       {isAuthenticated && <button onClick={handleAddToCart}>cart</button>}
-
-                       {/*<button  onClick={handleShow}>Cart</button>*
-                       <Offcanvas show={show} onHide={handleClose} placement={'start'}>
-            <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Cart</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <carrito />
-            </Offcanvas.Body>
-            </Offcanvas>/*/}
+                        {isAuthenticated && <button onClick={() => handleAddToCart()}>cart</button>}
 
                         {/* <div className="delete-container">
                         <button className='delete-btn' 
