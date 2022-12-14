@@ -1,7 +1,12 @@
-import React from 'react';
-import './sidebar.css'
+import React, { useState } from 'react';
+import { SidebarData } from './index.js';
+import { UilSignout } from '@iconscout/react-unicons'
+import './sidebar.css';
 
 const SideBar = () => {
+
+    const [selected, setSelected] =useState(0)
+
     return(
         <div className='sidebar'>
             <div className='logo'>
@@ -10,11 +15,21 @@ const SideBar = () => {
                 <span>User</span> 
             </div>
             <div className='menu'>
-                <div className='menu-item'>
-                    <div>
-                        Icon
-                    </div>
-                    <span>Dashboard-Item</span>
+                {SidebarData.map((item, index) => {
+                    return(
+                        <div className={selected === index?'menuItem active': 'menuItem'} 
+                        key={index}
+                        onClick={() => setSelected(index)}>
+                            <item.icon />
+                            <span>
+                                {item.heading}
+                            </span>
+                        </div>
+                    )
+                })}
+                
+                <div className='menuItem'>
+                    <UilSignout/>
                 </div>
             </div>
         </div>
