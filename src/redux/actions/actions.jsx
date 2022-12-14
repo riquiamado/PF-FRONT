@@ -24,14 +24,14 @@ import {
 
 export function getServices() {
   return async function (dispatch) {
-    const info = await axios.get(`http://localhost:3001/services`);
+    const info = await axios.get(`https://pf-back-production-b443.up.railway.app/services`);
     dispatch({ type: GET_SERVICES, payload: info.data });
   };
 }
 
 export function getUsers() {
   return async function (dispatch) {
-    const info = await axios.get(`http://localhost:3001/users`);
+    const info = await axios.get(`https://pf-back-production-b443.up.railway.app/users`);
     console.log(info.data);
     dispatch({ type: GET_USERS, payload: info.data });
   };
@@ -39,7 +39,7 @@ export function getUsers() {
 
 export function getServicesByName(name) {
   return async function (dispatch) {
-    const info = await axios.get(`http://localhost:3001/services?name=${name}`);
+    const info = await axios.get(`https://pf-back-production-b443.up.railway.app/services?name=${name}`);
 
     dispatch({ type: GET_SERVICES_BY_NAME, payload: info.data });
   };
@@ -48,7 +48,7 @@ export function getServicesByName(name) {
 export function getServicesDetails(_id) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`http://localhost:3001/services/${_id}`);
+      const json = await axios.get(`https://pf-back-production-b443.up.railway.app/services/${_id}`);
 
       dispatch({ type: GET_SERVICES_DETAILS, payload: json.data });
     } catch (error) {
@@ -94,7 +94,7 @@ export function clean() {
 
 export function addUsers(payload) {
   return async function (dispatch) {
-    let info = await axios.post("http://localhost:3001/users", payload);
+    let info = await axios.post("https://pf-back-production-b443.up.railway.app/users", payload);
     dispatch({ type: ADD_USERS, payload: info.data });
   };
 }
@@ -102,7 +102,7 @@ export function addUsers(payload) {
 export const addServices = (formData) => {
   return async function (dispatch) {
     let info = await axios({
-      url: "http://localhost:3001/services",
+      url: "https://pf-back-production-b443.up.railway.app/services",
       method: "POST",
       body: formData,
       headers: {
@@ -116,14 +116,14 @@ export const addServices = (formData) => {
 
 export function deleteUser(email) {
   return async function(dispatch) {
-    let res = await axios.delete("http://localhost:3001/users/" + email);
+    let res = await axios.delete("https://pf-back-production-b443.up.railway.app/users/" + email);
     dispatch({ type: DELETE_USER, payload: res.data });
   };
 }
 
 export function deleteService(id) {
   return async function(dispatch) {
-    let res = await axios.delete("http://localhost:3001/services/" + id);
+    let res = await axios.delete("https://pf-back-production-b443.up.railway.app/services/" + id);
     dispatch({ type: DELETE_SERVICE, payload: res.data });
   };
 }
@@ -131,7 +131,7 @@ export function deleteService(id) {
 export function addToCart(payload){
   console.log(payload);
   return async function(dispatch){
-    const info = await axios.post(`http://localhost:3001/cart`,payload)
+    const info = await axios.post(`https://pf-back-production-b443.up.railway.app/cart`,payload)
     dispatch({
       type:ADD_TO_CART,
       payload: info.data
