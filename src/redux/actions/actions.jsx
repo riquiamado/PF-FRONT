@@ -19,20 +19,16 @@ import {
 
   RESET_ESTADO,
 
-  ADD_TO_CART
+  ADD_TO_CART,
+  GET_USER_BY_EMAIL
 
 } from "./components";
 
-export function getServices() {
-  return async function (dispatch) {
-    const info = await axios.get(`https://pf-back-production-b443.up.railway.app/services`);
-    dispatch({ type: GET_SERVICES, payload: info.data });
-  };
-}
 
+//-----------------------------------User---------------------------------------------
 export function getUsers() {
   return async function (dispatch) {
-    const info = await axios.get(`https://pf-back-production-b443.up.railway.app/users`);
+    const info = await axios.get(`http://localhost:3001/users/`);
     console.log(info.data);
     dispatch({ type: GET_USERS, payload: info.data });
   };
@@ -41,8 +37,44 @@ export function getUsers() {
 export const getUserById = id => {
   return async function(dispatch) {
     const res = await axios.get(`http://localhost:3001/users/${id}`);
-    dispatch({ type: GET_USER_BY_ID, payload: res.data })
+    dispatch({ type: GET_USER_BY_ID, payload: res.data });
   }
+}
+
+export const getUserByEmail = email => {
+  return async function(dispatch) {
+    const res = await axios.get(`http://localhost:3001/userEmail?email=${email}`);
+    dispatch({ type: GET_USER_BY_EMAIL, payload: res.data });
+  }
+}
+
+export function addUsers(payload) {
+  return async function (dispatch) {
+    let info = await axios.post("https://pf-back-production-b443.up.railway.app/users", payload);
+    dispatch({ type: ADD_USERS, payload: info.data });
+  };
+}
+
+export function deleteUser(email) {
+  return async function(dispatch) {
+    let res = await axios.delete("https://pf-back-production-b443.up.railway.app/users/" + email);
+    dispatch({ type: DELETE_USER, payload: res.data });
+  };
+}
+
+export const updateUser = (id, payload) => {
+  return async function(dispatch) {
+    let res = await axios.put(`http://localhost:3001/users/${id}`, payload);
+    dispatch({ type: UPDATE_USER, payload: res.data });
+  }
+}
+
+//-----------------------------------Service---------------------------------------------
+export function getServices() {
+  return async function (dispatch) {
+    const info = await axios.get(`https://pf-back-production-b443.up.railway.app/services`);
+    dispatch({ type: GET_SERVICES, payload: info.data });
+  };
 }
 
 export function getServicesByName(name) {
@@ -65,48 +97,6 @@ export function getServicesDetails(_id) {
   };
 }
 
-export function orderByRatings(payload) {
-  return {
-    type: ORDER_BY_RATINGS,
-    payload: payload,
-  };
-}
-
-export function orderByCategory(payload) {
-  return {
-    type: ORDER_BY_CATEGORY,
-    payload: payload,
-  };
-}
-
-export function resetAllServices() {
-	return {
-	type: "RESET_ESTADO"
-	}
-}
-
-export function orderByServices(payload) {
-  return {
-    type: ORDER_BY_SERVICES,
-    payload: payload,
-  };
-}
-
-export function clean() {
-  return function (dispatch) {
-    dispatch({
-      type: CLEAN,
-    });
-  };
-}
-
-export function addUsers(payload) {
-  return async function (dispatch) {
-    let info = await axios.post("https://pf-back-production-b443.up.railway.app/users", payload);
-    dispatch({ type: ADD_USERS, payload: info.data });
-  };
-}
-
 export const addServices = (formData) => {
   return async function (dispatch) {
     let info = await axios({
@@ -122,13 +112,6 @@ export const addServices = (formData) => {
   };
 }
 
-export function deleteUser(email) {
-  return async function(dispatch) {
-    let res = await axios.delete("https://pf-back-production-b443.up.railway.app/users/" + email);
-    dispatch({ type: DELETE_USER, payload: res.data });
-  };
-}
-
 export function deleteService(id) {
   return async function(dispatch) {
     let res = await axios.delete("https://pf-back-production-b443.up.railway.app/services/" + id);
@@ -136,13 +119,35 @@ export function deleteService(id) {
   };
 }
 
-export const updateUser = (id) => {
-  return async function(dispatch) {
-    let res = await axios.put("http://localhost:3001/users/" + id);
-    dispatch({ type: UPDATE_USER, payload: res.data });
-  }
+//-----------------------------------Filter/Order---------------------------------------------
+export function orderByRatings(payload) {
+  return {
+    type: ORDER_BY_RATINGS,
+    payload: payload,
+  };
 }
 
+export function orderByCategory(payload) {
+  return {
+    type: ORDER_BY_CATEGORY,
+    payload: payload,
+  };
+}
+
+export function orderByServices(payload) {
+  return {
+    type: ORDER_BY_SERVICES,
+    payload: payload,
+  };
+}
+
+export function resetAllServices() {
+	return {
+	type: "RESET_ESTADO"
+	}
+}
+
+//-----------------------------------Cart---------------------------------------------
 export function addToCart(payload){
   console.log(payload);
   return async function(dispatch){
@@ -153,3 +158,14 @@ export function addToCart(payload){
     });
   }
 }
+
+//-----------------------------------Other---------------------------------------------
+export function clean() {
+  return function (dispatch) {
+    dispatch({
+      type: CLEAN,
+    });
+  };
+}
+
+
