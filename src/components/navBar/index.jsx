@@ -8,7 +8,7 @@ import "./navBar.css";
 
 function NavBar() {
   const { isAuthenticated } = useAuth0();
-  console.log(isAuthenticated);
+
   return (
     <nav className="navbar">
       <div className="logo">
@@ -25,7 +25,7 @@ function NavBar() {
           <button className="Btn">Create services</button>
         </Link>
         <Link to={"/dashboard"}>
-          <button className="Btn">Dash board</button>
+          {isAuthenticated ? <button className="Btn">Dash board</button> : <span></span>}    
         </Link>
       {isAuthenticated ? <LogoutButton /> : <LoginButton />} 
       </div>
