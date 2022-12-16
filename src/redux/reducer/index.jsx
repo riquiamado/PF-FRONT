@@ -1,23 +1,28 @@
 import {
   ADD_USERS,
-  CLEAN,
+  
   GET_USERS,
-  GET_USERS_BY_NAME,
+  GET_USER_BY_ID,
+  GET_USER_BY_EMAIL,
+  DELETE_USER,
+  UPDATE_USER,
+
   GET_SERVICES,
   GET_SERVICES_DETAILS,
   GET_SERVICES_BY_NAME,
+  ADD_SERVICES,
+  DELETE_SERVICE,
+
   ORDER_BY_NAME,
   ORDER_BY_SERVICES,
   ORDER_BY_RATINGS,
   ORDER_BY_CATEGORY,
-  ADD_SERVICES,
   FILTER_BY_SERVICES,
-  DELETE_USER,
-  DELETE_SERVICE,
-
+  
+  ADD_TO_CART,
   RESET_ESTADO,
 
-  ADD_TO_CART,
+  CLEAN,
 
 } from "../actions/components";
 
@@ -35,23 +40,52 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    //---------------------User------------------------------
+    case GET_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        users: action.payload
+      }
+
+    case GET_USER_BY_EMAIL:
+      return {
+        ...state,
+        users: action.payload
+      }
+
+    case ADD_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+
+    case DELETE_USER:
+      return { ...state };
+    
+    case DELETE_SERVICE:
+      return { ...state };
+
+    case UPDATE_USER:
+      return { ...state };
+      
+    //---------------------Service------------------------------
     case GET_SERVICES:
       return {
         ...state,
         services: action.payload,
         allServices: action.payload
       };
+
     case GET_SERVICES_BY_NAME:
       return {
         ...state,
         services: action.payload,
-       
-      };
-
-    case GET_USERS:
-      return {
-        ...state,
-        users: action.payload,
       };
 
     case GET_SERVICES_DETAILS:
@@ -60,23 +94,12 @@ function rootReducer(state = initialState, action) {
         details: action.payload,
       };
 
-    case ADD_USERS:
-      return {
-        ...state,
-        users: action.payload,
-      };
-
     case ADD_SERVICES:
       return {
         ...state,
       };
-      
-      case ADD_TO_CART:
-        return {
-          ...state,
-          cart: action.payload,
-        }
-       
+
+//---------------------Filter/Order------------------------------
     case ORDER_BY_SERVICES:
       if (action.payload === "asc") {
         return {
@@ -140,30 +163,31 @@ function rootReducer(state = initialState, action) {
         }
       }
 
-      case ORDER_BY_CATEGORY:
-        state.allServices = state.services
-        state.categoriasFiltradas = state.limpiador
-        state.conCategorias = {}
-        state.empleosConCategorias = ""
-        state.empleosConCategorias = state.services.filter(idx => idx.name.includes(action.payload))
-        
+    case ORDER_BY_CATEGORY:
+      state.allServices = state.services
+      state.categoriasFiltradas = state.limpiador
+      state.conCategorias = {}
+      state.empleosConCategorias = ""
+      state.empleosConCategorias = state.services.filter(idx => idx.name.includes(action.payload))
       return{
           ...state,
           services: state.empleosConCategorias
       }
 
-      case "RESET_ESTADO":
-                    return {
-                    ...state,
-                    services: state.services
-                }
-    
-    case DELETE_USER:
-      return { ...state };
+//---------------------Cart------------------------------
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cart: action.payload,
+      }
 
-    case DELETE_SERVICE:
-      return { ...state };
-      
+//---------------------Others------------------------------
+    case "RESET_ESTADO":
+      return {
+        ...state,
+        services: state.services
+      }
+
     case CLEAN:
       return {
         ...state,
