@@ -14,8 +14,32 @@ import {
   FILTER_BY_SERVICES,
   DELETE_USER,
   DELETE_SERVICE,
-  ADD_TO_CART
+  ADD_TO_CART,
+  LOGIN,
+  LOGOUT,
+  GET_USER_BY_EMAIL
 } from "./components";
+
+export function getUserByEmail(email) {
+  return async function(dispatch) {
+    const res = await axios.get(`http://localhost:3001/userEmail?email=${email}`);
+    dispatch({ type: GET_USER_BY_EMAIL, payload: res.data });
+  }
+}
+
+export function logout(){
+  return function (dispatch) {
+    dispatch({ type: LOGOUT });
+  }
+}
+
+export function login(user){
+  return async function (dispatch) {
+    let info = await axios.post("http://localhost:3001/login", user);
+    console.log(info)
+    dispatch({ type: LOGIN, payload: info.data });
+  }
+}
 
 export function getServices() {
   return async function (dispatch) {

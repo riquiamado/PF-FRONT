@@ -14,6 +14,9 @@ import {
   DELETE_USER,
   DELETE_SERVICE,
   ADD_TO_CART,
+  LOGIN,
+  LOGOUT,
+  GET_USER_BY_EMAIL
 } from "../actions/components";
 
 const initialState = {
@@ -22,10 +25,26 @@ const initialState = {
   users: [],
   cart: [],
   details: {},
+  userSession: {}
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case GET_USER_BY_EMAIL:
+      return {
+        ...state,
+        userSession: action.payload
+      }
+    case LOGOUT:
+      return {
+        ...state,
+        userSession: {}
+      };
+    case LOGIN:
+      return {
+        ...state,
+        userSession: action.payload
+      };
     case GET_SERVICES:
       return {
         ...state,
