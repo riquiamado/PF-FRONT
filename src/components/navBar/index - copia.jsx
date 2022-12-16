@@ -9,8 +9,11 @@ import "./navBar.css";
 
 function NavBar() {
   const { isAuthenticated } = useAuth0();
+<<<<<<< HEAD:src/components/navBar/index - copia.jsx
   console.log(isAuthenticated);
 
+=======
+>>>>>>> origin/main:src/components/navBar/index.jsx
 
   return (
     <nav className="navbar">
@@ -27,8 +30,15 @@ function NavBar() {
         <Link to={"/checkLogin"}>
           <button className="Btn">Create services</button>
         </Link>
+<<<<<<< HEAD:src/components/navBar/index - copia.jsx
       {isAuthenticated ? <LogoutButton /> : <LoginButton />}
 
+=======
+        <Link to={"/dashboard"}>
+          {isAuthenticated ? <button className="Btn">Dash board</button> : <span></span>}    
+        </Link>
+      {isAuthenticated ? <LogoutButton /> : <LoginButton />} 
+>>>>>>> origin/main:src/components/navBar/index.jsx
       </div>
     </nav>
   );

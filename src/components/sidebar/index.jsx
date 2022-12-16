@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { SidebarData } from './index.js';
 import { UilSignout } from '@iconscout/react-unicons'
+import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import LoginButton from '../LoginButton/index.jsx';
 import './sidebar.css';
 
 const SideBar = () => {
 
+    const { user } = useAuth0()
+    const { name, picture, email} = user;
     const [selected, setSelected] =useState(0)
 
     return(
@@ -12,7 +16,7 @@ const SideBar = () => {
             <div className='logo'>
                 <img src="https://img.icons8.com/ios-filled/512/user-male-circle.png" alt="profile-pic"/>
                 {/* TODO: Should pass user name */}
-                <span>User</span> 
+                <span>{ name }</span> 
             </div>
             <div className='menu'>
                 {SidebarData.map((item, index) => {
@@ -37,4 +41,6 @@ const SideBar = () => {
     )
 }
 
-export default SideBar;
+export default withAuthenticationRequired(SideBar, {
+    onRedirecting: () => <LoginButton />,
+});
