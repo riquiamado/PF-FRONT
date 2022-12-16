@@ -7,7 +7,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actions'
 import { addToCart } from '../../redux/actions/actions';
 import { useAuth0 } from "@auth0/auth0-react";
-<<<<<<< HEAD
+
 
 
 import Cart from "../carrito";
@@ -16,8 +16,8 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import {  useLocation } from "react-router-dom";
 
-=======
->>>>>>> origin/main
+
+
 
 const CardDetails = () => {
     const { user, isAuthenticated } = useAuth0();
@@ -39,7 +39,6 @@ const [show, setShow] = useState(false);
     const handleAddToCart = () => {
         const data = { id: _id, email: user.email }
         dispatch(addToCart(data))
-<<<<<<< HEAD
         //history.push("/cart")
 
         {<Offcanvas show={show} onHide={handleClose} placement={'end'}>
@@ -51,10 +50,10 @@ const [show, setShow] = useState(false);
         </Offcanvas.Body>
         </Offcanvas>}
 
-=======
+
         // console.log(data)
         history.push("/cart")
->>>>>>> origin/main
+
 
     }
 
