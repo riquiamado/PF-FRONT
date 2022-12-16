@@ -1,5 +1,4 @@
-import { React, useState } from 'react';
-//import React from 'react'
+import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -8,45 +7,25 @@ import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actio
 import { addToCart } from '../../redux/actions/actions';
 import { useAuth0 } from "@auth0/auth0-react";
 
-
-import Cart from "../carrito";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Offcanvas from "react-bootstrap/Offcanvas";
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import {  useLocation } from "react-router-dom";
-
-
 const CardDetails = () => {
     const { user, isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
 
-    
     const history = useHistory()
+
+
+
     const { _id } = useParams()
 
-
-
-const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
 
 
     const handleAddToCart = () => {
         const data = { id: _id, email: user.email }
         dispatch(addToCart(data))
-        //history.push("/cart")
-
-        {<Offcanvas show={show} onHide={handleClose} placement={'end'}>
-        <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Container Cart</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-        <Cart />
-        </Offcanvas.Body>
-        </Offcanvas>}
-
+        // console.log(data)
+        history.push("/cart")
 
     }
 
@@ -86,20 +65,9 @@ const [show, setShow] = useState(false);
                     </div>
 
                     <div className="delete-container">
-             
-             <button className="Btn" onClick={handleShow}>Cart</button>
-            <Offcanvas show={show} onHide={handleClose} placement={'end'}>
-            <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Container Cart</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-            <Cart />
-            </Offcanvas.Body>
-            </Offcanvas>
-   
 
 
-           {isAuthenticated && <button onClick={() => handleAddToCart()}>cart</button>}
+                        {isAuthenticated && <button onClick={() => handleAddToCart()}>cart</button>}
 
                         {/* <div className="delete-container">
                         <button className='delete-btn' 
