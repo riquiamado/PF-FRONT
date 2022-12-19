@@ -30,7 +30,9 @@ const SearchBar = (props) => {
         placeholder={props.theText}
       />
       <button onClick={(el) => handleSubmit(el)} className="btn">
-        🔍
+        <span class="material-symbols-outlined">
+          search
+        </span>
       </button>
     </div>
   );

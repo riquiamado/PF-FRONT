@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { addUsers } from "../../redux/actions/actions";
+import { addUsers, login } from "../../redux/actions/actions";
 import styles from "./createUser.module.css";
 
 function Validate(input) {
@@ -15,16 +15,19 @@ function Validate(input) {
 
   if (/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/.test(input.email)) {
     errors.email = "email must be an email";
-  } else if (input.name.length < 6 && input.name.length > 30) {
-    errors.email = "aaaaaahhhhhhhhhhhhhhhhh";
+  } else if (input.email.length < 6 && input.email.length > 30) {
+    errors.email =
+      "Email should be at least 6 characters and below 30 characters";
   }
 
   if (
     /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/.test(
-      input.name
+      input.password
     )
   ) {
     errors.password = "password invalid";
+  }  else if (input.password.length < 6){
+    errors.password = "password should at least have 6 characters"
   }
   return errors;
 }
@@ -55,30 +58,48 @@ const CreateUser = () => {
   }
 
   function handleSubmit(el) {
-    el.preventDefault();
-    setErrors(
-      Validate({
-        ...input,
-        [el.target.name]: el.target.value,
-      })
-    );
-    if (Object.values(errors).length === 0) {
-      dispatch(addUsers(input));
-      alert("User create");
-      setInput({
-        name: "",
-        email: "",
-        password: "",
-      });
-      history.push("/home");
-    } else {
-      alert("complete login please ");
+    try {
+      el.preventDefault();
+      setErrors(
+        Validate({
+          ...input,
+          [el.target.name]: el.target.value,
+        })
+      );
+      if (Object.values(errors).length === 0) {
+
+        dispatch(addUsers(input));
+
+        const session = {
+          name: input.name,
+          email: input.email
+        }
+
+        window.localStorage.setItem(
+          'userSession', JSON.stringify(session)
+        )
+
+
+        alert("User created");
+        dispatch(login(input));
+        setInput({
+          name: "",
+          email: "",
+          password: "",
+        });
+        history.push("/");
+      } else {
+        alert("complete login please ");
+      }      
+    } catch (error) {
+      console.log(error)
     }
+
   }
 
   return (
     <div className={styles.page}>
-      <Link to={"/home"}>
+      <Link to={"/"}>
         <button>Volver</button>
       </Link>
       <div>
@@ -122,6 +143,11 @@ const CreateUser = () => {
             value={"create user"}
           />
         </form>
+        <div>
+          <Link to={'/login'}>
+            <label>Already Registered? Click Here.</label>
+          </Link>
+        </div>
       </div>
     </div>
   );
