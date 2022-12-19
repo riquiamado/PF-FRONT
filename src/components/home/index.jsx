@@ -51,49 +51,60 @@ function Home() {
   }, [dispatch]);
 
   return (
-
-    <div className="home">
-      <div className="filters">
-        <select className="select" onChange={(e) => handleSortRating(e)}>
-        <option value="all">By Rating</option>
-          <option value="highest">Highest</option>
-          <option value="lowest">Lowest</option>
-        </select>
-        <select className="select" onChange={(e) => handleSortName(e)}>
-          <option value={"All"}>Search and Sort</option>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
-        </select>
-        <select className="select" onChange={(e) => handleSortCategory(e)}>
-          <option value={"All"}>Category</option>
-          {allServices.map((idx) => (<option key={idx.id} value={idx.id}>{idx.name}</option>))}
-        </select>
+    <>
+    <div class="container-fluid mt-3 shadow p-3 mb-3 bg-body rounded">
+      <div class="row g-3 pb-0">
+      <div class="col-sm pb-0">
+        <div class="form-floating pb-0">
+          <select class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded" id="floatingSelectGrid" onChange={(e) => handleSortRating(e)}>
+              <option class="ps-2"selected>Order by rating</option>
+              <option value="highest">Highest</option>
+              <option value="lowest">Lowest</option>
+          </select> 
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="form-floating">
+          <select class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded" id="floatingSelectGrid" onChange={(e) => handleSortName(e)}>
+            <option selected>Order by sort</option>
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="form-floating">
+          <select class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded" id="floatingSelectGrid" onChange={(e) => handleSortCategory(e)}>
+            <option selected>Order by category</option>
+            <option value={"All"}>Category</option>
+              {allServices.map((idx) => (<option key={idx.id} value={idx.id}>{idx.name}</option>))}
+          </select>
+        </div>
+      </div>
+    </div>
         <Paginate
           servicesPerPage={servicesPerPage}
           allServices={allServices.length}
           paginado={paginado}
         />
-      </div>
-      <div className="">
-        <div className="cards-home">
-          {currentServices?.map((el, index) => {
-            return (
-              <div key={index}>
-                <Cards
-                  _id={el._id}
-                  name={el.name}
-                  description={el.description}
-                  image={el.image ? el.image.secure_url : ""}
-                />
-              </div>
-            );
-          })}
-
-        </div>
-       
-
+    </div>
+    <div class="container-fluid mt-2 shadow p-3 mb-4 bg-body rounded">
+      <div className="cards-home">
+        {currentServices?.map((el, index) => {
+          return (
+            <div key={index}>
+              <Cards
+                _id={el._id}
+                name={el.name}
+                description={el.description}
+                image={el.image ? el.image.secure_url : ""}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
+    </>
   );
 }
 
