@@ -6,6 +6,8 @@ import {
   GET_USER_BY_EMAIL,
   DELETE_USER,
   UPDATE_USER,
+  LOGIN,
+  LOGOUT,
 
   GET_SERVICES,
   GET_SERVICES_DETAILS,
@@ -30,6 +32,7 @@ const initialState = {
   services: [],
   allServices: [],
   users: [],
+  userSession: {},
   cart: [],
   details: {},
   categoriasFiltradas: [],
@@ -41,6 +44,16 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     //---------------------User------------------------------
+    case LOGOUT:
+      return {
+        ...state,
+        userSession: {}
+      };
+    case LOGIN:
+      return {
+        ...state,
+        userSession: action.payload
+      };
     case GET_USERS:
       return {
         ...state,
