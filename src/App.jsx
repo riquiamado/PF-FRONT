@@ -9,6 +9,8 @@ import NavBar from "./components/navBar";
 import "./App.css";
 import { checkLogin } from "./components/checkLogin";
 import Dashboard from "./components/dashboard";
+import { ProfileLocal } from "./components/profileLocal";
+import LoginUser from "./components/loginUser";
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
       <Route exact path="/checkLogin" component={checkLogin} />
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/cart" component={Cart} />
+      <Route exact path="/profile" component={ProfileLocal} />
+      <Route exact path="/login" component={LoginUser} />
       <Route path="/services/:_id" component={CardDetails} />
     </div>
   );

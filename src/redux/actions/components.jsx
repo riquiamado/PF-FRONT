@@ -6,6 +6,8 @@ export const GET_USERS_DETAILS = "GET_PROVIDER_DETAILS"
 export const ADD_USERS = "ADD_USERS"
 export const DELETE_USER = "DELETE_USER"
 export const UPDATE_USER = "UPDATE_USER"
+export const LOGIN = "LOGIN"
+export const LOGOUT = "LOGOUT"
 
 //---------------------Service------------------------------
 export const GET_SERVICES= "GET_SERVICES"
