@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { addUsers, login } from "../../redux/actions/actions";
-import styles from "./createUser.module.css";
+import { addUsers, getUserByEmail, getUsers, login } from "../../redux/actions/actions";
+import styles from "../createUser/createUser.module.css";
+
 
 function Validate(input) {
   let errors = {};
-  if (/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>\d/?~]/.test(input.name)) {
-    errors.name = "name can not contain numbers or special characters";
-  } else if (input.name.length < 3 || input.name.length > 40) {
-    errors.name = "invalid name";
-  }
 
-  if (/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/.test(input.email)) {
+  if (!(input.email.includes("@")) && !(input.email.includes("."))) {
     errors.email = "email must be an email";
   } else if (input.email.length < 6 && input.email.length > 30) {
     errors.email =
@@ -24,20 +20,24 @@ function Validate(input) {
     /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/.test(
       input.password
     )
-  ) {
+  ){
     errors.password = "password invalid";
-  }  else if (input.password.length < 6){
+  } else if (input.password.length < 6){
     errors.password = "password should at least have 6 characters"
   }
   return errors;
 }
 
-const CreateUser = () => {
+const LoginUser = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const userMail = useSelector((state) => state.userSession);
+
+//   useEffect(() =>{
+//     dispatch(getUserByEmail(input.email))
+// } ,[dispatch])
 
   const [input, setInput] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -45,6 +45,7 @@ const CreateUser = () => {
   const [errors, setErrors] = useState({});
 
   function handleChange(el) {
+
     setInput({
       ...input,
       [el.target.name]: el.target.value,
@@ -55,9 +56,10 @@ const CreateUser = () => {
         [el.target.name]: el.target.value,
       })
     );
+    console.log(errors);
   }
 
-  function handleSubmit(el) {
+  async function handleSubmit(el) {
     try {
       el.preventDefault();
       setErrors(
@@ -67,29 +69,28 @@ const CreateUser = () => {
         })
       );
       if (Object.values(errors).length === 0) {
+        dispatch(getUserByEmail(input.email));
 
-        dispatch(addUsers(input));
-
-        const session = {
-          name: input.name,
-          email: input.email
+        const userTryLogin = {
+            email: input.email,
+            password: input.password
         }
 
+        alert("User logged in successfully");
+
         window.localStorage.setItem(
-          'userSession', JSON.stringify(session)
-        )
+            'userSession', JSON.stringify(input.email)
+        );
 
+        dispatch(login(userTryLogin));
 
-        alert("User created");
-        dispatch(login(input));
         setInput({
-          name: "",
           email: "",
           password: "",
         });
         history.push("/");
       } else {
-        alert("complete login please ");
+        alert("complete login please");
       }      
     } catch (error) {
       console.log(error)
@@ -104,17 +105,6 @@ const CreateUser = () => {
       </Link>
       <div>
         <form onSubmit={(el) => handleSubmit(el)}>
-          <div>
-            <label htmlFor="">Name:</label>
-            <input
-              type="text"
-              value={input.name}
-              name={"name"}
-              onChange={(el) => handleChange(el)}
-            />
-            <br />
-            {errors.name ? <label>{errors.name}</label> : null}
-          </div>
           <div>
             <label htmlFor="">Email:</label>
             <input
@@ -140,17 +130,12 @@ const CreateUser = () => {
           <input
             className={styles.create}
             type="submit"
-            value={"create user"}
+            value={"Login"}
           />
         </form>
-        <div>
-          <Link to={'/login'}>
-            <label>Already Registered? Click Here.</label>
-          </Link>
-        </div>
       </div>
     </div>
   );
 };
 
-export default CreateUser;
+export default LoginUser;

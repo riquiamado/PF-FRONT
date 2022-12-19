@@ -7,17 +7,17 @@
 }
 
 .search ::placeholder {
-  color: #7e7e7e;
+  color: #c9c5c5;
   top: 100px;
 }
 
 .search input {
-  color: #7e7e7e;
+  color: #c9c5c5;
 }
 
 .input {
   width: 560px;
-  font-size: 20px;
+  font-size: 21px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   font-family: "Times New Roman";
   outline: none;
