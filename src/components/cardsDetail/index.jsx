@@ -37,23 +37,12 @@ const [show, setShow] = useState(false);
 
 
     const handleAddToCart = () => {
-        const data = { id: _id, email: user.email }
-        dispatch(addToCart(data))
+       // const data = { id: _id, email: user.email }  //nota: sera mejor bajar los datos en el cart ??
+        dispatch(addToCart(details))   //enviamos el servicio seleccinado a cart
+      
         //history.push("/cart")
-
-        {<Offcanvas show={show} onHide={handleClose} placement={'end'}>
-        <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Container Cart</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-        <Cart />
-        </Offcanvas.Body>
-        </Offcanvas>}
-
-
         // console.log(data)
-        history.push("/cart")
-
+        // history.push("/cart")
 
     }
 
@@ -65,7 +54,7 @@ const [show, setShow] = useState(false);
     return details && details._id ? (
         <div>
             <Link to={"/"}>
-                <button>Volver</button>
+                <button>Return</button>
             </Link>
 
             <div>
@@ -94,18 +83,18 @@ const [show, setShow] = useState(false);
 
                     <div className="delete-container">
 
-             
+                    <button className="Btn" onClick={() => handleAddToCart()} >Add</button>
              <button className="Btn" onClick={handleShow}>Cart</button>
             <Offcanvas show={show} onHide={handleClose} placement={'end'}>
             <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Container Cart</Offcanvas.Title>
+            <Offcanvas.Title>My ShoppingCart</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
             <Cart />
             </Offcanvas.Body>
             </Offcanvas>
-   
 
+        
 
            {isAuthenticated && <button onClick={() => handleAddToCart()}>cart</button>}
 

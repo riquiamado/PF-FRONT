@@ -148,16 +148,27 @@ export function resetAllServices() {
 }
 
 //-----------------------------------Cart---------------------------------------------
+//export function addToCart(payload){
+//  console.log(payload);
+//  return async function(dispatch){
+//    const info = await axios.post(`https://pf-back-production-b443.up.railway.app/cart`,payload)
+//    dispatch({
+//      type:ADD_TO_CART,
+//      payload: info.data
+//    });
+//  }
+//}
+
+// Solamente pasamos el servicio a reducer
 export function addToCart(payload){
   console.log(payload);
-  return async function(dispatch){
-    const info = await axios.post(`https://pf-back-production-b443.up.railway.app/cart`,payload)
-    dispatch({
-      type:ADD_TO_CART,
-      payload: info.data
-    });
-  }
+  return {
+    type: ADD_TO_CART,
+    payload: payload,
+  };
 }
+
+
 
 //-----------------------------------Other---------------------------------------------
 export function clean() {
