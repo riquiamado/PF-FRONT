@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { addUsers, getUserByEmail, getUsers, login } from "../../redux/actions/actions";
 import styles from "../createUser/createUser.module.css";
-import loginService from "../../services/login";
 
 function Validate(input) {
   let errors = {};
