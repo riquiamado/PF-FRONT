@@ -16,6 +16,8 @@ import {
   DELETE_USER,
   DELETE_SERVICE,
   UPDATE_USER,
+  LOGIN,
+  LOGOUT,
 
   RESET_ESTADO,
 
@@ -26,6 +28,20 @@ import {
 
 
 //-----------------------------------User---------------------------------------------
+export function logout(){
+  return function (dispatch) {
+    dispatch({ type: LOGOUT });
+  }
+}
+
+export function login(user){
+  return async function (dispatch) {
+    let info = await axios.post("http://localhost:3001/login", user);
+    console.log(info)
+    dispatch({ type: LOGIN, payload: info.data });
+  }
+}
+
 export function getUsers() {
   return async function (dispatch) {
     const info = await axios.get(`https://pf-back-production-b443.up.railway.app/users`);
