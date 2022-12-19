@@ -2,9 +2,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #57cc99;
-  height: 80px;
 }
+.navbar {
+	background: linear-gradient(-45deg, #b052ee, #cb3ce7, #6fb4ce, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 20s ease infinite;
+	height: 16vh;
+}
+
+.csdcs {
+  font-family: 'Libre Baskerville', serif;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 
 .img {
   height: 80px;
@@ -20,25 +41,22 @@
 }
 
 .logo:hover {
-  background: #6debb4;
   cursor: pointer;
-  height: 83px;
 }
 
 .Btn {
   margin-right: 2rem;
-  width: 60px;
-  height: 60px;
-  background: #57cc99;
+  width: 75px;
+  height: 65px;
+  background: transparent;
   border: 0px;
   font-family: "Times New Roman";
   font-weight: bolder;
   font-size: 20px;
-  color: #472183;
+  color: #fafafa;
 }
 
 .Btn:hover {
-  background: #6debb4;
   cursor: pointer;
 }
 
