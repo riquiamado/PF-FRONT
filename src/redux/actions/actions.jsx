@@ -28,7 +28,7 @@ import {
 //-----------------------------------User---------------------------------------------
 export function getUsers() {
   return async function (dispatch) {
-    const info = await axios.get(`http://localhost:3001/users/`);
+    const info = await axios.get(`https://pf-back-production-b443.up.railway.app/users`);
     console.log(info.data);
     dispatch({ type: GET_USERS, payload: info.data });
   };
@@ -36,14 +36,14 @@ export function getUsers() {
 
 export const getUserById = id => {
   return async function(dispatch) {
-    const res = await axios.get(`http://localhost:3001/users/${id}`);
+    const res = await axios.get(`https://pf-back-production-b443.up.railway.app/users/${id}`);
     dispatch({ type: GET_USER_BY_ID, payload: res.data });
   }
 }
 
 export const getUserByEmail = email => {
   return async function(dispatch) {
-    const res = await axios.get(`http://localhost:3001/userEmail?email=${email}`);
+    const res = await axios.get(`https://pf-back-production-b443.up.railway.app/userEmail?email=${email}`);
     dispatch({ type: GET_USER_BY_EMAIL, payload: res.data });
   }
 }
@@ -64,7 +64,7 @@ export function deleteUser(email) {
 
 export const updateUser = (id, payload) => {
   return async function(dispatch) {
-    let res = await axios.put(`http://localhost:3001/users/${id}`, payload);
+    let res = await axios.put(`https://pf-back-production-b443.up.railway.app/users/${id}`, payload);
     dispatch({ type: UPDATE_USER, payload: res.data });
   }
 }
