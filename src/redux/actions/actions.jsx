@@ -36,7 +36,7 @@ export function logout(){
 
 export function login(user){
   return async function (dispatch) {
-    let info = await axios.post("http://localhost:3001/login", user);
+    let info = await axios.post("https://pf-back-production-b443.up.railway.app/login", user);
     console.log(info)
     dispatch({ type: LOGIN, payload: info.data });
   }
