@@ -10,8 +10,9 @@
 	height: 16vh;
 }
 
-.csdcs {
+#csdcs {
   font-family: 'Libre Baskerville', serif;
+  padding-top: 4px;
 }
 
 @keyframes gradient {

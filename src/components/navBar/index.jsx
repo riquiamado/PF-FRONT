@@ -19,17 +19,13 @@ function NavBar() {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <nav class="navbar">
+    <nav class="navbar shadow-sm">
       <div class="container-fluid" className="logo">
         <Link to="/">
           <img className="img" src="/images/logo.png" />
         </Link>
-        <Link
-          to="/"
-          className="csdcs"
-          style={{ textDecoration: "none", color: "#fafafa" }}
-        >
-          <h2>Freelance Workers</h2>
+        <Link to="/" style={{ textDecoration: "none", color: "#fafafa"}}>
+          <h4 id="csdcs">Freelance Workers</h4>
         </Link>
       </div>
       <SearchBar theText={"Search"} />
