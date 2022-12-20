@@ -1,5 +1,5 @@
-
-import React from 'react'
+import { React, useState } from 'react';
+//import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -9,25 +9,41 @@ import { addToCart } from '../../redux/actions/actions';
 import { useAuth0 } from "@auth0/auth0-react";
 import "./cardDetail.css";
 
+
+
+import Cart from "../carrito";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Offcanvas from "react-bootstrap/Offcanvas";
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import {  useLocation } from "react-router-dom";
+
+
+
+
 const CardDetails = () => {
     const { user, isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
 
+    
     const history = useHistory()
-
-
-
     const { _id } = useParams()
 
 
 
+const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
 
     const handleAddToCart = () => {
-        const data = { id: _id, email: user.email }
-        dispatch(addToCart(data))
+       // const data = { id: _id, email: user.email }  //nota: sera mejor bajar los datos en el cart ??
+        dispatch(addToCart(details))   //enviamos el servicio seleccinado a cart
+      
+        //history.push("/cart")
         // console.log(data)
-        history.push("/cart")
+        // history.push("/cart")
 
     }
 
@@ -77,7 +93,17 @@ const CardDetails = () => {
                     <h3>{details.user.email}</h3>
                 </div>
                 <div className="delete-container">
-                    {isAuthenticated && <button onClick={() => handleAddToCart()}>cart</button>}
+                    {isAuthenticated && <button class="btn btn-lg btn-primary" onClick={() => handleAddToCart()}>Add to Cart</button>}
+             
+             <button class="btn btn-lg btn-primary"  onClick={handleShow}>View Cart</button>
+            <Offcanvas show={show} onHide={handleClose} placement={'end'}>
+            <Offcanvas.Header closeButton>
+            <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+            <Cart />
+            </Offcanvas.Body>
+            </Offcanvas>
                 </div>
                 
             </div>
@@ -98,5 +124,7 @@ const CardDetails = () => {
         );
 };
 
+
 export default CardDetails;
+
 
