@@ -53,59 +53,6 @@ const [show, setShow] = useState(false);
     }, [dispatch, _id])
 
     return details && details._id ? (
-<<<<<<< HEAD
-        <div>
-            <Link to={"/"}>
-                <button>Return</button>
-            </Link>
-
-            <div>
-                <div>
-                    <img src={details.image.secure_url} alt={details.image.secure_url} />
-
-                    <h1>{details.name}</h1>
-                    <label htmlFor="">Description</label>
-                    <h3>{details.description}</h3>
-                    <label htmlFor="">Reviews</label>
-                    <h3>{details.reviews}</h3>
-                    <label htmlFor="">Rating</label>
-                    <h3>{details.rating}</h3>
-                </div>
-                <div>
-
-                    <h1>User Provider</h1>
-
-                    <div >
-                        <label htmlFor="">Name</label>
-                        <h3>{details.user.name}</h3>
-                        <label htmlFor="">Mail</label>
-                        <h3>{details.user.email}</h3>
-
-                    </div>
-
-                    <div className="delete-container">
-
-                    <button className="Btn" onClick={() => handleAddToCart()} >Add</button>
-             <button className="Btn" onClick={handleShow}>Cart</button>
-            <Offcanvas show={show} onHide={handleClose} placement={'end'}>
-            <Offcanvas.Header closeButton>
-            <Offcanvas.Title>My ShoppingCart</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-            <Cart />
-            </Offcanvas.Body>
-            </Offcanvas>
-
-        
-
-           {isAuthenticated && <button onClick={() => handleAddToCart()}>cart</button>}
-
-
-                        {/* <div className="delete-container">
-                        <button className='delete-btn' 
-                                onClick={() => handleDelete()} >Delete User</button>
-                    </div> */}
-=======
         <>
         <div class="container-sm mt-2 shadow p-3 mb-4 bg-body rounded">
             <div class="main row">
@@ -133,7 +80,6 @@ const [show, setShow] = useState(false);
                                 <h3>{details.rating}</h3>
                             </div>
                         </div>
->>>>>>> origin/main
                     </div>
                 </div>
             </div>
@@ -147,7 +93,17 @@ const [show, setShow] = useState(false);
                     <h3>{details.user.email}</h3>
                 </div>
                 <div className="delete-container">
-                    {isAuthenticated && <button onClick={() => handleAddToCart()}>cart</button>}
+                    {isAuthenticated && <button class="btn btn-lg btn-primary" onClick={() => handleAddToCart()}>Add to Cart</button>}
+             
+             <button class="btn btn-lg btn-primary"  onClick={handleShow}>View Cart</button>
+            <Offcanvas show={show} onHide={handleClose} placement={'end'}>
+            <Offcanvas.Header closeButton>
+            <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+            <Cart />
+            </Offcanvas.Body>
+            </Offcanvas>
                 </div>
                 
             </div>
@@ -168,9 +124,7 @@ const [show, setShow] = useState(false);
         );
 };
 
-<<<<<<< HEAD
-            export default CardDetails;
-=======
+
 export default CardDetails;
 
->>>>>>> origin/main
+

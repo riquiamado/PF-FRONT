@@ -6,45 +6,33 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
+import { deleteToCart } from '../../redux/actions/actions'
 
 const Cart = () => {
   const dispatch = useDispatch()
   const CartContent = useSelector((state) => state.cart)
 
-// console.log(CartContent); // para saber si recibe state.cart
-
+  function removeCart(arg) {
+   dispatch(deleteToCart(arg));
+  }
 
   return (
-  
-    <>
-      
+  <>
+ 
+ {CartContent.map((idx) => (
+ <div>
+ <p>Service:    {idx.name}   <button type="button" class="btn btn-warning" key={idx._id} onClick={(e) => removeCart(idx._id)}>x</button></p>
+ <p>Price: </p>
+ <hr />
+ </div>
+ ))
+ }
+<hr />
+<p>Total:</p>
 
-
-
-      <h3>Service</h3>
-      <h6>{CartContent.name}</h6>
-      <h3>Price</h3>
-      <h3>Total $</h3>
       
-
-{/* CartContent.map((idx) => (<h3>{idx.name}</h3>))*/}
-{
-Object.entries(CartContent).forEach(([key, value]) => {
-
-  console.log("result:" + value)
-	})
-}
-      
-      
-      
-      
-
-      <button type="button" class="btn btn-warning">x</button>
       <button type="button" class="btn btn-warning">Contract</button>
-
-
- </>
+</>
   ); 
 
 }

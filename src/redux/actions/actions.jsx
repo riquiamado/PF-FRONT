@@ -22,7 +22,8 @@ import {
   RESET_ESTADO,
 
   ADD_TO_CART,
-  GET_USER_BY_EMAIL
+  DELETE_TO_CART,
+  GET_USER_BY_EMAIL,
 
 } from "./components";
 
@@ -183,6 +184,16 @@ export function addToCart(payload){
     payload: payload,
   };
 }
+
+// Solamente pasamos el _id al reducer
+export function deleteToCart(payload){
+  //console.log(payload);
+  return {
+    type: DELETE_TO_CART,
+    payload: payload,
+  };
+}
+
 
 
 
