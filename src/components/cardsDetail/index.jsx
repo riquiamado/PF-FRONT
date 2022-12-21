@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom'
 import { useParams, useHistory } from 'react-router-dom'
 import { clean, getServicesDetails, deleteUser } from '../../redux/actions/actions'
 import { addToCart } from '../../redux/actions/actions';
-import { useAuth0 } from "@auth0/auth0-react";
+//import { useAuth0 } from "@auth0/auth0-react";
 import "./cardDetail.css";
 
 const CardDetails = () => {
-    const { user, isAuthenticated } = useAuth0();
+    //const { user, isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
     const details = useSelector((state) => state.details)
+    const userSessionLocal = useSelector((state) => state.userSession);
 
     const history = useHistory()
 
@@ -24,7 +25,8 @@ const CardDetails = () => {
 
 
     const handleAddToCart = () => {
-        const data = { id: _id, email: user.email }
+        
+        const data = { id: _id, email: userSessionLocal.email }
         dispatch(addToCart(data))
         // console.log(data)
         history.push("/cart")
@@ -77,7 +79,7 @@ const CardDetails = () => {
                     <h3>{details.user.email}</h3>
                 </div>
                 <div className="delete-container">
-                    {isAuthenticated && <button onClick={() => handleAddToCart()}>cart</button>}
+                    {/* {isAuthenticated && */<button onClick={() => handleAddToCart()}>cart</button>} 
                 </div>
                 
             </div>

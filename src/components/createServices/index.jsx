@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { addServices } from "../../redux/actions/actions";
 import styles from "./createServices.module.css";
-import { useAuth0 } from "@auth0/auth0-react";
+//import { useAuth0 } from "@auth0/auth0-react";
 
 function Validate(input) {
   let errors = [];
@@ -22,8 +22,8 @@ function Validate(input) {
 }
 
 const CreateServices = () => {
-  const { user } = useAuth0();
-
+  //const { user } = useAuth0();
+  const userSessionLocal = useSelector((state) => state.userSession);
   const dispacth = useDispatch();
   const history = useHistory();
 
@@ -63,9 +63,9 @@ const CreateServices = () => {
     );
 
     const formData = new FormData();
-    formData.append("userName", user.name);
-    formData.append("userImage", user.picture);
-    formData.append("userEmail", user.email);
+    formData.append("userName", userSessionLocal.name);
+    //formData.append("userImage", userSessionLocal.picture);
+    formData.append("userEmail", userSessionLocal.email);
     formData.append("image", image);
     formData.append("name", input.name);
     formData.append("description", input.description);

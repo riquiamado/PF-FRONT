@@ -18,6 +18,7 @@ import {
   UPDATE_USER,
   LOGIN,
   LOGOUT,
+  LOGIN_GOOGLE,
 
   RESET_ESTADO,
 
@@ -28,6 +29,12 @@ import {
 
 
 //-----------------------------------User---------------------------------------------
+export function loginGoogle(user){
+  return function (dispatch) {
+    dispatch({ type: LOGIN_GOOGLE , payload: user});
+  }
+}
+
 export function logout(){
   return function (dispatch) {
     dispatch({ type: LOGOUT });
@@ -36,8 +43,8 @@ export function logout(){
 
 export function login(user){
   return async function (dispatch) {
-    let info = await axios.post("https://pf-back-production-b443.up.railway.app/login", user);
-    console.log(info)
+    let info = await axios.post("http://localhost:3001/login", user);
+    
     dispatch({ type: LOGIN, payload: info.data });
   }
 }
@@ -60,6 +67,7 @@ export const getUserById = id => {
 export const getUserByEmail = email => {
   return async function(dispatch) {
     const res = await axios.get(`https://pf-back-production-b443.up.railway.app/userEmail?email=${email}`);
+    console.log
     dispatch({ type: GET_USER_BY_EMAIL, payload: res.data });
   }
 }

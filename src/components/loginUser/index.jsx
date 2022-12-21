@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { addUsers, getUserByEmail, getUsers, login } from "../../redux/actions/actions";
+import { addUsers, getUserByEmail, getUsers, login, loginGoogle } from "../../redux/actions/actions";
+import { GoogleLoginButton } from "react-social-login-buttons";
+import { LoginSocialGoogle } from "reactjs-social-login"
 import styles from "../createUser/createUser.module.css";
 
 
@@ -132,6 +134,41 @@ const LoginUser = () => {
             type="submit"
             value={"Login"}
           />
+          <div><Link to={'/users'}><label>Or Create new account</label></Link></div>
+          <div>
+            <LoginSocialGoogle
+            client_id={"327874418838-9lum1l34s28h1d2v5i5j0mc9oe9evl1h.apps.googleusercontent.com"}
+            scope="openid profile email"
+            discoveryDocs="claims_supported"
+            access_type="offline"
+            onResolve={({ provider, data }) => {
+              console.log(provider);
+              console.log(data);
+
+              const userGoogle = {
+                name: data.name,
+                email: data.email,
+                //tokenGoogle: data.access_token,
+                picture: data.picture
+              }
+
+              dispatch(loginGoogle(userGoogle));
+
+              window.localStorage.setItem(
+                'userSession', JSON.stringify(userGoogle)
+              );
+
+              alert("User logged in successfully");
+
+              history.push("/");
+            }}
+            onReject={(err) => {
+              console.log(err);
+            }}
+            >
+              <GoogleLoginButton />
+            </LoginSocialGoogle>
+          </div>
         </form>
       </div>
     </div>

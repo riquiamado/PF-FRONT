@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/actions/actions";
 import LoginLocalBtn from "../loginLocalBtn";
 import LogoutLocalBtn from "../logoutLocalBtn";
+import { Link } from "react-router-dom";
 
 const LoginLocal = () => {
 
     const [user, setUser] = useState(null)
     const dispatch = useDispatch();
+    const userSessionLocal = useSelector((state) => state.userSession);
 
     useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('userSession');
@@ -20,7 +22,13 @@ const LoginLocal = () => {
     },[dispatch])  
 
   return (
-    <div>{user ? <LogoutLocalBtn /> : <LoginLocalBtn />}</div>
+    <div>{Object.values(userSessionLocal).length === 0 ? (
+      <LoginLocalBtn />
+    ) : (
+      <Link to="/profile">
+        <button>{userSessionLocal.name}</button>
+      </Link>
+    )}</div>
   )
 }
 

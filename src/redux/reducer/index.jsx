@@ -8,6 +8,7 @@ import {
   UPDATE_USER,
   LOGIN,
   LOGOUT,
+  LOGIN_GOOGLE,
 
   GET_SERVICES,
   GET_SERVICES_DETAILS,
@@ -44,6 +45,11 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     //---------------------User------------------------------
+    case LOGIN_GOOGLE:
+      return {
+        ...state,
+        userSession: action.payload
+      }
     case LOGOUT:
       return {
         ...state,

@@ -7,10 +7,10 @@ import { updateUser } from '../../redux/actions/actions';
 import './userSettings.css';
 
 const UserSettings = () => {
-    
+    const userSessionLocal = useSelector((state) => state.userSession);
     // const localUser = useSelector((state) => state.users)
-    const { user } = useAuth0();
-    console.log(user)
+    //const { user } = useAuth0();
+    //console.log(user)
     // console.log(getUserById(user.name))
     
 

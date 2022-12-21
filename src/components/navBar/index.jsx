@@ -5,7 +5,7 @@ import SearchBar from "../searchBar";
 import LoginButton from "../LoginButton";
 import CreateUser from "../createUser";
 import LogoutButton from "../LogoutButton";
-import { useAuth0 } from "@auth0/auth0-react";
+//import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import { login } from "../../redux/actions/actions";
 import LoginLocal from "../login";
@@ -14,9 +14,18 @@ import "./navBar.css";
 
 function NavBar() {
   const userSessionLocal = useSelector((state) => state.userSession);
-  const [savedData, setSavedData] = useState(false);
+  const [user , setUser] = useState(null)
+  
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('userSession');
+    if (loggedUserJSON) {
+        const user = JSON.parse(loggedUserJSON);
+        setUser(user);
+        //dispatch(login(user));
+    }
+  },[])
 
-  const { isAuthenticated } = useAuth0();
+  console.log(user)
 
   return (
     <nav class="navbar shadow-sm">
@@ -34,15 +43,15 @@ function NavBar() {
           <button className="Btn">Create Services</button>
         </Link>
         <Link to={"/dashboard"}>
-          {isAuthenticated ? (
+          {!(Object.values(userSessionLocal).length === 0) ? (
             <button className="Btn">Dash board</button>
           ) : (
             <span></span>
           )}
         </Link>
-        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+        {/* {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
       </div>
-      {Object.values(userSessionLocal).length === 0 ? (
+      {(Object.values(userSessionLocal).length === 0) ? (
         <LoginLocal />
       ) : (
         <Link to="/profile">

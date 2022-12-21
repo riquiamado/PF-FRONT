@@ -8,6 +8,7 @@ export const DELETE_USER = "DELETE_USER"
 export const UPDATE_USER = "UPDATE_USER"
 export const LOGIN = "LOGIN"
 export const LOGOUT = "LOGOUT"
+export const LOGIN_GOOGLE = "LOGIN_GOOGLE"
 
 //---------------------Service------------------------------
 export const GET_SERVICES= "GET_SERVICES"

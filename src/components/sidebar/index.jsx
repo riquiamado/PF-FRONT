@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { SidebarData } from './index.js';
+import { useDispatch, useSelector } from 'react-redux';
 import { UilSignout } from '@iconscout/react-unicons'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import LoginButton from '../LoginButton/index.jsx';
 import './sidebar.css';
 
 const SideBar = () => {
-
-    const { user } = useAuth0()
-    const { name, picture, email} = user;
+    const userSessionLocal = useSelector((state) => state.userSession);
+    //const { user } = useAuth0()
+    const { name, picture, email} = userSessionLocal;
     const [selected, setSelected] =useState(0)
 
     return(
@@ -41,6 +42,4 @@ const SideBar = () => {
     )
 }
 
-export default withAuthenticationRequired(SideBar, {
-    onRedirecting: () => <LoginButton />,
-});
+export default SideBar;

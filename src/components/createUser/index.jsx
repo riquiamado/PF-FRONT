@@ -142,12 +142,13 @@ const CreateUser = () => {
             type="submit"
             value={"create user"}
           />
-        </form>
         <div>
           <Link to={'/login'}>
             <label>Already Registered? Click Here.</label>
           </Link>
         </div>
+        </form>
+
       </div>
     </div>
   );

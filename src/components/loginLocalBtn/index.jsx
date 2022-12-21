@@ -5,7 +5,7 @@ const LoginLocalBtn = () => {
 
   return (
     <div>
-        <Link to={"/users"}>
+        <Link to={"/login"}>
             <button className="Btn">Login</button>
         </Link>
     </div>
