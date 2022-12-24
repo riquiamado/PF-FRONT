@@ -1,21 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { SidebarData } from './index.js';
 import { UilSignout } from '@iconscout/react-unicons'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import { getComponents } from '../../redux/actions/actions.jsx';
 import LoginButton from '../LoginButton/index.jsx';
 import './sidebar.css';
 
 const SideBar = () => {
 
-    const { user } = useAuth0()
+    //Auth0
+    const { user, logout } = useAuth0()
     const { name, picture, email} = user;
-    const [selected, setSelected] =useState(0)
+
+    //element selected
+    const [selected, setSelected] = useState(0);
+
+
+    const dispatch = useDispatch()
+    // useEffect(() => {
+    //     // dispatch(getComponents(SidebarData.map(el => el.heading)));
+    //     dispatch(getComponents())
+    // }, [dispatch])
+
+    const handleComponent = name => {
+        dispatch(getComponents(name))
+    }
 
     return(
         <div className='sidebar'>
             <div className='logo'>
                 <img src="https://img.icons8.com/ios-filled/512/user-male-circle.png" alt="profile-pic"/>
-                {/* TODO: Should pass user name */}
                 <span>{ name }</span> 
             </div>
             <div className='menu'>
@@ -23,7 +38,12 @@ const SideBar = () => {
                     return(
                         <div className={selected === index?'menuItem active': 'menuItem'} 
                         key={index}
-                        onClick={() => setSelected(index)}>
+                        onClick={() => {
+                            //Switches classname and render
+                            setSelected(index);
+                            handleComponent(item.heading);
+                            }}>
+                                
                             <item.icon />
                             <span>
                                 {item.heading}
@@ -32,7 +52,7 @@ const SideBar = () => {
                     )
                 })}
                 
-                <div className='menuItem'>
+                <div className='menuItem' onClick={() => logout({ returnTo: window.location.origin })}>
                     <UilSignout/>
                 </div>
             </div>

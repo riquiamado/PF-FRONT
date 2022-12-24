@@ -20,6 +20,7 @@ import {
   FILTER_BY_SERVICES,
   
   ADD_TO_CART,
+  GET_COMPONENTS,
   RESET_ESTADO,
 
   CLEAN,
@@ -31,6 +32,7 @@ const initialState = {
   allServices: [],
   users: [],
   cart: [],
+  components: [],
   details: {},
   categoriasFiltradas: [],
   limpiador: [],
@@ -182,6 +184,12 @@ function rootReducer(state = initialState, action) {
       }
 
 //---------------------Others------------------------------
+    case GET_COMPONENTS:
+      return {
+        ...state,
+        components: action.payload
+      }
+
     case "RESET_ESTADO":
       return {
         ...state,
@@ -192,6 +200,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         details: {},
+        components: [],
       };
 
     default:

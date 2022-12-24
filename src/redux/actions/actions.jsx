@@ -20,6 +20,7 @@ import {
   RESET_ESTADO,
 
   ADD_TO_CART,
+  GET_COMPONENTS,
   GET_USER_BY_EMAIL
 
 } from "./components";
@@ -160,6 +161,13 @@ export function addToCart(payload){
 }
 
 //-----------------------------------Other---------------------------------------------
+export const getComponents = payload => {
+  return {
+    type: GET_COMPONENTS,
+    payload: payload
+  }
+}
+
 export function clean() {
   return function (dispatch) {
     dispatch({

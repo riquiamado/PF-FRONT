@@ -8,12 +8,8 @@ import './userSettings.css';
 
 const UserSettings = () => {
     
-    // const localUser = useSelector((state) => state.users)
     const { user } = useAuth0();
-    console.log(user)
-    // console.log(getUserById(user.name))
     
-
     const dispatch = useDispatch();
     const [input, setInput] = useState({
         name: "",
