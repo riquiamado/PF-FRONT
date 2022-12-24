@@ -22,6 +22,8 @@ import {
   RESET_ESTADO,
 
   ADD_TO_CART,
+
+  GET_COMPONENTS,
   DELETE_TO_CART,
   GET_USER_BY_EMAIL,
 
@@ -198,6 +200,13 @@ export function deleteToCart(payload){
 
 
 //-----------------------------------Other---------------------------------------------
+export const getComponents = payload => {
+  return {
+    type: GET_COMPONENTS,
+    payload: payload
+  }
+}
+
 export function clean() {
   return function (dispatch) {
     dispatch({
