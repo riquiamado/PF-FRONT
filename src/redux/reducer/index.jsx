@@ -22,6 +22,7 @@ import {
   FILTER_BY_SERVICES,
   
   ADD_TO_CART,
+  DELETE_TO_CART,
   RESET_ESTADO,
 
   CLEAN,
@@ -191,9 +192,16 @@ function rootReducer(state = initialState, action) {
     case ADD_TO_CART:
       return {
         ...state,
-        cart: action.payload,
+        cart: [...state.cart, action.payload]
       }
 
+      case DELETE_TO_CART:
+          return {
+          ...state,
+          cart:   state.cart.filter(idx => !idx._id.includes(action.payload)),
+               }
+  
+     
 //---------------------Others------------------------------
     case "RESET_ESTADO":
       return {
