@@ -6,6 +6,8 @@ import {
   GET_USER_BY_EMAIL,
   DELETE_USER,
   UPDATE_USER,
+  LOGIN,
+  LOGOUT,
 
   GET_SERVICES,
   GET_SERVICES_DETAILS,
@@ -20,7 +22,9 @@ import {
   FILTER_BY_SERVICES,
   
   ADD_TO_CART,
-  GET_COMPONENTS,
+
+GET_COMPONENTS,
+  DELETE_TO_CART,
   RESET_ESTADO,
 
   CLEAN,
@@ -31,6 +35,7 @@ const initialState = {
   services: [],
   allServices: [],
   users: [],
+  userSession: {},
   cart: [],
   components: [],
   details: {},
@@ -43,6 +48,16 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     //---------------------User------------------------------
+    case LOGOUT:
+      return {
+        ...state,
+        userSession: {}
+      };
+    case LOGIN:
+      return {
+        ...state,
+        userSession: action.payload
+      };
     case GET_USERS:
       return {
         ...state,
@@ -180,9 +195,16 @@ function rootReducer(state = initialState, action) {
     case ADD_TO_CART:
       return {
         ...state,
-        cart: action.payload,
+        cart: [...state.cart, action.payload]
       }
 
+      case DELETE_TO_CART:
+          return {
+          ...state,
+          cart:   state.cart.filter(idx => !idx._id.includes(action.payload)),
+               }
+  
+     
 //---------------------Others------------------------------
     case GET_COMPONENTS:
       return {

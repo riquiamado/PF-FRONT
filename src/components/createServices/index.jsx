@@ -80,7 +80,7 @@ const CreateServices = () => {
       setImage(null);
       history.push("/");
     } else {
-      alert("deve completar todos los datos...");
+      alert("debe completar todos los datos...");
     }
   }
 

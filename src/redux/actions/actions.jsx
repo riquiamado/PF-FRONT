@@ -16,20 +16,38 @@ import {
   DELETE_USER,
   DELETE_SERVICE,
   UPDATE_USER,
+  LOGIN,
+  LOGOUT,
 
   RESET_ESTADO,
 
   ADD_TO_CART,
+
   GET_COMPONENTS,
-  GET_USER_BY_EMAIL
+  DELETE_TO_CART,
+  GET_USER_BY_EMAIL,
 
 } from "./components";
 
 
 //-----------------------------------User---------------------------------------------
+export function logout(){
+  return function (dispatch) {
+    dispatch({ type: LOGOUT });
+  }
+}
+
+export function login(user){
+  return async function (dispatch) {
+    let info = await axios.post("https://pf-back-production-b443.up.railway.app/login", user);
+    console.log(info)
+    dispatch({ type: LOGIN, payload: info.data });
+  }
+}
+
 export function getUsers() {
   return async function (dispatch) {
-    const info = await axios.get(`http://localhost:3001/users/`);
+    const info = await axios.get(`https://pf-back-production-b443.up.railway.app/users`);
     console.log(info.data);
     dispatch({ type: GET_USERS, payload: info.data });
   };
@@ -37,14 +55,14 @@ export function getUsers() {
 
 export const getUserById = id => {
   return async function(dispatch) {
-    const res = await axios.get(`http://localhost:3001/users/${id}`);
+    const res = await axios.get(`https://pf-back-production-b443.up.railway.app/users/${id}`);
     dispatch({ type: GET_USER_BY_ID, payload: res.data });
   }
 }
 
 export const getUserByEmail = email => {
   return async function(dispatch) {
-    const res = await axios.get(`http://localhost:3001/userEmail?email=${email}`);
+    const res = await axios.get(`https://pf-back-production-b443.up.railway.app/userEmail?email=${email}`);
     dispatch({ type: GET_USER_BY_EMAIL, payload: res.data });
   }
 }
@@ -65,7 +83,7 @@ export function deleteUser(email) {
 
 export const updateUser = (id, payload) => {
   return async function(dispatch) {
-    let res = await axios.put(`http://localhost:3001/users/${id}`, payload);
+    let res = await axios.put(`https://pf-back-production-b443.up.railway.app/users/${id}`, payload);
     dispatch({ type: UPDATE_USER, payload: res.data });
   }
 }
@@ -149,16 +167,37 @@ export function resetAllServices() {
 }
 
 //-----------------------------------Cart---------------------------------------------
+//export function addToCart(payload){
+//  console.log(payload);
+//  return async function(dispatch){
+//    const info = await axios.post(`https://pf-back-production-b443.up.railway.app/cart`,payload)
+//    dispatch({
+//      type:ADD_TO_CART,
+//      payload: info.data
+//    });
+//  }
+//}
+
+// Solamente pasamos el servicio a reducer
 export function addToCart(payload){
   console.log(payload);
-  return async function(dispatch){
-    const info = await axios.post(`https://pf-back-production-b443.up.railway.app/cart`,payload)
-    dispatch({
-      type:ADD_TO_CART,
-      payload: info.data
-    });
-  }
+  return {
+    type: ADD_TO_CART,
+    payload: payload,
+  };
 }
+
+// Solamente pasamos el _id al reducer
+export function deleteToCart(payload){
+  //console.log(payload);
+  return {
+    type: DELETE_TO_CART,
+    payload: payload,
+  };
+}
+
+
+
 
 //-----------------------------------Other---------------------------------------------
 export const getComponents = payload => {
