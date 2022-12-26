@@ -17,8 +17,8 @@ import "./cardDetail.css";
 
 import Cart from "../carrito";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Offcanvas from "react-bootstrap/Offcanvas";
-import { Container, Nav, Navbar } from 'react-bootstrap';
+ //import Offcanvas from "react-bootstrap/Offcanvas";
+// import { Container, Nav, Navbar } from 'react-bootstrap';
 import {  useLocation } from "react-router-dom";
 
 
@@ -100,14 +100,14 @@ const [show, setShow] = useState(false);
                     {isAuthenticated && <button class="btn btn-lg btn-primary" onClick={() => handleAddToCart()}>Add to Cart</button>}
              
              <button class="btn btn-lg btn-primary"  onClick={handleShow}>View Cart</button>
-            <Offcanvas show={show} onHide={handleClose} placement={'end'}>
+            {/* <Offcanvas show={show} onHide={handleClose} placement={'end'}>
             <Offcanvas.Header closeButton>
             <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
             <Cart />
             </Offcanvas.Body>
-            </Offcanvas>
+            </Offcanvas> */}
                 </div>
                 
             </div>

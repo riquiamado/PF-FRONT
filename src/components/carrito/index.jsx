@@ -4,8 +4,8 @@ import { useEffect } from 'react'
 //import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+
+
 import { deleteToCart } from '../../redux/actions/actions'
 
 const Cart = () => {
