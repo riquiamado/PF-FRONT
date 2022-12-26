@@ -28,6 +28,7 @@ export const ORDER_BY_CATEGORY = "ORDER_BY_CATEGORY"
 export const FILTER_BY_SERVICES = "FILTER_BY_SERVICES"
 
 //---------------------Others------------------------------
+export const GET_COMPONENTS = "GET_COMPONENTS"
 export const RESET_ESTADO = "RESET_ESTADO"
 export const CLEAN = "CLEAN"
 
