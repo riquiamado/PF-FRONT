@@ -13,7 +13,8 @@ const UserSettings = () => {
     //console.log(user)
     // console.log(getUserById(user.name))
     
-
+    // const { user } = useAuth0();
+    
     const dispatch = useDispatch();
     const [input, setInput] = useState({
         name: "",

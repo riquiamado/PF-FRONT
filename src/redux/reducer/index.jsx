@@ -23,6 +23,9 @@ import {
   FILTER_BY_SERVICES,
   
   ADD_TO_CART,
+
+GET_COMPONENTS,
+  DELETE_TO_CART,
   RESET_ESTADO,
 
   CLEAN,
@@ -35,6 +38,7 @@ const initialState = {
   users: [],
   userSession: {},
   cart: [],
+  components: [],
   details: {},
   categoriasFiltradas: [],
   limpiador: [],
@@ -197,10 +201,23 @@ function rootReducer(state = initialState, action) {
     case ADD_TO_CART:
       return {
         ...state,
-        cart: action.payload,
+        cart: [...state.cart, action.payload]
       }
 
+      case DELETE_TO_CART:
+          return {
+          ...state,
+          cart:   state.cart.filter(idx => !idx._id.includes(action.payload)),
+               }
+  
+     
 //---------------------Others------------------------------
+    case GET_COMPONENTS:
+      return {
+        ...state,
+        components: action.payload
+      }
+
     case "RESET_ESTADO":
       return {
         ...state,
@@ -211,6 +228,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         details: {},
+        components: [],
       };
 
     default:
