@@ -6,7 +6,9 @@ import { addUsers, getUserByEmail, getUsers, login, loginGoogle } from "../../re
 import { GoogleLoginButton } from "react-social-login-buttons";
 import { LoginSocialGoogle } from "reactjs-social-login"
 import styles from "../createUser/createUser.module.css";
+require("dotenv").config();
 
+const { GOOGLE_API } = process.env;
 
 function Validate(input) {
   let errors = {};
@@ -137,7 +139,7 @@ const LoginUser = () => {
           <div><Link to={'/users'}><label>Or Create new account</label></Link></div>
           <div>
             <LoginSocialGoogle
-            client_id={"327874418838-9lum1l34s28h1d2v5i5j0mc9oe9evl1h.apps.googleusercontent.com"}
+            client_id={GOOGLE_API} // PROBAR SI ESTO ANDA ASI CON EL .ENV EN EL BACK Y LLAMANDOLO DESDE ACA DEL FRONT
             scope="openid profile email"
             discoveryDocs="claims_supported"
             access_type="offline"
