@@ -6,9 +6,11 @@ import { addUsers, getUserByEmail, getUsers, login, loginGoogle } from "../../re
 import { GoogleLoginButton } from "react-social-login-buttons";
 import { LoginSocialGoogle } from "reactjs-social-login"
 import styles from "../createUser/createUser.module.css";
-require("dotenv").config();
+// require("dotenv").config();
 
-const { GOOGLE_API } = process.env;
+// const { GOOGLE_API } = process.env;
+
+const GOOGLE_API = "327874418838-9lum1l34s28h1d2v5i5j0mc9oe9evl1h.apps.googleusercontent.com"
 
 function Validate(input) {
   let errors = {};

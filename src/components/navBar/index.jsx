@@ -15,6 +15,7 @@ import "./navBar.css";
 function NavBar() {
   const userSessionLocal = useSelector((state) => state.userSession);
   const [user , setUser] = useState(null)
+
   
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('userSession');
@@ -25,8 +26,6 @@ function NavBar() {
     }
   },[])
 
-  console.log(user)
-
   return (
     <nav class="navbar shadow-sm">
       <div class="container-fluid" className="logo">
@@ -34,7 +33,7 @@ function NavBar() {
           <img className="img" src="/images/logo.png" />
         </Link>
         <Link to="/" style={{ textDecoration: "none", color: "#fafafa"}}>
-          <h4 id="csdcs">Freelance Workers !!!</h4>
+          <h4 id="csdcs">Freelance Workers</h4>
         </Link>
       </div>
       <SearchBar theText={"Search"} />
@@ -49,7 +48,6 @@ function NavBar() {
             <span></span>
           )}
         </Link>
-        {/* {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
       </div>
       {(Object.values(userSessionLocal).length === 0) ? (
         <LoginLocal />

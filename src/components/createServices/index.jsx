@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { addServices } from "../../redux/actions/actions";
 import styles from "./createServices.module.css";
-//import { useAuth0 } from "@auth0/auth0-react";
 
 function Validate(input) {
   let errors = [];
@@ -22,7 +21,6 @@ function Validate(input) {
 }
 
 const CreateServices = () => {
-  //const { user } = useAuth0();
   const userSessionLocal = useSelector((state) => state.userSession);
   const dispacth = useDispatch();
   const history = useHistory();
@@ -30,6 +28,7 @@ const CreateServices = () => {
   const [input, setInput] = useState({
     name: "",
     description: "",
+    price: 0,
   });
 
   const [image, setImage] = useState(null);
@@ -69,6 +68,7 @@ const CreateServices = () => {
     formData.append("image", image);
     formData.append("name", input.name);
     formData.append("description", input.description);
+    formData.append("price", input.price);
 
     if (Object.values(errors).length === 0) {
       dispacth(addServices(formData));
@@ -76,6 +76,7 @@ const CreateServices = () => {
       setInput({
         name: "",
         description: "",
+        price: 0,
       });
       setImage(null);
       history.push("/");
@@ -116,6 +117,15 @@ const CreateServices = () => {
             />
             <br />
             {errors.description ? <label>{errors.description}</label> : null}
+          </div>
+          <div>
+            <label> Price: </label>
+            <input
+              type="text"
+              value={input.price}
+              name="price"
+              onChange={(el) => handleChange(el)}
+            />
           </div>
           <div>
             <label htmlFor="">Image</label>
