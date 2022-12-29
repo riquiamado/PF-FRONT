@@ -50,7 +50,6 @@ export function logout(){
 export function login(user){
   return async function (dispatch) {
     let info = await axios.post(`${url}/login`, user);
-    
     dispatch({ type: LOGIN, payload: info.data });
   }
 }
@@ -58,7 +57,6 @@ export function login(user){
 export function getUsers() {
   return async function (dispatch) {
     const info = await axios.get(`${url}/users`);
-    console.log(info.data);
     dispatch({ type: GET_USERS, payload: info.data });
   };
 }
@@ -73,14 +71,13 @@ export const getUserById = id => {
 export const getUserByEmail = email => {
   return async function(dispatch) {
     const res = await axios.get(`${url}/userEmail?email=${email}`);
-    console.log
     dispatch({ type: GET_USER_BY_EMAIL, payload: res.data });
   }
 }
 
 export function addUsers(payload) {
   return async function (dispatch) {
-    let info = await axios.post(`${url}/users}`, payload);
+    let info = await axios.post(`${url}/users`, payload);
     dispatch({ type: ADD_USERS, payload: info.data });
   };
 }
@@ -103,6 +100,7 @@ export const updateUser = (id, payload) => {
 export function getServices() {
   return async function (dispatch) {
     const info = await axios.get(`${url}/services`);
+    console.log(info.data)
     dispatch({ type: GET_SERVICES, payload: info.data });
   };
 }
