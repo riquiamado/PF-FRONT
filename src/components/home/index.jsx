@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getServices, clean, orderByRatings, orderByCategory, resetAllServices } from "../../redux/actions/actions";
+import { getServices, getServicesDetails, clean, orderByRatings, orderByCategory, resetAllServices } from "../../redux/actions/actions";
+import { useParams, useHistory } from 'react-router-dom'
 import Cards from "../cards";
 import SearchBar from "../searchBar";
 import { orderByServices } from "../../redux/actions/actions";
@@ -12,6 +13,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const allServices = useSelector((state) => state.services);
+  
 
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
@@ -19,6 +21,7 @@ function Home() {
   const [servicesPerPage, setServicesPerPage] = useState(8);
   const indexLastServices = currentPage * servicesPerPage;
   const indexFirstServices = indexLastServices - servicesPerPage;
+
   const currentServices = allServices.slice(
     indexFirstServices,
     indexLastServices
@@ -49,6 +52,8 @@ function Home() {
     dispatch(getServices());
     return dispatch(clean());
   }, [dispatch]);
+
+   
 
   return (
     <>
@@ -134,7 +139,7 @@ function Home() {
         {currentServices?.map((el, index) => {
           return (
             <div key={index}>
-              <Cards
+                <Cards
                 _id={el._id}
                 name={el.name}
                 description={el.description}
