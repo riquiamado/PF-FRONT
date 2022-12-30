@@ -14,8 +14,8 @@ import "./cardDetail.css";
 
 import Cart from "../carrito";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import { Container, Nav, Navbar } from 'react-bootstrap';
+//import Offcanvas from "react-bootstrap/Offcanvas";
+// import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useLocation } from "react-router-dom";
 
 const CardDetails = () => {
@@ -33,7 +33,7 @@ const CardDetails = () => {
 
   const handleAddToCart = () => {
     const data = { id: _id, email: userSessionLocal.email };
-    dispatch(addToCart(details));
+    dispatch(addToCart(data));
     // const data = { id: _id, email: user.email }  //nota: sera mejor bajar los datos en el cart ??
     // dispatch(addToCart(details))   //enviamos el servicio seleccinado a cart
 
@@ -111,17 +111,19 @@ const CardDetails = () => {
           >
             Add to Cart
           </button>
-          
-          
-          <button class="btn btn-lg btn-primary"  onClick={handleShow}>View Cart</button>
-           <Offcanvas show={show} onHide={handleClose} placement={'end'}>
+          <Link to={"/cart"}>
+          <button class="btn btn-lg btn-primary" onClick={handleShow}>
+            View Cart
+          </button>
+          </Link>
+          {/* <Offcanvas show={show} onHide={handleClose} placement={'end'}>
             <Offcanvas.Header closeButton>
             <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
             <Cart />
             </Offcanvas.Body>
-            </Offcanvas> 
+            </Offcanvas> */}
         </div>
       </div>
       <div class="container-sm shadow p-3 mb-5 bg-body rounded">
