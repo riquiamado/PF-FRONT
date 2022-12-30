@@ -64,8 +64,6 @@ const CardDetails = () => {
                   details.description.slice(1)}
               </h3>
             </div>
-            {/* <label >Price: </label> */}
-              <p>{`Price: $ ${details.price}`}</p>
             <div class="col text-center">
               <img
                 class="img-fluid shadow mb-5 rounded d-block mx-100 h-100 ms-4 align-middle"
@@ -74,6 +72,8 @@ const CardDetails = () => {
               />
             </div>
           </div>
+            <label class="text-muted mb-2">Price</label>
+              <p class="fs-2 fw-bolder text-warning">{`Price: $${details.price}`}</p>
           <div class="container overflow-hidden text-center">
             <div class="row gx-5">
               <div class="col">
