@@ -8,6 +8,7 @@ import {
   UPDATE_USER,
   LOGIN,
   LOGOUT,
+  LOGIN_GOOGLE,
 
   GET_SERVICES,
   GET_SERVICES_DETAILS,
@@ -22,6 +23,8 @@ import {
   FILTER_BY_SERVICES,
   
   ADD_TO_CART,
+
+GET_COMPONENTS,
   DELETE_TO_CART,
   RESET_ESTADO,
 
@@ -35,6 +38,7 @@ const initialState = {
   users: [],
   userSession: {},
   cart: [],
+  components: [],
   details: {},
   categoriasFiltradas: [],
   limpiador: [],
@@ -45,6 +49,11 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     //---------------------User------------------------------
+    case LOGIN_GOOGLE:
+      return {
+        ...state,
+        userSession: action.payload
+      }
     case LOGOUT:
       return {
         ...state,
@@ -203,6 +212,12 @@ function rootReducer(state = initialState, action) {
   
      
 //---------------------Others------------------------------
+    case GET_COMPONENTS:
+      return {
+        ...state,
+        components: action.payload
+      }
+
     case "RESET_ESTADO":
       return {
         ...state,
@@ -213,6 +228,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         details: {},
+        components: [],
       };
 
     default:

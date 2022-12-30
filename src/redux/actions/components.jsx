@@ -8,6 +8,7 @@ export const DELETE_USER = "DELETE_USER"
 export const UPDATE_USER = "UPDATE_USER"
 export const LOGIN = "LOGIN"
 export const LOGOUT = "LOGOUT"
+export const LOGIN_GOOGLE = "LOGIN_GOOGLE"
 
 //---------------------Service------------------------------
 export const GET_SERVICES= "GET_SERVICES"
@@ -28,6 +29,7 @@ export const ORDER_BY_CATEGORY = "ORDER_BY_CATEGORY"
 export const FILTER_BY_SERVICES = "FILTER_BY_SERVICES"
 
 //---------------------Others------------------------------
+export const GET_COMPONENTS = "GET_COMPONENTS"
 export const RESET_ESTADO = "RESET_ESTADO"
 export const CLEAN = "CLEAN"
 

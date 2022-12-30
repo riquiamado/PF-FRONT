@@ -8,7 +8,7 @@ import { getServicesDetails, clean, resetAllServices } from "../../redux/actions
 import "./cards.css";
 
 
-function Cards({ _id, name, description, image }) {
+function Cards({ _id, name, description, image, price }) {
 const dispatch = useDispatch()
 const details = useSelector((state) => state.details)
 
@@ -40,8 +40,7 @@ const details = useSelector((state) => state.details)
           <div class="card-body">
             <h5 class="card-title border-bottom border-muted pb-2">{name.charAt(0).toUpperCase() + name.slice(1)}</h5>
             <p class="card-text">{description.charAt(0).toUpperCase() + description.slice(1)}</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            
+            <p class="card-text"><small class="text-muted">Price: ${price}</small></p>
             {<button class="btn btn-lg btn-primary" onClick={() => handleAddToCart()}>Add to Cart</button>}
           </div>
         </div>
