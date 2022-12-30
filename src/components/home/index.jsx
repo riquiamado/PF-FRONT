@@ -53,8 +53,6 @@ function Home() {
     return dispatch(clean());
   }, [dispatch]);
 
-   
-
   return (
     <>
     {/* <div>
@@ -134,7 +132,7 @@ function Home() {
         />
     </div>
     
-    <div class="container-fluid mt-2 shadow p-3 mb-4 bg-body rounded">
+    <div class="container-fluid mt-2 shadow p-3 mb-4 pb-4 bg-body rounded">
       <div className="cards-home">
         {currentServices?.map((el, index) => {
           return (
@@ -144,6 +142,7 @@ function Home() {
                 name={el.name}
                 description={el.description}
                 image={el.image ? el.image.secure_url : ""}
+                price={el.price}
               />
             </div>
           );
