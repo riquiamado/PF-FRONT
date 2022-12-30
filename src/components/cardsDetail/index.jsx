@@ -72,7 +72,6 @@ const CardDetails = () => {
               />
             </div>
           </div>
-            <label class="text-muted mb-2">Price</label>
               <p class="fs-2 fw-bolder text-warning">{`Price: $${details.price}`}</p>
           <div class="container overflow-hidden text-center">
             <div class="row gx-5">
@@ -104,18 +103,6 @@ const CardDetails = () => {
           </label>
           <h3>{details.user.email}</h3>
         </div>
-        <div className="delete-container">
-          <button
-            class="btn btn-lg btn-primary"
-            onClick={() => handleAddToCart()}
-          >
-            Add to Cart
-          </button>
-          <Link to={"/cart"}>
-          <button class="btn btn-lg btn-primary" onClick={handleShow}>
-            View Cart
-          </button>
-          </Link>
           {/* <Offcanvas show={show} onHide={handleClose} placement={'end'}>
             <Offcanvas.Header closeButton>
             <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
@@ -123,9 +110,22 @@ const CardDetails = () => {
             <Offcanvas.Body>
             <Cart />
             </Offcanvas.Body>
-            </Offcanvas> */}
+          </Offcanvas> */}
         </div>
-      </div>
+          <div class="container-sm shadow p-3 mb-3 bg-body rounded" /* className="delete-container" */>
+            <p>Do you need this service?</p>
+            <button
+              class="btn btn-lg btn-primary"
+              onClick={() => handleAddToCart()}
+            >
+              Add to Cart
+            </button>
+            <Link to={"/cart"}>
+            <button class="btn btn-lg btn-primary" onClick={handleShow}>
+              View Cart
+            </button>
+            </Link>
+          </div>
       <div class="container-sm shadow p-3 mb-5 bg-body rounded">
         <div class="d-grid gap-8 mt-1 col-2 mx-auto">
           <Link to={"/"}>
