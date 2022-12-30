@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 50px;
+  padding-bottom: 20px;
 }
 
 .carousel-inner img {
@@ -15,6 +16,10 @@
 
 .carousel-inner{
 height: 380px;
+}
+
+#sdsfs {
+  height: 100%;
 }
 
 select {

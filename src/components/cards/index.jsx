@@ -21,11 +21,11 @@ const dispatch = useDispatch()
     <div className="vvnsdknvdk">
       <div class="card-group shadow mb-2 mt-2 bg-body rounded">
         <div class="card">
-          <img src={image} class="card-img-top" alt="..."/>
+          <img src={image} class="card-img-top" alt="imagenSERVICIO"/>
           <div class="card-body">
             <h5 class="card-title border-bottom border-muted pb-2">{name.charAt(0).toUpperCase() + name.slice(1)}</h5>
             <p class="card-text">{description.charAt(0).toUpperCase() + description.slice(1)}</p>
-            <p class="card-text"><small class="text">Price: ${price}</small></p>
+            <p class="card-text fs-5"><small class="text">Price: ${price}</small></p>
             {<button class="btn btn-lg btn-primary">View more</button>}
           </div>
         </div>

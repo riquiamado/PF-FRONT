@@ -55,7 +55,6 @@ function Home() {
 
   return (
     <>
-    
     {/* <div>
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
   <div class="carousel-indicators">
@@ -149,6 +148,14 @@ function Home() {
           );
         })}
       </div>
+    </div>
+    <div class="container-fluid mt-2 shadow p-4 mb-4 pb-4 bg-body rounded text-center">
+      <p class="text-center text-uppercase fs-2 fw-semibold font-monospace text-primary pb-2 mb-4 border-bottom border-muted">
+        Create your first service now!
+      </p>
+      <Link to={"/checkLogin"}>
+          <button id="sdsfs"class="btn btn-primary mw-40 h-100 text-center">Create Services</button>
+      </Link>
     </div>
     </>
   );
