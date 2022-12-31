@@ -116,8 +116,7 @@ const Footer = () => {
           <MDBRow className='mt-3'>
             <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
-                <i class="bi bi-gem"></i>
-                  Freelance Workers
+                <i class="bi bi-gem"> Freelance Workers</i>
               </h6>
               <p>
                 We are a company that seeks to connect people by offering services. If you are interested in being part of our Providers, contact us.
@@ -173,12 +172,10 @@ const Footer = () => {
             <MDBCol md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
               <p>
-                <i class="bi bi-building"></i>
-                COL, MX, AR 
+                <i class="bi bi-building"> COL, MX, AR </i>
               </p>
               <p>
-                <i class="bi bi-envelope"></i>
-                freelanceworkers@gmail.com
+                <i class="bi bi-envelope"> freelanceworkers@gmail.com</i>
               </p>
               <p>
                 <i class="bi bi-telephone"></i> + 555 555 5555

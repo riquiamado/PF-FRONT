@@ -72,7 +72,7 @@ const CardDetails = () => {
               />
             </div>
           </div>
-              <p class="fs-1 fw-bolder text-warning">{`Price: $${details.price}`}</p>
+              <p class="fs-1 fw-bolder mt-3 text-warning">{`Price: $${details.price}`}</p>
           <div class="container overflow-hidden text-center">
             <div class="row gx-5">
               <div class="col">
