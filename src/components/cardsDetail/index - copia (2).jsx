@@ -14,8 +14,8 @@ import "./cardDetail.css";
 
 import Cart from "../carrito";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import { Container, Nav, Navbar } from 'react-bootstrap';
+//import Offcanvas from "react-bootstrap/Offcanvas";
+// import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useLocation } from "react-router-dom";
 
 const CardDetails = () => {
@@ -33,7 +33,7 @@ const CardDetails = () => {
 
   const handleAddToCart = () => {
     const data = { id: _id, email: userSessionLocal.email };
-    dispatch(addToCart(details));
+    dispatch(addToCart(data));
     // const data = { id: _id, email: user.email }  //nota: sera mejor bajar los datos en el cart ??
     // dispatch(addToCart(details))   //enviamos el servicio seleccinado a cart
 
@@ -53,11 +53,11 @@ const CardDetails = () => {
         <div class="main row">
           <div class="row justify-content-around">
             <div class="col-sm-12 col-md-6">
-              <h1 class="h1 pb-2 mb-4 fw-semibold text-dark border-bottom border-muted">
+              <h1 class="h1 pb-2 mb-4 text-dark border-bottom border-muted">
                 {details.name.charAt(0).toUpperCase() + details.name.slice(1)}
               </h1>
               <label class="text-muted mb-2" htmlFor="">
-                <i class="bi bi-card-text"> Description</i>
+                Description
               </label>
               <h3 class="lh-lg fs-3 border mx-80 ps-2">
                 {details.description.charAt(0).toUpperCase() +
@@ -72,7 +72,8 @@ const CardDetails = () => {
               />
             </div>
           </div>
-              <p class="fs-1 fw-bolder mt-3 text-warning">{`Price: $${details.price}`}</p>
+            <label class="text-muted mb-2">Price</label>
+              <p class="fs-2 fw-bolder text-warning">{`Price: $${details.price}`}</p>
           <div class="container overflow-hidden text-center">
             <div class="row gx-5">
               <div class="col">
@@ -91,21 +92,18 @@ const CardDetails = () => {
           </div>
         </div>
       </div>
-      <div class="container-sm shadow  p-3 mb-4 bg-body rounded">
-        <h1 class="fs-2 fw-semibold pb-2 border-bottom border-muted">User Provider</h1>
+      <div class="container-sm shadow p-3 mb-4 bg-body rounded">
+        <h1>User Provider</h1>
         <div>
           <label class="text-muted mb-2" htmlFor="">
-          <i class="bi bi-person-circle"> Name</i>
+            Name
           </label>
-          <h3 class="text-capitalize fw-normal">{details.user.name}</h3>
+          <h3>{details.user.name}</h3>
           <label class="text-muted mb-2" htmlFor="">
-            <i class="bi bi-envelope-at"> Mail</i>
+            Mail
           </label>
           <h3>{details.user.email}</h3>
         </div>
-
-          {/* <Offcanvas show={show} onHide={handleClose} placement={'end'}>
-
         <div className="delete-container">
           <button
             class="btn btn-lg btn-primary"
@@ -113,37 +111,23 @@ const CardDetails = () => {
           >
             Add to Cart
           </button>
-          
-          
-          <button class="btn btn-lg btn-primary"  onClick={handleShow}>View Cart</button>
-           
-
+          <Link to={"/cart"}>
+          <button class="btn btn-lg btn-primary" onClick={handleShow}>
+            View Cart
+          </button>
+          </Link>
+          {/* <Offcanvas show={show} onHide={handleClose} placement={'end'}>
             <Offcanvas.Header closeButton>
             <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
             <Cart />
             </Offcanvas.Body>
-
-          </Offcanvas> */}
-
+            </Offcanvas> */}
         </div>
-          <div class="container-sm shadow p-3 mb-3 bg-body rounded text-center" /* className="delete-container" */>
-            <p class="text-center text-uppercase fs-2 fw-semibold font-monospace pb-2 mb-4 border-bottom border-muted">Do you need this service?</p>
-            <button
-              class="btn btn-lg btn-primary me-2"
-              onClick={() => handleAddToCart()}
-            >
-              Add to Cart
-            </button>
-            <Link to={"/cart"}>
-            <button class="btn btn-lg btn-primary" onClick={handleShow}>
-              View Cart
-            </button>
-            </Link>
-          </div>
+      </div>
       <div class="container-sm shadow p-3 mb-5 bg-body rounded">
-        <div class="d-grid gap-8 mt-1 col-2 mx-auto text-center">
+        <div class="d-grid gap-8 mt-1 col-2 mx-auto">
           <Link to={"/"}>
             <button
               id="buttt"
@@ -157,7 +141,7 @@ const CardDetails = () => {
     </>
   ) : (
     <div class="d-flex justify-content-center">
-      <div class="spinner-border  text-primary m-5 w-5 h-5" role="status">
+      <div class="spinner-border  text-primary m-5 w-4 h-4" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>

@@ -81,7 +81,7 @@ const CreateUser = () => {
 
 
         alert("User created");
-        dispatch(login(input));
+         dispatch(login(input));
         setInput({
           name: "",
           email: "",
