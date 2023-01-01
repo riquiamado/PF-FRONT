@@ -11,6 +11,7 @@ import { checkLogin } from "./components/checkLogin";
 import Dashboard from "./components/dashboard";
 import { ProfileLocal } from "./components/profileLocal";
 import LoginUser from "./components/loginUser";
+import Footer from "./components/footer/index";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Route exact path="/profile" component={ProfileLocal} />
       <Route exact path="/login" component={LoginUser} />
       <Route path="/services/:_id" component={CardDetails} />
+      <Footer/>
     </div>
   );
 }
