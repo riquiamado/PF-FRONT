@@ -75,7 +75,7 @@ const LoginUser = () => {
         })
       );
       if (Object.values(errors).length === 0) {
-        dispatch(getUserByEmail(input.email));
+         dispatch(getUserByEmail(input.email));
 
         const userTryLogin = {
             email: input.email,
@@ -88,7 +88,7 @@ const LoginUser = () => {
             'userSession', JSON.stringify(input.email)
         );
 
-        dispatch(login(userTryLogin));
+         dispatch(login(userTryLogin));
 
         setInput({
           email: "",
@@ -156,7 +156,7 @@ const LoginUser = () => {
                 picture: data.picture
               }
 
-              dispatch(loginGoogle(userGoogle));
+              // dispatch(loginGoogle(userGoogle));
 
               window.localStorage.setItem(
                 'userSession', JSON.stringify(userGoogle)
@@ -170,7 +170,7 @@ const LoginUser = () => {
               console.log(err);
             }}
             >
-              <GoogleLoginButton />
+              {/* <GoogleLoginButton /> */}
             </LoginSocialGoogle>
           </div>
         </form>
