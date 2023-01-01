@@ -11,7 +11,9 @@ import { checkLogin } from "./components/checkLogin";
 import Dashboard from "./components/dashboard";
 import { ProfileLocal } from "./components/profileLocal";
 import LoginUser from "./components/loginUser";
+import Footer from "./components/footer/index";
 import Payment from "./components/payment";
+
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
       <Route exact path="/login" component={LoginUser} />
       <Route exact path="/payment" component={Payment} />
       <Route path="/services/:_id" component={CardDetails} />
+      <Footer/>
     </div>
   );
 }

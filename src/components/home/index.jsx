@@ -66,21 +66,21 @@ function Home() {
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="..." class="d-block w-100" alt="..."/>
+      <img src="/images/services1.jpg" class="img-responsive" alt="services1"/>
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="..."/>
+      <img src="/images/services2.jpg" class="img-responsive" alt="services2"/>
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="..."/>
+      <img src="/images/services3.jpg" class="img-responsive" alt="services3"/>
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
@@ -134,7 +134,7 @@ function Home() {
         />
     </div>
     
-    <div class="container-fluid mt-2 shadow p-3 mb-4 pb-4 bg-body rounded">
+    <div class="container-fluid mt-2 shadow p-4 mb-4 pb-4 bg-body rounded">
       <div className="cards-home">
         {currentServices?.map((el, index) => {
           return (
@@ -150,6 +150,14 @@ function Home() {
           );
         })}
       </div>
+    </div>
+    <div class="container-fluid mt-2 shadow p-4 mb-4 pb-4 bg-body rounded text-center">
+      <p class="text-center text-uppercase fs-2 fw-semibold font-monospace text-primary pb-2 mb-4 border-bottom border-muted">
+        Create your first service now!
+      </p>
+      <Link to={"/checkLogin"}>
+          <button id="sdsfs"class="btn btn-primary mw-40 h-100 text-center">Create Services</button>
+      </Link>
     </div>
     </>
   );
