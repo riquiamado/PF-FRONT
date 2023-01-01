@@ -8,6 +8,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { deleteToCart } from '../../redux/actions/actions'
 
+import axios from 'axios';
+
 const Cart = () => {
   const dispatch = useDispatch()
   const CartContent = useSelector((state) => state.cart)
@@ -15,6 +17,20 @@ const Cart = () => {
   function removeCart(arg) {
    dispatch(deleteToCart(arg));
   }
+
+  const handlePayment = async (value) => {
+    const response = await axios({
+      method: 'post',
+      url: 'http://localhost:3001/create-order',
+      data: {
+        value,
+        description: "servicio"
+      }
+    });
+    console.log(response.data.links[1]);
+    window.location.href = response.data.links[1].href
+  }
+
 let Totales =0;
   return (
   <>
@@ -34,7 +50,7 @@ let Totales =0;
 <p>Total: {Totales} </p>
 
       
-      <button type="button" class="btn btn-warning">Contract</button>
+      <button type="button" class="btn btn-warning" onClick={() => handlePayment(Totales)}>Contract</button>
 </>
   ); 
 
