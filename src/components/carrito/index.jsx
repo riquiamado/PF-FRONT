@@ -28,7 +28,8 @@ const Cart = () => {
       }
     });
     console.log(response.data.links[1]);
-    window.location.href = response.data.links[1].href
+    window.open(response.data.links[1].href, "_blank", "toolbar=yes,top=500,left=500,width=850,height=700")
+    //window.location.href = response.data.links[1].href
   }
 
   let Totales = 0;
