@@ -9,9 +9,9 @@ export const ProfileLocal = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [user, setUser] = useState({});
-    const userById = useSelector((state) => state.userSession);
+    const userSession = useSelector((state) => state.userSession);
 
-    console.log(userById)
+    console.log(userSession)
 
     const handleLogout = () => {
         window.localStorage.removeItem('userSession');
@@ -21,7 +21,7 @@ export const ProfileLocal = () => {
     }
 
     useEffect(() => {
-        setUser(userById);
+        setUser(userSession);
     }, [])
 
     const loggedUserJSON = window.localStorage.getItem('userSession');
@@ -29,9 +29,9 @@ export const ProfileLocal = () => {
     return (
         <div>
             {<div>
-                    <label>User: {user.name}</label>
+                    <label>User: {userSession.user ? userSession.user.name : 'Loading...'}</label>
                     <br></br>
-                    <label>E-Mail: {(user.email) ? user.email : loggedUserJSON}</label>
+                    <label>E-Mail: {(userSession.user) ? userSession.user.email : loggedUserJSON}</label>
                     {/* <br></br>
                     <label>City: {user.city}</label>
                     <br></br>
@@ -40,8 +40,8 @@ export const ProfileLocal = () => {
                     <label>Phone: {user.phone}</label> */}
                 </div>
             }            
-            <Link to={'/updateProfile'}><button>Update Profile</button></Link>
-            <br></br>
+            {/* <Link to={'/updateProfile'}><button>Update Profile</button></Link>
+            <br></br> */}
             <button onClick={() => handleLogout()}>Logout</button>
         </div>
     )
