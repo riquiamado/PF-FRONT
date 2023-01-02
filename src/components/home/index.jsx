@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 function Home() {
   const allServices = useSelector((state) => state.services);
   
-  console.log(allServices)
+  /* console.log(allServices) */
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -138,7 +138,7 @@ function Home() {
       <div className="cards-home">
         {currentServices?.map((el, index) => {
           return (
-            <div key={index}>
+            <div key={el._id}>
                 <Cards
                 _id={el._id}
                 name={el.name}
@@ -146,6 +146,7 @@ function Home() {
                 image={el.image ? el.image.secure_url : ""}
                 price={el.price}
                 country={el.country}
+                key={index}
               />
             </div>
           );

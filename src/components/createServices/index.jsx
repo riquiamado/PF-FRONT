@@ -24,7 +24,6 @@ const CreateServices = () => {
   const userSessionLocal = useSelector((state) => state.userSession);
   const dispacth = useDispatch();
   const history = useHistory();
-
   const [input, setInput] = useState({
     name: "",
     description: "",
@@ -148,7 +147,7 @@ const CreateServices = () => {
                   type="radio"
                   value="Colombia"
                   name="country"
-                  onChange={(e) => handleChange(el)}
+                  onChange={(el) => handleChange(el)}
               />
             </label>
             <label>
@@ -157,7 +156,7 @@ const CreateServices = () => {
                   type="radio"
                   value="Argentina"
                   name="country"
-                  onChange={(e) => handleChange(el)}
+                  onChange={(el) => handleChange(el)}
               />
             </label>
           </div>

@@ -17,8 +17,8 @@ function NavBar() {
   const dispatch = useDispatch();
   const userSessionLocal = useSelector((state) => state.userSession);
 
-  console.log(user)
-  console.log(userSessionLocal)
+  /* console.log(user)
+  console.log(userSessionLocal) */
   
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('userSession');
