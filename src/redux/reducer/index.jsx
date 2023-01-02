@@ -29,6 +29,7 @@ GET_COMPONENTS,
   RESET_ESTADO,
 
   CLEAN,
+  GET_CATEGORYES,
 
 } from "../actions/components";
 
@@ -80,6 +81,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         users: action.payload
+      }
+
+    case GET_CATEGORYES:
+      return {
+       ...state,
+       categoriasFiltradas: action.payload
       }
 
     case ADD_USERS:
@@ -187,15 +194,16 @@ function rootReducer(state = initialState, action) {
       }
 
     case ORDER_BY_CATEGORY:
-      state.allServices = state.services
-      state.categoriasFiltradas = state.limpiador
-      state.conCategorias = {}
-      state.empleosConCategorias = ""
-      state.empleosConCategorias = state.services.filter(idx => idx.name.includes(action.payload))
-      return{
-          ...state,
-          services: state.empleosConCategorias
-      }
+
+      // state.allServices = state.services
+      // state.categoriasFiltradas = state.limpiador
+      // state.conCategorias = {}
+      // state.empleosConCategorias = ""
+      // state.empleosConCategorias = state.services.filter(idx => idx.name.includes(action.payload))
+      // return{
+      //     ...state,
+      //     services: state.empleosConCategorias
+      // }
 
 //---------------------Cart------------------------------
     case ADD_TO_CART:

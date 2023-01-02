@@ -27,6 +27,7 @@ import {
   GET_COMPONENTS,
   DELETE_TO_CART,
   GET_USER_BY_EMAIL,
+  GET_CATEGORYES,
 
 } from "./components";
 
@@ -80,6 +81,15 @@ export function addUsers(payload) {
     let info = await axios.post(`${url}/users`, payload);
     dispatch({ type: ADD_USERS, payload: info.data });
   };
+}
+
+export function getCategories(payload) {
+  return async function (dispatch) {
+    const res = await axios.get(`${url}/categories`, payload);
+    console.log(res.data)
+    dispatch({ type: GET_CATEGORYES, payload: res.data });
+  }
+
 }
 
 export function deleteUser(email) {

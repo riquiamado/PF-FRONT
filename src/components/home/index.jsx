@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 function Home() {
   const allServices = useSelector((state) => state.services);
   
-
+  console.log(allServices)
   const dispatch = useDispatch();
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);

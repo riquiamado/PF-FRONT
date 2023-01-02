@@ -9,6 +9,7 @@ export const UPDATE_USER = "UPDATE_USER"
 export const LOGIN = "LOGIN"
 export const LOGOUT = "LOGOUT"
 export const LOGIN_GOOGLE = "LOGIN_GOOGLE"
+export const GET_CATEGORYES = "GET_CATEGORYES"
 
 //---------------------Service------------------------------
 export const GET_SERVICES= "GET_SERVICES"
@@ -27,6 +28,7 @@ export const ORDER_BY_RATINGS = "ORDER_BY_RATINGS"
 export const ORDER_BY_SERVICES= "ORDER_BY_SERVICES"
 export const ORDER_BY_CATEGORY = "ORDER_BY_CATEGORY"
 export const FILTER_BY_SERVICES = "FILTER_BY_SERVICES"
+
 
 //---------------------Others------------------------------
 export const GET_COMPONENTS = "GET_COMPONENTS"
