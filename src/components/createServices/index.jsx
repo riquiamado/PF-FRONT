@@ -63,9 +63,9 @@ const CreateServices = () => {
     );
 
     const formData = new FormData();
-    formData.append("userName", userSessionLocal.name);
+    formData.append("userName", userSessionLocal.user.name);
     //formData.append("userImage", userSessionLocal.picture);
-    formData.append("userEmail", userSessionLocal.email);
+    formData.append("userEmail", userSessionLocal.user.email);
     formData.append("image", image);
     formData.append("name", input.name);
     formData.append("description", input.description);
