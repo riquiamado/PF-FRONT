@@ -145,6 +145,7 @@ function Home() {
                 description={el.description}
                 image={el.image ? el.image.secure_url : ""}
                 price={el.price}
+                country={el.country}
               />
             </div>
           );
