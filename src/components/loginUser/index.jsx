@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { addUsers, getUserByEmail, getUsers, login, loginGoogle } from "../../redux/actions/actions";
-// import { GoogleLoginButton } from "react-social-login-buttons";
+import { GoogleLoginButton } from "react-social-login-buttons";
 import { LoginSocialGoogle } from "reactjs-social-login"
 import styles from "../createUser/createUser.module.css";
-// require("dotenv").config();
+//require("dotenv").config();
 
-// const { GOOGLE_API } = process.env;
+//const { GOOGLE_API } = process.env;
 
 const GOOGLE_API = "327874418838-9lum1l34s28h1d2v5i5j0mc9oe9evl1h.apps.googleusercontent.com"
 
@@ -141,25 +141,32 @@ const LoginUser = () => {
           <div><Link to={'/users'}><label>Or Create new account</label></Link></div>
           <div>
             <LoginSocialGoogle
-            client_id={GOOGLE_API} // PROBAR SI ESTO ANDA ASI CON EL .ENV EN EL BACK Y LLAMANDOLO DESDE ACA DEL FRONT
+            client_id={GOOGLE_API} // PROBAR SI ESTO ANDA ASI CON EL .ENV EN EL BACK Y LLAMANDOLO DESDE ACA DEL FRONT(respuesta: NO ANDA JAJ)
             scope="openid profile email"
             discoveryDocs="claims_supported"
             access_type="offline"
             onResolve={({ provider, data }) => {
-              console.log(provider);
+              //console.log(provider);
               console.log(data);
 
-              const userGoogle = {
+              const createUserGoogle = {
                 name: data.name,
                 email: data.email,
+                password: data.sub,
                 //tokenGoogle: data.access_token,
-                picture: data.picture
+                //picture: data.picture
               }
 
-              // dispatch(loginGoogle(userGoogle));
+              const loginUserGoogle = {
+                name: data.name,
+                email: data.email,
+                google: true,
+              }
+
+              dispatch(login(createUserGoogle));
 
               window.localStorage.setItem(
-                'userSession', JSON.stringify(userGoogle)
+                'userSession', JSON.stringify(loginUserGoogle)
               );
 
               alert("User logged in successfully");
@@ -170,7 +177,7 @@ const LoginUser = () => {
               console.log(err);
             }}
             >
-              {/* <GoogleLoginButton /> */}
+              <GoogleLoginButton />
             </LoginSocialGoogle>
           </div>
         </form>

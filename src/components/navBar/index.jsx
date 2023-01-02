@@ -17,19 +17,27 @@ function NavBar() {
   const dispatch = useDispatch();
   const userSessionLocal = useSelector((state) => state.userSession);
 
+  console.log(user)
+  console.log(userSessionLocal)
   
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('userSession');
     if (loggedUserJSON) {
        const parsed = JSON.parse(loggedUserJSON)
-        const user = {
+       let user = {
           email: parsed
         }
+       if(parsed.google){
+        user = {
+          email: parsed.email
+        }}
+       
+        
+       
+        
 
         setUser(user);
         dispatch(login(user));
-        // console.log(user)
-        // console.log(userSessionLocal)
     }
   },[dispatch])
 
@@ -60,7 +68,7 @@ function NavBar() {
         <LoginLocal />
       ) : (
         <Link to="/profile">
-          <button>{userSessionLocal.user ? userSessionLocal.user.name : ''}</button>
+          <button>{userSessionLocal.user ? userSessionLocal.user.name : userSessionLocal.name}</button>
         </Link>
       )}
     </nav>
