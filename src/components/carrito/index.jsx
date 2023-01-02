@@ -48,9 +48,7 @@ const Cart = () => {
       }
       <hr />
       <p>Total: {Totales} </p>
-      {/* <p>Total: {Totales += idx.price} </p> */}
-
-
+    
       <button type="button" class="btn btn-warning" onClick={() => handlePayment(Totales)}>Contract</button>
     </>
   );

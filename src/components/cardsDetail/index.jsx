@@ -104,31 +104,20 @@ const CardDetails = () => {
           <h3>{details.user.email}</h3>
         </div>
 
-          {/* <Offcanvas show={show} onHide={handleClose} placement={'end'}>
-
-        <div className="delete-container">
-          <button
-            class="btn btn-lg btn-primary"
-            onClick={() => handleAddToCart()}
-          >
-            Add to Cart
-          </button>
+          <Offcanvas show={show} onHide={handleClose} placement={'end'}>
+        <div className="delete-container"/>
           
-          
-          <button class="btn btn-lg btn-primary"  onClick={handleShow}>View Cart</button>
            
-
             <Offcanvas.Header closeButton>
             <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
             <Cart />
             </Offcanvas.Body>
-
-          </Offcanvas> */}
+          </Offcanvas> 
 
         </div>
-          <div class="container-sm shadow p-3 mb-3 bg-body rounded text-center" /* className="delete-container" */>
+          <div class="container-sm shadow p-3 mb-3 bg-body rounded text-center">
             <p class="text-center text-uppercase fs-2 fw-semibold font-monospace pb-2 mb-4 border-bottom border-muted">Do you need this service?</p>
             <button
               class="btn btn-lg btn-primary me-2"
@@ -136,11 +125,11 @@ const CardDetails = () => {
             >
               Add to Cart
             </button>
-            <Link to={"/cart"}>
+            
             <button class="btn btn-lg btn-primary" onClick={handleShow}>
               View Cart
             </button>
-            </Link>
+            
           </div>
       <div class="container-sm shadow p-3 mb-5 bg-body rounded">
         <div class="d-grid gap-8 mt-1 col-2 mx-auto text-center">
