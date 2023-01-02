@@ -13,18 +13,25 @@ import { ProfileLocal } from "../profileLocal";
 import "./navBar.css";
 
 function NavBar() {
+  const [user , setUser] = useState({});
+  const dispatch = useDispatch();
   const userSessionLocal = useSelector((state) => state.userSession);
-  const [user , setUser] = useState(null)
 
   
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('userSession');
     if (loggedUserJSON) {
-        const user = JSON.parse(loggedUserJSON);
+       const parsed = JSON.parse(loggedUserJSON)
+        const user = {
+          email: parsed
+        }
+
         setUser(user);
-        //dispatch(login(user));
+        dispatch(login(user));
+        // console.log(user)
+        // console.log(userSessionLocal)
     }
-  },[])
+  },[dispatch])
 
   return (
     <nav class="navbar shadow-sm">
@@ -53,7 +60,7 @@ function NavBar() {
         <LoginLocal />
       ) : (
         <Link to="/profile">
-          <button>{userSessionLocal.name}</button>
+          <button>{userSessionLocal.user ? userSessionLocal.user.name : ''}</button>
         </Link>
       )}
     </nav>
