@@ -13,6 +13,7 @@ import { ProfileLocal } from "./components/profileLocal";
 import LoginUser from "./components/loginUser";
 import Footer from "./components/footer/index";
 import Payment from "./components/payment";
+import PaymentDeclined from "./components/paymentDeclined";
 
 
 
@@ -29,6 +30,7 @@ function App() {
       <Route exact path="/profile" component={ProfileLocal} />
       <Route exact path="/login" component={LoginUser} />
       <Route exact path="/payment" component={Payment} />
+      <Route exact path="/paymentDeclined " component={PaymentDeclined} />
       <Route path="/services/:_id" component={CardDetails} />
       <Footer/>
     </div>
