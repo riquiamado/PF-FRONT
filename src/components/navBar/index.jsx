@@ -31,11 +31,6 @@ function NavBar() {
         user = {
           email: parsed.email
         }}
-       
-        
-       
-        
-
         setUser(user);
         dispatch(login(user));
     }
@@ -45,10 +40,10 @@ function NavBar() {
     <nav class="navbar shadow-sm">
       <div class="container-fluid" className="logo">
         <Link to="/">
-          <img className="img" src="/images/logo.png" />
+          <img className="img" src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1672693337/pruebas/logo_x83pht.png" />
         </Link>
         <Link to="/" style={{ textDecoration: "none", color: "#fafafa"}}>
-          <h4 id="csdcs">Freelance Workers !!!</h4>
+          <h4 id="csdcs">Freelance Workers</h4>
         </Link>
       </div>
       <SearchBar theText={"Search"} />
