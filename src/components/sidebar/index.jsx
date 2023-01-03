@@ -12,7 +12,7 @@ const SideBar = () => {
     const userSessionLocal = useSelector((state) => state.userSession);
     //const { user } = useAuth0()
     const { name, picture, email} = userSessionLocal;
-    const [selected, setSelected] =useState(0)
+    const [selected, setSelected] = useState(0);
 
     //Auth0
     // const { user, logout } = useAuth0()
