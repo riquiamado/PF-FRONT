@@ -18,19 +18,22 @@ function NavBar() {
   const dispatch = useDispatch();
   const userSessionLocal = useSelector((state) => state.userSession);
 
+  /* console.log(user)
+  console.log(userSessionLocal) */
   
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('userSession');
     if (loggedUserJSON) {
        const parsed = JSON.parse(loggedUserJSON)
-        const user = {
+       let user = {
           email: parsed
         }
-
+       if(parsed.google){
+        user = {
+          email: parsed.email
+        }}
         setUser(user);
         dispatch(login(user));
-        // console.log(user)
-        // console.log(userSessionLocal)
     }
   },[dispatch])
 
@@ -38,10 +41,10 @@ function NavBar() {
     <nav class="navbar shadow-sm">
       <div class="container-fluid" className="logo">
         <Link to="/">
-          <img className="img" src="/images/logo.png" />
+          <img className="img" src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1672693337/pruebas/logo_x83pht.png" />
         </Link>
         <Link to="/" style={{ textDecoration: "none", color: "#fafafa"}}>
-          <h4 id="csdcs">Freelance Workers !!!</h4>
+          <h4 id="csdcs">Freelance Workers</h4>
         </Link>
       </div>
       <SearchBar theText={"Search"} />
@@ -64,7 +67,7 @@ function NavBar() {
         <LoginLocal />
       ) : (
         <Link to="/profile">
-          <button>{userSessionLocal.user ? userSessionLocal.user.name : ''}</button>
+          <button>{userSessionLocal.user ? userSessionLocal.user.name : userSessionLocal.name}</button>
         </Link>
       )}
     </nav>

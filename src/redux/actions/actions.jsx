@@ -31,8 +31,8 @@ import {
 
 } from "./components";
 
-const url = "http://localhost:3001"
-// const url = "https://pf-back-production-b443.up.railway.app"
+// const url = "http://localhost:3001"
+const url = "https://pf-back-production-b443.up.railway.app"
 
 
 //-----------------------------------User---------------------------------------------
@@ -137,6 +137,7 @@ export function getServicesDetails(_id) {
 
 export const addServices = (formData) => {
   return async function (dispatch) {
+    console.log(formData);
     let info = await axios({
       url:` ${url}/services`,
       method: "POST",
@@ -146,6 +147,7 @@ export const addServices = (formData) => {
       },
       data: formData,
     }) 
+    console.log(info);
     dispatch({ type: ADD_SERVICES, payload: info.data })
   };
 }

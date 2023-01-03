@@ -24,11 +24,11 @@ const CreateServices = () => {
   const userSessionLocal = useSelector((state) => state.userSession);
   const dispacth = useDispatch();
   const history = useHistory();
-
   const [input, setInput] = useState({
     name: "",
     description: "",
     price: 0,
+    country: ""
   });
 
   const [image, setImage] = useState(null);
@@ -62,14 +62,15 @@ const CreateServices = () => {
     );
 
     const formData = new FormData();
-    formData.append("userName", userSessionLocal.name);
+    formData.append("userName", userSessionLocal.user.name);
     //formData.append("userImage", userSessionLocal.picture);
-    formData.append("userEmail", userSessionLocal.email);
+    formData.append("userEmail", userSessionLocal.user.email);
     formData.append("image", image);
     formData.append("name", input.name);
     formData.append("description", input.description);
     formData.append("price", input.price);
-
+    formData.append("country", input.country);
+    console.log(formData);
     if (Object.values(errors).length === 0) {
       dispacth(addServices(formData));
       alert("servicio creado!");
@@ -77,6 +78,7 @@ const CreateServices = () => {
         name: "",
         description: "",
         price: 0,
+        country: ""
       });
       setImage(null);
       history.push("/");
@@ -126,6 +128,37 @@ const CreateServices = () => {
               name="price"
               onChange={(el) => handleChange(el)}
             />
+          </div>
+          <div>
+            <label class="mb-2  ">Country: </label>
+            <br />
+            <label>
+              México
+              <input
+                type="radio"
+                value="México"
+                name="country"
+                onChange={(el) => handleChange(el)}
+              />
+            </label>
+            <label>
+              Colombia
+              <input
+                  type="radio"
+                  value="Colombia"
+                  name="country"
+                  onChange={(el) => handleChange(el)}
+              />
+            </label>
+            <label>
+              Argentina
+              <input
+                  type="radio"
+                  value="Argentina"
+                  name="country"
+                  onChange={(el) => handleChange(el)}
+              />
+            </label>
           </div>
           <div>
             <label htmlFor="">Image</label>

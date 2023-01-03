@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { getServicesDetails, clean, resetAllServices } from "../../redux/actions/actions";
 import "./cards.css";
 
-function Cards({ _id, name, description, image, price }) {
+function Cards({ _id, name, description, image, price, country }) {
 const dispatch = useDispatch()
 
   useEffect(() => {
@@ -25,8 +25,8 @@ const dispatch = useDispatch()
           <div class="card-body">
             <h5 class="card-title border-bottom border-muted pb-2">{name.charAt(0).toUpperCase() + name.slice(1)}</h5>
             <p class="card-text">{description.charAt(0).toUpperCase() + description.slice(1)}</p>
-            <p class="card-text fs-5"><small class="text">Price: ${price}</small></p>
-            {<button class="btn btn-lg btn-primary">View more</button>}
+            <p class="card-text fs-5 pt-0"><small class="text">Price: ${price}</small></p>
+            {<button class="btn btn-lg btn-primary ms-2">View more</button>}<i class="bi bi-geo-alt fs-6 ps-4 text-muted"> {country}</i>
           </div>
         </div>
       </div>
