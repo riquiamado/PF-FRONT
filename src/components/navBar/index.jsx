@@ -12,6 +12,7 @@ import LoginLocal from "../login";
 import { ProfileLocal } from "../profileLocal";
 import "./navBar.css";
 
+
 function NavBar() {
   const [user , setUser] = useState({});
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ function NavBar() {
       </div>
       <SearchBar theText={"Search"} />
       <div className="btns">
+      <Link to={"/"}>
+          <button className="Btn">Cart</button>         
+        </Link>    
         <Link to={"/checkLogin"}>
           <button className="Btn">Create Services</button>
         </Link>
