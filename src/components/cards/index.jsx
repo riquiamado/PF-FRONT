@@ -20,7 +20,7 @@ function Cards({ _id, name, description, image, price, country, average }) {
                 {description.charAt(0).toUpperCase() + description.slice(1)}
               </p>
               <p class="card-text fs-5 pt-0">
-                <small class="text">Price: ${price} Average: ${price}</small>
+                <small class="text">Price: ${price} Average: {average}</small>
               </p>
               {<button class="btn btn-lg btn-primary ms-2">View more</button>}
               <i class="bi bi-geo-alt fs-6 ps-4 text-muted"> {country}</i>
