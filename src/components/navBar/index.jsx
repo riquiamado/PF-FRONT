@@ -36,7 +36,7 @@ function NavBar() {
   };
 
   return (
-    <nav class="navbar shadow-sm">
+    <nav className="navbar shadow-sm">
       <div
         class="container-fluid"
         className="logo"

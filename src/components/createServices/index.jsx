@@ -27,8 +27,8 @@ const CreateServices = () => {
   const [input, setInput] = useState({
     name: "",
     description: "",
-    price: 0,
-    country: ""
+    price: "",
+    country: "",
   });
 
   const [image, setImage] = useState(null);
@@ -77,8 +77,8 @@ const CreateServices = () => {
       setInput({
         name: "",
         description: "",
-        price: 0,
-        country: ""
+        price: "",
+        country: "",
       });
       setImage(null);
       history.push("/");
@@ -86,6 +86,8 @@ const CreateServices = () => {
       alert("debe completar todos los datos...");
     }
   }
+
+  console.log(input)
 
   return (
     <div className={styles.page}>
@@ -122,44 +124,27 @@ const CreateServices = () => {
           </div>
           <div>
             <label> Price: </label>
-            <input
-              type="text"
-              value={input.price}
-              name="price"
-              onChange={(el) => handleChange(el)}
-            />
-          </div>
-          <div>
-            <label class="mb-2  ">Country: </label>
-            <br />
-            <label>
-              México
+            <div>
               <input
-                type="radio"
-                value="México"
-                name="country"
+                type="number"
+                value={input.price}
+                placeholder="$"
+                name="price"
                 onChange={(el) => handleChange(el)}
               />
-            </label>
-            <label>
-              Colombia
-              <input
-                  type="radio"
-                  value="Colombia"
-                  name="country"
-                  onChange={(el) => handleChange(el)}
-              />
-            </label>
-            <label>
-              Argentina
-              <input
-                  type="radio"
-                  value="Argentina"
-                  name="country"
-                  onChange={(el) => handleChange(el)}
-              />
-            </label>
+            </div>
           </div>
+          <select
+            class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
+            id="floatingSelectGrid"
+            onChange={(el) => handleChange(el)}
+            name="country"
+          >
+            <option value="">Country: </option>
+            <option value="Argentina">Argentina</option>
+            <option value="Colombia">Colombia</option>
+            <option value="México">México</option>
+          </select>
           <div>
             <label htmlFor="">Image</label>
             <input type="file" onChange={(el) => handleImage(el)} />
