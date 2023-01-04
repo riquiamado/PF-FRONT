@@ -19,21 +19,16 @@ import {
   LOGIN,
   LOGOUT,
   LOGIN_GOOGLE,
-
   RESET_ESTADO,
-
   ADD_TO_CART,
-
   GET_COMPONENTS,
   DELETE_TO_CART,
   GET_USER_BY_EMAIL,
   GET_CATEGORYES,
-
 } from "./components";
 
-// const url = "http://localhost:3001"
-const url = "https://pf-back-production-b443.up.railway.app"
-
+const url = "http://localhost:3001"
+// const url = "https://pf-back-production-b443.up.railway.app"
 
 //-----------------------------------User---------------------------------------------
 export function loginGoogle(user){
