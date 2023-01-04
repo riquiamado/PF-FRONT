@@ -23,9 +23,10 @@ const CardDetails = () => {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.details);
   const userSessionLocal = useSelector((state) => state.userSession);
-
+  const CartContent = useSelector((state) => state.cart);
   const history = useHistory();
   const { _id } = useParams();
+  let cartItems = [];
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -33,13 +34,15 @@ const CardDetails = () => {
 
   const handleAddToCart = () => {
     const data = { id: _id, email: userSessionLocal.email };
-    dispatch(addToCart(details));
-    // const data = { id: _id, email: user.email }  //nota: sera mejor bajar los datos en el cart ??
-    // dispatch(addToCart(details))   //enviamos el servicio seleccinado a cart
+  
+    CartContent ?.map((idx) => (
+     cartItems.push(idx._id)   
+    ))
+    
+   if (cartItems.includes(details._id) == false) {
+   dispatch(addToCart(details));
 
-    //history.push("/cart")
-    // console.log(data)
-    // history.push("/cart")
+   }     
   };
 
   useEffect(() => {
