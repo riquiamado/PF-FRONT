@@ -1,6 +1,5 @@
 import {
   ADD_USERS,
-  
   GET_USERS,
   GET_USER_BY_ID,
   GET_USER_BY_EMAIL,
@@ -9,28 +8,22 @@ import {
   LOGIN,
   LOGOUT,
   LOGIN_GOOGLE,
-
   GET_SERVICES,
   GET_SERVICES_DETAILS,
   GET_SERVICES_BY_NAME,
   ADD_SERVICES,
   DELETE_SERVICE,
-
   ORDER_BY_NAME,
   ORDER_BY_SERVICES,
   ORDER_BY_RATINGS,
   ORDER_BY_CATEGORY,
   FILTER_BY_SERVICES,
-  
   ADD_TO_CART,
-
-GET_COMPONENTS,
+  GET_COMPONENTS,
   DELETE_TO_CART,
   RESET_ESTADO,
-
   CLEAN,
-  GET_CATEGORYES,
-
+  GET_CATEGORIES,
 } from "../actions/components";
 
 const initialState = {
@@ -41,10 +34,10 @@ const initialState = {
   cart: [],
   components: [],
   details: {},
-  categoriasFiltradas: [],
+  categories: [],
   limpiador: [],
   conCategorias: {},
-  empleosConCategorias: '',
+  empleosConCategorias: "",
 };
 
 function rootReducer(state = initialState, action) {
@@ -53,17 +46,17 @@ function rootReducer(state = initialState, action) {
     case LOGIN_GOOGLE:
       return {
         ...state,
-        userSession: action.payload
-      }
+        userSession: action.payload,
+      };
     case LOGOUT:
       return {
         ...state,
-        userSession: {}
+        userSession: {},
       };
     case LOGIN:
       return {
         ...state,
-        userSession: action.payload
+        userSession: action.payload,
       };
     case GET_USERS:
       return {
@@ -74,20 +67,14 @@ function rootReducer(state = initialState, action) {
     case GET_USER_BY_ID:
       return {
         ...state,
-        users: action.payload
-      }
+        users: action.payload,
+      };
 
     case GET_USER_BY_EMAIL:
       return {
         ...state,
-        users: action.payload
-      }
-
-    case GET_CATEGORYES:
-      return {
-       ...state,
-       categoriasFiltradas: action.payload
-      }
+        users: action.payload,
+      };
 
     case ADD_USERS:
       return {
@@ -97,19 +84,19 @@ function rootReducer(state = initialState, action) {
 
     case DELETE_USER:
       return { ...state };
-    
+
     case DELETE_SERVICE:
       return { ...state };
 
     case UPDATE_USER:
       return { ...state };
-      
+
     //---------------------Service------------------------------
     case GET_SERVICES:
       return {
         ...state,
         services: action.payload,
-        allServices: action.payload
+        allServices: action.payload,
       };
 
     case GET_SERVICES_BY_NAME:
@@ -129,7 +116,7 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
 
-//---------------------Filter/Order------------------------------
+    //---------------------Filter/Order------------------------------
     case ORDER_BY_SERVICES:
       if (action.payload === "asc") {
         return {
@@ -171,66 +158,71 @@ function rootReducer(state = initialState, action) {
         };
       }
 
+    case GET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+      };
+
     case ORDER_BY_RATINGS:
-      if(action.payload === "highest") {
+      if (action.payload === "highest") {
         return {
           ...state,
           services: [...state.services].sort((a, b) => {
-            if(a.rating > b.rating) return -1;
-            if(a.rating > b.rating) return 1;
+            if (a.rating > b.rating) return -1;
+            if (a.rating > b.rating) return 1;
             return 0;
-          })
-        }
+          }),
+        };
       }
       if (action.payload === "lowest") {
         return {
           ...state,
           services: [...state.services].sort((a, b) => {
-            if(a.rating > b.rating) return 1;
-            if(a.rating > b.rating) return -1;
+            if (a.rating > b.rating) return 1;
+            if (a.rating > b.rating) return -1;
             return 0;
-          })
-        }
+          }),
+        };
       }
 
-    case ORDER_BY_CATEGORY:
+    // case ORDER_BY_CATEGORY:
 
-      state.allServices = state.services
-      state.categoriasFiltradas = state.limpiador
-      state.conCategorias = {}
-      state.empleosConCategorias = ""
-      state.empleosConCategorias = state.services.filter(idx => idx.name.includes(action.payload))
-      return{
-          ...state,
-          services: state.empleosConCategorias
-      }
+    //   state.allServices = state.services
+    //   state.categoriasFiltradas = state.limpiador
+    //   state.conCategorias = {}
+    //   state.empleosConCategorias = ""
+    //   state.empleosConCategorias = state.services.filter(idx => idx.name.includes(action.payload))
+    //   return{
+    //       ...state,
+    //       services: state.empleosConCategorias
+    //   }
 
-//---------------------Cart------------------------------
+    //---------------------Cart------------------------------
     case ADD_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, action.payload]
-      }
+        cart: [...state.cart, action.payload],
+      };
 
-      case DELETE_TO_CART:
-          return {
-          ...state,
-          cart:   state.cart.filter(idx => !idx._id.includes(action.payload)),
-               }
-  
-     
-//---------------------Others------------------------------
+    case DELETE_TO_CART:
+      return {
+        ...state,
+        cart: state.cart.filter((idx) => !idx._id.includes(action.payload)),
+      };
+
+    //---------------------Others------------------------------
     case GET_COMPONENTS:
       return {
         ...state,
-        components: action.payload
-      }
+        components: action.payload,
+      };
 
     case "RESET_ESTADO":
       return {
         ...state,
-        services: state.services
-      }
+        services: state.services,
+      };
 
     case CLEAN:
       return {
