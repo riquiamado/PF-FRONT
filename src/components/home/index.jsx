@@ -21,6 +21,8 @@ function Home() {
   const [filters, setFilters] = useState({
     country: "",
     name: "",
+    price: "",
+    rating: "",
   });
   const [currentPage, setCurrentPage] = useState(1);
   const servicesPerPage = 9;
@@ -33,12 +35,16 @@ function Home() {
     setCurrentPage(pageNumber);
   };
 
-  const handleCategory = (e) => {
-    setFilters({ ...filters, name: e.target.value });
-  };
+  // const handleCategory = (e) => {
+  //   setFilters({ ...filters, name: e.target.value });
+  // };
 
-  const handleCountry = (e) => {
-    setFilters({ ...filters, country: e.target.value });
+  // const handleCountry = (e) => {
+  //   setFilters({ ...filters, country: e.target.value });
+  // };
+
+  const handleChange = (e) => {
+    setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
   const handleSortRating = (e) => {
@@ -63,7 +69,8 @@ function Home() {
               <select
                 class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
                 id="floatingSelectGrid"
-                onChange={(e) => handleCategory(e)}
+                onChange={(e) => handleChange(e)}
+                name="category"
               >
                 <option value="">Category</option>
                 {categories.map((e, i) => (
@@ -79,7 +86,8 @@ function Home() {
               <select
                 class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
                 id="floatingSelectGrid"
-                onChange={(e) => handleCountry(e)}
+                onChange={(e) => handleChange(e)}
+                name="country"
               >
                 <option value="">Country</option>
                 <option value="Argentina">Argentina</option>
@@ -93,23 +101,22 @@ function Home() {
               <select
                 class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
                 id="floatingSelectGrid"
-                onChange={(e) => handleSortRating(e)}
+                onChange={(e) => handleChange(e)}
+                name="rating"
               >
-                <option selected class="ps-2">
-                  Rating
-                </option>
+                <option value="">Rating </option>
                 <option value="highest">Highest</option>
                 <option value="lowest">Lowest</option>
               </select>
             </div>
           </div>
-          <div>
             <div class="col-sm pb-0">
               <div class="form-floating pb-0">
                 <select
                   class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
                   id="floatingSelectGrid"
-                  name=""
+                  onChange={(e) => handleChange(e)}
+                  name="price"
                 >
                   <option value="">Price</option>
                   <option value="highest">Highest</option>
@@ -118,7 +125,6 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
         <Paginate
           servicesPerPage={servicesPerPage}
           allServices={services.length}
