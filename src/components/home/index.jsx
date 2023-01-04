@@ -12,6 +12,7 @@ import Cards from "../cards";
 import Paginate from "../paginado";
 import "./home.css";
 import { Link } from "react-router-dom";
+import combinedFilters from "./filters";
 
 function Home() {
   const allServices = useSelector((state) => state.services);
@@ -25,23 +26,6 @@ function Home() {
   const servicesPerPage = 9;
   const indexLastServices = currentPage * servicesPerPage;
   const indexFirstServices = indexLastServices - servicesPerPage;
-
-  const combinedFilters = (allServices, filters) => {
-    if (filters.name === "" && filters.country === "") {
-      return allServices;
-    } else if (filters.name === "" && filters.country !== "") {
-      const arr1 = allServices.filter((e) => e.country === filters.country);
-      return arr1;
-    } else if (filters.name !== "" && filters.country === "") {
-      const arr1 = allServices.filter((e) => e.name === filters.name);
-      return arr1;
-    } else {
-      const arr1 = allServices.filter(
-        (e) => e.name === filters.name && e.country === filters.country
-      );
-      return arr1;
-    }
-  };
 
   const services = combinedFilters(allServices, filters);
   const currentServices = services.slice(indexFirstServices, indexLastServices);

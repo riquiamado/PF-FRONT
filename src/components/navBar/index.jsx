@@ -14,10 +14,10 @@ function NavBar() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem("userSession");
+    let loggedUserJSON = window.localStorage.getItem("userSession");
     if (loggedUserJSON) {
-      const parsed = JSON.parse(loggedUserJSON);
-       user = {
+      let parsed = JSON.parse(loggedUserJSON);
+       let user = {
         email: parsed,
       };
       if (parsed.google) {
