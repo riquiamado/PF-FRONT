@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../searchBar";
 import { Link, useHistory } from "react-router-dom";
-import { getServices, login, clean } from "../../redux/actions/actions";
+import { getServices, login } from "../../redux/actions/actions";
 import LoginLocal from "../login";
 import "./navBar.css";
 

@@ -65,7 +65,7 @@ function Home() {
                 id="floatingSelectGrid"
                 onChange={(e) => handleCategory(e)}
               >
-                <option value="">Order by category</option>
+                <option value="">Category</option>
                 {categories.map((e, i) => (
                   <option key={i} value={e}>
                     {e}
@@ -81,7 +81,7 @@ function Home() {
                 id="floatingSelectGrid"
                 onChange={(e) => handleCountry(e)}
               >
-                <option value="">Order by country</option>
+                <option value="">Country</option>
                 <option value="Argentina">Argentina</option>
                 <option value="Colombia">Colombia</option>
                 <option value="México">México</option>
@@ -96,7 +96,7 @@ function Home() {
                 onChange={(e) => handleSortRating(e)}
               >
                 <option selected class="ps-2">
-                  Order by rating
+                  Rating
                 </option>
                 <option value="highest">Highest</option>
                 <option value="lowest">Lowest</option>
