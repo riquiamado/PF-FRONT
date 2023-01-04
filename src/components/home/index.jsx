@@ -103,6 +103,21 @@ function Home() {
               </select>
             </div>
           </div>
+          <div>
+            <div class="col-sm pb-0">
+              <div class="form-floating pb-0">
+                <select
+                  class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
+                  id="floatingSelectGrid"
+                  name=""
+                >
+                  <option value="">Price</option>
+                  <option value="highest">Highest</option>
+                  <option value="lowest">Lowest</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
         <Paginate
           servicesPerPage={servicesPerPage}
