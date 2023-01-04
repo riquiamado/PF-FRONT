@@ -21,8 +21,8 @@ function Home() {
   const [filters, setFilters] = useState({
     country: "",
     name: "",
-    price: "",
     rating: "",
+    price: "",
   });
   const [currentPage, setCurrentPage] = useState(1);
   const servicesPerPage = 9;
@@ -35,22 +35,11 @@ function Home() {
     setCurrentPage(pageNumber);
   };
 
-  // const handleCategory = (e) => {
-  //   setFilters({ ...filters, name: e.target.value });
-  // };
-
-  // const handleCountry = (e) => {
-  //   setFilters({ ...filters, country: e.target.value });
-  // };
-
   const handleChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  const handleSortRating = (e) => {
-    dispatch(orderByRatings(e.target.value));
-    setOrden(`orden ${e.target.value}`);
-  };
+  console.log(currentServices)
 
   useEffect(() => {
     if (allServices.length === 0) {
@@ -70,7 +59,7 @@ function Home() {
                 class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
                 id="floatingSelectGrid"
                 onChange={(e) => handleChange(e)}
-                name="category"
+                name="name"
               >
                 <option value="">Category</option>
                 {categories.map((e, i) => (
@@ -144,6 +133,7 @@ function Home() {
                   image={el.image ? el.image.secure_url : ""}
                   price={el.price}
                   country={el.country}
+                  average={el.average}
                   key={index}
                 />
               </div>
