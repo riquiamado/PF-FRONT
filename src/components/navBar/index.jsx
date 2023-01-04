@@ -10,6 +10,13 @@ import { Link } from "react-router-dom";
 import { login } from "../../redux/actions/actions";
 import LoginLocal from "../login";
 import { ProfileLocal } from "../profileLocal";
+
+import Offcanvas from "react-bootstrap/Offcanvas";
+import Cart from "../carrito";
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { useLocation } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./navBar.css";
 
 
@@ -17,6 +24,10 @@ function NavBar() {
   const [user , setUser] = useState({});
   const dispatch = useDispatch();
   const userSessionLocal = useSelector((state) => state.userSession);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   /* console.log(user)
   console.log(userSessionLocal) */
@@ -49,9 +60,18 @@ function NavBar() {
       </div>
       <SearchBar theText={"Search"} />
       <div className="btns">
-      <Link to={"/"}>
-          <button className="Btn">Cart</button>         
-        </Link>    
+      
+          <button className="Btn" onClick={handleShow}>Cart</button>
+          <Offcanvas show={show} onHide={handleClose} placement={'end'}>
+        <div className="delete-container"/>      
+            <Offcanvas.Header closeButton>
+            <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+            <Cart />
+            </Offcanvas.Body>
+          </Offcanvas>      
+            
         <Link to={"/checkLogin"}>
           <button className="Btn">Create Services</button>
         </Link>
