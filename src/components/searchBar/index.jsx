@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getServicesByName } from "../../redux/actions/actions";
 import "./search.css";
 
-const SearchBar = (props) => {
+const SearchBar = () => {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
 
@@ -22,19 +22,20 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div className="search">
-      <input
-        className="input"
-        type="text"
-        onChange={(el) => handleChange(el)}
-        placeholder={props.theText}
-      />
-      <button onClick={(el) => handleSubmit(el)} className="btn">
-        <span class="material-symbols-outlined">
-          search
-        </span>
-      </button>
-    </div>
+      <form className="search" onSubmit={(el) => handleSubmit(el)}>
+        <input
+          className="input"
+          type="text"
+          onChange={(el) => handleChange(el)}
+          value={name}
+          placeholder={"Search"}
+        />
+        <input
+          type="submit"
+          className="submit"
+          value={"🔍"}
+        />
+      </form>
   );
 };
 

@@ -2,14 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../searchBar";
-import LoginButton from "../LoginButton";
-import CreateUser from "../createUser";
-import LogoutButton from "../LogoutButton";
-//import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
-import { login } from "../../redux/actions/actions";
+import { Link, useHistory } from "react-router-dom";
+import { getServices, login, clean } from "../../redux/actions/actions";
 import LoginLocal from "../login";
-import { ProfileLocal } from "../profileLocal";
 
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Cart from "../carrito";
@@ -21,42 +16,45 @@ import "./navBar.css";
 
 
 function NavBar() {
-  const [user , setUser] = useState({});
-  const dispatch = useDispatch();
   const userSessionLocal = useSelector((state) => state.userSession);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [user, setUser] = useState({});
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  /* console.log(user)
-  console.log(userSessionLocal) */
-  
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('userSession');
+    let loggedUserJSON = window.localStorage.getItem("userSession");
     if (loggedUserJSON) {
-       const parsed = JSON.parse(loggedUserJSON)
+      let parsed = JSON.parse(loggedUserJSON);
        let user = {
-          email: parsed
-        }
-       if(parsed.google){
+        email: parsed,
+      };
+      if (parsed.google) {
         user = {
-          email: parsed.email
-        }}
-        setUser(user);
-        dispatch(login(user));
-    }
-  },[dispatch])
+          email: parsed.email,
+        };
+      }
+      setUser(user);
+      dispatch(login(user));
+    } 
+  }, [dispatch]);
+
+  const handleClick = () => {
+    dispatch(getServices());
+    history.push("/");
+  };
 
   return (
-    <nav class="navbar shadow-sm">
-      <div class="container-fluid" className="logo">
-        <Link to="/">
-          <img className="img" src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1672693337/pruebas/logo_x83pht.png" />
-        </Link>
-        <Link to="/" style={{ textDecoration: "none", color: "#fafafa"}}>
-          <h4 id="csdcs">Freelance Workers</h4>
-        </Link>
+    <nav className="navbar shadow-sm">
+      <div
+        class="container-fluid"
+        className="logo"
+        onClick={() => handleClick()}
+      >
+        <img
+          className="img"
+          src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1672693337/pruebas/logo_x83pht.png"
+        />
+        <h4 id="csdcs">Freelance Workers</h4>
       </div>
       <SearchBar theText={"Search"} />
       <div className="btns">
@@ -83,11 +81,15 @@ function NavBar() {
           )}
         </Link>
       </div>
-      {(Object.values(userSessionLocal).length === 0) ? (
+      {Object.values(userSessionLocal).length === 0 ? (
         <LoginLocal />
       ) : (
         <Link to="/profile">
-          <button>{userSessionLocal.user ? userSessionLocal.user.name : userSessionLocal.name}</button>
+          <button>
+            {userSessionLocal.user
+              ? userSessionLocal.user.name
+              : userSessionLocal.name}
+          </button>
         </Link>
       )}
     </nav>
