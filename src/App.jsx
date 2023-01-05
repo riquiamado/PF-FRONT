@@ -4,6 +4,7 @@ import CardDetails from "./components/cardsDetail";
 import Cart from "./components/carrito";
 import CreateServices from "./components/createServices";
 import CreateUser from "./components/createUser";
+import FormRatingReview from "./components/formRatingReview";
 import Home from "./components/home";
 import NavBar from "./components/navBar";
 import "./App.css";
@@ -22,6 +23,7 @@ function App() {
     <div className="App">
       <NavBar />
       <Route exact path={"/"} component={Home} />
+      <Route exact path="/ratingForm" component={FormRatingReview} />
       <Route exact path="/users" component={CreateUser} />
       <Route exact path="/services" component={CreateServices} />
       <Route exact path="/checkLogin" component={checkLogin} />
