@@ -2,12 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getServices,
-  clean,
-  orderByRatings,
-  getCategories,
-} from "../../redux/actions/actions";
+import { getServices, clean, getCategories } from "../../redux/actions/actions";
 import Cards from "../cards";
 import Paginate from "../paginado";
 import "./home.css";
@@ -39,15 +34,13 @@ function Home() {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  console.log(currentServices)
-
   useEffect(() => {
     if (allServices.length === 0) {
       dispatch(getServices());
       dispatch(getCategories());
     }
     return dispatch(clean());
-  }, [dispatch]);
+  }, [dispatch, filters]);
 
   return (
     <>
@@ -91,36 +84,21 @@ function Home() {
                 class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
                 id="floatingSelectGrid"
                 onChange={(e) => handleChange(e)}
-                name="rating"
+                name="price"
               >
-                <option value="">Rating </option>
+                <option value="">Price</option>
                 <option value="highest">Highest</option>
                 <option value="lowest">Lowest</option>
               </select>
             </div>
           </div>
-            <div class="col-sm pb-0">
-              <div class="form-floating pb-0">
-                <select
-                  class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
-                  id="floatingSelectGrid"
-                  onChange={(e) => handleChange(e)}
-                  name="price"
-                >
-                  <option value="">Price</option>
-                  <option value="highest">Highest</option>
-                  <option value="lowest">Lowest</option>
-                </select>
-              </div>
-            </div>
-          </div>
+        </div>
         <Paginate
           servicesPerPage={servicesPerPage}
           allServices={services.length}
           paginado={paginado}
         />
       </div>
-
       <div class="container-fluid mt-2 shadow p-4 mb-4 pb-4 bg-body rounded">
         <div className="cards-home">
           {currentServices?.map((el, index) => {
