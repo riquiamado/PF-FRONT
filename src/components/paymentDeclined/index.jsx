@@ -1,7 +1,7 @@
 const PaymentDeclined = () => {
     return(
         <div>
-            <h1>Payment Canceled, you may now close this window</h1>
+            <h1>Payment has been canceled</h1>
         </div>
     )
 }

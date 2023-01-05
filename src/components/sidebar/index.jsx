@@ -57,9 +57,9 @@ const SideBar = () => {
                     )
                 })}
                 
-                <div className='menuItem' onClick={() => logout({ returnTo: window.location.origin })}>
+                {/* <div className='menuItem' onClick={() => logout({ returnTo: window.location.origin })}>
                     <UilSignout/>
-                </div>
+                </div> */}
             </div>
         </div>
 
