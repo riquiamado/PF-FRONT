@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { getUserByEmail, login } from "../../redux/actions/actions";
 import { GoogleLoginButton } from "react-social-login-buttons";
 import { LoginSocialGoogle } from "reactjs-social-login";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 import styles from "../createUser/createUser.module.css";
 import axios from "axios";
+import { login } from "../../redux/actions/actions";
 
 const GOOGLE_API =
   "327874418838-9lum1l34s28h1d2v5i5j0mc9oe9evl1h.apps.googleusercontent.com";
@@ -44,6 +45,9 @@ const LoginUser = () => {
 
   const [errors, setErrors] = useState({});
 
+  const [session, setSession] = useLocalStorage("session", "");
+  // const [name, setName] = useLocalStorage("name", "");
+
   function handleChange(el) {
     setInput({
       ...input,
@@ -57,7 +61,7 @@ const LoginUser = () => {
     );
   }
 
-  const handleSubmit = (el) => {
+  const handleSubmit = async (el) => {
     el.preventDefault();
     setErrors(
       Validate({
@@ -66,91 +70,94 @@ const LoginUser = () => {
       })
     );
     if (Object.values(errors).length === 0) {
-      console.log(input)
-      const data = axios.post(`http://localhost:3001/login`)
+      try {
+        const response = await axios.post(`http://localhost:3001/login`, input);
+        window.localStorage.setItem(
+          "session",
+          JSON.stringify(response.data.user.email)
+        );
+        dispatch(login(response.data.user.email));
+        setInput({
+          email: "",
+          password: "",
+        });
+        history.push("/");
+      } catch (error) {
+        alert(error.response.data.error);
+        console.log(error.response.data);
+      }
     }
-  }
+  };
 
-    return (
-      <div className={styles.page}>
-        <Link to={"/"}>
-          <button>Volver</button>
-        </Link>
-        <div>
-          <form onSubmit={(el) => handleSubmit(el)}>
-            <div>
-              <label htmlFor="">Email:</label>
-              <input
-                type="text"
-                value={input.email}
-                name={"email"}
-                onChange={(el) => handleChange(el)}
-              />
-              <br />
-              {errors.email ? <label>{errors.email}</label> : null}
-            </div>
-            <div>
-              <label htmlFor="">Password:</label>
-              <input
-                type="password"
-                value={input.password}
-                name={"password"}
-                onChange={(el) => handleChange(el)}
-              />
-              <br />
-              {errors.password ? <label>{errors.password}</label> : null}
-            </div>
-            <input className={styles.create} type="submit" value={"Login"} />
-            <div>
-              <Link to={"/users"}>
-                <label>Or Create new account</label>
-              </Link>
-            </div>
-            <div>
-              <LoginSocialGoogle
-                client_id={GOOGLE_API} // PROBAR SI ESTO ANDA ASI CON EL .ENV EN EL BACK Y LLAMANDOLO DESDE ACA DEL FRONT(respuesta: NO ANDA JAJ)
-                scope="openid profile email"
-                discoveryDocs="claims_supported"
-                access_type="offline"
-                onResolve={({ provider, data }) => {
-                  //console.log(provider);
-                  // console.log(data);
+  return (
+    <div className={styles.page}>
+      <Link to={"/"}>
+        <button>Volver</button>
+      </Link>
+      <div>
+        <form onSubmit={(el) => handleSubmit(el)}>
+          <div>
+            <label htmlFor="">Email:</label>
+            <input
+              type="text"
+              value={input.email}
+              name={"email"}
+              onChange={(el) => handleChange(el)}
+            />
+            <br />
+            {errors.email ? <label>{errors.email}</label> : null}
+          </div>
+          <div>
+            <label htmlFor="">Password:</label>
+            <input
+              type="password"
+              value={input.password}
+              name={"password"}
+              onChange={(el) => handleChange(el)}
+            />
+            <br />
+            {errors.password ? <label>{errors.password}</label> : null}
+          </div>
+          <input className={styles.create} type="submit" value={"Login"} />
+          <div>
+            <Link to={"/users"}>
+              <label>Or Create new account</label>
+            </Link>
+          </div>
+          <div>
+            <LoginSocialGoogle
+              client_id={GOOGLE_API}
+              scope="openid profile email"
+              discoveryDocs="claims_supported"
+              access_type="offline"
+              onResolve={({ provider, data }) => {
+                const user = {
+                  name: data.name,
+                  email: data.email,
+                  password: data.sub,
+                };
 
-                  const createUserGoogle = {
-                    name: data.name,
-                    email: data.email,
-                    password: data.sub,
-                    //tokenGoogle: data.access_token,
-                    //picture: data.picture
-                  };
-
-                  const loginUserGoogle = {
-                    name: data.name,
-                    email: data.email,
-                    google: true,
-                  };
-
-                  dispatch(login(createUserGoogle));
-
-                  window.localStorage.setItem(
-                    "userSession",
-                    JSON.stringify(loginUserGoogle)
-                  );
-
-                  alert("User logged in successfully");
-                  history.push("/");
-                }}
-                onReject={(err) => {
-                  console.log(err);
-                }}
-              >
-                <GoogleLoginButton />
-              </LoginSocialGoogle>
-            </div>
-          </form>
-        </div>
+                // setSession(user.email);
+                window.localStorage.setItem(
+                  "session",
+                  JSON.stringify(user.email)
+                );
+                dispatch(login(user.email));
+                alert("User logged in successfully");
+                history.push("/");
+                // window.location.reload()
+              }}
+              onReject={(err) => {
+                console.log(err);
+              }}
+            >
+              <GoogleLoginButton />
+            </LoginSocialGoogle>
+          </div>
+        </form>
       </div>
-    );
+    </div>
+  );
 };
 
 export default LoginUser;
