@@ -8,6 +8,7 @@ import Orders from '../orders/index'
 import Customers from '../customers/index.jsx';
 import ServicesDash from '../servicesDash/index.jsx';
 import UserSettings from '../userSettings/index.jsx';
+import Analytics from '../analytics/index.jsx';
 
 import "./dashboard.css"
 
@@ -20,10 +21,12 @@ const Dashboard = () => {
         orders: false,
         customers: false,
         services: false,
-        settings: false
+        analytics: false,
+        settings: false,
     });
    
     const dispatch = useDispatch()
+    
     useEffect(() => {
         dispatch(getComponents());
         
@@ -32,7 +35,8 @@ const Dashboard = () => {
             orders: false,
             customers: false,
             services: false,
-            settings: false
+            analytics: false,
+            settings: false,
         })
 
         if(componentName === "Orders") setcomponent({
@@ -40,7 +44,8 @@ const Dashboard = () => {
             orders: true,
             customers: false,
             services: false,
-            settings: false
+            analytics: false,
+            settings: false,
         })
 
         if(componentName === "Customers") setcomponent({
@@ -48,7 +53,8 @@ const Dashboard = () => {
             orders: false,
             customers: true,
             services: false,
-            settings: false
+            analytics: false,
+            settings: false,
         })
 
         if(componentName === "Services") setcomponent({
@@ -56,7 +62,17 @@ const Dashboard = () => {
             orders: false,
             customers: false,
             services: true,
-            settings: false
+            analytics: false,
+            settings: false,
+        })
+
+        if(componentName === "Analytics") setcomponent({
+            main: false,
+            orders: false,
+            customers: false,
+            services: false,
+            analytics: true,
+            settings: false,
         })
 
         if(componentName === "Settings") setcomponent({
@@ -64,7 +80,8 @@ const Dashboard = () => {
             orders: false,
             customers: false,
             services: false,
-            settings: true
+            analytics: false,
+            settings: true,
         })
         // setcomponent(current => {
         //     return {
@@ -73,7 +90,8 @@ const Dashboard = () => {
         //         orders: componentName === "Orders" ? true : false,
         //         customers: componentName === "Customers" ? true : false,
         //         services: componentName === "Services" ? true : false,
-        //         settings: componentName === "Settings" ? true : false
+        //          analytics: componentName === "Analytics" ? true : false,
+        //         settings: componentName === "Settings" ? true : false,   
         //     }
         // })
         dispatch(clean)
@@ -88,6 +106,7 @@ const Dashboard = () => {
                 <div className={component.orders ? "visible" : "hidden"}><Orders /></div>
                 <div className={component.customers ? "visible" : "hidden"}><Customers /></div>
                 <div className={component.services ? "visible" : "hidden"}><ServicesDash /></div>
+                <div className={component.analytics ? "visible" : "hidden"}><Analytics /></div>
                 <div className={component.settings ? "visible" : "hidden"}><UserSettings /></div>
             </div>
         </div>

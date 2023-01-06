@@ -1,7 +1,6 @@
 import axios from "axios";
 import {
   ADD_USERS,
-  CLEAN,
   GET_USERS,
   GET_USER_BY_ID,
   GET_SERVICES_DETAILS,
@@ -19,6 +18,7 @@ import {
   DELETE_TO_CART,
   GET_USER_BY_EMAIL,
   GET_CATEGORIES,
+  CLEAN,
 } from "./components";
 
 const url = "http://localhost:3001";
@@ -34,7 +34,6 @@ export function logout() {
 
 export function login(payload) {
   return function (dispatch) {
-    console.log(payload)
     dispatch({ type: LOGIN, payload});
   };
 }
