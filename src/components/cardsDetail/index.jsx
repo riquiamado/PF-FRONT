@@ -9,7 +9,7 @@ import {
   getServicesDetails,
   deleteUser,
 } from "../../redux/actions/actions";
-import { addToCart } from "../../redux/actions/actions";
+import { addToCart, login } from "../../redux/actions/actions";
 import "./cardDetail.css";
 
 import Cart from "../carrito";
@@ -20,9 +20,10 @@ import { useLocation } from "react-router-dom";
 
 const CardDetails = () => {
   //const { user, isAuthenticated } = useAuth0();
+  const loggedUser = window.localStorage.getItem("session")
   const dispatch = useDispatch();
   const details = useSelector((state) => state.details);
-  const userSessionLocal = useSelector((state) => state.userSession);
+  const userSessionLocal = useSelector((state) => state.session);
 
   const history = useHistory();
   const { _id } = useParams();
@@ -32,7 +33,7 @@ const CardDetails = () => {
   const handleShow = () => setShow(true);
 
   const handleAddToCart = () => {
-    const data = { id: _id, email: userSessionLocal.email };
+    const data = { id: _id, email: userSessionLocal }
     dispatch(addToCart(details));
     // const data = { id: _id, email: user.email }  //nota: sera mejor bajar los datos en el cart ??
     // dispatch(addToCart(details))   //enviamos el servicio seleccinado a cart
@@ -44,6 +45,7 @@ const CardDetails = () => {
 
   useEffect(() => {
     dispatch(getServicesDetails(_id));
+    dispatch(login(loggedUser))
     return dispatch(clean());
   }, [dispatch, _id]);
 
