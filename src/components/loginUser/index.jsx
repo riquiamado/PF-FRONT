@@ -45,9 +45,6 @@ const LoginUser = () => {
 
   const [errors, setErrors] = useState({});
 
-  const [session, setSession] = useLocalStorage("session", "");
-  const [name, setName] = useLocalStorage("name", "");
-
   function handleChange(el) {
     setInput({
       ...input,
@@ -75,6 +72,10 @@ const LoginUser = () => {
         window.localStorage.setItem(
           "session",
           JSON.stringify(response.data.user.email)
+        );
+        window.localStorage.setItem(
+          "name",
+          JSON.stringify(response.data.user.name)
         );
         dispatch(login(response.data.user.email));
         setInput({
@@ -137,10 +138,17 @@ const LoginUser = () => {
                   password: data.sub,
                 };
 
+                axios.post(`http://localhost:3001/login_google`, {
+                  name: user.name,
+                  email: user.email,
+                });
+
+
                 window.localStorage.setItem(
                   "session",
                   JSON.stringify(user.email)
                 );
+                window.localStorage.setItem("name", JSON.stringify(user.name));
                 dispatch(login(user.email));
                 history.push("/");
               }}

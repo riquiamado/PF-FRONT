@@ -8,13 +8,9 @@ import "./navBar.css";
 
 function NavBar() {
   const session = useSelector((state) => state.session);
+  const name = JSON.parse(window.localStorage.getItem("name"))
   const dispatch = useDispatch();
   const history = useHistory();
-  const [user, setUser] = useState("")
-
-  useEffect(()=>{
-    setUser(session)
-  },[])
 
   const handleClick = () => {
     dispatch(getServices());
@@ -92,7 +88,7 @@ function NavBar() {
                 class="nav-link dropdown-toggle"
                 data-bs-toggle="dropdown"
               >
-                Hola,{" "}
+                Hola, {name.split(" ",1)}
               </a>
               <div class="dropdown-menu">
                 <a onClick={() => onDashboard()} class="dropdown-item">
