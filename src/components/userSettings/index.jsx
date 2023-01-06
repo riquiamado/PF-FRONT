@@ -5,9 +5,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { getUserById } from '../../redux/actions/actions';
 import { updateUser } from '../../redux/actions/actions';
 import './userSettings.css';
+import { useParams } from 'react-router-dom';
 
 const UserSettings = () => {
     const userSessionLocal = useSelector((state) => state.userSession);
+    const {user}=userSessionLocal
+    console.log(userSessionLocal);
+    
     // const localUser = useSelector((state) => state.users)
     //const { user } = useAuth0();
     //console.log(user)
@@ -18,8 +22,8 @@ const UserSettings = () => {
     const dispatch = useDispatch();
     const [input, setInput] = useState({
         name: "",
-        email: ""
-        // password: ""
+        email: "",
+        passwordHash: ""
     });
 
     const handleChange = event => {
@@ -30,11 +34,13 @@ const UserSettings = () => {
     }
 
     const handleUpdate = event => {
-        dispatch(updateUser(id, input));
+        event.preventDefault()
+        dispatch(updateUser(user._id, input));
+        alert("Updated")
         setInput({
             name: "",
-            email: ""
-            // password: ""
+            email: "",
+            passwordHash: ""
         })
     };
 
@@ -44,15 +50,19 @@ const UserSettings = () => {
             <div>
                 <h3>Update User Name</h3>
                 <form onSubmit={e => handleUpdate(e)}>
-                    <h3>New user name: </h3>
+                    <div>
+                    <label htmlFor="">New Name:</label>
                     <input
                     type="text"
                     value={ input.name }
                     name="name"
                     onChange={e => handleChange(e)}
                     />
-                </form>
-            </div>
+                    <input className="actividad" type="submit" value={"Update"}></input>
+                    </div>
+
+                
+           
             
             {/* <div>
                 <label htmlFor="">New User Name:</label>
@@ -72,17 +82,23 @@ const UserSettings = () => {
                 name="email"
                 onChange={e => handleChange(e)}
                 />
+                <input className="actividad" type="submit" value={"Update"}></input>
             </div>
-            {/* <h3>Update Password</h3>
+            <h3>Update Password</h3>
             <div>
                 <label htmlFor="">New Password:</label>
                 <input
                 type="text"
-                value={ input.password }
+                value={ input.passwordHash }
                 name="password"
                 onChange={e => handleChange(e)}
                 />
-            </div> */}
+                <input className="actividad" type="submit" value={"Update"}></input>
+            </div>
+            
+            </form>
+            <input className="actividad" type="submit" value={"Update"}></input>
+            </div>
         </div>
     )
 }

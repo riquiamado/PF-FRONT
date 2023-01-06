@@ -84,6 +84,7 @@ export function deleteUser(email) {
 export const updateUser = (id, payload) => {
   return async function (dispatch) {
     let res = await axios.put(`${url}/users/${id}`, payload);
+     console.log(res.data)
     dispatch({ type: UPDATE_USER, payload: res.data });
   };
 };
