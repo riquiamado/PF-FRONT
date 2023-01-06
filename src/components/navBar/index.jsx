@@ -11,7 +11,6 @@ import Cart from "../carrito";
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./navBar.css";
 
 
@@ -20,6 +19,11 @@ function NavBar() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [user, setUser] = useState({});
+  const CartContent = useSelector((state) => state.cart)
+
+const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     let loggedUserJSON = window.localStorage.getItem("userSession");
@@ -59,7 +63,8 @@ function NavBar() {
       <SearchBar theText={"Search"} />
       <div className="btns">
       
-          <button className="Btn" onClick={handleShow}>Cart</button>
+          <button className="Btn" onClick={handleShow}>Cart{CartContent.length}</button>   
+
           <Offcanvas show={show} onHide={handleClose} placement={'end'}>
         <div className="delete-container"/>      
             <Offcanvas.Header closeButton>
