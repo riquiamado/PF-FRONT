@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -21,7 +21,8 @@ function Validate(input) {
 }
 
 const CreateServices = () => {
-  const userSessionLocal = useSelector((state) => state.userSession);
+  const session = useSelector((state) => state.session);
+  console.log(session)
   const dispacth = useDispatch();
   const history = useHistory();
   const [input, setInput] = useState({
@@ -62,9 +63,8 @@ const CreateServices = () => {
     );
 
     const formData = new FormData();
-    formData.append("userName", userSessionLocal.user.name);
-    //formData.append("userImage", userSessionLocal.picture);
-    formData.append("userEmail", userSessionLocal.user.email);
+    // formData.append("userName", userSessionLocal.user.name);
+    // formData.append("userEmail", userSessionLocal.user.email);
     formData.append("image", image);
     formData.append("name", input.name);
     formData.append("description", input.description);
@@ -87,76 +87,85 @@ const CreateServices = () => {
     }
   }
 
-  console.log(input)
+  const [user, setUser] = useState("")
 
-  return (
-    <div className={styles.page}>
-      <Link to={"/"}>
-        <button>Cancel</button>
-      </Link>
-      <div>
-        <form onSubmit={(el) => handleSubmit(el, image, input)}>
-          <div className="formu">
-            <label htmlFor="">
-              Service name:<br></br>
-            </label>
-            <input
-              type="text"
-              value={input.name}
-              name="name"
-              onChange={(el) => handleChange(el)}
-            />
-            <br />
-            {errors.name ? <label>{errors.name}</label> : null}
-          </div>
-          <div className="">
-            <label htmlFor="">
-              Description:<br></br>
-            </label>
-            <input
-              type="text"
-              value={input.description}
-              name="description"
-              onChange={(el) => handleChange(el)}
-            />
-            <br />
-            {errors.description ? <label>{errors.description}</label> : null}
-          </div>
-          <div>
-            <label> Price: </label>
-            <div>
+  useEffect(()=>{
+    setUser(session)
+  },[])
+  
+  return  (
+    <div>
+      {
+        session? <div className={styles.page}>
+        <Link to={"/"}>
+          <button>Cancel</button>
+        </Link>
+        <div>
+          <form onSubmit={(el) => handleSubmit(el, image, input)}>
+            <div className="formu">
+              <label htmlFor="">
+                Service name:<br></br>
+              </label>
               <input
-                type="number"
-                value={input.price}
-                placeholder="$"
-                name="price"
+                type="text"
+                value={input.name}
+                name="name"
                 onChange={(el) => handleChange(el)}
               />
+              <br />
+              {errors.name ? <label>{errors.name}</label> : null}
             </div>
-          </div>
-          <select
-            class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
-            id="floatingSelectGrid"
-            onChange={(el) => handleChange(el)}
-            name="country"
-          >
-            <option value="">Country: </option>
-            <option value="Argentina">Argentina</option>
-            <option value="Colombia">Colombia</option>
-            <option value="México">México</option>
-          </select>
-          <div>
-            <label htmlFor="">Image</label>
-            <input type="file" onChange={(el) => handleImage(el)} />
-          </div>
-          <input
-            className={styles.create}
-            type="submit"
-            value={"create services"}
-          />
-        </form>
-      </div>
+            <div className="">
+              <label htmlFor="">
+                Description:<br></br>
+              </label>
+              <input
+                type="text"
+                value={input.description}
+                name="description"
+                onChange={(el) => handleChange(el)}
+              />
+              <br />
+              {errors.description ? <label>{errors.description}</label> : null}
+            </div>
+            <div>
+              <label> Price: </label>
+              <div>
+                <input
+                  type="number"
+                  value={input.price}
+                  placeholder="$"
+                  name="price"
+                  onChange={(el) => handleChange(el)}
+                />
+              </div>
+            </div>
+            <select
+              class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
+              id="floatingSelectGrid"
+              onChange={(el) => handleChange(el)}
+              name="country"
+            >
+              <option value="">Country: </option>
+              <option value="Argentina">Argentina</option>
+              <option value="Colombia">Colombia</option>
+              <option value="México">México</option>
+            </select>
+            <div>
+              <label htmlFor="">Image</label>
+              <input type="file" onChange={(el) => handleImage(el)} />
+            </div>
+            <input
+              className={styles.create}
+              type="submit"
+              value={"create services"}
+            />
+          </form>
+        </div>
+      </div> : <h1>Please login</h1>
+      }
     </div>
+    
   );
 };
 

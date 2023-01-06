@@ -22,7 +22,7 @@ function NavBar() {
   };
   const onChange = () => {
     dispatch(getServices());
-    history.push("/checkLogin");
+    history.push("/create");
   };
   const onLoging = () => {
     dispatch(getServices());
@@ -31,7 +31,13 @@ function NavBar() {
 
   const onLogout = () => {
     window.localStorage.removeItem("session");
+    window.localStorage.removeItem("name");
     dispatch(login(null))
+    history.push("/");
+  }
+
+  const onDashboard = () => {
+    history.push("/dashboard");
   }
 
   return (
@@ -79,7 +85,8 @@ function NavBar() {
             <a onClick={() => onChange()} class="nav-item nav-link">
               Create Service
             </a>
-            <div class="nav-item dropdown">
+            {session &&
+              <div class="nav-item dropdown">
               <a
                 href="#"
                 class="nav-link dropdown-toggle"
@@ -91,11 +98,10 @@ function NavBar() {
                 <a onClick={() => onDashboard()} class="dropdown-item">
                   Dashboard
                 </a>
-                <a href="#" class="dropdown-item">
-                  Logout
-                </a>
               </div>
             </div>
+            }
+            
           </div>
           <div class="navbar-nav">
             <a class="nav-item nav-link fs-5">
