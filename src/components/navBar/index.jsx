@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../searchBar";
 import { Link, useHistory } from "react-router-dom";
 import { getServices, login } from "../../redux/actions/actions";
-import LoginLocal from "../login";
+import LoginLocal from "../loginLocal";
 import "./navBar.css";
 
 function NavBar() {
@@ -17,7 +17,7 @@ function NavBar() {
     let loggedUserJSON = window.localStorage.getItem("userSession");
     if (loggedUserJSON) {
       let parsed = JSON.parse(loggedUserJSON);
-       let user = {
+      let user = {
         email: parsed,
       };
       if (parsed.google) {
@@ -27,7 +27,7 @@ function NavBar() {
       }
       setUser(user);
       dispatch(login(user));
-    } 
+    }
   }, [dispatch]);
 
   const handleClick = () => {
