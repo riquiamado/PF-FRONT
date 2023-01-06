@@ -136,7 +136,7 @@ const CreateServices = () => {
               </div>
             </div>
             <select
-              class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
+              className="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
               id="floatingSelectGrid"
               onChange={(el) => handleChange(el)}
               name="country"
