@@ -2,8 +2,6 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/actions/actions";
-import LoginLocalBtn from "../loginLocalBtn";
-import LogoutLocalBtn from "../logoutLocalBtn";
 import { Link } from "react-router-dom";
 
 const LoginLocal = () => {
@@ -23,7 +21,9 @@ const LoginLocal = () => {
 
   return (
     <div>{Object.values(userSessionLocal).length === 0 ? (
-      <LoginLocalBtn />
+      <Link to={"/login"}>
+            <button className="Btn">Login</button>
+        </Link>
     ) : (
       <Link to="/profile">
         <button>{userSessionLocal.name}</button>
