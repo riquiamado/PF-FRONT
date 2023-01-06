@@ -6,13 +6,14 @@ import { getServices, clean, getCategories, login } from "../../redux/actions/ac
 import Cards from "../cards";
 import Paginate from "../paginado";
 import "./home.css";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import combinedFilters from "./filters";
 
 function Home() {
   const allServices = useSelector((state) => state.services);
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
+  const history = useHistory();
   const [filters, setFilters] = useState({
     country: "",
     name: "",
@@ -35,6 +36,11 @@ function Home() {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
+  const handleCreateService = () => {
+    dispatch(getServices());
+    history.push("/create");
+  };
+
   useEffect(() => {
     if (allServices.length === 0) {
       dispatch(getServices());
@@ -46,12 +52,12 @@ function Home() {
 
   return (
     <>
-      <div class="container-fluid mt-3 shadow p-3 mb-3 bg-body rounded">
-        <div class="row g-3 pb-0">
-          <div class="col-sm">
-            <div class="form-floating">
+      <div className="container-fluid mt-3 shadow p-3 mb-3 bg-body rounded">
+        <div className="row g-3 pb-0">
+          <div className="col-sm">
+            <div className="form-floating">
               <select
-                class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
+                className="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
                 id="floatingSelectGrid"
                 onChange={(e) => handleChange(e)}
                 name="name"
@@ -65,10 +71,10 @@ function Home() {
               </select>
             </div>
           </div>
-          <div class="col-sm">
-            <div class="form-floating">
+          <div className="col-sm">
+            <div className="form-floating">
               <select
-                class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
+                className="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
                 id="floatingSelectGrid"
                 onChange={(e) => handleChange(e)}
                 name="country"
@@ -80,10 +86,10 @@ function Home() {
               </select>
             </div>
           </div>
-          <div class="col-sm pb-0">
-            <div class="form-floating pb-0">
+          <div className="col-sm pb-0">
+            <div className="form-floating pb-0">
               <select
-                class="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
+                className="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
                 id="floatingSelectGrid"
                 onChange={(e) => handleChange(e)}
                 name="price"
@@ -101,7 +107,7 @@ function Home() {
           paginado={paginado}
         />
       </div>
-      <div class="container-fluid mt-2 shadow p-4 mb-4 pb-4 bg-body rounded">
+      <div className="container-fluid mt-2 shadow p-4 mb-4 pb-4 bg-body rounded">
         <div className="cards-home">
           {currentServices?.map((el, index) => {
             return (
@@ -121,15 +127,13 @@ function Home() {
           })}
         </div>
       </div>
-      <div class="container-fluid mt-2 shadow p-4 mb-4 pb-4 bg-body rounded text-center">
-        <p class="text-center text-uppercase fs-2 fw-semibold font-monospace text-primary pb-2 mb-4 border-bottom border-muted">
+      <div className="container-fluid mt-2 shadow p-4 mb-4 pb-4 bg-body rounded text-center">
+        <p className="text-center text-uppercase fs-2 fw-semibold font-monospace text-primary pb-2 mb-4 border-bottom border-muted">
           Create your first service now!
         </p>
-        <Link to={"/checkLogin"}>
-          <button id="sdsfs" class="btn btn-primary mw-40 h-100 text-center">
+          <button id="sdsfs" className="btn btn-primary mw-40 h-100 text-center" onClick={() => handleCreateService()}>
             Create Services
           </button>
-        </Link>
       </div>
     </>
   );

@@ -15,22 +15,22 @@ const Footer = () => {
         </div>
         <div>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-facebook"></i>
+            <i className="bi bi-facebook"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-twitter"></i>
+            <i className="bi bi-twitter"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-google"></i>
+            <i className="bi bi-google"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-instagram"></i>
+            <i className="bi bi-instagram"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-linkedin"></i>
+            <i className="bi bi-linkedin"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-github"></i>
+            <i className="bi bi-github"></i>
           </a>
         </div>
       </section>
@@ -40,7 +40,7 @@ const Footer = () => {
           <MDBRow className='mt-3'>
             <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
-                <i class="bi bi-gem"> Freelance Workers</i>
+                <i className="bi bi-gem"> Freelance Workers</i>
               </h6>
               <p>
                 We are a company that seeks to connect people by offering services. If you are interested in being part of our Providers, contact us.
@@ -96,16 +96,16 @@ const Footer = () => {
             <MDBCol md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
               <p>
-                <i class="bi bi-building"> COL, MX, AR </i>
+                <i className="bi bi-building"> COL, MX, AR </i>
               </p>
               <p>
-                <i class="bi bi-envelope"> freelanceworkers@gmail.com</i>
+                <i className="bi bi-envelope"> freelanceworkers@gmail.com</i>
               </p>
               <p>
-                <i class="bi bi-telephone"></i> + 555 555 5555
+                <i className="bi bi-telephone"></i> + 555 555 5555
               </p>
               <p>
-                <i class="bi bi-telephone"></i> + 555 555 5555
+                <i className="bi bi-telephone"></i> + 555 555 5555
               </p>
             </MDBCol>
           </MDBRow>
