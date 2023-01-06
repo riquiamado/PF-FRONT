@@ -9,7 +9,7 @@ import { getComponents } from '../../redux/actions/actions.jsx';
 
 const SideBar = () => {
 
-    const userSessionLocal = useSelector((state) => state.userSession);
+    const userSessionLocal = useSelector((state) => state.session);
     //const { user } = useAuth0()
     const { name, picture, email} = userSessionLocal;
     const [selected, setSelected] = useState(0);

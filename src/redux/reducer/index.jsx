@@ -30,7 +30,7 @@ const initialState = {
   services: [],
   allServices: [],
   users: [],
-  userSession: {},
+  session:"",
   cart: [],
   components: [],
   details: {},
@@ -56,8 +56,9 @@ function rootReducer(state = initialState, action) {
     case LOGIN:
       return {
         ...state,
-        userSession: action.payload,
+        session: action.payload,
       };
+      
     case GET_USERS:
       return {
         ...state,

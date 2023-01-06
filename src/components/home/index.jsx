@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getServices, clean, getCategories } from "../../redux/actions/actions";
+import { getServices, clean, getCategories, login } from "../../redux/actions/actions";
 import Cards from "../cards";
 import Paginate from "../paginado";
 import "./home.css";
@@ -19,6 +19,7 @@ function Home() {
     rating: "",
     price: "",
   });
+  const loggedUser = window.localStorage.getItem("session")
   const [currentPage, setCurrentPage] = useState(1);
   const servicesPerPage = 9;
   const indexLastServices = currentPage * servicesPerPage;
@@ -38,6 +39,7 @@ function Home() {
     if (allServices.length === 0) {
       dispatch(getServices());
       dispatch(getCategories());
+      dispatch(login(loggedUser))
     }
     return dispatch(clean());
   }, [dispatch, filters]);
