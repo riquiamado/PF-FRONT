@@ -14,8 +14,6 @@ import {
   DELETE_SERVICE,
   UPDATE_USER,
   LOGIN,
-  LOGOUT,
-  LOGIN_GOOGLE,
   ADD_TO_CART,
   GET_COMPONENTS,
   DELETE_TO_CART,
@@ -26,12 +24,7 @@ import {
 const url = "http://localhost:3001";
 // const url = "https://pf-back-production-b443.up.railway.app"
 
-//-----------------------------------User---------------------------------------------
-export function loginGoogle(user) {
-  return function (dispatch) {
-    dispatch({ type: LOGIN_GOOGLE, payload: user });
-  };
-}
+//-----------------------------------User-----------------------------------------
 
 export function logout() {
   return function (dispatch) {
@@ -39,10 +32,10 @@ export function logout() {
   };
 }
 
-export function login(user) {
-  return async function (dispatch) {
-    let info = await axios.post(`${url}/login`, user);
-    dispatch({ type: LOGIN, payload: info.data });
+export function login(payload) {
+  return function (dispatch) {
+    console.log(payload)
+    dispatch({ type: LOGIN, payload});
   };
 }
 

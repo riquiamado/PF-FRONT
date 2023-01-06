@@ -1,5 +1,4 @@
 const filter = (allServices, filters) => {
-  console.log(allServices);
   var arr = allServices.sort(function (a, b) {
     if (a.average > b.average) return -1;
     if (b.average > a.average) return 1;
