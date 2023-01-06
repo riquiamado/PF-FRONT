@@ -22,7 +22,8 @@ function Validate(input) {
 
 const CreateServices = () => {
   const session = useSelector((state) => state.session);
-  console.log(session)
+  const userName = JSON.parse(window.localStorage.getItem("name"))
+  const userEmail = JSON.parse(window.localStorage.getItem("session"))
   const dispacth = useDispatch();
   const history = useHistory();
   const [input, setInput] = useState({
@@ -63,8 +64,8 @@ const CreateServices = () => {
     );
 
     const formData = new FormData();
-    // formData.append("userName", userSessionLocal.user.name);
-    // formData.append("userEmail", userSessionLocal.user.email);
+    formData.append("userName", userName );
+    formData.append("userEmail", userEmail);
     formData.append("image", image);
     formData.append("name", input.name);
     formData.append("description", input.description);
@@ -86,12 +87,6 @@ const CreateServices = () => {
       alert("debe completar todos los datos...");
     }
   }
-
-  const [user, setUser] = useState("")
-
-  useEffect(()=>{
-    setUser(session)
-  },[])
   
   return  (
     <div>
