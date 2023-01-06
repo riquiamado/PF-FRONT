@@ -34,6 +34,7 @@ function App() {
       <Route exact path="/payment" component={Payment} />
       <Route exact path="/paymentDeclined " component={PaymentDeclined} />
       <Route path="/services/:_id" component={CardDetails} />
+      <Route path="/create" component={CreateServices} />
       <Footer/>
     </div>
   );

@@ -46,7 +46,7 @@ const LoginUser = () => {
   const [errors, setErrors] = useState({});
 
   const [session, setSession] = useLocalStorage("session", "");
-  // const [name, setName] = useLocalStorage("name", "");
+  const [name, setName] = useLocalStorage("name", "");
 
   function handleChange(el) {
     setInput({
@@ -71,7 +71,7 @@ const LoginUser = () => {
     );
     if (Object.values(errors).length === 0) {
       try {
-        const response = await axios.post(`http://localhost:3001`, input);
+        const response = await axios.post(`http://localhost:3001/login`, input);
         window.localStorage.setItem(
           "session",
           JSON.stringify(response.data.user.email)
@@ -137,15 +137,12 @@ const LoginUser = () => {
                   password: data.sub,
                 };
 
-                // setSession(user.email);
                 window.localStorage.setItem(
                   "session",
                   JSON.stringify(user.email)
                 );
                 dispatch(login(user.email));
-                alert("User logged in successfully");
                 history.push("/");
-                // window.location.reload()
               }}
               onReject={(err) => {
                 console.log(err);
