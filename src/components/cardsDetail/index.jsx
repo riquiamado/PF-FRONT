@@ -15,12 +15,13 @@ import "./cardDetail.css";
 import Cart from "../carrito";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import toast, { Toaster } from "react-hot-toast";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
 const CardDetails = () => {
   //const { user, isAuthenticated } = useAuth0();
-  const loggedUser = window.localStorage.getItem("session")
+  const loggedUser = window.localStorage.getItem("session");
   const dispatch = useDispatch();
   const details = useSelector((state) => state.details);
   const userSessionLocal = useSelector((state) => state.session);
@@ -33,8 +34,9 @@ const CardDetails = () => {
   const handleShow = () => setShow(true);
 
   const handleAddToCart = () => {
-    const data = { id: _id, email: userSessionLocal }
+    const data = { id: _id, email: userSessionLocal };
     dispatch(addToCart(details));
+    toast.success("Service has been added to the cart");
     // const data = { id: _id, email: user.email }  //nota: sera mejor bajar los datos en el cart ??
     // dispatch(addToCart(details))   //enviamos el servicio seleccinado a cart
 
@@ -45,7 +47,7 @@ const CardDetails = () => {
 
   useEffect(() => {
     dispatch(getServicesDetails(_id));
-    dispatch(login(loggedUser))
+    dispatch(login(loggedUser));
     return dispatch(clean());
   }, [dispatch, _id]);
 
@@ -74,7 +76,7 @@ const CardDetails = () => {
               />
             </div>
           </div>
-              <p class="fs-1 fw-bolder mt-3 text-warning">{`Price: $${details.price}`}</p>
+          <p class="fs-1 fw-bolder mt-3 text-warning">{`Price: $${details.price}`}</p>
           <div class="container overflow-hidden text-center">
             <div class="row gx-5">
               <div class="col">
@@ -94,10 +96,12 @@ const CardDetails = () => {
         </div>
       </div>
       <div class="container-sm shadow  p-3 mb-4 bg-body rounded">
-        <h1 class="fs-2 fw-semibold pb-2 border-bottom border-muted">User Provider</h1>
+        <h1 class="fs-2 fw-semibold pb-2 border-bottom border-muted">
+          User Provider
+        </h1>
         <div>
           <label class="text-muted mb-2" htmlFor="">
-          <i class="bi bi-person-circle"> Name</i>
+            <i class="bi bi-person-circle"> Name</i>
           </label>
           <h3 class="text-capitalize fw-normal">{details.user.name}</h3>
           <label class="text-muted mb-2" htmlFor="">
@@ -106,33 +110,32 @@ const CardDetails = () => {
           <h3>{details.user.email}</h3>
         </div>
 
-          <Offcanvas show={show} onHide={handleClose} placement={'end'}>
-        <div className="delete-container"/>
-          
-           
-            <Offcanvas.Header closeButton>
-            <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-            <Cart />
-            </Offcanvas.Body>
-          </Offcanvas> 
+        <Offcanvas show={show} onHide={handleClose} placement={"end"}>
+          <div className="delete-container" />
 
-        </div>
-          <div class="container-sm shadow p-3 mb-3 bg-body rounded text-center">
-            <p class="text-center text-uppercase fs-2 fw-semibold font-monospace pb-2 mb-4 border-bottom border-muted">Do you need this service?</p>
-            <button
-              class="btn btn-lg btn-primary me-2"
-              onClick={() => handleAddToCart()}
-            >
-              Add to Cart
-            </button>
-            
-            <button class="btn btn-lg btn-primary" onClick={handleShow}>
-              View Cart
-            </button>
-            
-          </div>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Cart />
+          </Offcanvas.Body>
+        </Offcanvas>
+      </div>
+      <div class="container-sm shadow p-3 mb-3 bg-body rounded text-center">
+        <p class="text-center text-uppercase fs-2 fw-semibold font-monospace pb-2 mb-4 border-bottom border-muted">
+          Do you need this service?
+        </p>
+        <button
+          class="btn btn-lg btn-primary me-2"
+          onClick={() => handleAddToCart()}
+        >
+          Add to Cart
+        </button>
+
+        <button class="btn btn-lg btn-primary" onClick={handleShow}>
+          View Cart
+        </button>
+      </div>
       <div class="container-sm shadow p-3 mb-5 bg-body rounded">
         <div class="d-grid gap-8 mt-1 col-2 mx-auto text-center">
           <Link to={"/"}>
@@ -145,6 +148,7 @@ const CardDetails = () => {
           </Link>
         </div>
       </div>
+      <Toaster position="bottom-right" reverseOrder={false} />
     </>
   ) : (
     <div class="d-flex justify-content-center">
@@ -154,6 +158,5 @@ const CardDetails = () => {
     </div>
   );
 };
-
 
 export default CardDetails;
