@@ -118,25 +118,25 @@ const CardDetails = () => {
         <Offcanvas show={show} onHide={handleClose} placement={"end"}>
           <div className="delete-container" />
 
-          <Offcanvas.Header closeButton>
+            <Offcanvas.Header closeButton>
             <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
             <Cart />
-          </Offcanvas.Body>
-        </Offcanvas>
-      </div>
-      <div class="container-sm shadow p-3 mb-3 bg-body rounded text-center">
+            </Offcanvas.Body>
+          </Offcanvas> 
+        </div>
+          <div class="container-sm shadow p-3 mb-3 bg-body rounded text-center">
         <p class="text-center text-uppercase fs-2 fw-semibold font-monospace pb-2 mb-4 border-bottom border-muted">
           Do you need this service?
         </p>
-        <button
-          class="btn btn-lg btn-primary me-2"
-          onClick={() => handleAddToCart()}
-        >
-          Add to Cart
-        </button>
-
+            <button
+              class="btn btn-lg btn-primary me-2"
+              onClick={() => handleAddToCart()}
+            >
+              Add to Cart
+            </button>
+            
 
         </div>
           <div className="container-sm shadow p-3 mb-3 bg-body rounded text-center">
