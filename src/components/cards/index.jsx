@@ -23,7 +23,7 @@ function Cards({ _id, name, description, image, price, country, average }) {
                 {description.charAt(0).toUpperCase() + description.slice(1)}
               </p>
               <p className="card-text fs-5 pt-0">
-                <small className="text">Price: ${price} Average: {[...new Array(5)].map((start,index)=>{return index < average? <AiFillStar key={index}/>:<AiOutlineStar key={index}/> })}</small>
+                <small className="text">Price: ${price} <i>{/* {average}  */}{[...new Array(5)].map((start,index)=>{return index < average? <AiFillStar key={index}/>:<AiOutlineStar key={index}/> })}</i> </small>
               </p>
               {<button className="btn btn-lg btn-primary ms-2">View more</button>}
               <i className="bi bi-geo-alt fs-6 ps-4 text-muted"> {country}</i>

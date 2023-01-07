@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { addServices } from "../../redux/actions/actions";
+import { addServices, getServices } from "../../redux/actions/actions";
 import styles from "./createServices.module.css";
 
 function Validate(input) {
@@ -74,6 +74,7 @@ const CreateServices = () => {
     console.log(formData);
     if (Object.values(errors).length === 0) {
       dispacth(addServices(formData));
+      dispacth(getServices());
       alert("servicio creado!");
       setInput({
         name: "",
