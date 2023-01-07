@@ -26,8 +26,7 @@ const ServicesDash = () => {
                         <p>{item.name}</p>
                         <p>{item.description}</p>
                         <Link to={'/'}>
-                            <a className='hyperlink'>Details</a>
-                            <span></span>
+                            <p className='hyperlink'>Details</p>
                         </Link>
                     </div>
                 )
