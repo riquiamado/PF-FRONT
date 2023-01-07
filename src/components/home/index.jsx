@@ -11,6 +11,7 @@ import combinedFilters from "./filters";
 
 function Home() {
   const allServices = useSelector((state) => state.services);
+  const servicess = useSelector((state) => state.allServices);
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -42,7 +43,7 @@ function Home() {
   };
 
   useEffect(() => {
-    if (allServices.length === 0) {
+    if (allServices.length === servicess.length) {
       dispatch(getServices());
       dispatch(getCategories());
       dispatch(login(loggedUser))
