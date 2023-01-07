@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { login } from "../../redux/actions/actions";
 
 const FormRatingReview = () => {
+    const loggedUser = window.localStorage.getItem("session")
+    const dispatch = useDispatch();
 
+    useEffect( () => {
+        dispatch(login(loggedUser))
+    }, [])
 
     return (
         <div>

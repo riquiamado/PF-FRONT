@@ -85,7 +85,6 @@ const CardDetails = () => {
             <div className="row gx-5">
               <div className="col">
                 <div className="p-3 border bg-light">
-
                   <label htmlFor="">Reviews</label>
                   <h3>{details.reviews}</h3>
                 </div>
