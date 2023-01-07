@@ -1,31 +1,13 @@
 .navbar  {
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center; */
   background: linear-gradient(-45deg, #b052ee, #cb3ce7, #6fb4ce, #23d5ab);
 	background-size: 400% 400%;
 	animation: gradient 20s ease infinite;
-	height: 16vh;
 }
 
 a {
   cursor: pointer;
 }
 
-  /* input {
-    width: 560px;
-    font-size: 21px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    font-family: "Times New Roman";
-    outline: none;
-    background-color: whitesmoke; 
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    height: 40px;
-    border: none;
-    border: solid 1px #ffffff;
-    padding-left: 1rem;
-  } */
 
 @keyframes gradient {
 	0% {
@@ -48,43 +30,5 @@ a {
   margin-left: -10px;
 }
 
-/* .container-fluid a {
-  background-color: #6fb4ce !important;
-} */
-/* 
 
 
-
-.logo {
-  display: flex;
-  flex-direction: row;
-  margin-left: 20px;
-  font-size: 20px;
-  font-family: "Times New Roman";
-
-}
-
-.logo:hover {
-  cursor: pointer;
-}
-
-.Btn {
-  margin-right: 2rem;
-  width: 75px;
-  height: 65px;
-  background: transparent;
-  border: 0px;
-  font-family: "Times New Roman";
-  font-weight: bolder;
-  font-size: 20px;
-  color: #fafafa;
-}
-
-.Btn:hover {
-  cursor: pointer;
-}
-
-.Btns {
-  margin-right: 20px;
-}
- */
