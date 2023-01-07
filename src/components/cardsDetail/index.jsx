@@ -125,20 +125,7 @@ const CardDetails = () => {
             <Cart />
             </Offcanvas.Body>
           </Offcanvas> 
-        </div>
-          <div class="container-sm shadow p-3 mb-3 bg-body rounded text-center">
-        <p class="text-center text-uppercase fs-2 fw-semibold font-monospace pb-2 mb-4 border-bottom border-muted">
-          Do you need this service?
-        </p>
-            <button
-              class="btn btn-lg btn-primary me-2"
-              onClick={() => handleAddToCart()}
-            >
-              Add to Cart
-            </button>
-            
-
-        </div>
+        </div> 
           <div className="container-sm shadow p-3 mb-3 bg-body rounded text-center">
             <p className="text-center text-uppercase fs-2 fw-semibold font-monospace pb-2 mb-4 border-bottom border-muted">Do you need this service?</p>
             <button
