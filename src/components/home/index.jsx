@@ -47,7 +47,7 @@ function Home() {
       dispatch(getCategories());
       dispatch(login(loggedUser))
     }
-    return dispatch(clean());
+    /* return dispatch(clean()); */
   }, [dispatch, filters]);
 
   return (
