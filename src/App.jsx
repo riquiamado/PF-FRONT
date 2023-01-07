@@ -14,8 +14,6 @@ import Footer from "./components/footer/index";
 import Payment from "./components/payment";
 import PaymentDeclined from "./components/paymentDeclined";
 
-
-
 function App() {
   return (
     <div className="App">
