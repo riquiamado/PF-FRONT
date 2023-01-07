@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { SidebarData } from './index.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { UilSignout } from '@iconscout/react-unicons'
 
-// import LoginButton from '../LoginButton/index.jsx';
 import './sidebar.css';
 import { getComponents } from '../../redux/actions/actions.jsx';
 
 const SideBar = () => {
 
     const userSessionLocal = useSelector((state) => state.session);
-    //const { user } = useAuth0()
-    const { name, picture, email} = userSessionLocal;
+    const name = JSON.parse(window.localStorage.getItem("name"));
     const [selected, setSelected] = useState(0);
-
-    //Auth0
-    // const { user, logout } = useAuth0()
-    // const { name, picture, email} = user;
-
-    //element selected
-    // const [selected, setSelected] = useState(0);
-
   
     const dispatch = useDispatch()
     // useEffect(() => {
@@ -41,7 +30,8 @@ const SideBar = () => {
             <div className='menu'>
                 {SidebarData.map((item, index) => {
                     return(
-                        <div className={selected === index?'menuItem active': 'menuItem'} 
+                        <div 
+                        className={selected === index?'menuItem active': 'menuItem'} 
                         key={index}
                         onClick={() => {
                             //Switches classname and render
@@ -56,13 +46,9 @@ const SideBar = () => {
                         </div>
                     )
                 })}
-                
-                {/* <div className='menuItem' onClick={() => logout({ returnTo: window.location.origin })}>
-                    <UilSignout/>
-                </div> */}
+                <div></div>
             </div>
         </div>
-
     )
 }
 

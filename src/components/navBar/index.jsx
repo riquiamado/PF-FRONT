@@ -16,7 +16,7 @@ function NavBar() {
     dispatch(getServices());
     history.push("/");
   };
-  const onChange = () => {
+  const handleCreateService = () => {
     dispatch(getServices());
     history.push("/create");
   };
@@ -37,9 +37,9 @@ function NavBar() {
   }
 
   return (
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a id="csdcs" onClick={() => handleClick()} class="navbar-brand">
+    <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <a id="csdcs" onClick={() => handleClick()} className="navbar-brand">
           <img
             src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1672693337/pruebas/logo_x83pht.png"
             alt="FreelanceLogo"
@@ -49,48 +49,55 @@ function NavBar() {
           Freelance Workers
         </a>
         <button
-          type="checkbox"
-          class="navbar-toggler"
+
+          type="button"
+          className="navbar-toggler"
+
           data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse"
         >
-          <span class="navbar-toggler-icon">
-            <i class="bi bi-list"></i>
+          <span className="navbar-toggler-icon">
+            <i className="bi bi-list"></i>
           </span>
         </button>
 
         <div
-          class="collapse navbar-collapse justify-content-between"
+          className="collapse navbar-collapse justify-content-between"
           id="navbarCollapse"
         >
-          <div class="navbar-nav text-muted">
+          <div className="navbar-nav text-muted">
             <a
               onClick={() => handleClick()}
-              class="nav-item nav-link active text-muted"
+              className="nav-item nav-link active text-muted"
             ></a>
           </div>
         </div>
         <div
-          class="collapse navbar-collapse justify-content-between"
+          className="collapse navbar-collapse justify-content-between"
           id="navbarCollapse"
         >
-          <div class="navbar-nav">
-            <div class="container-sm mt-3 text-center">
+
+          <div className="navbar-nav">
+            <div className="container-sm mt-3 text-center">
               <SearchBar></SearchBar>
             </div>
-            <a onClick={() => onChange()} class="nav-item nav-link ">
+            <a onClick={() => handleCreateService()} className="nav-item nav-link">
+
               Create Service
             </a>
             {session &&
-              <div class="nav-item dropdown">
+              <div className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+
+                href="#"
+                className="nav-link dropdown-toggle"
+
                 data-bs-toggle="dropdown"
               >
                 Hello, <br />{name.split(" ",1)}
               </a>
-              <div class="dropdown-menu">
-                <a onClick={() => onDashboard()} class="dropdown-item">
+              <div className="dropdown-menu">
+                <a onClick={() => onDashboard()} className="dropdown-item">
                   Dashboard
                 </a>
               </div>
@@ -98,8 +105,8 @@ function NavBar() {
             }
             
           </div>
-          <div class="navbar-nav">
-            <a class="nav-item nav-link fs-5">
+          <div className="navbar-nav">
+            <a className="nav-item nav-link fs-5">
             {session ? <b onClick={() => onLogout()}>Logout</b> : <b onClick={() => onLoging()}>Login</b>}
             </a>
           </div>
