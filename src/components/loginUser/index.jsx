@@ -98,7 +98,7 @@ const LoginUser = () => {
   return (
     <div className={styles.page}>
       <Link to={"/"}>
-        <button>Volver</button>
+        <button>Back</button>
       </Link>
       <div>
         <form onSubmit={(el) => handleSubmit(el)}>
