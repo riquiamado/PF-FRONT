@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./cards.css";
 
+
 function Cards({ _id, name, description, image, price, country, average }) {
+  
   return (
     <Link
       to={`services/${_id}`}
@@ -25,7 +27,10 @@ function Cards({ _id, name, description, image, price, country, average }) {
               {<button class="btn btn-lg btn-primary ms-2">View more</button>}
               <i class="bi bi-geo-alt fs-6 ps-4 text-muted"> {country}</i>
             </div>
+            
           </div>
+          
+          {/* <Rating name="read-only" value={value} readOnly /> */}
         </div>
       </div>
     </Link>

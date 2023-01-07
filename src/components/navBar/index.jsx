@@ -49,7 +49,7 @@ function NavBar() {
           Freelance Workers
         </a>
         <button
-          type="button"
+          type="checkbox"
           class="navbar-toggler"
           data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse"
@@ -75,20 +75,19 @@ function NavBar() {
           id="navbarCollapse"
         >
           <div class="navbar-nav">
-            <div class="container-sm mt-3">
+            <div class="container-sm mt-3 text-center">
               <SearchBar></SearchBar>
             </div>
-            <a onClick={() => onChange()} class="nav-item nav-link">
+            <a onClick={() => onChange()} class="nav-item nav-link ">
               Create Service
             </a>
             {session &&
               <div class="nav-item dropdown">
               <a
-                href="#"
                 class="nav-link dropdown-toggle"
                 data-bs-toggle="dropdown"
               >
-                Hola, {name.split(" ",1)}
+                Hello, <br />{name.split(" ",1)}
               </a>
               <div class="dropdown-menu">
                 <a onClick={() => onDashboard()} class="dropdown-item">

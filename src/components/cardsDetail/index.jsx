@@ -15,7 +15,6 @@ import "./cardDetail.css";
 import Cart from "../carrito";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useLocation } from "react-router-dom";
 
 const CardDetails = () => {
