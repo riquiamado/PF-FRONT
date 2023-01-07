@@ -8,6 +8,7 @@ import useLocalStorage from "../../Hooks/useLocalStorage";
 import styles from "../createUser/createUser.module.css";
 import axios from "axios";
 import { login } from "../../redux/actions/actions";
+import toast, { Toaster } from "react-hot-toast";
 
 const GOOGLE_API =
   "327874418838-9lum1l34s28h1d2v5i5j0mc9oe9evl1h.apps.googleusercontent.com";
@@ -33,6 +34,10 @@ function Validate(input) {
   }
   return errors;
 }
+
+const errorNotification = (message) => {
+  toast.error(message);
+};
 
 const LoginUser = () => {
   const dispatch = useDispatch();
@@ -84,8 +89,8 @@ const LoginUser = () => {
         });
         history.push("/");
       } catch (error) {
-        alert(error.response.data.error);
-        console.log(error.response.data);
+        errorNotification(error.response.data.error);
+
       }
     }
   };
@@ -143,7 +148,6 @@ const LoginUser = () => {
                   email: user.email,
                 });
 
-
                 window.localStorage.setItem(
                   "session",
                   JSON.stringify(user.email)
@@ -158,6 +162,7 @@ const LoginUser = () => {
             >
               <GoogleLoginButton />
             </LoginSocialGoogle>
+            <Toaster position="bottom-right" reverseOrder={false} />
           </div>
         </form>
       </div>
