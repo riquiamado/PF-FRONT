@@ -16,6 +16,7 @@ import Cart from "../carrito";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import toast, { Toaster } from "react-hot-toast";
+import {AiOutlineStar,AiFillStar} from "react-icons/ai"
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
@@ -90,7 +91,7 @@ const CardDetails = () => {
               <div className="col">
                 <div className="p-3 border bg-light">
                   <label htmlFor="">Rating</label>
-                  <h3>{details.rating}</h3>
+                  <h3>{[...new Array(5)].map((start,index)=>{return index < details.average? <AiFillStar key={index}/>:<AiOutlineStar key={index}/> })}</h3>
                 </div>
               </div>
             </div>
