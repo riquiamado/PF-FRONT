@@ -11,6 +11,7 @@ const ServicesDash = () => {
     const email = JSON.parse(window.localStorage.getItem("session"));
     const dispatch = useDispatch()
     
+
     useEffect(() => {
         dispatch(getUserByEmail(email));
         dispatch(login(email))
@@ -25,9 +26,12 @@ const ServicesDash = () => {
                         <p>#{index}</p>
                         <p>{item.name}</p>
                         <p>{item.description}</p>
-                        <Link to={'/'}>
-                            <p className='hyperlink'>Details</p>
+                        <Link to={`servicesEdit/${item._id}`}>
+                            <p className='edit-btn'>Edit</p>
                         </Link>
+                        <div>
+                            <p className='delete-btn'>Delete</p>
+                        </div>
                     </div>
                 )
             }) : <div>
