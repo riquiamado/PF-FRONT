@@ -76,12 +76,14 @@ const CreateUser = () => {
         }
 
         window.localStorage.setItem(
-          'userSession', JSON.stringify(session)
+          'name', JSON.stringify(session.name)
         )
 
-
+        window.localStorage.setItem(
+          'session', JSON.stringify(session.email)
+        )
+        dispatch(login(session.email));
         alert("User created");
-         dispatch(login(input));
         setInput({
           name: "",
           email: "",

@@ -15,8 +15,6 @@ import Payment from "./components/payment";
 import PaymentDeclined from "./components/paymentDeclined";
 import ServiceEdit from "./components/serviceEdit";
 
-
-
 function App() {
   return (
     <div className="App">
