@@ -5,82 +5,6 @@ import Instagram from './instagram-svgrepo-com.svg';
 import GitHub from './github-svgrepo-com.svg';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 
-/* function Footer () { 
-
-return(
-  <div>
-    <h3>Contact</h3>
-    <details>
-  <summary>Paula</summary>
-  <ul>
-  <li>Phone: +573103891118</li>
-  <li>Adress: Colombia</li>
-  <li>Email: pau@gmail.com</li>
-  </ul>
-  </details>
-  <details>
-  <summary>Carolina</summary>
-  <ul>
-  <li>Phone: +573166601122</li>
-  <li>Adress: Colombia</li>
-  <li>Email: caro@gmail.com</li>
-  </ul>
-  </details>
-  <details>
-  <summary>Vania</summary>
-  <ul>
-  <li>Phone: +525543968273</li>
-  <li>Adress: Mexico</li>
-  <li>Email: vania@gmail.com</li>
-  </ul>
-  </details>
-  <details>
-  <summary>Carlos</summary>
-  <ul>
-  <li>Phone: +5493854083473</li>
-  <li>Adress: Argentina</li>
-  <li>Email: carlos@gmail.com</li>
-  </ul>
-  </details>
-  <details>
-  <summary>Facundo</summary>
-  <ul>
-  <li>Phone: +5491133508101</li>
-  <li>Adress: Argentina</li>
-  <li>Email: facu@gmail.com</li>
-  </ul>
-  </details>
-  <details>
-  <summary>Erick</summary>
-  <ul>
-  <li>Phone: +525537638037</li>
-  <li>Adress: Mexico</li>
-  <li>Email: erick@gmail.com</li>
-  </ul>
-  </details>
-  <details>
-  <summary>Javier</summary>
-  <ul>
-  <li>Phone: +523317559458</li>
-  <li>Adress: Mexico</li>
-  <li>Email: javi@gmail.com</li>
-  </ul>
-  </details>
-
-  <h3>Redes Sociales</h3>
-  <img style={{ height: 53, width: 36 }} src={Facebook}/>
-  <img style={{ height: 53, width: 36 }} src={Twitter}/>
-  <img style={{ height: 53, width: 36 }} src={Instagram}/>
-  <img src={GitHub}/>
-
-  <h3>Sobre Nosotros</h3>
-  <p>Desde que nacimos nuestro concepto a brindado las mejores soluciones y junto contigo hemos encontrado nustra familia.</p>
-  <p>Te invitamos a probar la gran gama de sorpresas que tenemos para ti.</p>  
-  </div>
-)
-}
-
-export default Footer */
 
 const Footer = () => {
   return (
@@ -91,22 +15,22 @@ const Footer = () => {
         </div>
         <div>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-facebook"></i>
+            <i className="bi bi-facebook"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-twitter"></i>
+            <i className="bi bi-twitter"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-google"></i>
+            <i className="bi bi-google"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-instagram"></i>
+            <i className="bi bi-instagram"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-linkedin"></i>
+            <i className="bi bi-linkedin"></i>
           </a>
           <a href='' className='me-4 text-reset'>
-            <i class="bi bi-github"></i>
+            <i className="bi bi-github"></i>
           </a>
         </div>
       </section>
@@ -116,7 +40,7 @@ const Footer = () => {
           <MDBRow className='mt-3'>
             <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
-                <i class="bi bi-gem"> Freelance Workers</i>
+                <i className="bi bi-gem"> Freelance Workers</i>
               </h6>
               <p>
                 We are a company that seeks to connect people by offering services. If you are interested in being part of our Providers, contact us.
@@ -172,16 +96,16 @@ const Footer = () => {
             <MDBCol md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
               <p>
-                <i class="bi bi-building"> COL, MX, AR </i>
+                <i className="bi bi-building"> COL, MX, AR </i>
               </p>
               <p>
-                <i class="bi bi-envelope"> freelanceworkers@gmail.com</i>
+                <i className="bi bi-envelope"> freelanceworkers@gmail.com</i>
               </p>
               <p>
-                <i class="bi bi-telephone"></i> + 555 555 5555
+                <i className="bi bi-telephone"></i> + 555 555 5555
               </p>
               <p>
-                <i class="bi bi-telephone"></i> + 555 555 5555
+                <i className="bi bi-telephone"></i> + 555 555 5555
               </p>
             </MDBCol>
           </MDBRow>

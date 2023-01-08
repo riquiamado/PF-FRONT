@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {
-  addUsers,
-  getUserByEmail,
-  getUsers,
-  login,
-  loginGoogle,
-} from "../../redux/actions/actions";
 import { GoogleLoginButton } from "react-social-login-buttons";
 import { LoginSocialGoogle } from "reactjs-social-login";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 import styles from "../createUser/createUser.module.css";
 import axios from "axios";
-//require("dotenv").config();
-
-//const { GOOGLE_API } = process.env;
+import { login } from "../../redux/actions/actions";
+import toast, { Toaster } from "react-hot-toast";
 
 const GOOGLE_API =
   "327874418838-9lum1l34s28h1d2v5i5j0mc9oe9evl1h.apps.googleusercontent.com";
@@ -42,10 +35,13 @@ function Validate(input) {
   return errors;
 }
 
+const errorNotification = (message) => {
+  toast.error(message);
+};
+
 const LoginUser = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const userMail = useSelector((state) => state.userSession);
 
   const [input, setInput] = useState({
     email: "",
@@ -65,61 +61,44 @@ const LoginUser = () => {
         [el.target.name]: el.target.value,
       })
     );
-    console.log(errors);
   }
 
-  async function handleSubmit(el) {
-    try {
-      el.preventDefault();
-      setErrors(
-        Validate({
-          ...input,
-          [el.target.name]: el.target.value,
-        })
-      );
-      if (Object.values(errors).length === 0) {
-        dispatch(getUserByEmail(input.email));
-        const userTryLogin = {
-          email: input.email,
-          password: input.password,
-        };
+  const handleSubmit = async (el) => {
+    el.preventDefault();
+    setErrors(
+      Validate({
+        ...input,
+        [el.target.name]: el.target.value,
+      })
+    );
+    if (Object.values(errors).length === 0) {
+      try {
+        const response = await axios.post(`http://localhost:3001/login`, input);
+        window.localStorage.setItem(
+          "session",
+          JSON.stringify(response.data.user.email)
+        );
+        window.localStorage.setItem(
+          "name",
+          JSON.stringify(response.data.user.name)
+        );
+        dispatch(login(response.data.user.email));
+        setInput({
+          email: "",
+          password: "",
+        });
+        history.push("/");
+      } catch (error) {
+        errorNotification(error.response.data.error);
 
-        //Cambiar la url cuando se utilice el deploy del back
-        const validEmail = await axios.get(
-              `http://localhost:3001/userEmail?email=${input.email}`
-            );
-
-        if (validEmail.data.length !== 0) {
-          dispatch(login(userTryLogin));
-
-          alert("User logged in successfully");
-
-          window.localStorage.setItem(
-            "userSession",
-            JSON.stringify(input.email)
-          );
-
-          setInput({
-            email: "",
-            password: "",
-          });
-          history.push("/");
-        } else{
-          alert("User not found")
-          history.push("/");
-        }
-      } else {
-        alert("complete login please");
       }
-    } catch (error) {
-      console.log(error);
     }
-  }
+  };
 
   return (
     <div className={styles.page}>
       <Link to={"/"}>
-        <button>Volver</button>
+        <button>Back</button>
       </Link>
       <div>
         <form onSubmit={(el) => handleSubmit(el)}>
@@ -153,37 +132,28 @@ const LoginUser = () => {
           </div>
           <div>
             <LoginSocialGoogle
-              client_id={GOOGLE_API} // PROBAR SI ESTO ANDA ASI CON EL .ENV EN EL BACK Y LLAMANDOLO DESDE ACA DEL FRONT(respuesta: NO ANDA JAJ)
+              client_id={GOOGLE_API}
               scope="openid profile email"
               discoveryDocs="claims_supported"
               access_type="offline"
               onResolve={({ provider, data }) => {
-                //console.log(provider);
-                console.log(data);
-
-                const createUserGoogle = {
+                const user = {
                   name: data.name,
                   email: data.email,
                   password: data.sub,
-                  //tokenGoogle: data.access_token,
-                  //picture: data.picture
                 };
 
-                const loginUserGoogle = {
-                  name: data.name,
-                  email: data.email,
-                  google: true,
-                };
-
-                dispatch(login(createUserGoogle));
+                axios.post(`http://localhost:3001/login_google`, {
+                  name: user.name,
+                  email: user.email,
+                });
 
                 window.localStorage.setItem(
-                  "userSession",
-                  JSON.stringify(loginUserGoogle)
+                  "session",
+                  JSON.stringify(user.email)
                 );
-
-                alert("User logged in successfully");
-
+                window.localStorage.setItem("name", JSON.stringify(user.name));
+                dispatch(login(user.email));
                 history.push("/");
               }}
               onReject={(err) => {
@@ -192,6 +162,7 @@ const LoginUser = () => {
             >
               <GoogleLoginButton />
             </LoginSocialGoogle>
+            <Toaster position="bottom-right" reverseOrder={false} />
           </div>
         </form>
       </div>

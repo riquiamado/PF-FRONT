@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { login } from "../../redux/actions/actions";
 
 function Validate(input) {
     let errors = {};
@@ -19,7 +20,6 @@ function Validate(input) {
 const FormRatingReview = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-
   
   const [input, setInput] = useState({
       rating: 1,
@@ -29,6 +29,13 @@ const FormRatingReview = () => {
     
     console.log(input)
   const [errors, setErrors] = useState({});
+  
+    const loggedUser = window.localStorage.getItem("session")
+    const dispatch = useDispatch();
+
+    useEffect( () => {
+        dispatch(login(loggedUser))
+    }, [])
 
   function handleChange(el) {
     setInput({

@@ -5,10 +5,11 @@ import { useSelector } from "react-redux";
 import  a from "./checkLogin.module.css"
 
 export const checkLogin = () => {
-  const userSessionLocal = useSelector((state) => state.userSession);
+  const session = useSelector((state) => state.session);
+  // console.log(session)
   return (
     <div className={a.login}>
-      {Object.values(userSessionLocal).length === 0 ? <div> <h1>Please Login</h1> <Link to={"/"} > <button>volver</button> </Link></div> : <CreateServices />}
+      {session ? <div> <h1>Please Login</h1> <Link to={"/"} > <button>volver</button> </Link></div> : <CreateServices />}
     </div>
   )
 }

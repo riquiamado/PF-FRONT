@@ -1,19 +1,13 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.navbar {
-	background: linear-gradient(-45deg, #b052ee, #cb3ce7, #6fb4ce, #23d5ab);
+.navbar  {
+  background: linear-gradient(-45deg, #b052ee, #cb3ce7, #6fb4ce, #23d5ab);
 	background-size: 400% 400%;
 	animation: gradient 20s ease infinite;
-	height: 16vh;
 }
 
-#csdcs {
-  font-family: 'Libre Baskerville', serif;
-  padding-top: 4px;
+a {
+  cursor: pointer;
 }
+
 
 @keyframes gradient {
 	0% {
@@ -27,40 +21,14 @@
 	}
 }
 
-
-.img {
-  height: 80px;
+#csdcs {
+  font-family: 'Libre Baskerville', serif;
+  font-size:small;
 }
 
-.logo {
-  display: flex;
-  flex-direction: row;
-  margin-left: 20px;
-  font-size: 20px;
-  font-family: "Times New Roman";
-
+.navbar-brand {
+  margin-left: -10px;
 }
 
-.logo:hover {
-  cursor: pointer;
-}
 
-.Btn {
-  margin-right: 2rem;
-  width: 75px;
-  height: 65px;
-  background: transparent;
-  border: 0px;
-  font-family: "Times New Roman";
-  font-weight: bolder;
-  font-size: 20px;
-  color: #fafafa;
-}
 
-.Btn:hover {
-  cursor: pointer;
-}
-
-.Btns {
-  margin-right: 20px;
-}

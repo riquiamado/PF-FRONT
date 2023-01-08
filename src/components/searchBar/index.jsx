@@ -22,9 +22,9 @@ const SearchBar = () => {
   };
 
   return (
-      <form className="search" onSubmit={(el) => handleSubmit(el)}>
+      <form className="search1" onSubmit={(el) => handleSubmit(el)}>
         <input
-          className="input"
+          className="input1"
           type="text"
           onChange={(el) => handleChange(el)}
           value={name}
@@ -32,7 +32,7 @@ const SearchBar = () => {
         />
         <input
           type="submit"
-          className="submit"
+          className="submit1"
           value={"🔍"}
         />
       </form>

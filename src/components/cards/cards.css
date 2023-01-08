@@ -11,3 +11,18 @@
   width: 298px;
   height: 200px;
 }
+
+.star-rating {
+  line-height:32px;
+  font-size:1.25em;
+}
+
+.star-rating .fa-star{color: yellow;}
+
+.card-text i {
+  color: rgb(255, 225, 55);
+  padding-left: 4.7rem;
+  padding-bottom: 2px;  
+  size: 1rem;
+}
+

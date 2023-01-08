@@ -1,7 +1,6 @@
 import axios from "axios";
 import {
   ADD_USERS,
-  CLEAN,
   GET_USERS,
   GET_USER_BY_ID,
   GET_SERVICES_DETAILS,
@@ -14,24 +13,18 @@ import {
   DELETE_SERVICE,
   UPDATE_USER,
   LOGIN,
-  LOGOUT,
-  LOGIN_GOOGLE,
   ADD_TO_CART,
   GET_COMPONENTS,
   DELETE_TO_CART,
   GET_USER_BY_EMAIL,
   GET_CATEGORIES,
+  CLEAN,
 } from "./components";
 
 const url = "http://localhost:3001";
 // const url = "https://pf-back-production-b443.up.railway.app"
 
-//-----------------------------------User---------------------------------------------
-export function loginGoogle(user) {
-  return function (dispatch) {
-    dispatch({ type: LOGIN_GOOGLE, payload: user });
-  };
-}
+//-----------------------------------User-----------------------------------------
 
 export function logout() {
   return function (dispatch) {
@@ -39,10 +32,9 @@ export function logout() {
   };
 }
 
-export function login(user) {
-  return async function (dispatch) {
-    let info = await axios.post(`${url}/login`, user);
-    dispatch({ type: LOGIN, payload: info.data });
+export function login(payload) {
+  return function (dispatch) {
+    dispatch({ type: LOGIN, payload});
   };
 }
 
@@ -84,6 +76,7 @@ export function deleteUser(email) {
 export const updateUser = (id, payload) => {
   return async function (dispatch) {
     let res = await axios.put(`${url}/users/${id}`, payload);
+     console.log(res.data)
     dispatch({ type: UPDATE_USER, payload: res.data });
   };
 };
