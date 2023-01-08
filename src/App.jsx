@@ -13,6 +13,7 @@ import LoginUser from "./components/loginUser";
 import Footer from "./components/footer/index";
 import Payment from "./components/payment";
 import PaymentDeclined from "./components/paymentDeclined";
+import ServiceEdit from "./components/serviceEdit";
 
 
 
@@ -30,6 +31,7 @@ function App() {
       <Route exact path="/payment" component={Payment} />
       <Route exact path="/paymentDeclined " component={PaymentDeclined} />
       <Route path="/services/:_id" component={CardDetails} />
+      <Route path="/servicesEdit/:_id" component={ServiceEdit} />
       <Route path="/create" component={CreateServices} />
       <Footer/>
     </div>
