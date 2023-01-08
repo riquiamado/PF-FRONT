@@ -110,7 +110,7 @@ function NavBar() {
             {session ? <b onClick={() => onLogout()}>Logout</b> : <b onClick={() => onLoging()}>Login</b>}
             </a>
           </div>
-          <i class="bi bi-cart4 fs-5"></i>
+          <i className="bi bi-cart4 fs-5"></i>
         </div>
       </div>
     </nav>
