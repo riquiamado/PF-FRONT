@@ -22,6 +22,10 @@
     border-radius: 1rem;
 }
 
-.hyperlink {
+.edit-btn {
     color: azure;
+}
+
+.delete-btn {
+    color: red;
 }
