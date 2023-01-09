@@ -1,22 +1,29 @@
 import axios from "axios";
 import {
+  LOGIN,
+
   ADD_USERS,
   GET_USERS,
   GET_USER_BY_ID,
+  GET_USER_BY_EMAIL,
+  UPDATE_USER,
+  DELETE_USER,
+
   GET_SERVICES_DETAILS,
   GET_SERVICES,
   GET_SERVICES_BY_NAME,
+  ADD_SERVICES,
+  UPDATE_SERVICE,
+  DELETE_SERVICE,
+
   ORDER_BY_RATINGS,
   ORDER_BY_SERVICES,
-  ADD_SERVICES,
-  DELETE_USER,
-  DELETE_SERVICE,
-  UPDATE_USER,
-  LOGIN,
+  
+  
   ADD_TO_CART,
-  GET_COMPONENTS,
   DELETE_TO_CART,
-  GET_USER_BY_EMAIL,
+
+  GET_COMPONENTS,
   GET_CATEGORIES,
   CLEAN,
 } from "./components";
@@ -76,7 +83,6 @@ export function deleteUser(email) {
 export const updateUser = (id, payload) => {
   return async function (dispatch) {
     let res = await axios.put(`${url}/users/${id}`, payload);
-     console.log(res.data)
     dispatch({ type: UPDATE_USER, payload: res.data });
   };
 };
@@ -109,7 +115,6 @@ export function getServicesDetails(_id) {
 
 export const addServices = (formData) => {
   return async function (dispatch) {
-    console.log(formData);
     let info = await axios({
       url: ` ${url}/services`,
       method: "POST",
@@ -123,6 +128,14 @@ export const addServices = (formData) => {
     dispatch({ type: ADD_SERVICES, payload: info.data });
   };
 };
+
+export const updateService = (id, payload) => {
+  return async function (dispatch) {
+    let response = axios.put(`${url}/services/${id}`, payload);
+    console.log(response)
+    dispatch({type: UPDATE_SERVICE, payload: response.data });
+  }
+}
 
 export function deleteService(id) {
   return async function (dispatch) {

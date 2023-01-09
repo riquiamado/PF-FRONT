@@ -15,6 +15,7 @@ export const GET_SERVICES= "GET_SERVICES"
 export const GET_SERVICES_BY_NAME= "GET_SERVICES_BY_NAME"
 export const GET_SERVICES_DETAILS= "GET_SERVICES_DETAILS"
 export const ADD_SERVICES = "ADD_SERVICES"
+export const UPDATE_SERVICE = "UPDATE_SERVICE"
 export const DELETE_SERVICE = "DELETE_SERVICE"
 
 //---------------------Cart------------------------------

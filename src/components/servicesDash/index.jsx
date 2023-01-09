@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getUserByEmail, login } from '../../redux/actions/actions';
+import { getUserByEmail, deleteService, login } from '../../redux/actions/actions';
 import "./serviceDash.css"
 
 const ServicesDash = () => {
@@ -11,6 +11,9 @@ const ServicesDash = () => {
     const email = JSON.parse(window.localStorage.getItem("session"));
     const dispatch = useDispatch()
     
+    const handleDelete = () => {
+
+    }
 
     useEffect(() => {
         dispatch(getUserByEmail(email));
@@ -23,7 +26,7 @@ const ServicesDash = () => {
             {users[0]?.services ? users[0]?.services.map((item, index) => {
                 return(
                     <div className='service-cards' key={index}>
-                        <p>#{index}</p>
+                        <p>#{index + 1}</p>
                         <p>{item.name}</p>
                         <p>{item.description}</p>
                         <Link to={`servicesEdit/${item._id}`}>

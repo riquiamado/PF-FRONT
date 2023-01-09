@@ -30,4 +30,7 @@ h3 {
     text-decoration: none;
     cursor: pointer;
     outline:invert;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    position: relative;
 }

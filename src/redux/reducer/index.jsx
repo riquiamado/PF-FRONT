@@ -5,22 +5,27 @@ import {
   GET_USER_BY_EMAIL,
   DELETE_USER,
   UPDATE_USER,
+
   LOGIN,
   LOGOUT,
   LOGIN_GOOGLE,
+
   GET_SERVICES,
   GET_SERVICES_DETAILS,
   GET_SERVICES_BY_NAME,
   ADD_SERVICES,
+  UPDATE_SERVICE,
   DELETE_SERVICE,
+
   ORDER_BY_NAME,
   ORDER_BY_SERVICES,
   ORDER_BY_RATINGS,
   ORDER_BY_CATEGORY,
   FILTER_BY_SERVICES,
+
   ADD_TO_CART,
-  GET_COMPONENTS,
   DELETE_TO_CART,
+  GET_COMPONENTS,
   RESET_ESTADO,
   CLEAN,
   GET_CATEGORIES,
@@ -113,9 +118,10 @@ function rootReducer(state = initialState, action) {
       };
 
     case ADD_SERVICES:
-      return {
-        ...state,
-      };
+      return { ...state };
+    
+    case UPDATE_SERVICE:
+      return { ...state };
 
     //---------------------Filter/Order------------------------------
     case ORDER_BY_SERVICES:
