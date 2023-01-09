@@ -1,0 +1,18 @@
+.dashboard {
+    background: linear-gradient(to right, #6DEBB4, #3BCAB3, #19A8A8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.glass {
+    display: grid;
+    height: 97%;
+    width: 97%;
+    border-radius: 2rem;
+    background-color: rgba(99, 185, 197, 0.54);
+    overflow: hidden;
+
+    grid-template-columns: 11rem auto 20rem;
+}

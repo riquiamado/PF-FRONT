@@ -1,0 +1,25 @@
+.paginas {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px;
+  padding-top: 0%;
+}
+
+.btnPag {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  padding-top: 0%;
+  font-size: 17px;
+  color: #1777c5;
+  background: transparent;
+  border: solid 1px #1777c5;
+}
+
+.btnPag:hover{
+  background: #32a3cf;
+  cursor:pointer;
+  border:solid 1px #ffffff;
+  color: #ffffff;
+}

@@ -1,0 +1,36 @@
+.container {
+    padding-top: 1rem;
+    background-color: rgb(255, 253, 251);
+    font-family: 'Asap Condensed', sans-serif;
+}
+/* .d-flex {
+    margin-top: 5rem;
+} */
+
+.spinner-border {
+    width: 400px;
+    height: 400px;
+}
+
+.img-fluid {
+    width: 600px;
+    max-height: 900px;
+}
+
+h1 {
+    font-family: 'Asap Condensed', sans-serif;
+}
+
+h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+    height: 70%;
+}
+
+#buttt {
+    text-decoration: none;
+    cursor: pointer;
+    outline:invert;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    position: relative;
+}

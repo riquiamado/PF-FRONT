@@ -1,0 +1,47 @@
+Para crear un carrito de compras usando React y Redux, puedes seguir los siguientes pasos:
+
+Instala React y Redux en tu aplicación web utilizando el administrador de paquetes de tu elección, como npm o yarn.
+
+Crea un componente de React llamado "Cart" que se encargará de mostrar el contenido del carrito de compras. Este componente deberá tener una función de devolución de llamada que se llame cada vez que se haga clic en un botón de "agregar al carrito".
+
+Crea una acción en Redux que se llame "addToCart" y que acepte el ID del producto que se está agregando al carrito como argumento. Esta acción deberá actualizar el estado de la aplicación para agregar el producto al carrito.
+
+Enlaza el componente "Cart" con el estado de la aplicación utilizando el enlazador "connect" de Redux. Esto permitirá al componente acceder al estado del carrito de compras y mostrar su contenido.
+
+Finalmente, asegúrate de que el componente "Cart" se renderice en la página web y que se muestre el contenido del carrito de compras cuando se hagan clic en los botones "agregar al carrito".
+const SEND_CART = 'SEND_CART';
+
+function sendCart(cart) {
+  return {
+    type: SEND_CART,
+    cart
+  };
+}
+
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { checkout } from './actions';
+
+class ShoppingCart extends Component {
+  handleCheckout() {
+    // Obtener los ID de los productos seleccionados del estado de la aplicación
+    const selectedProductIds = this.props.selectedProductIds;
+
+    // Enviar una acción al store de Redux para enviar los ID al backend
+    this.props.dispatch(checkout(selectedProductIds));
+  }
+
+  render() {
+    return (
+      <button onClick={() => this.handleCheckout()}>Checkout</button>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    selectedProductIds: state.selectedProductIds
+  };
+}
+
+export default connect(mapStateToProps)(ShoppingCart);
