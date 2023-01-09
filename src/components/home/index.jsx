@@ -35,6 +35,12 @@ function Home() {
 
   const handleChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
+    if(e.target.value === ''){
+      setCurrentPage(1)
+    }
+    if (currentPage !== 1 || filters.country !== '' || filters.name !== '' || filters.price !== '') {
+      setCurrentPage(1)
+    }
   };
 
   const handleCreateService = () => {
