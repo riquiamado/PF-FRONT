@@ -122,7 +122,7 @@ const CreateUser = () => {
             <input
               type="text"
               value={input.email}
-              name={"email"}
+              name="email"
               onChange={(el) => handleChange(el)}
             />
             <br />
@@ -133,7 +133,7 @@ const CreateUser = () => {
             <input
               type="password"
               value={input.password}
-              name={"password"}
+              name="password"
               onChange={(el) => handleChange(el)}
             />
             <br />
