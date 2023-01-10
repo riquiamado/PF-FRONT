@@ -22,12 +22,15 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 
 import { useLocation } from "react-router-dom";
 
+let servicesLS;
+servicesLS = [];
+
 const CardDetails = () => {
-  //const { user, isAuthenticated } = useAuth0();
   const loggedUser = window.localStorage.getItem("session");
   const dispatch = useDispatch();
   const details = useSelector((state) => state.details);
   const userSessionLocal = useSelector((state) => state.session);
+  const cart = useSelector((state) => state.cart);
 
   const history = useHistory();
   const { _id } = useParams();
@@ -36,11 +39,20 @@ const CardDetails = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  
+
   const handleAddToCart = () => {
     const data = { id: _id, email: userSessionLocal };
     dispatch(addToCart(details));
     toast.success("Service has been added to the cart");
-
+    const cartLS = JSON.parse(window.localStorage.getItem("cart"));
+    if (cartLS) {
+      if(servicesLS.length !== cartLS.length){
+        servicesLS = cartLS
+      }
+    }    
+    servicesLS.push(details);
+    window.localStorage.setItem('cart', JSON.stringify(servicesLS));
   };
 
   useEffect(() => {
