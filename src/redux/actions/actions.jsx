@@ -17,8 +17,7 @@ import {
   DELETE_SERVICE,
 
   ORDER_BY_RATINGS,
-  ORDER_BY_SERVICES,
-  
+  ORDER_BY_SERVICES,  
   
   ADD_TO_CART,
   DELETE_TO_CART,
@@ -26,6 +25,8 @@ import {
   GET_COMPONENTS,
   GET_CATEGORIES,
   CLEAN,
+
+  GET_ORDERS,
 } from "./components";
 
 const url = "http://localhost:3001";
@@ -173,16 +174,6 @@ export function resetAllServices() {
 }
 
 //-----------------------------------Cart---------------------------------------------
-//export function addToCart(payload){
-//  console.log(payload);
-//  return async function(dispatch){
-//    const info = await axios.post(`https://pf-back-production-b443.up.railway.app/cart`,payload)
-//    dispatch({
-//      type:ADD_TO_CART,
-//      payload: info.data
-//    });
-//  }
-//}
 
 // Solamente pasamos el servicio a reducer
 export function addToCart(payload) {
@@ -201,6 +192,16 @@ export function deleteToCart(payload) {
     payload: payload,
   };
 }
+
+//-----------------------------------Orders-------------------------------------------
+export function getOrders(userId) {
+  return async function (dispatch) {
+    const { data } = await axios.get(`${url}/orders/${userId}`);
+    console.log(data)
+    dispatch({ type: GET_ORDERS, payload: data });
+  };
+}
+
 
 //-----------------------------------Other---------------------------------------------
 export const getComponents = (payload) => {

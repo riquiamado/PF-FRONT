@@ -39,7 +39,7 @@ const Dashboard = () => {
             settings: false,
         })
 
-        if(componentName === "Orders") setcomponent({
+        if(componentName === "Rate your services") setcomponent({
             main: false,
             orders: true,
             customers: false,

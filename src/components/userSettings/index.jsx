@@ -38,7 +38,6 @@ const UserSettings = () => {
   const email = JSON.parse(window.localStorage.getItem("session"));
   const name = JSON.parse(window.localStorage.getItem("name"));
 
- console.log(email) 
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     name: "",

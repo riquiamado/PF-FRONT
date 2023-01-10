@@ -35,3 +35,5 @@ export const GET_COMPONENTS = "GET_COMPONENTS"
 export const RESET_ESTADO = "RESET_ESTADO"
 export const CLEAN = "CLEAN"
 
+//---------------------Orders------------------------------
+export const GET_ORDERS = "GET_ORDERS"
