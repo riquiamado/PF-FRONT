@@ -14,6 +14,7 @@ import Footer from "./components/footer/index";
 import Payment from "./components/payment";
 import PaymentDeclined from "./components/paymentDeclined";
 import ServiceEdit from "./components/serviceEdit";
+import { Rate } from "./components/rate";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Route path="/services/:_id" component={CardDetails} />
       <Route path="/servicesEdit/:_id" component={ServiceEdit} />
       <Route path="/create" component={CreateServices} />
+      <Route path="/rate/:orderId/:name/:serviceId" component={Rate} />
       <Footer/>
     </div>
   );

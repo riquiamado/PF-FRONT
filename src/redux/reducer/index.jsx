@@ -5,37 +5,34 @@ import {
   GET_USER_BY_EMAIL,
   DELETE_USER,
   UPDATE_USER,
-
   LOGIN,
   LOGOUT,
   LOGIN_GOOGLE,
-
   GET_SERVICES,
   GET_SERVICES_DETAILS,
   GET_SERVICES_BY_NAME,
   ADD_SERVICES,
   UPDATE_SERVICE,
   DELETE_SERVICE,
-
   ORDER_BY_NAME,
   ORDER_BY_SERVICES,
   ORDER_BY_RATINGS,
   ORDER_BY_CATEGORY,
   FILTER_BY_SERVICES,
-
   ADD_TO_CART,
   DELETE_TO_CART,
   GET_COMPONENTS,
   RESET_ESTADO,
   CLEAN,
   GET_CATEGORIES,
+  GET_ORDERS,
 } from "../actions/components";
 
 const initialState = {
   services: [],
   allServices: [],
   users: [],
-  session:"",
+  session: "",
   cart: [],
   components: [],
   details: {},
@@ -43,6 +40,7 @@ const initialState = {
   limpiador: [],
   conCategorias: {},
   empleosConCategorias: "",
+  orders: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -63,7 +61,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         session: action.payload,
       };
-      
+
     case GET_USERS:
       return {
         ...state,
@@ -119,7 +117,7 @@ function rootReducer(state = initialState, action) {
 
     case ADD_SERVICES:
       return { ...state };
-    
+
     case UPDATE_SERVICE:
       return { ...state };
 
@@ -218,6 +216,12 @@ function rootReducer(state = initialState, action) {
         cart: state.cart.filter((idx) => !idx._id.includes(action.payload)),
       };
 
+    //---------------------Others------------------------------
+    case GET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+      };
     //---------------------Others------------------------------
     case GET_COMPONENTS:
       return {
