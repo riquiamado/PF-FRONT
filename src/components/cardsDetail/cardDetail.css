@@ -31,3 +31,7 @@ h3 {
     cursor: pointer;
     outline:invert;
 }
+
+.p-3 p {
+    color: rgb(255, 225, 55);
+}

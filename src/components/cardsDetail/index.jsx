@@ -91,8 +91,8 @@ const CardDetails = () => {
               </div>
               <div className="col">
                 <div className="p-3 border bg-light">
-                  <label htmlFor="">Rating</label>
-                  <h3>{[...new Array(5)].map((start,index)=>{return index < details.average? <AiFillStar key={index}/>:<AiOutlineStar key={index}/> })}</h3>
+                  <label className="border-bottom border-muted"htmlFor="">Rating</label>
+                  <p className="fs-3 pt-4">{[...new Array(5)].map((start,index)=>{return index < details.average? <AiFillStar key={index}/>:<AiOutlineStar key={index}/> })}</p>
                 </div>
               </div>
             </div>
