@@ -104,9 +104,9 @@ const Dashboard = () => {
                 <div><SideBar/></div>
                 <div className={component.main ? "visible" : "hidden"}><MainDash /></div>
                 <div className={component.orders ? "visible" : "hidden"}><Orders /></div>
-                <div className={component.customers ? "visible" : "hidden"}><Customers /></div>
+                {/* <div className={component.customers ? "visible" : "hidden"}><Customers /></div> */}
                 <div className={component.services ? "visible" : "hidden"}><ServicesDash /></div>
-                <div className={component.analytics ? "visible" : "hidden"}><Analytics /></div>
+                {/* <div className={component.analytics ? "visible" : "hidden"}><Analytics /></div> */}
                 <div className={component.settings ? "visible" : "hidden"}><UserSettings /></div>
             </div>
         </div>

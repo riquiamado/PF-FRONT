@@ -11,7 +11,8 @@ function NavBar() {
   const name = JSON.parse(window.localStorage.getItem("name"))
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const CartContent = useSelector((state) => state.cart)
+    
   const handleClick = () => {
     dispatch(getServices());
     history.push("/");
@@ -110,7 +111,7 @@ function NavBar() {
             {session ? <b onClick={() => onLogout()}>Logout</b> : <b onClick={() => onLoging()}>Login</b>}
             </a>
           </div>
-          <i className="bi bi-cart4 fs-5"></i>
+          <i className="bi bi-cart4 fs-5">{CartContent.length}</i>
         </div>
       </div>
     </nav>

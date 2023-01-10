@@ -11,20 +11,22 @@ import { deleteToCart } from '../../redux/actions/actions'
 import axios from 'axios';
 
 const Cart = () => {
+
+  const mail = JSON.parse(window.localStorage.getItem("session"));
   const dispatch = useDispatch()
   const CartContent = useSelector((state) => state.cart)
-
   function removeCart(arg) {
     dispatch(deleteToCart(arg));
   }
 
-  const handlePayment = async (value) => {
+  const handlePayment = async (value, userMail, services) => {
+
     const response = await axios({
       method: 'post',
-      url: 'https://pf-back-production-b443.up.railway.app/create-order',
+      url: 'http://localhost:3001/create-order',
       data: {
         value,
-        description: "servicio"
+        description: JSON.stringify(services.concat(userMail))
       }
     });
     //window.open(response.data.links[1].href, "_blank", "toolbar=yes,top=500,left=500,width=850,height=700")
@@ -49,7 +51,7 @@ const Cart = () => {
       <hr />
       <p>Total: {Totales} </p>
     
-      <button type="button" class="btn btn-warning" onClick={() => handlePayment(Totales)}>Contract</button>
+      <button type="button" class="btn btn-warning" onClick={() => handlePayment(Totales, mail, CartContent?.map(el => el._id))}>Contract</button>
     </>
   );
 

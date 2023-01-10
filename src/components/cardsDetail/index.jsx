@@ -40,12 +40,7 @@ const CardDetails = () => {
     const data = { id: _id, email: userSessionLocal };
     dispatch(addToCart(details));
     toast.success("Service has been added to the cart");
-    // const data = { id: _id, email: user.email }  //nota: sera mejor bajar los datos en el cart ??
-    // dispatch(addToCart(details))   //enviamos el servicio seleccinado a cart
 
-    //history.push("/cart")
-    // console.log(data)
-    // history.push("/cart")
   };
 
   useEffect(() => {
