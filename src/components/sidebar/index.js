@@ -14,7 +14,7 @@ export const SidebarData = [
     },
     {
         icon: UilClipboardAlt,
-        heading: "Orders"
+        heading: "Rate your services"
     },
     // {
     //     icon: UilUsersAlt,

@@ -7,7 +7,7 @@ import { LoginSocialGoogle } from "reactjs-social-login";
 import useLocalStorage from "../../Hooks/useLocalStorage";
 import styles from "../createUser/createUser.module.css";
 import axios from "axios";
-import { login } from "../../redux/actions/actions";
+import { getUserByEmail, login } from "../../redux/actions/actions";
 import toast, { Toaster } from "react-hot-toast";
 
 const GOOGLE_API =
@@ -83,6 +83,7 @@ const LoginUser = () => {
           JSON.stringify(response.data.user.name)
         );
         dispatch(login(response.data.user.email));
+        dispatch(getUserByEmail(response.data.user.email))
         setInput({
           email: "",
           password: "",
@@ -154,6 +155,7 @@ const LoginUser = () => {
                 );
                 window.localStorage.setItem("name", JSON.stringify(user.name));
                 dispatch(login(user.email));
+                dispatch(getUserByEmail(user.email))
                 history.push("/");
               }}
               onReject={(err) => {
