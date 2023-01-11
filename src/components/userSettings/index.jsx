@@ -43,6 +43,7 @@ const UserSettings = () => {
     name: "",
     email: "",
     password: "",
+    password2: "",
   });
   const [errors, setErrors] = useState({})
 
@@ -171,7 +172,28 @@ const UserSettings = () => {
             {errors.password ? <label>{errors.password}</label> : null}
 
           </div>
-        <input className="actividad" type="submit" value={"Update"}></input>
+        {/* <input className="actividad" type="submit" value={"Update"}></input> */}
+        </form>
+      </div>
+      <div>
+        <form onSubmit={(e)=>handleUpdatePassword(e)} >
+        <h3>Repeat Password</h3>
+
+        <div>
+            
+            <label htmlFor="">Repeat Password:</label>
+            <input
+              type="password"
+              value={input.password2}
+              name="password2"
+              onChange={(e) => handleChange(e)}
+            />
+            <br />
+            {errors.password ? <label>{errors.password}</label> : null}
+
+          </div>
+          {input.password === input.password2 ?<input className="actividad" type="submit" value={"Update"}></input>:"password invalid"}
+        {/* <input className="actividad" type="submit" value={"Update"}></input> */}
         </form>
       </div>
     </div>
