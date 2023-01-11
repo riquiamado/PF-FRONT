@@ -49,13 +49,13 @@ function Home() {
   };
 
   useEffect(() => {
-    if (allServices.length === 0) {
+    //if (allServices.length === 0) {
       if (allServices.length === servicess.length) {
         dispatch(getServices());
         dispatch(getCategories());
         dispatch(login(loggedUser))
       }
-    }
+    //}
     /* return dispatch(clean()); */
   }, [dispatch, filters]);
 
