@@ -14,6 +14,8 @@ function NavBar() {
   const dispatch = useDispatch();
   const history = useHistory();
   const CartContent = useSelector((state) => state.cart);
+  const resolution = window.screen
+  console.log(resolution); 
 
   const handleClick = () => {
     dispatch(getServices());
@@ -78,16 +80,30 @@ function NavBar() {
           className="collapse navbar-collapse justify-content-between"
           id="navbarCollapse"
         >
-          <div className="navbar-nav">
+          <div className="navbar-nav"
+          >
             <div className="container-sm mt-3 text-center">
               <SearchBar></SearchBar>
             </div>
-            <a
-              onClick={() => handleCreateService()}
-              className="nav-item nav-link"
-            >
-              Create Service
-            </a>
+            {
+              resolution.width < 1024 ? (
+              <a
+                onClick={() => handleCreateService()}
+                className="nav-item nav-link"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse"
+              >
+                Create Service
+              </a>
+              ) : (
+                <a
+                onClick={() => handleCreateService()}
+                className="nav-item nav-link"
+              >
+                Create Service
+              </a>
+              )
+            }
             {session && (
               <div className="nav-item dropdown">
                 <a
@@ -95,11 +111,17 @@ function NavBar() {
                   className="nav-link dropdown-toggle"
                   data-bs-toggle="dropdown"
                 >
+                  
                   Hello, <br />
                   {name.split(" ", 1)}
                 </a>
-                <div className="dropdown-menu">
-                  <a onClick={() => onDashboard()} className="dropdown-item">
+                <div className="dropdown-menu" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
+                  <a 
+                  onClick={() => onDashboard()} 
+                  className="dropdown-item"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarCollapse"
+                  >
                     Dashboard
                   </a>
                 </div>
@@ -107,15 +129,39 @@ function NavBar() {
             )}
           </div>
           <div className="navbar-nav">
-            <a className="nav-item nav-link fs-5">
-              {session ? (
-                <b onClick={() => onLogout()}>Logout</b>
+            { 
+              resolution.width < 1024 ? (
+                <a 
+                  className="nav-item nav-link fs-5"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarCollapse"
+                >
+                  {session ? (
+                    <b onClick={() => onLogout()}>Logout</b>
+                  ) : (
+                    <b onClick={() => onLoging()}>Login</b>
+                  )}
+                </a>
+              
               ) : (
-                <b onClick={() => onLoging()}>Login</b>
-              )}
-            </a>
+                <a 
+                  className="nav-item nav-link fs-5"
+                >
+                  {session ? (
+                    <b onClick={() => onLogout()}>Logout</b>
+                  ) : (
+                    <b onClick={() => onLoging()}>Login</b>
+                  )}
+                </a>
+              )
+            }
           </div>
+          <div className="cart"><i className="bi bi-cart4 fs-5"></i>
+            <span id="cart_menu_num" data-action="cart-can" className="badge rounded-circle">{CartContent.length}</span>
+          </div>
+
           <i className="bi bi-cart4 fs-5">{cartLS ? cartLS.length : 0}</i>
+
         </div>
       </div>
     </nav>
