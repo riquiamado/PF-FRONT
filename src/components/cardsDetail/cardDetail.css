@@ -31,3 +31,16 @@ h3 {
     cursor: pointer;
     outline:invert;
 }
+
+.p3 {
+    padding-top: -5px;
+}
+
+.holis {
+    font-family: 'Inter', sans-serif;
+    
+}
+
+.p-3 h6 {
+    color: rgb(255, 225, 55);
+}

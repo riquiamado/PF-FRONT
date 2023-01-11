@@ -23,3 +23,8 @@
   border:solid 1px #ffffff;
   color: #ffffff;
 }
+
+.btnPag:focus {
+  background-color: #32a3cf;
+  color: #ffffff;
+}
