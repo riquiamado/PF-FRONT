@@ -21,14 +21,13 @@ function App() {
     <div className="App">
       <NavBar />
       <Route exact path={"/"} component={Home} />
-      <Route exact path="/ratingForm" component={FormRatingReview} />
       <Route exact path="/users" component={CreateUser} />
       <Route exact path="/services" component={CreateServices} />
       <Route exact path="/checkLogin" component={checkLogin} />
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/login" component={LoginUser} />
       <Route exact path="/payment" component={Payment} />
-      <Route exact path="/paymentDeclined " component={PaymentDeclined} />
+      <Route exact path="/paymentDeclined" component={PaymentDeclined} />
       <Route path="/services/:_id" component={CardDetails} />
       <Route path="/servicesEdit/:_id" component={ServiceEdit} />
       <Route path="/create" component={CreateServices} />

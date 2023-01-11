@@ -1,0 +1,34 @@
+.loginndsded {
+    font-size: 30px;
+    width: 50%;
+    height: 100%;
+    display: contents;
+    text-align: center;
+    }
+    
+    .loginndsded p {
+    background-color: #d9a7e7;
+    margin-top: 7rem;
+    margin-bottom: 12rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    }
+    
+    .loginndsded i {
+    width: 50%;
+    height: 100%;
+    font-size: 60px;
+    background-color: transparent;
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+    justify-content: center;
+    color: rgb(230, 42, 9);
+    }
+
+    .loginndsded a {
+        background-color: rgb(230, 42, 9);
+    }
