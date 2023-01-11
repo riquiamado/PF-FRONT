@@ -38,14 +38,15 @@ a {
 	position: absolute;
 }
 
-.cart span {
-	color: rgb(250, 86, 86);
+.cart button {
+	color: black;
+	background-color: transparent;
 	font-size: 12px;
-	padding: 5px 0 10px 0;
 	display: block;
 	text-transform: uppercase;
 	font-family: 'Montserrat';
 	letter-spacing: 1px;
+	border: hidden;
 }
 
 #cart_menu_num {
