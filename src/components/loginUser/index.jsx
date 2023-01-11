@@ -79,6 +79,10 @@ const LoginUser = () => {
           JSON.stringify(response.data.user.email)
         );
         window.localStorage.setItem(
+          "user",
+          JSON.stringify(response.data.user)
+        );
+        window.localStorage.setItem(
           "name",
           JSON.stringify(response.data.user.name)
         );
@@ -91,7 +95,6 @@ const LoginUser = () => {
         history.push("/");
       } catch (error) {
         errorNotification(error.response.data.error);
-
       }
     }
   };
@@ -137,14 +140,14 @@ const LoginUser = () => {
               scope="openid profile email"
               discoveryDocs="claims_supported"
               access_type="offline"
-              onResolve={({ provider, data }) => {
+              onResolve={async ({ provider, data }) => {
                 const user = {
                   name: data.name,
                   email: data.email,
                   password: data.sub,
                 };
 
-                axios.post(`http://localhost:3001/login_google`, {
+                const response = await axios.post(`http://localhost:3001/login_google`, {
                   name: user.name,
                   email: user.email,
                 });
