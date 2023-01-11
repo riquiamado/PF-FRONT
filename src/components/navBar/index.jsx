@@ -5,6 +5,9 @@ import SearchBar from "../searchBar";
 import { useHistory } from "react-router-dom";
 import { cleanCart, getOrders, getServices, login } from "../../redux/actions/actions";
 import "./navBar.css";
+import Cart from "../carrito";
+//import "bootstrap/dist/css/bootstrap.min.css";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 function NavBar() {
   const cartLS = JSON.parse(window.localStorage.getItem("cart"));
@@ -18,6 +21,11 @@ function NavBar() {
   const history = useHistory();
   const CartContent = useSelector((state) => state.cart);
   const resolution = window.screen
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   // console.log(resolution); 
 
   const handleClick = () => {
@@ -188,8 +196,19 @@ function NavBar() {
           </div>
           <div className="cart">
             <div className="cart">
-              <i className="bi bi-cart4 fs-5"></i>
+              {/* <i className="bi bi-cart4 fs-5"></i> */}
+              <button className="bi bi-cart4 fs-5" onClick={handleShow}></button>
               <span id="cart_menu_num" data-action="cart-can" className="badge rounded-circle">{cartLS ? cartLS.length : 0}</span>
+              <Offcanvas show={show} onHide={handleClose} placement={"end"}>
+                <div className="delete-container" />
+
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  <Cart />
+                </Offcanvas.Body>
+              </Offcanvas>
             </div>
           </div>
         </div>
