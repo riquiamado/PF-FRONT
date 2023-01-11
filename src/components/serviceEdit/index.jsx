@@ -26,11 +26,12 @@ const ServiceEdit = () => {
     )
   }
 
-  const handleImage = e => {
-
+  const handleImage = (e) => {
+    e.preventDefault();
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch(updateService(_id, input));
     setInput("");
   }

@@ -141,7 +141,8 @@ export const updateService = (id, payload) => {
 
 export function deleteService(id) {
   return async function (dispatch) {
-    let res = await axios.delete(`${url}/services/` + id);
+    let res = await axios.delete(`${url}/services/${id}`);
+    //asd
     dispatch({ type: DELETE_SERVICE, payload: res.data });
   };
 }
