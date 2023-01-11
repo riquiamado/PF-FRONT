@@ -20,6 +20,7 @@
     margin-top: 2rem;
     border: solid #8EFCE4;
     border-radius: 1rem;
+    padding: 20px;
 }
 
 .edit-btn {
@@ -27,5 +28,8 @@
 }
 
 .delete-btn {
-    color: red;
+    color:brown;
+    background-color: #8EFCE4;
+    border-radius: 1rem;
+    padding: 5px;
 }

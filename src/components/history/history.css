@@ -5,3 +5,15 @@
 .visible {
     background: none;
 }
+
+.table {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-top: 2rem;
+    border: solid #8EFCE4;
+    border-radius: 1rem;
+
+    padding: 20px;
+}

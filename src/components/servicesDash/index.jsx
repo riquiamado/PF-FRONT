@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getUserByEmail, deleteService, login } from '../../redux/actions/actions';
+import { getUserByEmail, deleteService, login, clean } from '../../redux/actions/actions';
 import "./serviceDash.css"
 
 const ServicesDash = () => {
@@ -11,13 +11,15 @@ const ServicesDash = () => {
     const email = JSON.parse(window.localStorage.getItem("session"));
     const dispatch = useDispatch()
     
-    const handleDelete = () => {
-
+    const handleDelete = id => {
+        dispatch(deleteService(id))
+        alert("Servicio eliminado")
     }
 
     useEffect(() => {
         dispatch(getUserByEmail(email));
         dispatch(login(email))
+        return dispatch(clean())
     },[dispatch])
 
     return(
@@ -33,7 +35,7 @@ const ServicesDash = () => {
                             <p className='edit-btn'>Edit</p>
                         </Link>
                         <div>
-                            <p className='delete-btn'>Delete</p>
+                            <button className='delete-btn' onClick={() => handleDelete(item._id)}>Delete</button>
                         </div>
                     </div>
                 )

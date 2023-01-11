@@ -1,11 +1,12 @@
 import { 
     UilHome,
     UilBox,
-    UilUsersAlt,
+    UilFavorite,
     UilClipboardAlt,
     UilChart,
     UilSetting
 } from '@iconscout/react-unicons'
+
 
 export const SidebarData = [
     {
@@ -13,7 +14,7 @@ export const SidebarData = [
         heading: "Dashboard"
     },
     {
-        icon: UilClipboardAlt,
+        icon: UilFavorite,
         heading: "Rate your services"
     },
     {
