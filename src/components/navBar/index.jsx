@@ -9,9 +9,11 @@ import "./navBar.css";
 function NavBar() {
   const cartLS = JSON.parse(window.localStorage.getItem("cart"));
   const session = useSelector((state) => state.session);
+
   // const users = useSelector((state) => state.users);
   const name = JSON.parse(window.localStorage.getItem("name"));
   const user = JSON.parse(window.localStorage.getItem("user"));
+  const admin = JSON.parse(window.localStorage.getItem("admin"));
   const dispatch = useDispatch();
   const history = useHistory();
   const CartContent = useSelector((state) => state.cart);
@@ -36,6 +38,7 @@ function NavBar() {
     window.localStorage.removeItem("name");
     window.localStorage.removeItem("user");
     window.localStorage.removeItem("cart");
+    window.localStorage.removeItem("admin");
 
     //Hacer un dispach para limpiar el estado global del carrito 
 
@@ -48,6 +51,11 @@ function NavBar() {
     dispatch(getOrders(user._id));
     history.push("/dashboard");
   };
+
+  const handleAdminDashboard = () => {
+    dispatch(getOrders(user?._id));
+    history.push("/dashboardAdmin");
+  }
 
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -123,14 +131,28 @@ function NavBar() {
                   {name.split(" ", 1)}
                 </a>
                 <div className="dropdown-menu" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
-                  <a 
-                  onClick={() => onDashboard()} 
-                  className="dropdown-item"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarCollapse"
-                  >
-                    Dashboard
-                  </a>
+                  {admin === true 
+                    ?
+                      <a 
+                      onClick={() => handleAdminDashboard()} 
+                      className="dropdown-item"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarCollapse"
+                      >
+                        Dashboard
+                      </a> 
+                    :
+                      <a 
+                    onClick={() => onDashboard()} 
+                    className="dropdown-item"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                    >
+                      {console.log("false")}
+                      Dashboard
+                    </a>
+                }
+                  
                 </div>
               </div>
             )}
