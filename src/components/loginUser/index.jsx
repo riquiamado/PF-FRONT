@@ -74,20 +74,20 @@ const LoginUser = () => {
     if (Object.values(errors).length === 0) {
       try {
         const response = await axios.post(`http://localhost:3001/login`, input);
+        console.log(response)
         window.localStorage.setItem(
           "session",
-          JSON.stringify(response.data.user.email)
+          JSON.stringify(response.data.email)
         );
         window.localStorage.setItem(
           "user",
-          JSON.stringify(response.data.user)
-        );
+          JSON.stringify(response.data));
         window.localStorage.setItem(
           "name",
-          JSON.stringify(response.data.user.name)
+          JSON.stringify(response.data.name)
         );
-        dispatch(login(response.data.user.email));
-        dispatch(getUserByEmail(response.data.user.email))
+        dispatch(login(response.data.email));
+        dispatch(getUserByEmail(response.data.email))
         setInput({
           email: "",
           password: "",
