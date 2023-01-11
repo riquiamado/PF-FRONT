@@ -16,10 +16,10 @@ export const SidebarData = [
         icon: UilClipboardAlt,
         heading: "Rate your services"
     },
-    // {
-    //     icon: UilUsersAlt,
-    //     heading: "Customers"
-    // },
+    {
+        icon: UilClipboardAlt,
+        heading: "Shopping history"
+    },
     {
         icon: UilBox,
         heading: "Services"
