@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SidebarData } from './index.js';
+import { AdminData } from './admin.js';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './sidebar.css';
@@ -7,8 +8,10 @@ import { getComponents } from '../../redux/actions/actions.jsx';
 
 const SideBar = () => {
 
+
     const userSessionLocal = useSelector((state) => state.session);
     const name = JSON.parse(window.localStorage.getItem("name"));
+    const admin = JSON.parse(window.localStorage.getItem("admin"));
     const [selected, setSelected] = useState(0);
   
     const dispatch = useDispatch()
@@ -28,7 +31,25 @@ const SideBar = () => {
                 <span>{ name }</span> 
             </div>
             <div className='menu'>
-                {SidebarData.map((item, index) => {
+                {admin === true ? AdminData.map((item, index) => {
+                        return(
+                            <div 
+                            className={selected === index?'menuItem active': 'menuItem'} 
+                            key={index}
+                            onClick={() => {
+                                //Switches classname and render
+                                setSelected(index);
+                                handleComponent(item.heading);
+                                }}>
+                                    
+                                <item.icon />
+                                <span>
+                                    {item.heading}
+                                </span>
+                            </div>
+                        )
+                    })
+                : SidebarData.map((item, index) => {
                     return(
                         <div 
                         className={selected === index?'menuItem active': 'menuItem'} 
@@ -45,7 +66,8 @@ const SideBar = () => {
                             </span>
                         </div>
                     )
-                })}
+                })
+            }
                 <div></div>
             </div>
         </div>

@@ -10,26 +10,46 @@ import ServicesDash from '../servicesDash/index.jsx';
 import UserSettings from '../userSettings/index.jsx';
 import History from '../history/index.jsx';
 
-import "./dashboard.css"
+import "./dashboardAdmin.css"
 
 
-const Dashboard = () => {
+const DashboardAdmin = () => {
 
     const componentName = useSelector(state => state.components);
+
     const [component, setcomponent] = useState({
-        orders: true,
+        main: true,
+        orders: false,
         customers: false,
         services: false,
         history: false,
         settings: false,
-    });
+    }) 
+    // const [component, setcomponent] = useState({
+    //     main: true,
+    //     orders: false,
+    //     customers: false,
+    //     services: false,
+    //     history: false,
+    //     settings: false,
+    // });
    
     const dispatch = useDispatch()
     
     useEffect(() => {
         dispatch(getComponents());
+        
+        if(componentName === "Dashboard") setcomponent({
+            main: true,
+            orders: false,
+            customers: false,
+            services: false,
+            history: false,
+            settings: false,
+        })
 
         if(componentName === "Rate your services") setcomponent({
+            main: false,
             orders: true,
             customers: false,
             services: false,
@@ -38,6 +58,7 @@ const Dashboard = () => {
         })
 
         if(componentName === "Shopping history") setcomponent({
+            main: false,
             orders: false,
             customers: false,
             services: false,
@@ -46,6 +67,7 @@ const Dashboard = () => {
         })
 
         if(componentName === "Customers") setcomponent({
+            main: false,
             orders: false,
             customers: true,
             services: false,
@@ -54,6 +76,7 @@ const Dashboard = () => {
         })
 
         if(componentName === "Services") setcomponent({
+            main: false,
             orders: false,
             customers: false,
             services: true,
@@ -62,6 +85,7 @@ const Dashboard = () => {
         })
 
         if(componentName === "Analytics") setcomponent({
+            main: false,
             orders: false,
             customers: false,
             services: false,
@@ -70,6 +94,7 @@ const Dashboard = () => {
         })
 
         if(componentName === "Settings") setcomponent({
+            main: false,
             orders: false,
             customers: false,
             services: false,
@@ -95,7 +120,8 @@ const Dashboard = () => {
         <div className='dashboard'>
             <div className='glass'>
                 <div><SideBar/></div>
-                {/* <div className={component.main ? "visible" : "hidden"}><MainDash /></div> */}
+                <h1>Admin Dashboard</h1>
+                <div className={component.main ? "visible" : "hidden"}><MainDash /></div>
                 <div className={component.orders ? "visible" : "hidden"}><Orders /></div>
                 {/* <div className={component.customers ? "visible" : "hidden"}><Customers /></div> */}
                 <div className={component.services ? "visible" : "hidden"}><ServicesDash /></div>
@@ -106,4 +132,4 @@ const Dashboard = () => {
     )
 } 
 
-export default Dashboard;
+export default DashboardAdmin;

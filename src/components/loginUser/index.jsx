@@ -86,6 +86,7 @@ const LoginUser = () => {
           "name",
           JSON.stringify(response.data.name)
         );
+        window.localStorage.setItem("admin", JSON.stringify(response.data.admin));
         dispatch(login(response.data.email));
         dispatch(getUserByEmail(response.data.email))
         setInput({
@@ -158,6 +159,7 @@ const LoginUser = () => {
                 );
                 window.localStorage.setItem("name", JSON.stringify(user.name));
                 window.localStorage.setItem("user", JSON.stringify(response.data));
+                window.localStorage.setItem("admin", JSON.stringify(response.data.admin));
                 dispatch(login(user.email));
                 dispatch(getUserByEmail(user.email))
                 history.push("/");

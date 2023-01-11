@@ -14,6 +14,7 @@ import Footer from "./components/footer/index";
 import Payment from "./components/payment";
 import PaymentDeclined from "./components/paymentDeclined";
 import ServiceEdit from "./components/serviceEdit";
+import DashboardAdmin from "./components/dashboardAdmin";
 import { Rate } from "./components/rate";
 
 function App() {
@@ -26,9 +27,10 @@ function App() {
       <Route exact path="/services" component={CreateServices} />
       <Route exact path="/checkLogin" component={checkLogin} />
       <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/dashboardAdmin" component={DashboardAdmin} />
       <Route exact path="/login" component={LoginUser} />
       <Route exact path="/payment" component={Payment} />
-      <Route exact path="/paymentDeclined " component={PaymentDeclined} />
+      <Route exact path="/paymentDeclined" component={PaymentDeclined} />
       <Route path="/services/:_id" component={CardDetails} />
       <Route path="/servicesEdit/:_id" component={ServiceEdit} />
       <Route path="/create" component={CreateServices} />
