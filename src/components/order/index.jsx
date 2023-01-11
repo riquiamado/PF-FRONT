@@ -11,10 +11,11 @@ export const Order = ({orderId, name, serviceId, image}) => {
   return (
     <div className='table'>
       {/* <img src={image}  /> */}
-      <p><b>Service:</b></p>
-      <p><i>{name}</i></p>
-      <img className="images" src={image} alt="imagen" height="100px" width="100px"/>
-      <button onClick={()=>handleClick()}>Rate</button>
+      <div>
+      <img className="images rounded-circle mb-1 shadow-lg bg-body-tertiary" src={image} alt="imagen" height="100px" width="100px"/>
+      <p className='text-capitalize'><b>Service:</b>{name}</p>
+      </div>
+      <button className="actividad text-center fs-6 pe-2 ps-2 rounded-pill border border-1 shadow-sm p-1 bg-body-tertiary rounded" onClick={()=>handleClick()}>Rate</button>
     </div>
   )
 }

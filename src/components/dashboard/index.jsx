@@ -93,8 +93,8 @@ const Dashboard = () => {
 
     return(
         <div className='dashboard'>
-            <div className='glass border-end'>
-                <div><SideBar/><br /></div>
+            <div className='glass'>
+                <div><SideBar/></div>
                 {/* <div className={component.main ? "visible" : "hidden"}><MainDash /></div> */}
                 <div className={component.orders ? "visible" : "hidden"}><Orders /></div>
                 {/* <div className={component.customers ? "visible" : "hidden"}><Customers /></div> */}

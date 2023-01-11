@@ -12,24 +12,26 @@ const Orders = () => {
 
   if (cont === 0) {
     return (
-      <div>
-        <h1>Orders to qualify</h1>
-        <br /><br /><br />
-        <h2>No services to qualify</h2>
+      <div className="rateSettings container-fluid shadow p-3 mb-4 mt-4  bg-body rounded">
+          <h1 className="pt-4 fs-3 mb-2 pb-4 text-md-start border-bottom border-dark"><i className="bi bi-bag-heart fs-4"></i> Orders to qualify</h1>
+          <div className="container-fluid text-center shadow p-3 mb-4 mt-4 rounded">
+          <br />
+          <h2 className="pt-4 pb-4 mb-4"><i className="bi bi-bag-check-fill mb-1"></i><br /> No services to qualify!</h2>
+          </div>
       </div>
     );
   } else {
     return (
-      <div>
-        <h1>Orders to qualify</h1>
+      <div className="rateSettings container-fluid shadow p-3 mb-4 mt-4 rounded">
+        <h1 className="pt-4 fs-3 mb-2 pb-4 text-md-start border-bottom border-dark"><i className="bi bi-bag-heart fs-4"></i> Orders to qualify</h1>
         {orders?.map((order, i) => {
           return (
             <div key={i}>
               {order.services.length === 0 ? (
                 <div></div>
               ) : (
-                <div>
-                  <p>{`Order ${i + 1}`}</p>
+                <div className="container-fluid shadow p-3 mb-4 mt-4 rounded">
+                  <p className="fw-semibold mb-2 pb-1 text-md-start border-bottom border-secondary"><i className="bi bi-bag-check fs-5"></i> {`Order ${i + 1}`}</p>
                   {order.services.map((e, i) => {
                     return (
                       <Order

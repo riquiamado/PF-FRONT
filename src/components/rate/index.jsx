@@ -130,7 +130,7 @@ export const Rate = () => {
           For this section, make a comment about the service and help other users to know how it was.</h4>
         <div className="form-floating">
           <textarea 
-            className="form-control mb-4 ms-2 me-4 pe-2 fs-3 fw-bold" 
+            className="form-control mb-4 ms-2 me-4 pe-2 fs-4 fw-bold" 
             placeholder="Leave a comment here" 
             id="floatingTextarea2"
             onChange={(el) => handleChange(el)}
