@@ -18,6 +18,12 @@ function Validate(input) {
   if (!input.description) {
     errors.description = "invalid description";
   }
+  if (!input.price){
+    errors.price = "invalid price"
+  }
+  if (input.country === "") {
+    errors.country = "Choose a country"
+  }
   return errors;
 }
 
@@ -31,7 +37,7 @@ const CreateServices = () => {
   const [input, setInput] = useState({
     name: "",
     description: "",
-    price: "",
+    price: 0,
     country: "",
   });
 
@@ -82,6 +88,7 @@ const CreateServices = () => {
     if (Object.values(errors).length === 0) {
       dispatch(addServices(formData));
       /* dispatch(cleanServices()); */
+      console.log("hola")
       toast.success("Service has been created!"), {
         duration: 3000 
       };
@@ -102,11 +109,13 @@ const CreateServices = () => {
 
   useEffect( () => {
     dispatch(login(loggedUser))
-  }, [])
+  }, [dispatch])
 
   const handleClick = () => {
     history.push("/");
   };
+
+  console.log(errors)
   
   return  (
     <div>
@@ -154,7 +163,9 @@ const CreateServices = () => {
                   onChange={(el) => handleChange(el)}
                 />
               </div>
+              {errors.price ? <label>{errors.price}</label> : null}
             </div>
+            <label> Country: </label>
             <select
               className="form-select border border-1 shadow-sm p-3 mb-5 bg-body rounded"
               id="floatingSelectGrid"
@@ -166,6 +177,7 @@ const CreateServices = () => {
               <option value="Colombia">Colombia</option>
               <option value="México">México</option>
             </select>
+            {errors.country ? <label>{errors.country}</label> : null}
             <div>
               <label htmlFor="">Image</label>
               <input type="file" onChange={(el) => handleImage(el)} />
