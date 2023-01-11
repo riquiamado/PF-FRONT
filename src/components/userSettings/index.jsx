@@ -186,7 +186,7 @@ const UserSettings = () => {
             {errors.password ? <label>{errors.password}</label> : null}
 
           </div>
-          {input.password === input.password2 ?<input className="actividad text-center fs-6 pe-2 ps-2 rounded-pill border border-1 shadow-sm p-1 bg-body-tertiary rounded" type="submit" value={"Update"}></input>:"password invalid"}
+          {input.password === input.password2 ?<input className="actividad text-center fs-6 pe-2 ps-2 rounded-pill border border-1 shadow-sm   p-1 bg-body-tertiary rounded" type="submit" value={"Update"}></input>:"password invalid"}
         {/* <input className="actividad" type="submit" value={"Update"}></input> */}
         </form>
       </div>
