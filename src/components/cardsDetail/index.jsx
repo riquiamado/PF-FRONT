@@ -17,7 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 import toast, { Toaster } from "react-hot-toast";
-import {AiOutlineStar,AiFillStar} from "react-icons/ai"
+import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { Container, Nav, Navbar } from "react-bootstrap";
 
 import { useLocation } from "react-router-dom";
@@ -32,6 +32,8 @@ const CardDetails = () => {
   const userSessionLocal = useSelector((state) => state.session);
   const cart = useSelector((state) => state.cart);
 
+  console.log(details.reviews);
+
   const history = useHistory();
   const { _id } = useParams();
 
@@ -39,20 +41,18 @@ const CardDetails = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  
-
   const handleAddToCart = () => {
     const data = { id: _id, email: userSessionLocal };
     dispatch(addToCart(details));
     toast.success("Service has been added to the cart");
     const cartLS = JSON.parse(window.localStorage.getItem("cart"));
     if (cartLS) {
-      if(servicesLS.length !== cartLS.length){
-        servicesLS = cartLS
+      if (servicesLS.length !== cartLS.length) {
+        servicesLS = cartLS;
       }
-    }    
+    }
     servicesLS.push(details);
-    window.localStorage.setItem('cart', JSON.stringify(servicesLS));
+    window.localStorage.setItem("cart", JSON.stringify(servicesLS));
   };
 
   useEffect(() => {
@@ -90,12 +90,23 @@ const CardDetails = () => {
             <div className="row gx-5">
               <div className="col">
                 <div className="holis p-3 bg-light">
-                  <p className="fs-1 fw-bolder mt-3 text-warning text-start"><small className="fs-4 me-2 pb-4">Price:</small>{`$${details.price}`}</p>
+                  <p className="fs-1 fw-bolder mt-3 text-warning text-start">
+                    <small className="fs-4 me-2 pb-4">Price:</small>
+                    {`$${details.price}`}
+                  </p>
                 </div>
               </div>
               <div className="col">
                 <div className="p-3 bg-light">
-                  <h6 className="fs-2 pt-4 pb-4">{[...new Array(5)].map((start,index)=>{return index < details.average? <AiFillStar key={index}/>:<AiOutlineStar key={index}/> })}</h6>
+                  <h6 className="fs-2 pt-4 pb-4">
+                    {[...new Array(5)].map((start, index) => {
+                      return index < details.average ? (
+                        <AiFillStar key={index} />
+                      ) : (
+                        <AiOutlineStar key={index} />
+                      );
+                    })}
+                  </h6>
                 </div>
               </div>
             </div>
@@ -104,8 +115,15 @@ const CardDetails = () => {
             <div className="row gx-5">
               <div className="col">
                 <div className="p-3 border bg-light">
-                  <label htmlFor="">Reviews</label>
-                  <h3>{details.reviews}</h3>
+                  {/* <label htmlFor="">Reviews</label> */}
+                  {details.reviews?.map((e, i) => {
+                    return (
+                      <div key={i}>
+                        <p>{e.user}</p>
+                        <p>{`"${e.review}"`}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -114,11 +132,12 @@ const CardDetails = () => {
       </div>
 
       <div className="container-sm shadow  p-3 mb-4 bg-body rounded">
-        <h1 className="fs-2 fw-semibold pb-2 border-bottom border-muted">User Provider</h1>
+        <h1 className="fs-2 fw-semibold pb-2 border-bottom border-muted">
+          User Provider
+        </h1>
         <div>
           <label className="text-muted mb-2" htmlFor="">
-          <i className="bi bi-person-circle"> Name</i>
-
+            <i className="bi bi-person-circle"> Name</i>
           </label>
           <h3 className="text-capitalize fw-normal">{details.user.name}</h3>
           <label className="text-muted mb-2" htmlFor="">
@@ -130,31 +149,31 @@ const CardDetails = () => {
         <Offcanvas show={show} onHide={handleClose} placement={"end"}>
           <div className="delete-container" />
 
-            <Offcanvas.Header closeButton>
+          <Offcanvas.Header closeButton>
             <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
             <Cart />
-            </Offcanvas.Body>
-          </Offcanvas> 
-        </div> 
-          <div className="container-sm shadow p-3 mb-3 bg-body rounded text-center">
-            <p className="text-center text-uppercase fs-2 fw-semibold font-monospace pb-2 mb-4 border-bottom border-muted">Do you need this service?</p>
-            <button
-              className="btn btn-lg btn-primary me-2"
-              onClick={() => handleAddToCart()}
-            >
-              Add to Cart
-            </button>
-            
-            <button className="btn btn-lg btn-primary" onClick={handleShow}>
-              View Cart
-            </button>
-            
-          </div>
+          </Offcanvas.Body>
+        </Offcanvas>
+      </div>
+      <div className="container-sm shadow p-3 mb-3 bg-body rounded text-center">
+        <p className="text-center text-uppercase fs-2 fw-semibold font-monospace pb-2 mb-4 border-bottom border-muted">
+          Do you need this service?
+        </p>
+        <button
+          className="btn btn-lg btn-primary me-2"
+          onClick={() => handleAddToCart()}
+        >
+          Add to Cart
+        </button>
+
+        <button className="btn btn-lg btn-primary" onClick={handleShow}>
+          View Cart
+        </button>
+      </div>
       <div className="container-sm shadow p-3 mb-5 bg-body rounded">
         <div className="d-grid gap-8 mt-1 col-2 mx-auto text-center">
-
           <Link to={"/"}>
             <button
               id="buttt"

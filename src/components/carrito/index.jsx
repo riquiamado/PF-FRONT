@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { deleteToCart, getServicesDetails } from "../../redux/actions/actions";
+import { cleanCart, deleteToCart, getServicesDetails } from "../../redux/actions/actions";
 
 import axios from "axios";
 
@@ -16,14 +16,12 @@ const Cart = () => {
   const dispatch = useDispatch();
   const CartContent = useSelector((state) => state.cart);
 
-
-
   function removeCart(arg) {
     dispatch(deleteToCart(arg));
     let cartRemoval = JSON.parse(window.localStorage.getItem("cart"));
     let cartfiltered = cartRemoval.filter((e) => !e._id.includes(arg));
-    window.localStorage.setItem('cart', JSON.stringify(cartfiltered));
-    console.log(cartfiltered)
+    window.localStorage.setItem("cart", JSON.stringify(cartfiltered));
+    console.log(cartfiltered);
   }
 
   const handlePayment = async (value, userMail, services) => {
@@ -37,6 +35,8 @@ const Cart = () => {
     });
     //window.open(response.data.links[1].href, "_blank", "toolbar=yes,top=500,left=500,width=850,height=700")
     window.location.href = response.data.links[1].href;
+    window.localStorage.setItem("cart", JSON.stringify([]));
+    dispatch(cleanCart())
   };
 
   let Totales = 0;
@@ -79,7 +79,7 @@ const Cart = () => {
           )
         }
       >
-        Contract
+        Pay
       </button>
     </>
   );

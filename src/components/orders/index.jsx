@@ -6,7 +6,6 @@ import "./orders.css";
 const Orders = () => {
   let orders = useSelector((state) => state.orders);
 
-  console.log(orders);
   return (
     <div>
       <h1>This are the Orders</h1>

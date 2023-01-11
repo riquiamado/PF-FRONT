@@ -157,6 +157,7 @@ const LoginUser = () => {
                   JSON.stringify(user.email)
                 );
                 window.localStorage.setItem("name", JSON.stringify(user.name));
+                window.localStorage.setItem("user", JSON.stringify(response.data));
                 dispatch(login(user.email));
                 dispatch(getUserByEmail(user.email))
                 history.push("/");

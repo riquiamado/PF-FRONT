@@ -26,6 +26,7 @@ import {
   CLEAN,
   GET_CATEGORIES,
   GET_ORDERS,
+  CLEAN_CART
 } from "../actions/components";
 
 const initialState = {
@@ -241,6 +242,12 @@ function rootReducer(state = initialState, action) {
         details: {},
         components: [],
       };
+
+    case CLEAN_CART:
+      return{
+        ...state,
+        cart:[]
+      }
 
     default:
       return { ...state };
