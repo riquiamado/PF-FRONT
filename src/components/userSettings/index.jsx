@@ -116,59 +116,54 @@ const UserSettings = () => {
   };
 
   return (
-    <div className="userSettings">
-      <h1>Settings</h1>
+    <div className="userSettings container-sm shadow p-3 mb-4 mt-4 bg-body rounded">
+      <h1 className="pt-4 fs-3 mb-2 pb-2 text-md-start border-bottom border-muted"><i className="bi bi-sliders fs-4"></i>  Settings</h1>
       <div>
-        <h3>Update User Name</h3>
-        <form onSubmit={(e) => handleUpdateName(e)}>
+        <h3 className="fs-5 mt-4 fw-semibold text-start">Update User Name</h3>
+        <form className="form-control mb-4" onSubmit={(e) => handleUpdateName(e)}>
           <div>
-            <label htmlFor="">New Name:</label>
+            <label className="mb-2" htmlFor="">New Name:</label>
             <input
+            className="form-control mb-2"
               type="text"
               value={input.name}
               name="name"
               placeholder={name}
               onChange={(e) => handleChange(e)}
             />
-            <br />
             {errors.name ? <label>{errors.name}</label> : null}
-
           </div>
-            <input className="actividad" type="submit" value={"Update"}></input>
+            <input className="actividad text-center fs-6 pe-2 ps-2 rounded-pill border border-1 shadow-sm p-1 bg-body-tertiary rounded " type="submit" value={"Update"}></input>
           </form>
-          <form onSubmit={(e => handleUpdateEmail(e))}>
-          <h3>Update Email</h3>
+          <h3 className="fs-5 mt-4 fw-semibold text-start">Update Email</h3>
+          <form className="form-control mb-4" onSubmit={(e => handleUpdateEmail(e))}>
           <div>
             <label htmlFor="">New Email:</label>
             <input
+              className="form-control mb-2" 
               type="text"
               value={input.email}
               name="email"
-            placeholder={email}
+              placeholder={email}
               onChange={(e) => handleChange(e)}
             />
-            <br />
             {errors.email ? <label>{errors.email}</label> : null}
-
           </div>
-          <input className="actividad" type="submit" value={"Update"}></input>
-
+          <input className="actividad text-center fs-6 pe-2 ps-2 rounded-pill border border-1 shadow-sm p-1 bg-body-tertiary rounded " type="submit" value={"Update"}></input>
         </form>
       </div>
       <div>
-        <form onSubmit={(e)=>handleUpdatePassword(e)} >
-        <h3>Update Password</h3>
-
+        <h3 className="fs-5 mt-4 fw-semibold text-start">Update Password</h3>
+        <form className="form-control mb-2" onSubmit={(e)=>handleUpdatePassword(e)} >
         <div>
-            
             <label htmlFor="">New Password:</label>
             <input
+              className="form-control mb-2"
               type="password"
               value={input.password}
               name="password"
               onChange={(e) => handleChange(e)}
             />
-            <br />
             {errors.password ? <label>{errors.password}</label> : null}
 
           </div>
@@ -176,23 +171,22 @@ const UserSettings = () => {
         </form>
       </div>
       <div>
-        <form onSubmit={(e)=>handleUpdatePassword(e)} >
-        <h3>Repeat Password</h3>
+        <h3 className="fs-5 mt-4 fw-semibold text-start" >Repeat Password</h3>
+        <form className="form-control mb-2" onSubmit={(e)=>handleUpdatePassword(e)} >
 
         <div>
-            
             <label htmlFor="">Repeat Password:</label>
             <input
+              className="form-control mb-2"
               type="password"
               value={input.password2}
               name="password2"
               onChange={(e) => handleChange(e)}
             />
-            <br />
             {errors.password ? <label>{errors.password}</label> : null}
 
           </div>
-          {input.password === input.password2 ?<input className="actividad" type="submit" value={"Update"}></input>:"password invalid"}
+          {input.password === input.password2 ?<input className="actividad text-center fs-6 pe-2 ps-2 rounded-pill border border-1 shadow-sm p-1 bg-body-tertiary rounded" type="submit" value={"Update"}></input>:"password invalid"}
         {/* <input className="actividad" type="submit" value={"Update"}></input> */}
         </form>
       </div>
