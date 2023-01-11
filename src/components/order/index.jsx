@@ -9,7 +9,7 @@ export const Order = ({orderId, name, serviceId, image}) => {
   }
   
   return (
-    <div>
+    <div className='table'>
       {/* <img src={image}  /> */}
       <p><b>Service:</b></p>
       <p><i>{name}</i></p>
