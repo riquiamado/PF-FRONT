@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../searchBar";
 import { useHistory } from "react-router-dom";
-import { getOrders, getServices, login } from "../../redux/actions/actions";
+import { cleanCart, getOrders, getServices, login } from "../../redux/actions/actions";
 import "./navBar.css";
 
 function NavBar() {
@@ -41,6 +41,7 @@ function NavBar() {
 
     
     dispatch(login(null));
+    dispatch(cleanCart())
     history.push("/");
   };
 
