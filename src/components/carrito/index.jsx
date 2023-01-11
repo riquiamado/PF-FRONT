@@ -39,10 +39,6 @@ const Cart = () => {
     window.location.href = response.data.links[1].href;
   };
 
-  useEffect(() => {
-    dispatch(getServicesDetails());
-  }, [dispatch]);
-
   let Totales = 0;
   return (
     <>
