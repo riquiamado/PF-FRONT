@@ -168,26 +168,24 @@ const UserSettings = () => {
 
           </div>
         {/* <input className="actividad" type="submit" value={"Update"}></input> */}
-        </form>
-      </div>
-      <div>
-        <h3 className="fs-5 mt-4 fw-semibold text-start" >Repeat Password</h3>
-        <form className="form-control mb-2" onSubmit={(e)=>handleUpdatePassword(e)} >
-
         <div>
-            <label htmlFor="">Repeat Password:</label>
-            <input
-              className="form-control mb-2"
-              type="password"
-              value={input.password2}
-              name="password2"
-              onChange={(e) => handleChange(e)}
-            />
-            {errors.password ? <label>{errors.password}</label> : null}
+          <form className="" onSubmit={(e)=>handleUpdatePassword(e)} >
+          <div>
+              <label htmlFor="">Repeat Password:</label>
+              <input
+                className="form-control mb-2"
+                type="password"
+                value={input.password2}
+                name="password2"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.password ? <label>{errors.password}</label> : null}
 
-          </div>
-          {input.password === input.password2 ?<input className="actividad text-center fs-6 pe-2 ps-2 rounded-pill border border-1 shadow-sm   p-1 bg-body-tertiary rounded" type="submit" value={"Update"}></input>:"password invalid"}
-        {/* <input className="actividad" type="submit" value={"Update"}></input> */}
+            </div>
+            {input.password === input.password2 ?<input className="actividad text-center fs-6 pe-2 ps-2 rounded-pill border border-1 shadow-sm   p-1 bg-body-tertiary rounded" type="submit" value={"Update"}></input>:"password invalid"}
+          {/* <input className="actividad" type="submit" value={"Update"}></input> */}
+          </form>
+        </div>
         </form>
       </div>
     </div>
