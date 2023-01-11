@@ -7,6 +7,7 @@ export const Order = ({orderId, name, serviceId, image}) => {
   const handleClick = () => {
     history.push(`/rate/${orderId}/${name}/${serviceId}`)
   }
+  
   return (
     <div>
       {/* <img src={image}  /> */}

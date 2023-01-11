@@ -8,7 +8,7 @@ import Orders from '../orders/index'
 import Customers from '../customers/index.jsx';
 import ServicesDash from '../servicesDash/index.jsx';
 import UserSettings from '../userSettings/index.jsx';
-import Analytics from '../analytics/index.jsx';
+import History from '../history/index.jsx';
 
 import "./dashboard.css"
 
@@ -21,7 +21,7 @@ const Dashboard = () => {
         orders: false,
         customers: false,
         services: false,
-        analytics: false,
+        history: false,
         settings: false,
     });
    
@@ -35,7 +35,7 @@ const Dashboard = () => {
             orders: false,
             customers: false,
             services: false,
-            analytics: false,
+            history: false,
             settings: false,
         })
 
@@ -44,7 +44,16 @@ const Dashboard = () => {
             orders: true,
             customers: false,
             services: false,
-            analytics: false,
+            history: false,
+            settings: false,
+        })
+
+        if(componentName === "Shopping history") setcomponent({
+            main: false,
+            orders: false,
+            customers: false,
+            services: false,
+            history: true,
             settings: false,
         })
 
@@ -53,7 +62,7 @@ const Dashboard = () => {
             orders: false,
             customers: true,
             services: false,
-            analytics: false,
+            history: false,
             settings: false,
         })
 
@@ -62,7 +71,7 @@ const Dashboard = () => {
             orders: false,
             customers: false,
             services: true,
-            analytics: false,
+            history: false,
             settings: false,
         })
 
@@ -71,7 +80,7 @@ const Dashboard = () => {
             orders: false,
             customers: false,
             services: false,
-            analytics: true,
+            history: true,
             settings: false,
         })
 
@@ -80,7 +89,7 @@ const Dashboard = () => {
             orders: false,
             customers: false,
             services: false,
-            analytics: false,
+            history: false,
             settings: true,
         })
         // setcomponent(current => {
@@ -106,7 +115,7 @@ const Dashboard = () => {
                 <div className={component.orders ? "visible" : "hidden"}><Orders /></div>
                 {/* <div className={component.customers ? "visible" : "hidden"}><Customers /></div> */}
                 <div className={component.services ? "visible" : "hidden"}><ServicesDash /></div>
-                {/* <div className={component.analytics ? "visible" : "hidden"}><Analytics /></div> */}
+                <div className={component.history ? "visible" : "hidden"}><History /></div>
                 <div className={component.settings ? "visible" : "hidden"}><UserSettings /></div>
             </div>
         </div>
