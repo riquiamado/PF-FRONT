@@ -31,12 +31,16 @@ a {
 }
 
 .cart {
+	display: flex;
 	position: relative;
 }
+.cart1 {
+	position: absolute;
+}
 
-.sidebar-social span {
-	color: black;
-	font-size: 15px;
+.cart span {
+	color: rgb(250, 86, 86);
+	font-size: 12px;
 	padding: 5px 0 10px 0;
 	display: block;
 	text-transform: uppercase;
@@ -56,7 +60,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	color: white;
-	padding: 2px;
+	padding: 1px;
 }
 
 
