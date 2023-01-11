@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-const userName = JSON.parse(window.localStorage.getItem("name"));
+import axios from "axios"
 
 export const Rate = () => {
+  const userName = JSON.parse(window.localStorage.getItem("name"));
   const { orderId, name, serviceId } = useParams();
   const history = useHistory()
   const [input, setInput] = useState({
@@ -14,15 +15,19 @@ export const Rate = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     //Con esta información se actualizarán los propiedadas del rating y reviews del servicio
     const dataService = {serviceId, userName, rating:input.rating, review:input.review};
-    console.log(dataService)
 
-    //Con esta información se actualizará la propiedad services de la orden, hay que sacar el id del servicios del arreglo
+    await axios.put(`http://localhost:3001/service/rate`, dataService)
+    
+    
+    //Con esta información se actualizará la propiedad services de la orden, hay que sacar el id del servicio, del arreglo.
+
     const dataOrder = {orderId, serviceId};
-    console.log(dataOrder)
+    await axios.put(`http://localhost:3001/orders`, dataOrder)
+    // console.log(dataOrder)
 
     setInput({
       rating: "",

@@ -12,7 +12,7 @@ const Payment = () => {
 
   useEffect(() => {
     dispatch(login(loggedUser));
-    dispatch(getOrders(users[0]._id)); 
+    // dispatch(getOrders(users[0]._id)); 
   }, []);
 
   return (

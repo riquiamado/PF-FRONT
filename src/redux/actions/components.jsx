@@ -22,6 +22,7 @@ export const DELETE_SERVICE = "DELETE_SERVICE"
 export const ADD_TO_CART= "ADD_TO_CART"
 export const REMOVE_TO_CART= "REMOVE_TO_CART"
 export const DELETE_TO_CART= "DELETE_TO_CART"
+export const CLEAN_CART = "CLEAN_CART"
 //---------------------Filter/Order------------------------------
 export const ORDER_BY_NAME = "ORDER_BY_NAME"
 export const ORDER_BY_RATINGS = "ORDER_BY_RATINGS"

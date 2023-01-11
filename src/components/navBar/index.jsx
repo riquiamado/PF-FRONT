@@ -9,13 +9,14 @@ import "./navBar.css";
 function NavBar() {
   const cartLS = JSON.parse(window.localStorage.getItem("cart"));
   const session = useSelector((state) => state.session);
-  const users = useSelector((state) => state.users);
+  // const users = useSelector((state) => state.users);
   const name = JSON.parse(window.localStorage.getItem("name"));
+  const user = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
   const history = useHistory();
   const CartContent = useSelector((state) => state.cart);
   const resolution = window.screen
-  console.log(resolution); 
+  // console.log(resolution); 
 
   const handleClick = () => {
     dispatch(getServices());
@@ -33,12 +34,13 @@ function NavBar() {
   const onLogout = () => {
     window.localStorage.removeItem("session");
     window.localStorage.removeItem("name");
+    window.localStorage.removeItem("user");
     dispatch(login(null));
     history.push("/");
   };
 
   const onDashboard = () => {
-    dispatch(getOrders(users[0]._id));
+    dispatch(getOrders(user._id));
     history.push("/dashboard");
   };
 

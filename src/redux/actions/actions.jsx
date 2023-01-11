@@ -21,6 +21,7 @@ import {
   
   ADD_TO_CART,
   DELETE_TO_CART,
+  CLEAN_CART,
 
   GET_COMPONENTS,
   GET_CATEGORIES,
@@ -181,6 +182,14 @@ export function addToCart(payload) {
   return {
     type: ADD_TO_CART,
     payload: payload,
+  };
+}
+
+export function cleanCart(){
+  return function (dispatch) {
+    dispatch({
+      type: CLEAN_CART,
+    });
   };
 }
 
