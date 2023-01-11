@@ -1,6 +1,22 @@
 .userSettings {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center;
     align-items: center;
+    background-color: transparent; */
+   /*  width: 100%; */
+}
+
+.userSettings input {
+    background-color: transparent;
+}
+.userSettings form {
+    background-color: transparent;
+}
+.userSettings h1 {
+    font-family: 'Inter', sans-serif;
+}
+
+.form-control input :hover {
+    background-color: blue;
 }
