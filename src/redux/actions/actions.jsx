@@ -50,6 +50,7 @@ export function login(payload) {
 export function getUsers() {
   return async function (dispatch) {
     const info = await axios.get(`${url}/users`);
+    console.log(info.data)
     dispatch({ type: GET_USERS, payload: info.data });
   };
 }

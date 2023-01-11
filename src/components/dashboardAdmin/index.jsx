@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getComponents, clean } from '../../redux/actions/actions.jsx';
+import { getComponents, clean, getUsers, getServices } from '../../redux/actions/actions.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SideBar from '../sidebar/index.jsx';
@@ -11,14 +11,18 @@ import UserSettings from '../userSettings/index.jsx';
 import History from '../history/index.jsx';
 
 import "./dashboardAdmin.css"
+import UserAdmin from '../../dashboardCardAdmin/index.jsx';
+import AdminService from '../../dashboardServiceAdmin/index.jsx';
 
 
 const DashboardAdmin = () => {
 
     const componentName = useSelector(state => state.components);
-
+    const users = useSelector((state)=>state.users)
+    const services = useSelector((state)=>state.services)
+    
     const [component, setcomponent] = useState({
-        main: true,
+        serviceAdmin: true,
         orders: false,
         customers: false,
         services: false,
@@ -36,11 +40,16 @@ const DashboardAdmin = () => {
    
     const dispatch = useDispatch()
     
+     const handleDelete = () =>{
+
+     }
     useEffect(() => {
         dispatch(getComponents());
+        dispatch(getUsers())
+        dispatch(getServices())
         
-        if(componentName === "Dashboard") setcomponent({
-            main: true,
+        if(componentName === "Dashboard-Admin") setcomponent({
+            servicesAdmin: true,
             orders: false,
             customers: false,
             services: false,
@@ -84,14 +93,14 @@ const DashboardAdmin = () => {
             settings: false,
         })
 
-        if(componentName === "Analytics") setcomponent({
-            main: false,
-            orders: false,
-            customers: false,
-            services: false,
-            history: true,
-            settings: false,
-        })
+        // if(componentName === "Analytics") setcomponent({
+        //     main: false,
+        //     orders: false,
+        //     customers: false,
+        //     services: false,
+        //     history: true,
+        //     settings: false,
+        // })
 
         if(componentName === "Settings") setcomponent({
             main: false,
@@ -121,10 +130,36 @@ const DashboardAdmin = () => {
             <div className='glass'>
                 <div><SideBar/></div>
                 <h1>Admin Dashboard</h1>
+               
                 <div className={component.main ? "visible" : "hidden"}><MainDash /></div>
-                <div className={component.orders ? "visible" : "hidden"}><Orders /></div>
-                {/* <div className={component.customers ? "visible" : "hidden"}><Customers /></div> */}
-                <div className={component.services ? "visible" : "hidden"}><ServicesDash /></div>
+                
+                <div className={component.orders ? "visible" : "hidden"}><div>
+                    {users.map((e,i)=>{
+                        return (
+                            <div key={i}>
+                                <UserAdmin
+                                name={e.name}
+                                email={e.email}/>
+                            </div>
+                        )
+                    })}
+                </div></div>
+                
+                <div className={component.customers ? "visible" : "hidden"}><UserAdmin /></div>
+                <div className={component.services ? "visible" : "hidden"}><div>
+                    {services?.map((serv,i)=>{
+                        return(
+                            <div>
+                                <AdminService
+                                name={serv.name}
+                                description={serv.description}
+                                image={serv.image.secure_url}
+                                price={serv.price}/>
+                                <button onClick={() => handleDelete(el)}>Delete</button>
+                            </div>
+                        )
+                    })}
+                </div></div>
                 <div className={component.history ? "visible" : "hidden"}><History /></div>
                 <div className={component.settings ? "visible" : "hidden"}><UserSettings /></div>
             </div>
