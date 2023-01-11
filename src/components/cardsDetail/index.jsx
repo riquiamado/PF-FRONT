@@ -51,7 +51,7 @@ const CardDetails = () => {
 
   return details && details._id ? (
     <>
-      <div className="container-sm mt-2 shadow p-3 mb-4 bg-body rounded">
+      <div className="container-sm mt-4 shadow p-3 mb-4 bg-body rounded">
         <div className="main row">
           <div className="row justify-content-around">
             <div className="col-sm-12 col-md-6">
@@ -74,20 +74,26 @@ const CardDetails = () => {
               />
             </div>
           </div>
-
-              <p className="fs-1 fw-bolder mt-3 text-warning">{`Price: $${details.price}`}</p>
+          <div className="container overflow-hidden text-center">
+            <div className="row gx-5">
+              <div className="col">
+                <div className="holis p-3 bg-light">
+                  <p className="fs-1 fw-bolder mt-3 text-warning text-start"><small className="fs-4 me-2 pb-4">Price:</small>{`$${details.price}`}</p>
+                </div>
+              </div>
+              <div className="col">
+                <div className="p-3 bg-light">
+                  <h6 className="fs-2 pt-4 pb-4">{[...new Array(5)].map((start,index)=>{return index < details.average? <AiFillStar key={index}/>:<AiOutlineStar key={index}/> })}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="container overflow-hidden text-center">
             <div className="row gx-5">
               <div className="col">
                 <div className="p-3 border bg-light">
                   <label htmlFor="">Reviews</label>
                   <h3>{details.reviews}</h3>
-                </div>
-              </div>
-              <div className="col">
-                <div className="p-3 border bg-light">
-                  <label className="border-bottom border-muted"htmlFor="">Rating</label>
-                  <p className="fs-3 pt-4">{[...new Array(5)].map((start,index)=>{return index < details.average? <AiFillStar key={index}/>:<AiOutlineStar key={index}/> })}</p>
                 </div>
               </div>
             </div>
