@@ -1,0 +1,8 @@
+.divivvi input {
+    background-color: blueviolet;
+    color: rgb(255, 255, 255);
+}
+
+.divivvi input:hover{
+    background-color: rgb(167, 93, 236);
+}

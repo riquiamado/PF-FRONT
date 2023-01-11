@@ -7,12 +7,15 @@ import "./payment.css";
 const Payment = () => {
   const loggedUser = window.localStorage.getItem("session");
   const name = JSON.parse(window.localStorage.getItem("name"));
+  const User = JSON.parse(window.localStorage.getItem("user"));
+
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(login(loggedUser));
-    // dispatch(getOrders(users[0]._id)); 
+    // dispatch(getOrders(users[0]._id));
+    dispatch(getOrders(User._id))
   }, []);
 
   return (
@@ -35,8 +38,8 @@ const Payment = () => {
           </label>
         </div>
         <div className="mb-4 fs-5">
-          <Link to={"/ratingForm"} style={{ textDecoration: "none" }}>
-            Clic here to Qualification
+          <Link to={"/"} style={{ textDecoration: "none" }}>
+            Back
           </Link>
         </div>
       </div>

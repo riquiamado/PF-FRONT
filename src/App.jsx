@@ -22,7 +22,6 @@ function App() {
     <div className="App">
       <NavBar />
       <Route exact path={"/"} component={Home} />
-      <Route exact path="/ratingForm" component={FormRatingReview} />
       <Route exact path="/users" component={CreateUser} />
       <Route exact path="/services" component={CreateServices} />
       <Route exact path="/checkLogin" component={checkLogin} />
