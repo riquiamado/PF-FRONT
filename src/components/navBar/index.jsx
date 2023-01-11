@@ -35,6 +35,7 @@ function NavBar() {
     window.localStorage.removeItem("session");
     window.localStorage.removeItem("name");
     window.localStorage.removeItem("user");
+    window.localStorage.removeItem("cart");
     dispatch(login(null));
     history.push("/");
   };
