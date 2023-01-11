@@ -36,6 +36,7 @@ function NavBar() {
     window.localStorage.removeItem("name");
     window.localStorage.removeItem("user");
     window.localStorage.removeItem("cart");
+
     //Hacer un dispach para limpiar el estado global del carrito 
 
     
