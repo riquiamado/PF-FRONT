@@ -7,6 +7,7 @@ import { getOrders, getServices, login } from "../../redux/actions/actions";
 import "./navBar.css";
 
 function NavBar() {
+  const cartLS = JSON.parse(window.localStorage.getItem("cart"));
   const session = useSelector((state) => state.session);
   const users = useSelector((state) => state.users);
   const name = JSON.parse(window.localStorage.getItem("name"));
@@ -158,6 +159,9 @@ function NavBar() {
           <div className="cart"><i className="bi bi-cart4 fs-5"></i>
             <span id="cart_menu_num" data-action="cart-can" className="badge rounded-circle">{CartContent.length}</span>
           </div>
+
+          <i className="bi bi-cart4 fs-5">{cartLS ? cartLS.length : 0}</i>
+
         </div>
       </div>
     </nav>
