@@ -157,11 +157,8 @@ function NavBar() {
             }
           </div>
           <div className="cart"><i className="bi bi-cart4 fs-5"></i>
-            <span id="cart_menu_num" data-action="cart-can" className="badge rounded-circle">{CartContent.length}</span>
+            <span id="cart_menu_num" data-action="cart-can" className="badge rounded-circle">{cartLS ? cartLS.length : 0}</span>
           </div>
-
-          <i className="bi bi-cart4 fs-5">{cartLS ? cartLS.length : 0}</i>
-
         </div>
       </div>
     </nav>
