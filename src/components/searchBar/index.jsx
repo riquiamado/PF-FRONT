@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getServicesByName } from "../../redux/actions/actions";
+import { useHistory } from "react-router-dom";
 import "./search.css";
 
 const SearchBar = () => {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -18,6 +20,7 @@ const SearchBar = () => {
     } else {
       dispatch(getServicesByName(name));
       setName("");
+      history.push("/");
     }
   };
 
