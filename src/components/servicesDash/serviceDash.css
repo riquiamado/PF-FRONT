@@ -16,15 +16,14 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-
     margin-top: 2rem;
-    border: solid #8EFCE4;
+    border: #3999be;
     border-radius: 1rem;
     padding: 20px;
 }
 
 .edit-btn {
-    color: azure;
+    color: rgb(46, 119, 119);
 }
 
 .delete-btn {
@@ -32,4 +31,23 @@
     background-color: #8EFCE4;
     border-radius: 1rem;
     padding: 5px;
+}
+
+.scsdcds {
+    font-family: 'Inter', sans-serif;
+}
+
+.cjdcnsjdnc {
+        top: 0;
+        left: 55%;
+        background: rgb(61, 143, 190);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        padding: 1px;
+
 }
