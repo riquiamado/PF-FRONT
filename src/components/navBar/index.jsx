@@ -200,10 +200,10 @@ function NavBar() {
               <button className="bi bi-cart4 fs-5" onClick={handleShow}></button>
               <span id="cart_menu_num" data-action="cart-can" className="badge rounded-circle">{cartLS ? cartLS.length : 0}</span>
               <Offcanvas show={show} onHide={handleClose} placement={"end"}>
-                <div className="delete-container"/>
+                <div className="delete-container" />
 
                 <Offcanvas.Header closeButton>
-                  <Offcanvas.Title><h2 className="fs-4 mt-4 border-bottom border-muted pb-2 pe-4"><i className="bi bi-cart-check-fill fs-3 mb-4"></i> My Shopping Cart</h2></Offcanvas.Title>
+                  <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Cart />
