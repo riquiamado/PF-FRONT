@@ -7,14 +7,14 @@ import "./serviceDash.css"
 
 const ServicesDash = () => {
 
-    const users = useSelector(state => state.users)
+    const users = useSelector(state => state.users);
     const email = JSON.parse(window.localStorage.getItem("session"));
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     
-    const handleDelete = id => {
-        dispatch(deleteService(id))
-        alert("Servicio eliminado")
-    }
+    // const handleDelete = id => {
+    //     dispatch(deleteService(id));
+    //     alert("Servicio eliminado");
+    // };
 
     useEffect(() => {
         dispatch(getUserByEmail(email));
@@ -34,9 +34,9 @@ const ServicesDash = () => {
                         <Link to={`servicesEdit/${item._id}`}>
                             <p className='edit-btn'>Edit</p>
                         </Link>
-                        <div>
+                        {/* <div>
                             <button className='delete-btn' onClick={() => handleDelete(item._id)}>Delete</button>
-                        </div>
+                        </div> */}
                     </div>
                 )
             }) : <div>

@@ -120,7 +120,6 @@ const DashboardAdmin = () => {
         <div className='dashboard'>
             <div className='glass'>
                 <div><SideBar/></div>
-                <h1>Admin Dashboard</h1>
                 <div className={component.main ? "visible" : "hidden"}><MainDash /></div>
                 <div className={component.orders ? "visible" : "hidden"}><Orders /></div>
                 {/* <div className={component.customers ? "visible" : "hidden"}><Customers /></div> */}
