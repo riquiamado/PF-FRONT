@@ -74,7 +74,6 @@ const LoginUser = () => {
     if (Object.values(errors).length === 0) {
       try {
         const response = await axios.post(`http://localhost:3001/login`, input);
-        console.log(response)
         window.localStorage.setItem(
           "session",
           JSON.stringify(response.data.email)
