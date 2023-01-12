@@ -88,7 +88,6 @@ const CreateServices = () => {
     if (Object.values(errors).length === 0) {
       dispatch(addServices(formData));
       /* dispatch(cleanServices()); */
-      console.log("hola")
       toast.success("Service has been created!"), {
         duration: 3000 
       };

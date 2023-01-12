@@ -33,6 +33,7 @@ const initialState = {
   services: [],
   allServices: [],
   users: [],
+  servicesDL:[],
   session: "",
   cart: [],
   components: [],
@@ -100,8 +101,9 @@ function rootReducer(state = initialState, action) {
     case GET_SERVICES:
       return {
         ...state,
-        services: action.payload,
-        allServices: action.payload,
+        services: action.payload.filter((e)=> e.deleteLogic !== true),
+        allServices: action.payload.filter((e)=> e.deleteLogic !== true),
+        servicesDL: action.payload
       };
 
     case GET_SERVICES_BY_NAME:
