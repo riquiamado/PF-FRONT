@@ -14,12 +14,11 @@ const MainDash = () => {
     const services = useSelector((state)=>state.services);
     const dispatch = useDispatch();
 
-    const handleEnable = () =>{
+    const handleEnable = id =>{
 
     }
 
-    const handleDisable = () =>{
-
+    const handleDisable = id =>{
     }
 
     return(
@@ -42,8 +41,8 @@ const MainDash = () => {
                                 description={serv.description}
                                 image={serv.image.secure_url}
                                 price={serv.price}/>
-                                <button onClick={() => handleEnable(el)}>Enable</button>
-                                <button onClick={() => handleDisable(el)}>Disable</button>
+                                <button onClick={() => handleEnable(serv._id)}>Enable</button>
+                                <button onClick={() => handleDisable(serv._id)}>Disable</button>
                             </div>
                         )
                     })}
