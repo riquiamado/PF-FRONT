@@ -18,11 +18,8 @@ import AdminService from '../../dashboardServiceAdmin/index.jsx';
 const DashboardAdmin = () => {
 
     const componentName = useSelector(state => state.components);
-    const users = useSelector((state)=>state.users)
-    const services = useSelector((state)=>state.services)
-    
     const [component, setcomponent] = useState({
-        serviceAdmin: true,
+        main: true,
         orders: false,
         customers: false,
         services: false,
@@ -48,8 +45,8 @@ const DashboardAdmin = () => {
         dispatch(getUsers())
         dispatch(getServices())
         
-        if(componentName === "Dashboard-Admin") setcomponent({
-            servicesAdmin: true,
+        if(componentName === "Dashboard") setcomponent({
+            main: true,
             orders: false,
             customers: false,
             services: false,
@@ -130,33 +127,9 @@ const DashboardAdmin = () => {
             <div className='glass'>
                 <div><SideBar/></div>
                 <div className={component.main ? "visible" : "hidden"}><MainDash /></div>
-                <div className={component.orders ? "visible" : "hidden"}><div>
-                    {users.map((e,i)=>{
-                        return (
-                            <div key={i}>
-                                <UserAdmin
-                                name={e.name}
-                                email={e.email}/>
-                            </div>
-                        )
-                    })}
-                </div></div>
-                
+                <div className={component.orders ? "visible" : "hidden"}><Orders/></div>
                 <div className={component.customers ? "visible" : "hidden"}><UserAdmin /></div>
-                <div className={component.services ? "visible" : "hidden"}><div>
-                    {services?.map((serv,i)=>{
-                        return(
-                            <div>
-                                <AdminService
-                                name={serv.name}
-                                description={serv.description}
-                                image={serv.image.secure_url}
-                                price={serv.price}/>
-                                <button onClick={() => handleDelete(el)}>Delete</button>
-                            </div>
-                        )
-                    })}
-                </div></div>
+                <div className={component.services ? "visible" : "hidden"}><ServicesDash/></div>
                 <div className={component.history ? "visible" : "hidden"}><History /></div>
                 <div className={component.settings ? "visible" : "hidden"}><UserSettings /></div>
             </div>
