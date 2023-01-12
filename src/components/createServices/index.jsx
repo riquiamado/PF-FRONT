@@ -88,6 +88,7 @@ const CreateServices = () => {
     if (Object.values(errors).length === 0) {
       dispatch(addServices(formData));
       /* dispatch(cleanServices()); */
+      console.log("hola")
       toast.success("Service has been created!"), {
         duration: 3000 
       };
@@ -132,6 +133,7 @@ const CreateServices = () => {
               <input
                 type="text"
                 value={input.name}
+                autoComplete='off'
                 name="name"
                 onChange={(el) => handleChange(el)}
               />
@@ -146,6 +148,7 @@ const CreateServices = () => {
                 type="text"
                 value={input.description}
                 name="description"
+                autoComplete='off'
                 onChange={(el) => handleChange(el)}
               />
               <br />
