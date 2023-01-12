@@ -30,8 +30,8 @@ import {
   GET_ORDERS,
 } from "./components";
 
-const url = "http://localhost:3001";
-// const url = "https://pf-back-production-b443.up.railway.app"
+//const url = "http://localhost:3001";
+const url = "https://pf-back-production-b443.up.railway.app"
 
 //-----------------------------------User-----------------------------------------
 
