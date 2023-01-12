@@ -27,7 +27,7 @@ const Cart = () => {
   const handlePayment = async (value, userMail, services) => {
     const response = await axios({
       method: "post",
-      url: "http://localhost:3001/create-order",
+      url: "https://pf-back-production-b443.up.railway.app/create-order",
       data: {
         value,
         description: JSON.stringify(services.concat(userMail)),
