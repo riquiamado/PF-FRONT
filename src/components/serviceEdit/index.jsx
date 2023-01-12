@@ -2,7 +2,7 @@ import React, {useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams, useHistory } from "react-router-dom";
-import {clean, getServicesDetails, updateService, login } from "../../redux/actions/actions";
+import {clean, getServicesDetails, updateService, login, deleteService } from "../../redux/actions/actions";
 import "./serviceEdit.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,9 +26,11 @@ const ServiceEdit = () => {
     )
   }
 
-  const handleImage = (e) => {
-    e.preventDefault();
-  }
+
+  const handleDelete = id => {
+    dispatch(deleteService(id));
+    alert("Servicio eliminado");
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -95,12 +97,12 @@ const ServiceEdit = () => {
                 alt={details.image.secure_url}
               />
               {/* Image Form */}
-              <input 
+              {/* <input 
                 type="file"
                 onChange={e => handleImage(e)}/> 
               <button id="buttt" className="btn btn-lg btn-primary" >
                 Update
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -127,11 +129,24 @@ const ServiceEdit = () => {
         </div>
       </div>
 
-      <div className="container-sm shadow p-3 mb-5 bg-body rounded">
+      {/* <div className="container-sm shadow p-3 mb-5 bg-body rounded">
         <div className="d-grid gap-8 mt-1 col-2 mx-auto text-center">
-          <Link to={"/dashboard"}>
+          <Link to={"/"}>
             <button id="buttt" className="btn btn-lg btn-primary">
               Back
+            </button>
+          </Link>
+        </div>
+      </div> */}
+      <div className="container-sm shadow p-3 mb-5 bg-body rounded">
+        <div className="d-grid gap-8 mt-1 col-2 mx-auto text-center">
+          <Link to={"/"}>
+            <button
+              id="buttt"
+              className="btn btn-lg btn-danger border border-0 text-nowrap"
+              onClick={() => handleDelete(_id)}
+            >
+              Delete
             </button>
           </Link>
         </div>
