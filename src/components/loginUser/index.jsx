@@ -73,9 +73,7 @@ const LoginUser = () => {
     );
     if (Object.values(errors).length === 0) {
       try {
-
         const response = await axios.post(`https://pf-back-production-b443.up.railway.app/login`, input);
-
         window.localStorage.setItem(
           "session",
           JSON.stringify(response.data.email)

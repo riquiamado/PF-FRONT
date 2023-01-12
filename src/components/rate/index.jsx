@@ -64,11 +64,11 @@ export const Rate = () => {
     if (Object.values(errors).length === 0) {
       //Con esta información se actualizarán los propiedadas del rating y reviews del servicio
       const dataService = {serviceId, userName, rating:input.rating, review:input.review}; 
-      await axios.put(`http://localhost:3001/service/rate`, dataService)
+      await axios.put(`https://pf-back-production-b443.up.railway.app/service/rate`, dataService)
 
       //Con esta información se actualizará la propiedad services de la orden, hay que sacar el id del servicio, del arreglo.
       const dataOrder = {orderId, serviceId};
-      await axios.put(`http://localhost:3001/orders`, dataOrder)
+      await axios.put(`https://pf-back-production-b443.up.railway.app/orders`, dataOrder)
       // console.log(dataOrder)
       toast.success("Rating has been sent!"), {
         duration: 3000 
