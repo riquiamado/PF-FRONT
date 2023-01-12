@@ -150,7 +150,7 @@ const CardDetails = () => {
           <div className="delete-container" />
 
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>My Shopping Cart</Offcanvas.Title>
+            <Offcanvas.Title><h2 className="fs-4 mt-4 border-bottom border-muted pb-2 pe-4"><i className="bi bi-cart-check-fill fs-3 mb-4"></i> My Shopping Cart</h2></Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Cart />
