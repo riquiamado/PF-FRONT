@@ -7,7 +7,7 @@ import "./serviceDash.css"
 
 const ServicesDash = () => {
 
-    const users = useSelector(state => state.users)
+    const users = useSelector(state => state.users);
     const email = JSON.parse(window.localStorage.getItem("session"));
     const dispatch = useDispatch()
     console.log(users);
@@ -15,6 +15,8 @@ const ServicesDash = () => {
         dispatch(deleteService(id))
         alert("Servicio eliminado")
     }
+
+    
 
     let cont = 0;
     users?.map((e) => {
@@ -43,6 +45,7 @@ const ServicesDash = () => {
             <h1 className='scsdcds pt-4 fs-3 mb-2 pb-4 text-md-start border-bottom border-dark'><i className="bi bi-bookmark-heart-fill fs-4"></i> These are your services!</h1>
             {users[0]?.services ? users[0]?.services.map((item, index) => {
                 return(
+
                     <div className='service-cards container-fluid shadow p-3 mb-4 mt-4 rounded' key={index}>
                         <p className='cjdcnsjdnc'>{index + 1}</p>
                         <div>
@@ -62,6 +65,7 @@ const ServicesDash = () => {
                                 height="100px"
                                 width="100px"
                             />
+
                     </div>
                 )
             }) : <h1></h1>
