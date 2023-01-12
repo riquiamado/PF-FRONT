@@ -7,7 +7,7 @@ const History = () => {
   let orders = useSelector((state) => state.orders);
   let cont = 0;
   orders?.map((e) => {
-    cont = cont + e.services.length;
+    cont = cont + e.history.length;
   });
 
   if (cont === 0) {
