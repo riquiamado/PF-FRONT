@@ -23,7 +23,7 @@ const MainDash = () => {
 
     return(
         <div>
-            <h1>This is the Main Dash</h1>
+            <h1>This are all the services</h1>
             {/* {users?.map((e,i)=>{
                         return (
                             <div key={i}>
