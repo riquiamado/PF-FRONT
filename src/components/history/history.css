@@ -2,8 +2,12 @@
     display: none;
 }
 
+
 .visible {
     background: none;
+}
+.shhhh {
+    font-family: 'Inter', sans-serif;
 }
 
 .table {
