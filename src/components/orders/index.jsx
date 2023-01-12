@@ -22,7 +22,7 @@ const Orders = () => {
     );
   } else {
     return (
-      <div className="rateSettings container-fluid shadow p-3 mb-4 mt-4 rounded">
+      <div className="rateSettings container-fluid shadow p-3 mb-4 mt-4 bg-body rounded">
         <h1 className="pt-4 fs-3 mb-2 pb-4 text-md-start border-bottom border-dark"><i className="bi bi-bag-heart fs-4"></i> Orders to qualify</h1>
         {orders?.map((order, i) => {
           return (
