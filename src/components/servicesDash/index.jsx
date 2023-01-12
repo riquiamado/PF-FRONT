@@ -10,7 +10,6 @@ const ServicesDash = () => {
     const users = useSelector(state => state.users);
     const email = JSON.parse(window.localStorage.getItem("session"));
     const dispatch = useDispatch()
-    console.log(users);
     const handleDelete = id => {
         dispatch(deleteService(id))
         alert("Servicio eliminado")
@@ -47,15 +46,15 @@ const ServicesDash = () => {
                 return(
 
                     <div className='service-cards container-fluid shadow p-3 mb-4 mt-4 rounded' key={index}>
-                        <p className='cjdcnsjdnc'>{index + 1}</p>
+                        <p className='cjdcnsjdnc me-2'>{index + 1}</p>
                         <div>
-                            <p className="fw-semibold mb-2 pb-1 text-md-start border-bottom border-muted"><i className="bi bi-journal-bookmark-fill"></i> {item.name}</p>
-                            <p className='text-muted'>{item.description}</p>
+                            <p className="fw-semibold text-capitalize mb-2 pb-1 text-md-start border-bottom border-muted"><i className="bi bi-journal-bookmark-fill"></i> {item.name}</p>
+                            <p className='text-muted'>{item.description.charAt(0).toUpperCase() + item.description.slice(1)}</p>
                             <div>
                                 <Link to={`servicesEdit/${item._id}`} style={{textDecoration: 'none'}}>
                                     <p className='text-center fs-6 pe-2 ps-2 rounded-pill border border-1 shadow-sm p-1 bg-body-tertiary rounded'>Edit</p>
                                 </Link>
-                                <button className='btn btn-outline-danger' onClick={() => handleDelete(item._id)}>Delete</button>
+                                {/* <button className='btn btn-outline-danger' onClick={() => handleDelete(item._id)}>Delete</button> */}
                             </div>
                         </div>
                             <img

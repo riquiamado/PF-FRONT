@@ -22,8 +22,8 @@ const MainDash = () => {
     }
 
     return(
-        <div>
-            <h1>This are all the services</h1>
+        <div className="container-fluid shadow p-3 mb-4 mt-4 bg-body rounded">
+            <h1 className="shhhh pt-4 fs-3 mb-2 pb-2 text-md-start border-bottom border-dark"><i className="bi bi-stopwatch-fill fs-5"></i> This are all the services!</h1>
             {/* {users?.map((e,i)=>{
                         return (
                             <div key={i}>
@@ -35,14 +35,17 @@ const MainDash = () => {
                     })} */}
             {services?.map((serv,i)=>{
                         return(
-                            <div className='table-services'>
+                            <div className='table-services' key={i}>
                                 <AdminService
                                 name={serv.name}
                                 description={serv.description}
                                 image={serv.image.secure_url}
                                 price={serv.price}/>
-                                <button onClick={() => handleEnable(serv._id)}>Enable</button>
-                                <button onClick={() => handleDisable(serv._id)}>Disable</button>
+                                
+                                <div className='text-center'>
+                                    <button className="btn btn-primary me-2" onClick={() => handleEnable(serv._id)}>Enable</button>
+                                    <button className="btn btn-primary" onClick={() => handleDisable(serv._id)}>Disable</button>
+                                </div>
                             </div>
                         )
                     })}
