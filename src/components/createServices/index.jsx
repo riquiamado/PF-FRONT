@@ -133,6 +133,7 @@ const CreateServices = () => {
               <input
                 type="text"
                 value={input.name}
+                autoComplete='off'
                 name="name"
                 onChange={(el) => handleChange(el)}
               />
@@ -147,6 +148,7 @@ const CreateServices = () => {
                 type="text"
                 value={input.description}
                 name="description"
+                autoComplete='off'
                 onChange={(el) => handleChange(el)}
               />
               <br />
