@@ -4,8 +4,7 @@ import { useEffect } from "react";
 //import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+
 import { cleanCart, deleteToCart, getServicesDetails } from "../../redux/actions/actions";
 
 import axios from "axios";
@@ -27,7 +26,7 @@ const Cart = () => {
   const handlePayment = async (value, userMail, services) => {
     const response = await axios({
       method: "post",
-      url: "https://pf-back-production-b443.up.railway.app/create-order",
+      url: "http://localhost:3001/create-order",
       data: {
         value,
         description: JSON.stringify(services.concat(userMail)),
@@ -43,44 +42,47 @@ const Cart = () => {
   return (
     <>
       {cartLS?.map((idx) => (
-        <div>
-          <p>
+        <div className="scascca container-fluid shadow p-3 mb-4 mt-4 bg-body rounded">
+          <p className="fs-5 pb-1 fw border-bottom border-2 border-success">
             Service: {idx.name}{" "}
-            <button
+          </p>
+          <img
+            className="rounded"
+            src={idx.image.secure_url}
+            style={{ width: "120px", height: "80px" }}
+          />
+          <p className="mt-2 fs-6">Price: <i className="bi bi-currency-dollar fs-4"></i><b className="fs-4">{idx.price}</b></p>
+          <element hidden> {(Totales += idx.price)} </element>
+          <button
               type="button"
-              class="btn btn-warning"
+              className="btn btn-danger text-capitalize"
               key={idx._id}
               onClick={(e) => removeCart(idx._id)}
             >
-              x
+              <i className="bi bi-trash3"></i>
             </button>
-          </p>
-          <img
-            src={idx.image.secure_url}
-            style={{ width: "100px", height: "60px" }}
-          />
-
-          <p>Price: {idx.price} </p>
-          <element hidden> {(Totales += idx.price)} </element>
-          <hr />
         </div>
       ))}
       <hr />
-      <p>Total: {Totales} </p>
-
-      <button
-        type="button"
-        class="btn btn-warning"
-        onClick={() =>
-          handlePayment(
-            Totales,
-            mail,
-            CartContent?.map((el) => el._id)
-          )
-        }
-      >
-        Pay
-      </button>
+      <div className="mt-4">
+        <h3 className="fs-4 ">This is the total of your purchase</h3>
+        <p className="fs-2 fw-bolder"><i className="bi bi-currency-dollar"></i>{Totales} </p>
+        <div className="sasdas text-center">
+          <button
+            type="button"
+            className="scdcdsc btn btn-warning text-capitalize"
+            onClick={() =>
+              handlePayment(
+                Totales,
+                mail,
+                CartContent?.map((el) => el._id)
+              )
+            }
+          >
+            Hire now!
+          </button> 
+        </div>
+      </div>
     </>
   );
 };
